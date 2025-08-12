@@ -1,253 +1,244 @@
 <!DOCTYPE html>
 <html lang="en" data-lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Sensis • Home</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sensis • Home</title>
 
-<!-- Fonts（最小集） -->
-<link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&family=Lora&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
+  <!-- Minimal fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&family=Lora&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
 
-<style>
-:root{
---bg:#ffffff; --ink:#1f1f1f; --muted:#6b6b6b;
---accent:#495f4d; --divider:#8ca185;
-}
-html[data-lang="en"]{ --content-serif:'Lora', serif; }
-html[data-lang="cn"]{ --content-serif:"Noto Serif SC", serif; }
-html[data-lang="jp"]{ --content-serif:"Noto Serif JP", serif; }
-*{ box-sizing:border-box }
-body{
-  margin:0; background:var(--bg); color:var(--ink);
-  font-family: var(--content-serif); line-height:1.6;
-}
+  <style>
+    :root{
+      --bg:#fff; --ink:#1f1f1f; --muted:#6b6b6b;
+      --accent:#495f4d; --divider:#8ca185;
+    }
+    html[data-lang="en"]{ --content-serif:'Lora', serif; }
+    html[data-lang="cn"]{ --content-serif:"Noto Serif SC", serif; }
+    html[data-lang="jp"]{ --content-serif:"Noto Serif JP", serif; }
 
-/* ===== 桌面：两列网格，侧栏常驻 ===== */
-.wrap{
-  display:grid;
-  grid-template-columns: 280px 1fr;
-  grid-template-areas: "aside main";
-  min-height:100vh;
-}
-aside{ grid-area: aside; }
-main { grid-area: main; position:relative; padding:36px min(6vw,72px); }
+    *{ box-sizing:border-box }
+    body{
+      margin:0; color:var(--ink); background:var(--bg);
+      font-family:var(--content-serif); line-height:1.6;
+    }
 
-/* 桌面分割线贯穿 */
-.wrap::before{
-  content:""; position: fixed; left: 280px; top:0; bottom:0;
-  width:1px; background:var(--divider); pointer-events:none;
-}
+    /* ===== Desktop layout: sidebar + content ===== */
+    .wrap{
+      display:grid;
+      grid-template-columns:280px 1fr;
+      grid-template-areas:"aside main";
+      min-height:100vh;
+    }
+    aside{ grid-area:aside; }
+    main { grid-area:main; position:relative; padding:36px min(6vw,72px); }
 
-/* 侧栏（桌面常驻） */
-aside{
-  border-right: 1px solid var(--divider);
-  padding: 28px 22px 18px;
-  position: sticky; top: 0; align-self: start;
-  height: 100vh; overflow: auto;
-  background:#fff;
-}
-.brand{ display:flex; align-items:center; gap:12px; margin-bottom:22px; }
-.brand img{ height:120px; width:auto; display:block; }
-nav a{
-  display:flex; align-items:center; gap:10px;
-  text-decoration:none; color:var(--ink);
-  padding:10px 6px; border-radius:8px; font-size:18px;
-}
-nav a:hover{ background:#f5f5f5 }
+    /* full-height divider */
+    .wrap::before{
+      content:""; position:fixed; left:280px; top:0; bottom:0;
+      width:1px; background:var(--divider); pointer-events:none;
+    }
 
-/* 主区域 */
-.langs{
-  position:absolute; top:8px; right:8px; display:flex; gap:8px;
-}
-.langs .lang{
-  appearance:none; display:inline-flex; align-items:center; justify-content:center;
-  height:34px; padding:0 12px; border:1px solid var(--divider); border-radius:10px;
-  background:#fff; color:var(--ink); font:14px/1 inherit; cursor:pointer;
-}
-.langs .lang.is-active{ background:var(--accent); color:#fff; border-color:var(--accent); }
+    /* Sidebar (desktop stays visible) */
+    aside{
+      border-right:1px solid var(--divider);
+      padding:28px 22px 18px;
+      position:sticky; top:0; align-self:start;
+      height:100vh; overflow:auto; background:#fff;
+    }
+    .brand{ display:flex; align-items:center; gap:12px; margin-bottom:22px; }
+    .brand img{ height:120px; width:auto; display:block; }
+    nav a{
+      display:flex; align-items:center; gap:10px;
+      text-decoration:none; color:var(--ink);
+      padding:10px 6px; border-radius:8px; font-size:18px;
+    }
+    nav a:hover{ background:#f5f5f5 }
 
-.hero{ display:flex; flex-direction:column; align-items:center; margin-bottom:12px; }
-.hero img{ max-width: 420px; width: 100%; height:auto; display:block; margin-bottom:0; }
-h1{
-  font-family: 'Oleo Script Swash Caps', cursive;
-  font-size: clamp(1.8rem, 4.5vw, 2.6rem);
-  position: relative; z-index: 1; margin: 8px 0 6px;
-  text-shadow: 0 2px 6px rgba(59,58,58,0.12); font-weight: 280;
-}
-.sub{ font-size: clamp(1.06rem, 2.2vw, 1.3rem); color:#555; margin: 2px 0 8px; text-align:center; }
-.content{ margin-top: 12px; }
-.content h3{ margin: 18px 0 8px; font-size: 18px; }
-.content ul{ margin: 8px 0 14px 20px; }
+    /* Main */
+    .langs{
+      position:absolute; top:8px; right:8px; display:flex; gap:8px;
+    }
+    .langs .lang{
+      appearance:none; display:inline-flex; align-items:center; justify-content:center;
+      height:34px; padding:0 12px; border:1px solid var(--divider); border-radius:10px;
+      background:#fff; color:var(--ink); font:14px/1 inherit; cursor:pointer;
+    }
+    .langs .lang.is-active{ background:var(--accent); color:#fff; border-color:var(--accent); }
 
-/* ===== 手机：主内容 + 悬浮按钮；侧栏改抽屉 ===== */
-/* ===== MOBILE HOTFIX — 贴在<style>最后 ===== */
-@media (min-width:961px) and (max-width:1180px){
-  .wrap{ grid-template-columns: 220px 1fr; }
-  .wrap::before{ left:220px; }
-  /* 侧栏里 logo 也稍微收一点 */
-  .brand img{ height:100px; }
-.wrap::before{ display:none !important; }
+    .hero{ display:flex; flex-direction:column; align-items:center; margin-bottom:12px; }
+    .hero img{ max-width:420px; width:100%; height:auto; display:block; margin-bottom:0; }
+    h1{
+      font-family:'Oleo Script Swash Caps', cursive;
+      font-size:clamp(1.8rem,4.5vw,2.6rem);
+      margin:8px 0 6px; text-shadow:0 2px 6px rgba(59,58,58,.12); font-weight:280;
+    }
+    .sub{ font-size:clamp(1.06rem,2.2vw,1.3rem); color:#555; margin:2px 0 8px; text-align:center; }
+    .content{ margin-top:12px; }
+    .content h3{ margin:18px 0 8px; font-size:18px; }
+    .content ul{ margin:8px 0 14px 20px; }
 
-/* 2) 侧栏作为抽屉（默认收起） */
-aside{
-grid-area: unset !important;         /* 不占网格 */
-position: fixed !important;
-top:0; left:0; bottom:0;
-width:260px !important;
-background:#fff;
-border-right:1px solid var(--divider) !important;
-box-shadow: 0 10px 30px rgba(0,0,0,.08) !important;
-transform: translateX(-100%) !important;
-transition: transform .25s ease !important;
-z-index:1000 !important;
-height:auto !important; overflow:auto !important;
-}
-body.menu-open aside{ transform: translateX(0) !important; }
+    /* ===== Mobile: content + FAB; sidebar becomes drawer ===== */
+    @media (max-width:960px){
+      .wrap{
+        grid-template-columns:1fr;
+        grid-template-areas:"main";
+      }
+      .wrap::before{ display:none; }
 
-/* 3) 遮罩 */
-.backdrop{ display:none !important; }
-body.menu-open .backdrop{
-display:block !important;
-position:fixed !important; inset:0 !important;
-background:rgba(0,0,0,.2) !important;
-z-index:900 !important;
-}
-body.menu-open{ overflow:hidden !important; }
+      /* Drawer sidebar */
+      aside{
+        grid-area:unset; position:fixed; top:0; left:0; bottom:0;
+        width:260px; background:#fff;
+        transform:translateX(-100%); transition:transform .25s ease;
+        border-right:1px solid var(--divider);
+        box-shadow:0 10px 30px rgba(0,0,0,.08);
+        z-index:1000; height:auto; overflow:auto;
+      }
+      body.menu-open aside{ transform:translateX(0); }
 
-/* 4) 悬浮菜单按钮（右下角；想中间改注释两行） */
-.fab-menu{
-position: fixed !important;
-right: 18px;                               /* 改中间：left:50%; transform:translateX(-50%); */
-bottom: calc(18px + env(safe-area-inset-bottom)) !important;
-width: 64px !important; height: 64px !important;
-display:inline-flex !important; align-items:center !important; justify-content:center !important;
-border-radius:50% !important;
-border:1px solid var(--divider) !important;
-background:#fff !important; color:var(--ink) !important;
-box-shadow:0 10px 24px rgba(0,0,0,.12) !important;
-z-index:1200 !important; cursor:pointer !important;
-}
-.fab-menu img, .fab-menu svg{
-width: 60% !important; height: 60% !important; object-fit:contain !important; display:block !important;
-}
-body.menu-open .fab-menu{
-background: var(--accent) !important; color:#fff !important; border-color:var(--accent) !important;
-}
+      /* Backdrop */
+      .backdrop{ display:none; }
+      body.menu-open .backdrop{
+        display:block; position:fixed; inset:0;
+        background:rgba(0,0,0,.2); z-index:900;
+      }
+      body.menu-open{ overflow:hidden; }
 
-/* 5) 清理旧元素（若存在） */
-.topbar, .menu-btn{ display:none !important; }   /* 旧顶栏/按钮隐藏 */
-}
-</style>
+      /* Floating menu button (right-bottom) */
+      .fab-menu{
+        position:fixed;
+        right:18px; /* 中间改成：left:50%; transform:translateX(-50%); */
+        bottom:calc(18px + env(safe-area-inset-bottom));
+        width:64px; height:64px;
+        display:inline-flex; align-items:center; justify-content:center;
+        border-radius:50%;
+        border:1px solid var(--divider);
+        background:#fff; color:var(--ink);
+        box-shadow:0 10px 24px rgba(0,0,0,.12);
+        z-index:1200; cursor:pointer;
+      }
+      .fab-menu img, .fab-menu svg{ width:60%; height:60%; object-fit:contain; display:block; }
+      body.menu-open .fab-menu{ background:var(--accent); color:#fff; border-color:var(--accent); }
+
+      /* Readability tweak */
+      .content{ font-size:17px; }
+    }
+
+    /* FAB hidden on desktop */
+    @media (min-width:961px){ .fab-menu{ display:none; } }
+  </style>
 </head>
 <body>
-<div class="wrap">
-<!-- 侧栏：桌面常驻；手机为抽屉 -->
-<aside>
-<div class="brand">
-<img class="brand-logo" src="assets/sensis-logo.png" alt="Sensis logo">
-</div>
-<nav>
-<a href="#"><span>Question</span></a>
-<a href="#"><span>Search</span></a>
-<a href="#"><span>Learn</span></a>
-<a href="#"><span>Create</span></a>
-</nav>
-</aside>
-<!-- 主内容 -->
-<main>
-  <div class="langs">
-    <button class="lang is-active" data-lang="en" onclick="switchLang('en')">English</button>
-    <button class="lang" data-lang="cn" onclick="switchLang('cn')">中文</button>
-    <button class="lang" data-lang="jp" onclick="switchLang('jp')">日本語</button>
+  <div class="wrap">
+    <!-- Sidebar -->
+    <aside>
+      <div class="brand">
+        <img src="assets/sensis-logo.png" alt="Sensis logo">
+      </div>
+      <nav>
+        <a href="#"><span>Question</span></a>
+        <a href="#"><span>Search</span></a>
+        <a href="#"><span>Learn</span></a>
+        <a href="#"><span>Create</span></a>
+      </nav>
+    </aside>
+
+    <!-- Main -->
+    <main>
+      <div class="langs">
+        <button class="lang is-active" data-lang="en" onclick="switchLang('en')">English</button>
+        <button class="lang" data-lang="cn" onclick="switchLang('cn')">中文</button>
+        <button class="lang" data-lang="jp" onclick="switchLang('jp')">日本語</button>
+      </div>
+
+      <div class="hero">
+        <img src="assets/tree.png" alt="tree">
+        <h1>Let’s sensing…</h1>
+        <p class="sub">Turn your sense into noēsis, forming your own knowledge and path to achieving your goals.</p>
+      </div>
+
+      <div class="content">
+        <!-- EN -->
+        <div id="lang-en">
+          <h3>What is Sensis?</h3>
+          <p><strong>Sensis</strong> comes from “sense” and the Greek “noēsis.” It’s the path where perception cultivates cognition.</p>
+          <h3>What can Sensis do?</h3>
+          <ul>
+            <li>Define goals and constraints.</li>
+            <li>Search and judge sources efficiently.</li>
+            <li>Structure plans with milestones.</li>
+            <li>Produce clean, defensible outputs.</li>
+          </ul>
+          <h3>How does Sensis work?</h3>
+          <ul>
+            <li><strong>Local:</strong> organize cognition and tasks.</li>
+            <li><strong>Online:</strong> collaborate with AI.</li>
+            <li><strong>Community:</strong> reuse path templates.</li>
+          </ul>
+        </div>
+
+        <!-- CN -->
+        <div id="lang-cn" style="display:none;">
+          <h3>什么是 Sensis？</h3>
+          <p><strong>Sensis</strong> 源自 “sense” 与 “noēsis”，强调由感知通向认知的路径。</p>
+          <h3>Sensis 能做什么？</h3>
+          <ul>
+            <li>明确目标与约束。</li>
+            <li>高效检索与判断信息。</li>
+            <li>以里程碑推进计划。</li>
+            <li>形成清晰、可辩护的产出。</li>
+          </ul>
+          <h3>Sensis 如何运作？</h3>
+          <ul>
+            <li><strong>本地：</strong>整理认知与任务。</li>
+            <li><strong>在线：</strong>与 AI 协作。</li>
+            <li><strong>社区：</strong>复用路径模板。</li>
+          </ul>
+        </div>
+
+        <!-- JP -->
+        <div id="lang-jp" style="display:none;">
+          <h3>Sensisとは？</h3>
+          <p><strong>Sensis</strong>は「sense」と「noēsis」から生まれ、感覚から認知へ至る道筋を重視する。</p>
+          <h3>Sensisでできること</h3>
+          <ul>
+            <li>目標と制約の明確化。</li>
+            <li>効率的な検索と情報判断。</li>
+            <li>マイルストーンで計画を進める。</li>
+            <li>明快で説得的なアウトプット。</li>
+          </ul>
+          <h3>Sensisの仕組み</h3>
+          <ul>
+            <li><strong>ローカル：</strong>認知とタスクを整理。</li>
+            <li><strong>オンライン：</strong>AIと協働。</li>
+            <li><strong>コミュニティ：</strong>経路テンプレートを再利用。</li>
+          </ul>
+        </div>
+      </div>
+    </main>
   </div>
 
-  <div class="hero">
-    <img src="assets/tree.png" alt="tree">
-    <h1>Let’s sensing…</h1>
-    <p class="sub">Turn your sense into noēsis, forming your own knowledge and path to achieving your goals.</p>
-  </div>
+  <!-- Mobile floating menu button -->
+  <button class="fab-menu" onclick="toggleMenu()" aria-label="Open menu">
+    <img src="assets/menu-icon.png" alt="Menu">
+  </button>
 
-  <div class="content">
-    <!-- EN -->
-    <div id="lang-en">
-      <h3>What is Sensis?</h3>
-      <p><strong>Sensis</strong> comes from “sense” and the Greek “noēsis.” It’s the path where perception cultivates cognition.</p>
-      <h3>What can Sensis do?</h3>
-      <ul>
-        <li>Define goals and constraints.</li>
-        <li>Search and judge sources efficiently.</li>
-        <li>Structure plans with milestones.</li>
-        <li>Produce clean, defensible outputs.</li>
-      </ul>
-      <h3>How does Sensis work?</h3>
-      <ul>
-        <li><strong>Local:</strong> organize cognition and tasks.</li>
-        <li><strong>Online:</strong> collaborate with AI.</li>
-        <li><strong>Community:</strong> reuse path templates.</li>
-      </ul>
-    </div>
+  <!-- Backdrop for drawer -->
+  <div class="backdrop" onclick="toggleMenu()"></div>
 
-    <!-- CN -->
-    <div id="lang-cn" style="display:none;">
-      <h3>什么是 Sensis？</h3>
-      <p><strong>Sensis</strong> 源自 “sense” 与 “noēsis”，强调由感知通向认知的路径。</p>
-      <h3>Sensis 能做什么？</h3>
-      <ul>
-        <li>明确目标与约束。</li>
-        <li>高效检索与判断信息。</li>
-        <li>以里程碑推进计划。</li>
-        <li>形成清晰、可辩护的产出。</li>
-      </ul>
-      <h3>Sensis 如何运作？</h3>
-      <ul>
-        <li><strong>本地：</strong>整理认知与任务。</li>
-        <li><strong>在线：</strong>与 AI 协作。</li>
-        <li><strong>社区：</strong>复用路径模板。</li>
-      </ul>
-    </div>
-
-    <!-- JP -->
-    <div id="lang-jp" style="display:none;">
-      <h3>Sensisとは？</h3>
-      <p><strong>Sensis</strong>は「sense」と「noēsis」から生まれ、感覚から認知へ至る道筋を重視する。</p>
-      <h3>Sensisでできること</h3>
-      <ul>
-        <li>目標と制約の明確化。</li>
-        <li>効率的な検索と情報判断。</li>
-        <li>マイルストーンで計画を進める。</li>
-        <li>明快で説得的なアウトプット。</li>
-      </ul>
-      <h3>Sensisの仕組み</h3>
-      <ul>
-        <li><strong>ローカル：</strong>認知とタスクを整理。</li>
-        <li><strong>オンライン：</strong>AIと協働。</li>
-        <li><strong>コミュニティ：</strong>経路テンプレートを再利用。</li>
-      </ul>
-    </div>
-  </div>
-</main>
-</div>
-
-<!-- 手机悬浮菜单按钮（与品牌无关） -->
-<button class="fab-menu" onclick="toggleMenu()" aria-label="Open menu">
-<img src="assets/menu-icon.png" alt="Menu">
-</button>
-
-<!-- 遮罩 -->
-<div class="backdrop" onclick="toggleMenu()"></div>
-
-<script>
-function switchLang(lang){
-document.getElementById('lang-en').style.display = (lang==='en')?'block':'none';
-document.getElementById('lang-cn').style.display = (lang==='cn')?'block':'none';
-document.getElementById('lang-jp').style.display = (lang==='jp')?'block':'none';
-document.querySelectorAll('.langs .lang')
-.forEach(b=>b.classList.toggle('is-active', b.dataset.lang===lang));
-document.documentElement.setAttribute('data-lang', lang);
-}
-function toggleMenu(){ document.body.classList.toggle('menu-open'); }
-</script>
+  <script>
+    function switchLang(lang){
+      document.getElementById('lang-en').style.display = (lang==='en')?'block':'none';
+      document.getElementById('lang-cn').style.display = (lang==='cn')?'block':'none';
+      document.getElementById('lang-jp').style.display = (lang==='jp')?'block':'none';
+      document.querySelectorAll('.langs .lang')
+        .forEach(b=>b.classList.toggle('is-active', b.dataset.lang===lang));
+      document.documentElement.setAttribute('data-lang', lang);
+    }
+    function toggleMenu(){ document.body.classList.toggle('menu-open'); }
+  </script>
 </body>
 </html>
