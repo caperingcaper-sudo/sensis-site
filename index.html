@@ -139,27 +139,6 @@ background: var(--accent) !important; color:#fff !important; border-color:var(--
 /* 5) 清理旧元素（若存在） */
 .topbar, .menu-btn{ display:none !important; }   /* 旧顶栏/按钮隐藏 */
 }
-/* 默认隐藏悬浮按钮 */
-.fab-menu{ display:none; }
-
-/* 仅手机端显示悬浮按钮 */
-@media (max-width:960px){
-  .fab-menu{
-    display:inline-flex;
-    position: fixed;
-    right: 18px;  /* 想底部中间 -> 注释这行，换成：left:50%; transform:translateX(-50%); */
-    bottom: calc(18px + env(safe-area-inset-bottom));
-    width: 64px; height: 64px;
-    align-items:center; justify-content:center;
-    border-radius:50%;
-    border:1px solid var(--divider);
-    background:#fff; color:var(--ink);
-    box-shadow:0 10px 24px rgba(0,0,0,.12);
-    z-index:1200;
-  }
-  .fab-menu img,.fab-menu svg{ width:60%; height:60%; object-fit:contain; display:block; }
-  body.menu-open .fab-menu{ background:var(--accent); color:#fff; border-color:var(--accent); }
-}
 </style>
 </head>
 <body>
