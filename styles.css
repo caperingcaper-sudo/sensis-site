@@ -159,16 +159,6 @@ border-right:1px solid var(--divider) !important;
 }
 .fab-menu, .backdrop{ display:none !important; }
 }
-/* —— 统一只让页面滚，内容不自滚 —— */
-/* 桌面端 */
-@media (min-width:961px){
-  html, body{
-    overflow-x: hidden;   /* 只在这里隐藏横向 */
-    overflow-y: auto;     /* 纵向由页面统一滚 */
-  }
-  .wrap, main{
-    overflow: visible !important;   /* 别再自己滚了 */
-  }
   .backdrop{ display:none !important; } /* 桌面无抽屉遮罩 */
 }
 
@@ -203,5 +193,22 @@ img, video, iframe{ max-width:100%; height:auto; }
     margin: 0 auto;         /* 居中 */
     padding-left: 16px;
     padding-right: 16px;
+  }
+}
+@media (max-width: 768px) {
+  .showcase {
+    display: flex;
+    flex-direction: column; /* 垂直排列 */
+    gap: 1rem; /* 卡片间距 */
+  }
+  .showcase > * {
+    flex: 1 1 100%; /* 每个卡片占满整行 */
+  }
+}
+@media (min-width: 1025px){
+  main > .container {
+    max-width: 980px;              /* 你可以在 860–1040 之间微调手感 */
+    margin-inline: auto;
+    padding-inline: 24px;          /* 两侧留点呼吸 */
   }
 }
