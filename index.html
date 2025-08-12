@@ -25,13 +25,23 @@
       font-family: var(--content-serif); line-height:1.6;
     }
 
-    .wrap{ display:grid; grid-template-columns: 280px 1fr; min-height:100vh }
+    .wrap{
+  display:grid;
+  grid-template-columns: 280px 1fr;
+  grid-template-areas: "aside main";
+  min-height:100vh;
+}
+aside{ grid-area: aside; }
+main{  grid-area: main; }
 
-    /* Desktop divider that spans full height */
-    .wrap::before{
-      content:""; position: fixed; left: 280px; top:0; bottom:0;
-      width:1px; background:var(--divider); pointer-events:none;
-    }
+/* 顶栏和遮罩不要参与桌面网格布局 */
+.topbar, .backdrop{ display:none; }
+
+/* 贯穿分割线保持 */
+.wrap::before{
+  content:""; position: fixed; left: 280px; top:0; bottom:0;
+  width:1px; background:var(--divider); pointer-events:none;
+}
 
     /* Sidebar */
     aside{
@@ -81,33 +91,41 @@
 
     /* Mobile: drawer sidebar; remove desktop divider; no special scroll boxes */
     @media (max-width:960px){
-      .wrap{ grid-template-columns:1fr; }
-      .wrap::before{ display:none; }
-      /* Top bar shows on mobile */
-      .topbar{
-        display:flex; align-items:center; justify-content:space-between;
-        padding:12px 16px; border-bottom:1px solid var(--divider);
-        position: sticky; top:0; background:#fff; z-index:50;
-      }
-      .topbar img{ height:28px; width:auto; cursor:pointer; }
+  .wrap{
+    grid-template-columns: 1fr;
+    grid-template-areas: "main"; /* 只显示 main，侧栏改为抽屉 */
+  }
 
-      /* Drawer sidebar */
-      aside{
-        position: fixed; top:0; bottom:0; left:0; width:260px;
-        background:#fff; transform: translateX(-100%);
-        transition: transform .25s ease;
-        box-shadow: 0 10px 30px rgba(0,0,0,.08);
-        border-right:1px solid var(--divider);
-        z-index:100; padding:24px 18px; height:auto; overflow:auto;
-      }
-      body.menu-open aside{ transform: translateX(0); }
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 16px; border-bottom:1px solid var(--divider);
+    position: sticky; top:0; background:#fff; z-index:50;
+  }
+  .topbar img{ height:28px; width:auto; cursor:pointer; }
 
-      /* Backdrop */
-      .backdrop{ display:none; }
-      body.menu-open .backdrop{
-        display:block; position:fixed; inset:0;
-        background:rgba(0,0,0,.2); z-index:90;
-      }
+  /* 侧栏作为抽屉脱离网格 */
+  aside{
+    grid-area: unset; /* 重要：不要占网格 */
+    position: fixed; top:0; bottom:0; left:0; width:260px;
+    background:#fff; transform: translateX(-100%);
+    transition: transform .25s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    border-right:1px solid var(--divider);
+    z-index:100; padding:24px 18px; height:auto; overflow:auto;
+  }
+  body.menu-open aside{ transform: translateX(0); }
+
+  .backdrop{ display:none; }
+  body.menu-open .backdrop{
+    display:block; position:fixed; inset:0;
+    background:rgba(0,0,0,.2); z-index:90;
+  }
+
+  body.menu-open{ overflow:hidden; }
+
+  /* 去掉桌面分割线 */
+  .wrap::before{ display:none; }
+}
 
       /* Language buttons tighter */
       .langs{ top:10px; right:10px; }
@@ -146,7 +164,7 @@
       </div>
 
       <div class="hero">
-        <img src="tree.png" alt="tree">
+        <img src="assets/tree.png" alt="tree">
         <h1>Let’s sensing…</h1>
         <p class="sub">Turn your sense into noēsis, forming your own knowledge and path to achieving your goals.</p>
       </div>
