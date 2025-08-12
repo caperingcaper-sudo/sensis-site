@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Sensis • question</title>
+<title>Sensis • Question</title>
 
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&family=Lora&display=swap" rel="stylesheet">
@@ -11,17 +11,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
 
 <!-- External CSS -->
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=1">
 </head>
 <body>
 <div class="wrap">
 <!-- Sidebar -->
 <aside>
 <div class="brand">
-<img src="assets/sensis-logo.png" alt="Sensis logo">
+  <a href="index.html">
+    <img src="assets/sensis-logo.png" alt="Sensis logo">
+  </a>
 </div>
 <nav>
-<a href="question.html"><span>Question</span></a>
+<a href="question.html" class="active"><span>Question</span></a>
 <a href="search.html"><span>Search</span></a>
 <a href="learn.html"><span>Learn</span></a>
 <a href="create.html"><span>Create</span></a>
@@ -34,39 +36,42 @@
     <button class="lang" data-lang="cn" onclick="switchLang('cn')">中文</button>
     <button class="lang" data-lang="jp" onclick="switchLang('jp')">日本語</button>
   </div>
+
   <div class="hero">
-    <img src="assets/tree-1.png" alt="tree">
+    <img src="assets/tree.png" alt="tree">
     <h1>Question</h1>
     <p class="sub">Shape the seed: turn a fuzzy idea into a precise, testable question.</p>
   </div>
-<div class="content">
-<!-- EN -->
-<div id="lang-en">
-<h3>How we shape a good question</h3>
-<ul>
-<li>Define scope and constraints.</li>
-<li>Clarify unknowns vs. assumptions.</li>
-<li>Decide evaluation criteria for answers.</li>
-</ul>
-</div>
-  <!-- CN -->
-<div id="lang-cn" style="display:none;">
-  <h3>如何把问题“塑形”</h3>
-  <ul>
-    <li>明确边界与约束</li>
-    <li>区分未知与假设</li>
-    <li>设定答案的评估标准</li>
-  </ul>
-</div>
 
-<!-- JP -->
-<div id="lang-jp" style="display:none;">
-  <h3>良い問いの整え方</h3>
-  <ul>
-    <li>範囲と制約を定義</li>
-    <li>未知と仮定を切り分け</li>
-    <li>評価基準を決める</li>
-  </ul>
+  <div class="content">
+    <!-- EN -->
+    <div id="lang-en">
+      <h3>How we shape a good question</h3>
+      <ul>
+        <li>Define scope and constraints.</li>
+        <li>Clarify unknowns vs. assumptions.</li>
+        <li>Decide evaluation criteria for answers.</li>
+      </ul>
+    </div>
+
+    <!-- CN -->
+    <div id="lang-cn" style="display:none;">
+      <h3>如何把问题“塑形”</h3>
+      <ul>
+        <li>明确边界与约束</li>
+        <li>区分未知与假设</li>
+        <li>设定答案的评估标准</li>
+      </ul>
+    </div>
+
+    <!-- JP -->
+    <div id="lang-jp" style="display:none;">
+      <h3>良い問いの整え方</h3>
+      <ul>
+        <li>範囲と制約を定義</li>
+        <li>未知と仮定を切り分け</li>
+        <li>評価基準を決める</li>
+      </ul>
     </div>
   </div>
 </main>
@@ -81,14 +86,26 @@
 
 <script>
 function switchLang(lang){
-document.getElementById('lang-en').style.display = (lang==='en')?'block':'none';
-document.getElementById('lang-cn').style.display = (lang==='cn')?'block':'none';
-document.getElementById('lang-jp').style.display = (lang==='jp')?'block':'none';
+document.getElementById('lang-en').style.display = (lang==='en') ? 'block' : 'none';
+document.getElementById('lang-cn').style.display = (lang==='cn') ? 'block' : 'none';
+document.getElementById('lang-jp').style.display = (lang==='jp') ? 'block' : 'none';
 document.querySelectorAll('.langs .lang')
-.forEach(b=>b.classList.toggle('is-active', b.dataset.lang===lang));
+.forEach(b => b.classList.toggle('is-active', b.dataset.lang === lang));
 document.documentElement.setAttribute('data-lang', lang);
 }
+document.addEventListener('DOMContentLoaded', () => {
+  const logo = document.querySelector('.logo-link');
+  if (!logo) return;
+  logo.addEventListener('click', () => {
+    if (window.innerWidth <= 960) {
+      document.body.classList.remove('menu-open'); // 先合上抽屉
+    }
+    // 不阻止默认跳转行为，直接回首页
+  });
+});
 function toggleMenu(){ document.body.classList.toggle('menu-open'); }
-</script>
+  // 初始语言（避免缓存导致的显示异常）
+document.addEventListener('DOMContentLoaded', () => switchLang('en'));
+  </script>
 </body>
 </html>
