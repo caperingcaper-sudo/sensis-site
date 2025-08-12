@@ -159,9 +159,25 @@ border-right:1px solid var(--divider) !important;
 }
 .fab-menu, .backdrop{ display:none !important; }
 }
-/* 桌面端先禁止横向滚动，避免用户看到“要向右拉” /
+/* —— 统一只让页面滚，内容不自滚 —— */
+/* 桌面端 */
 @media (min-width:961px){
-html, body { overflow-x: hidden; }
-main { overflow-x: clip; }           / clip 比 hidden 更干净 */
-img, video, iframe { max-width:100%; height:auto; }
+  html, body{
+    overflow-x: hidden;   /* 只在这里隐藏横向 */
+    overflow-y: auto;     /* 纵向由页面统一滚 */
+  }
+  .wrap, main{
+    overflow: visible !important;   /* 别再自己滚了 */
+  }
+  .backdrop{ display:none !important; } /* 桌面无抽屉遮罩 */
 }
+
+/* Grid/卡片不产生自身滚动，避免内层条 */
+.section, .showcase, .showcase-grid, .card{
+  overflow: visible !important;
+}
+
+/* 仍保留防“撑宽”策略，但不再给 main 设 clip */
+.showcase-grid, .showcase-grid > *{ min-width:0; }
+.card *{ word-break:break-word; overflow-wrap:anywhere; }
+img, video, iframe{ max-width:100%; height:auto; }
