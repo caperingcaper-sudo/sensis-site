@@ -1,456 +1,234 @@
 <!DOCTYPE html>
 <html lang="en" data-lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Sensis • Needs Intake (Local)</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sensis • Home</title>
 
-<!-- 字体 -->
-<link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&family=Playfair+Display&family=Cormorant+Garamond&family=Lora&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
-<script src="https://c.webfontfree.com/c.js?f=MrsEavesLiningOT" type="text/javascript"></script>
+  <!-- Fonts: keep minimal -->
+  <link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&family=Lora&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
 
-<style>
-:root{
---bg:#ffffff; --ink:#1f1f1f; --muted:#6b6b6b;
---accent:#495f4d; --divider:#8ca185;
---chip:#ffffff; --chip-on:#faf9f7;
-/* 正文字体变量，默认英文用 Lora；切换语言时用 data-lang 覆盖它 */
---content-serif: 'Lora', serif;
-}
-/* 按语言切换整页正文字体 */
-html[data-lang="en"]{ --content-serif:'Lora', serif; }
-html[data-lang="cn"]{ --content-serif:"Noto Serif SC", serif; }
-html[data-lang="jp"]{ --content-serif:"Noto Serif JP", serif; }
+  <style>
+    :root{
+      --bg:#ffffff; --ink:#1f1f1f; --muted:#6b6b6b;
+      --accent:#495f4d; --divider:#8ca185;
+    }
+    html[data-lang="en"]{ --content-serif:'Lora', serif; }
+    html[data-lang="cn"]{ --content-serif:"Noto Serif SC", serif; }
+    html[data-lang="jp"]{ --content-serif:"Noto Serif JP", serif; }
 
-*{box-sizing:border-box}
-body{
-margin:0; background:var(--bg); color:var(--ink);
-font-family: var(--content-serif);
-line-height:1.6;
-}
+    *{ box-sizing:border-box }
+    body{
+      margin:0; background:var(--bg); color:var(--ink);
+      font-family: var(--content-serif); line-height:1.6;
+    }
 
-.wrap{display:grid; grid-template-columns: 280px 1fr; min-height:100vh}
+    .wrap{ display:grid; grid-template-columns: 280px 1fr; min-height:100vh }
 
-/* sidebar */
-aside{
-border-right: 1px solid var(--divider);
-padding: 28px 22px 18px;
-position: sticky; top: 0; align-self: start;
-height: 100vh; overflow: auto;
-font-size: 30px; font-weight: bold;
-}
-.brand{display:flex; align-items:center; gap:12px; margin-bottom:22px}
-.brand img{height:120px; width:auto}
-.brand .name{font-weight:700; font-size:28px; letter-spacing:.3px}
-nav a{
-display:flex; align-items:center; gap:10px;
-text-decoration:none; color:var(--ink);
-padding:10px 6px; border-radius:8px; font-size:18px;
-}
-nav a:hover{background:#f8f3e9}
-.dot{display:none}
+    /* Desktop divider that spans full height */
+    .wrap::before{
+      content:""; position: fixed; left: 280px; top:0; bottom:0;
+      width:1px; background:var(--divider); pointer-events:none;
+    }
 
-/* main */
-main{
-position: relative; /* 让右上角语言按钮相对 main 定位 */
-padding:36px min(6vw,72px);
-}
-.hero{
-display:flex; flex-direction:column; align-items:center;
-margin-bottom:12px;
-}
-.hero img{
-height:300px; width:auto; max-width:100%;
-display:block; margin-bottom:0;
-}
-h1{
-font-family: 'Oleo Script Swash Caps', cursive;
-font-size: clamp(1.8rem, 4.5vw, 2.6rem);
-position: relative; z-index: 1;
-margin: clamp(-48px,-6vw,-16px) 0 6px; /* 轻微压到树上 */
-text-shadow: 0 2px 6px rgba(59,58,58,0.12);
-font-weight: 280;
-}
-.sub{
-font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-font-weight: 400; color:#555;
-margin: 2px 0 6px; text-align:center;
-}
+    /* Sidebar */
+    aside{
+      border-right: 1px solid var(--divider);
+      padding: 28px 22px 18px;
+      position: sticky; top: 0; align-self: start;
+      height: 100vh; overflow: auto;
+    }
+    .brand{ display:flex; align-items:center; gap:12px; margin-bottom:22px }
+    .brand img{ height:120px; width:auto }
+    nav a{
+      display:flex; align-items:center; gap:10px;
+      text-decoration:none; color:var(--ink);
+      padding:10px 6px; border-radius:8px; font-size:18px;
+    }
+    nav a:hover{ background:#f5f5f5 }
 
-/* 语言按钮：固定在主区域右上角 */
-.langs{
-position:absolute; top:8px; right:8px; /* 想更高/更右就改这两个数字 */
-display:flex; gap:8px;
-}
-.langs .lang{
-appearance:none; -webkit-appearance:none;
-display:inline-flex; align-items:center; justify-content:center;
-height:34px; padding:0 12px;
-border:1px solid var(--divider); border-radius:10px;
-background:#fff; color:var(--ink);
-font:14px/1 inherit; cursor:pointer;
-}
-.langs .lang:is(:hover,:focus-visible){ filter:brightness(.96); outline:none; }
-.langs .lang.is-active{ background:var(--accent); color:#fff; border-color:var(--accent); }
+    /* Main */
+    main{ position:relative; padding:36px min(6vw,72px); }
+    .langs{
+      position:absolute; top:8px; right:8px; display:flex; gap:8px;
+    }
+    .langs .lang{
+      appearance:none; display:inline-flex; align-items:center; justify-content:center;
+      height:34px; padding:0 12px; border:1px solid var(--divider); border-radius:10px;
+      background:#fff; color:var(--ink); font:14px/1 inherit; cursor:pointer;
+    }
+    .langs .lang.is-active{ background:var(--accent); color:#fff; border-color:var(--accent); }
 
-/* 说明区：仅左右线条、可滚动 */
-.scroll-box{
-max-height:400px; overflow-y:auto;
-padding:18px 24px;
-border-left:2px solid #ccc; border-right:2px solid #ccc;
-border-top:none; border-bottom:none;
-line-height:1.6; margin-top:6px;
-}
-.scroll-box::-webkit-scrollbar{ width:8px; }
-.scroll-box::-webkit-scrollbar-thumb{ background-color:rgba(0,0,0,0.2); border-radius:4px; }
+    .hero{ display:flex; flex-direction:column; align-items:center; margin-bottom:12px; }
+    .hero img{ max-width: 420px; width: 100%; height:auto; display:block; margin-bottom:0; }
+    h1{
+      font-family: 'Oleo Script Swash Caps', cursive;
+      font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+      position: relative; z-index: 1; margin: 8px 0 6px;
+      text-shadow: 0 2px 6px rgba(59,58,58,0.12); font-weight: 280;
+    }
+    .sub{ font-size: clamp(1.06rem, 2.2vw, 1.3rem); color:#555; margin: 2px 0 8px; text-align:center; }
 
-/* 表单等（保留） */
-section.block{
-background:#fff; border:1px solid var(--divider); border-radius:14px;
-padding:18px; margin-bottom:18px;
-}
-section.block h2{font-size:20px; margin:0 0 12px}
-.row{display:grid; grid-template-columns:180px 1fr; gap:14px; align-items:start; padding:8px 0}
-label.key{color:var(--muted); font-size:15px; padding-top:8px}
-input[type="text"], input[type="number"], select, textarea{
-width:100%; padding:10px 12px; border:1px solid var(--divider);
-border-radius:10px; background:#fff; font-size:16px; font-family:inherit;
-}
-textarea{min-height:90px; resize:vertical}
+    /* Simple content area (no scroll-box) */
+    .content{ margin-top: 12px; }
+    .content h3{ margin: 18px 0 8px; font-size: 18px; }
+    .content ul{ margin: 8px 0 14px 20px; }
 
-.chips{display:flex; flex-wrap:wrap; gap:8px}
-.chip{
-padding:8px 12px; border-radius:999px; background:var(--chip);
-border:1px solid var(--divider); font-size:14px; cursor:pointer; user-select:none;
-}
-.chip input{display:none}
-.chip.active{background:var(--chip-on); border-color:var(--divider)}
-.chip:focus-visible{outline:2px solid rgba(73,95,77,.35); outline-offset:2px}
+    /* Top bar for mobile; hidden on desktop */
+    .topbar{ display:none; }
 
-.actions{display:flex; gap:10px; justify-content:flex-end; margin-top:14px; align-items:center}
-.btn{
-border:1px solid var(--divider); background:#fff; border-radius:10px;
-padding:10px 14px; font-size:15px; cursor:pointer;
-}
-.btn.primary{background:var(--accent); color:#fff; border-color:var(--accent)}
-.btn:focus-visible{outline:2px solid rgba(73,95,77,.35); outline-offset:2px}
-.note{font-size:13px; color:var(--muted); margin-left:auto}
+    /* Mobile: drawer sidebar; remove desktop divider; no special scroll boxes */
+    @media (max-width:960px){
+      .wrap{ grid-template-columns:1fr; }
+      .wrap::before{ display:none; }
+      /* Top bar shows on mobile */
+      .topbar{
+        display:flex; align-items:center; justify-content:space-between;
+        padding:12px 16px; border-bottom:1px solid var(--divider);
+        position: sticky; top:0; background:#fff; z-index:50;
+      }
+      .topbar img{ height:28px; width:auto; cursor:pointer; }
 
-@media (max-width:960px){
-.wrap{grid-template-columns: 88px 1fr}
-aside{position:static; height:auto}
-.brand .name{display:none}
-nav a span.label{display:none}
-.row{grid-template-columns:1fr}
-h1{font-size:44px}
-.sub{font-size:20px}
-.hero img{height:200px}
-.langs{ top:6px; right:6px; } /* 小屏更贴边一点 */
-.scroll-box{ max-height: clamp(280px, 45vh, 420px); }
-}
-/* —— 让桌面端分割线贯穿整页 —— */
-.wrap::before{
-  content:"";
-  position: fixed;
-  left: 280px; top:0; bottom:0;
-  width:1px; background:var(--divider);
-  pointer-events:none;
-}
+      /* Drawer sidebar */
+      aside{
+        position: fixed; top:0; bottom:0; left:0; width:260px;
+        background:#fff; transform: translateX(-100%);
+        transition: transform .25s ease;
+        box-shadow: 0 10px 30px rgba(0,0,0,.08);
+        border-right:1px solid var(--divider);
+        z-index:100; padding:24px 18px; height:auto; overflow:auto;
+      }
+      body.menu-open aside{ transform: translateX(0); }
 
-/* 手机端改为抽屉 + 去掉滚动小窗的左右线条与高度限制 */
-@media (max-width:960px){
-  .wrap{ grid-template-columns:1fr; }
+      /* Backdrop */
+      .backdrop{ display:none; }
+      body.menu-open .backdrop{
+        display:block; position:fixed; inset:0;
+        background:rgba(0,0,0,.2); z-index:90;
+      }
 
-  /* 顶部条：手机端显示，桌面隐藏 */
-  .topbar{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:12px 16px; border-bottom:1px solid var(--divider);
-    position: sticky; top:0; background:#fff; z-index:50;
-  }
-  .topbar .menu-btn{
-    appearance:none; border:1px solid var(--divider); background:#fff;
-    border-radius:10px; padding:8px 12px; font-size:14px; cursor:pointer;
-  }
+      /* Language buttons tighter */
+      .langs{ top:10px; right:10px; }
 
-  /* 抽屉侧栏 */
-  aside{
-    position: fixed; top:0; bottom:0; left:0; width:260px;
-    background:#fff; transform: translateX(-100%);
-    transition: transform .25s ease;
-    box-shadow: 0 10px 30px rgba(0,0,0,.08);
-    border-right:1px solid var(--divider);
-    z-index:100; padding:24px 18px;
-    height:auto; overflow:auto;
-  }
-  body.menu-open aside{ transform: translateX(0); }
-
-  /* 遮罩 */
-  .backdrop{ display:none; }
-  body.menu-open .backdrop{
-    display:block; position:fixed; inset:0;
-    background:rgba(0,0,0,.2); z-index:90;
-  }
-
-  /* 去掉“滚动窗口”的限制与边线 */
-  .scroll-box{
-    max-height:none; overflow:visible;
-    border:0; padding:0; margin-top:10px;
-  }
-
-  /* 语言按钮位置微调 */
-  .langs{ top:10px; right:10px; }
-
-  /* 手机端隐藏桌面那条贯穿分割线 */
-  .wrap::before{ display:none; }
-}
-</style>
+      .hero img{ max-width: 300px; }
+    }
+  </style>
 </head>
-
 <body>
-<div class="wrap">
-<aside>
-<div class="brand">
-<img src="assets/sensis-logo.png" alt="Sensis logo" onerror="this.style.display='none'">
-</div>
-<nav>
-<a href="#"><span class="dot"></span><span class="label"> Question</span></a>
-<a href="#"><span class="dot"></span><span class="label"> Search</span></a>
-<a href="#"><span class="dot"></span><span class="label"> Learn</span></a>
-<a href="#"><span class="dot"></span><span class="label"> Create</span></a>
-</nav>
-</aside>
-<!-- 手机端顶栏（桌面端被 @media 隐藏） -->
-<div class="topbar">
-  < img src="assets/sensis-logo.png" 
-       alt="Sensis logo" 
-       style="height:28px; cursor:pointer;" 
-       onclick="toggleMenu()" 
-       onerror="this.style.display='none'">
-</div>
-<!-- 抽屉遮罩 -->
-<div class="backdrop" onclick="toggleMenu()"></div>
+  <div class="wrap">
+    <aside>
+      <div class="brand">
+        <!-- Sidebar logo -->
+        <img src="sensis-logo.png" alt="Sensis logo" onerror="this.style.display='none'">
+      </div>
+      <nav>
+        <a href="#"><span>Question</span></a>
+        <a href="#"><span>Search</span></a>
+        <a href="#"><span>Learn</span></a>
+        <a href="#"><span>Create</span></a>
+      </nav>
+    </aside>
 
-<main>
-<!-- 右上角语言切换按钮（相对 main 定位） -->
-<div class="langs">
-<button class="lang is-active" data-lang="en" onclick="switchLang('en')">English</button>
-<button class="lang" data-lang="cn" onclick="switchLang('cn')">中文</button>
-<button class="lang" data-lang="jp" onclick="switchLang('jp')">日本語</button>
-</div>
+    <!-- Mobile top bar: tap logo to toggle drawer -->
+    <div class="topbar">
+      <img src="sensis-logo.png" alt="Sensis" onclick="toggleMenu()" onerror="this.style.display='none'">
+    </div>
+    <div class="backdrop" onclick="toggleMenu()"></div>
 
-<div class="hero">
-<img src="assets/tree.png" alt="tree" />
-<h1>Let’s sensing…</h1>
-<p class="sub">Turn your sense into noēsis, forming your own knowledge and path to achieving your goals.</p>
-</div>
+    <main>
+      <!-- Language switch -->
+      <div class="langs">
+        <button class="lang is-active" data-lang="en" onclick="switchLang('en')">English</button>
+        <button class="lang" data-lang="cn" onclick="switchLang('cn')">中文</button>
+        <button class="lang" data-lang="jp" onclick="switchLang('jp')">日本語</button>
+      </div>
 
-<!-- 说明区（仅左右细线，可滚动） -->
+      <div class="hero">
+        <img src="tree.png" alt="tree">
+        <h1>Let’s sensing…</h1>
+        <p class="sub">Turn your sense into noēsis, forming your own knowledge and path to achieving your goals.</p>
+      </div>
 
-<div class="scroll-box">
-<!-- EN -->
-<div id="lang-en">
-<h3>What is Sensis?</h3>
-<p><strong>Sensis</strong> comes from the English word “sense” and the Greek word “noēsis.” It is the combined process of <strong>perception and cognition</strong>, as well as a light and elegant path to learning.</p>
-<p>Sensis is a tool that guides your perception and builds cognitive habits. It's a program that helps with learning, clarifies your thoughts, and pushes you toward your goals.</p>
+      <!-- Content: simplified, no questionnaire, no scroll window -->
+      <div class="content">
+        <!-- EN -->
+        <div id="lang-en">
+          <h3>What is Sensis?</h3>
+          <p><strong>Sensis</strong> comes from “sense” and the Greek “noēsis.” It’s the path where perception cultivates cognition.</p>
 
-<h3>What can Sensis do?</h3>
-<ul>
-<li><strong>Define goals:</strong> e.g., What major can I study? What kind of university is right for me?</li>
-<li><strong>Solve problems:</strong> e.g., How do I search for academic papers? Which textbook should I use?</li>
-<li><strong>Advance plans:</strong> e.g., Set up an application plan in one day, complete N1 study in three months.</li>
-<li><strong>Complete output:</strong> e.g., How do I write a unique research proposal? How can I write an email to a professor that is more likely to impress them?</li>
-</ul>
-<p>Perhaps it’s not an all-in-one app, but it shows you how to solve problems perfectly and efficiently, achieve your life goals, and create unique academic works.</p>
+          <h3>What can Sensis do?</h3>
+          <ul>
+            <li>Define goals and constraints.</li>
+            <li>Search and judge sources efficiently.</li>
+            <li>Structure plans with milestones.</li>
+            <li>Produce clean, defensible outputs.</li>
+          </ul>
 
-<h3>How does Sensis work?</h3>
-<ul>
-<li><strong>Locally:</strong> It quantifies cognitive content, sets task paths, and reconstructs your cognition.</li>
-<li><strong>Online:</strong> It helps you connect with AI to generate learning outcomes and creative output.</li>
-<li><strong>Community:</strong> It provides path templates, study plans, and thinking experiences from other users that you can directly apply or reference.</li>
-</ul>
+          <h3>How does Sensis work?</h3>
+          <ul>
+            <li><strong>Local:</strong> organize cognition and tasks.</li>
+            <li><strong>Online:</strong> collaborate with AI.</li>
+            <li><strong>Community:</strong> reuse path templates.</li>
+          </ul>
+        </div>
 
-<h3>What should you do?</h3>
-<p>Let’s start with a question. Your question is your seed, so be sure to organize and clarify it well.</p>
-<ul>
-<li>Complete your goal items according to the guidance.</li>
-<li>Mark and save your perception points as you go.</li>
-<li>Check the progress bar at any time.</li>
-<li>Feel your own changes, enjoy the pleasure of thinking and moving tasks forward, and wait for our tree to blossom.</li>
-</ul>
-<p>Now, enter your basic information.<br>It only takes a minute.<br>
-Let Sensis help you perceive yourself and clarify your questions.<br>Let's begin!</p>
-</div>
+        <!-- CN -->
+        <div id="lang-cn" style="display:none;">
+          <h3>什么是 Sensis？</h3>
+          <p><strong>Sensis</strong> 源自 “sense” 与 “noēsis”，强调由感知通向认知的路径。</p>
 
-<!-- CN -->
-<div id="lang-cn" style="display:none;">
-<h3>什么是 Sensis？</h3>
-<p><strong>Sensis</strong> 来自英文 “sense” 与希腊语 “noēsis”，指<strong>感知与认知</strong>的结合，也是轻盈优雅的学习路径。</p>
-<p>Sensis 引导你的感知，建立认知习惯；它帮助你学习、理清思路，并推动你向目标前进。</p>
+          <h3>Sensis 能做什么？</h3>
+          <ul>
+            <li>明确目标与约束。</li>
+            <li>高效检索与判断信息。</li>
+            <li>以里程碑推进计划。</li>
+            <li>形成清晰、可辩护的产出。</li>
+          </ul>
 
-<h3>Sensis 能做什么？</h3>
-<ul>
-<li><strong>明确目标：</strong>例如，我可以学什么专业？哪所大学适合我？</li>
-<li><strong>解决问题：</strong>例如，如何搜索学术论文？用哪本教材？</li>
-<li><strong>推进计划：</strong>例如，一天制定申请计划，三个月完成 N1 学习。</li>
-<li><strong>完成产出：</strong>例如，如何写独特的研究计划书？怎样写更容易打动教授的邮件？</li>
-</ul>
-<p>它未必是包罗万象的应用，但能教你高效、完美地解决问题，实现目标，产出独特的学术作品。</p>
+          <h3>Sensis 如何运作？</h3>
+          <ul>
+            <li><strong>本地：</strong>整理认知与任务。</li>
+            <li><strong>在线：</strong>与 AI 协作。</li>
+            <li><strong>社区：</strong>复用路径模板。</li>
+          </ul>
+        </div>
 
-<h3>Sensis 如何运作？</h3>
-<ul>
-<li><strong>本地：</strong>量化认知内容，设定任务路径，重构你的认知。</li>
-<li><strong>在线：</strong>连接 AI 生成学习成果与创意输出。</li>
-<li><strong>社区：</strong>提供路径模板、学习计划与他人思考经验，可直接应用或参考。</li>
-</ul>
+        <!-- JP -->
+        <div id="lang-jp" style="display:none;">
+          <h3>Sensisとは？</h3>
+          <p><strong>Sensis</strong>は「sense」と「noēsis」から生まれ、感覚から認知へ至る道筋を重視する。</p>
 
-<h3>你该做什么？</h3>
-<p>从一个问题开始。你的问题是种子，要好好整理与明确它。</p>
-<ul>
-<li>按引导完成目标项；</li>
-<li>随时标记并保存感知点；</li>
-<li>随时查看进度条；</li>
-<li>感受自己的变化，享受思考与推进任务的愉悦，等待我们的树开花。</li>
-</ul>
-<p>现在请输入你的基本信息，只需一分钟。让 Sensis 帮你感知自己、明确问题。开始吧！</p>
-</div>
+          <h3>Sensisでできること</h3>
+          <ul>
+            <li>目標と制約の明確化。</li>
+            <li>効率的な検索と情報判断。</li>
+            <li>マイルストーンで計画を進める。</li>
+            <li>明快で説得的なアウトプット。</li>
+          </ul>
 
-<!-- JP -->
-<div id="lang-jp" style="display:none;">
-<h3>Sensisとは？</h3>
-<p><strong>Sensis</strong>は英語の「sense」とギリシャ語の「noēsis」に由来し、<strong>感覚と認知</strong>が結びついたプロセス、そして軽やかで優雅な学びの道を意味する。</p>
-<p>Sensisは感覚を導き、認知習慣を育てるツールであり、学習を助け、思考を整理し、目標達成を後押しする。</p>
+          <h3>Sensisの仕組み</h3>
+          <ul>
+            <li><strong>ローカル：</strong>認知とタスクを整理。</li>
+            <li><strong>オンライン：</strong>AIと協働。</li>
+            <li><strong>コミュニティ：</strong>経路テンプレートを再利用。</li>
+          </ul>
+        </div>
+      </div>
+    </main>
+  </div>
 
-<h3>Sensisでできること</h3>
-<ul>
-<li><strong>目標の明確化：</strong>どの専攻が選べるか？どんな大学が適しているか？</li>
-<li><strong>問題解決：</strong>学術論文をどう探すか？どの教科書を使うべきか？</li>
-<li><strong>計画の推進：</strong>1日で出願計画を作る、3か月でN1学習を終える。</li>
-<li><strong>成果の作成：</strong>独自性のある研究計画書の書き方、教授に好印象を与えるメール。</li>
-</ul>
-<p>万能アプリではないかもしれないが、効率的かつ的確に問題を解決し、人生の目標を達成し、独自の学術成果を生み出せる。</p>
-
-<h3>Sensisの仕組み</h3>
-<ul>
-<li><strong>ローカル：</strong>認知内容を数値化し、タスク経路を設定し、認知を再構築。</li>
-<li><strong>オンライン：</strong>AIと連携して学習成果や創造的アウトプットを生成。</li>
-<li><strong>コミュニティ：</strong>経路テンプレート・学習計画・他者の思考経験を提供。</li>
-</ul>
-
-<h3>何をすべきか</h3>
-<p>まずは質問から。質問はあなたの種。きちんと整理し明確にしよう。</p>
-<ul>
-<li>ガイドに沿って目標項目を完了する。</li>
-<li>進めながら観察ポイントを記録・保存する。</li>
-<li>いつでも進捗バーを確認する。</li>
-<li>自分の変化を感じ、思考とタスクを進める喜びを味わい、木が花開くのを待つ。</li>
-</ul>
-<p>さあ、基本情報を入力しよう。1分で終わる。Sensisが自己認識と質問の明確化を助ける。始めよう！</p>
-</div>
-</div>
-</main>
-</div> <!-- /.wrap -->
-
-<script>
-// 语言切换：1) 显示对应语言内容 2) 高亮按钮 3) 切换整页字体
-function switchLang(lang){
-// 内容显隐
-document.getElementById('lang-en').style.display = (lang==='en')?'block':'none';
-document.getElementById('lang-cn').style.display = (lang==='cn')?'block':'none';
-document.getElementById('lang-jp').style.display = (lang==='jp')?'block':'none';
-// 按钮高亮
-document.querySelectorAll('.langs .lang')
-.forEach(b=>b.classList.toggle('is-active', b.dataset.lang===lang));
-// 整页字体切换
-document.documentElement.setAttribute('data-lang', lang);
-}
-
-/* 下面保留你的表单/数据骨架（可以后接上） */
-
-const KEY='sensis.needs.local.v2';
-
-document.addEventListener('click', e=>{
-const chip = e.target.closest('.chip');
-if(!chip) return;
-chip.classList.toggle('active');
-const box = chip.querySelector('input[type="checkbox"]');
-if(box){ box.checked = chip.classList.contains('active'); chip.setAttribute('aria-checked', box.checked); }
-});
-
-function getValue(el){
-if(el.matches('input[type="checkbox"]')) return el.checked ? (el.value || true) : null;
-if(el.matches('input[type="radio"]')) return el.checked ? el.value : null;
-return (el.value ?? '').trim();
-}
-function setValue(el, v){
-if(el.matches('input[type="checkbox"]')){
-const on = Array.isArray(v) ? v.includes(el.value) : !!v;
-el.checked = on;
-el.closest('.chip')?.classList.toggle('active', on);
-el.closest('.chip')?.setAttribute('aria-checked', on);
-return;
-}
-if(el.matches('input[type="radio"]')){
-el.checked = (el.value===v); return;
-}
-el.value = (v ?? '');
-}
-
-function collect(){
-const out = { meta:{ saved_at:new Date().toISOString(), version:'needs-intake.v2' } };
-document.querySelectorAll('[data-bind]').forEach(el=>{
-const [section, key] = el.dataset.bind.split('.');
-out[section] ||= {};
-const v = getValue(el);
-if(el.dataset.join === 'array'){
-if(v!=null){ out[section][key] ||= []; out[section][key].push(v); }
-else { out[section][key] ||= []; }
-}else{
-if(v!=null) out[section][key] = v;
-else if(out[section][key]===undefined) out[section][key] = '';
-}
-});
-return out;
-}
-
-function restore(){
-const raw = localStorage.getItem(KEY);
-if(!raw) return;
-const d = JSON.parse(raw);
-document.querySelectorAll('[data-bind]').forEach(el=>{
-const [section, key] = el.dataset.bind.split('.');
-const val = d?.[section]?.[key];
-setValue(el, val);
-});
-const hint = document.getElementById('saveHint');
-if(hint){ hint.textContent = 'Restored ✓'; setTimeout(()=>hint.textContent='', 1500); }
-}
-
-function saveLocalV2(){
-const data = collect();
-localStorage.setItem(KEY, JSON.stringify(data));
-const hint = document.getElementById('saveHint');
-if(hint){ hint.textContent = 'Saved locally ✓'; setTimeout(()=>hint.textContent='', 1500); }
-}
-
-let _t=null;
-function queueSave(){ clearTimeout(_t); _t=setTimeout(saveLocalV2, 600); }
-document.addEventListener('input', e=>{
-if(e.target.closest('main') && e.target.hasAttribute('data-bind')) queueSave();
-});
-document.addEventListener('change', e=>{
-if(e.target.closest('main') && e.target.hasAttribute('data-bind')) queueSave();
-});
-
-document.addEventListener('DOMContentLoaded', ()=>{
-restore();
-const oldBtn = Array.from(document.querySelectorAll('button')).find(b=>b.textContent.includes('Save locally'));
-if(oldBtn) oldBtn.onclick = saveLocalV2;
-});
-function toggleMenu(){
-  document.body.classList.toggle('menu-open');
-}
-</script>
+  <script>
+    function switchLang(lang){
+      document.getElementById('lang-en').style.display = (lang==='en')?'block':'none';
+      document.getElementById('lang-cn').style.display = (lang==='cn')?'block':'none';
+      document.getElementById('lang-jp').style.display = (lang==='jp')?'block':'none';
+      document.querySelectorAll('.langs .lang')
+        .forEach(b=>b.classList.toggle('is-active', b.dataset.lang===lang));
+      document.documentElement.setAttribute('data-lang', lang);
+    }
+    function toggleMenu(){ document.body.classList.toggle('menu-open'); }
+  </script>
 </body>
 </html>
