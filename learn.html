@@ -1,197 +1,227 @@
 <!DOCTYPE html>
 <html lang="en" data-lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Sensis • learn</title>
-<link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&family=Lora&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-/* ===== Showcase 基础 ===== */
-<style>.showcase{
-margin-top: 32px;
-display: grid;
-gap: 24px;
-}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sensis • learn</title>
 
-/* 统一卡片风格 */
-.card{
-position: relative;
-border: 1px solid var(--divider);
-border-radius: 14px;
-background: #fff;
-overflow: clip;
-}
-.card-body{ padding: 18px 18px; }
-.card-body.center{ display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; text-align:center; }
+  <!-- type (kept as in original) -->
+  <link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&family=Lora&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
 
-.card .title{ font-size: 20px; margin: 0 0 6px; }
-.card .desc{ color: var(--muted); margin: 0; }
-.card .kpi{ font-size: 28px; font-weight: 700; letter-spacing: .5px; }
+  <!-- site-wide css -->
+  <link rel="stylesheet" href="styles.css">
 
-/* 可选：作为封面图时用 .cover 填充内容区 */
-.card .cover{
-position:absolute; inset:0;
-width:100%; height:100%;
-object-fit: cover; /* 或 contain */
-opacity: .95;
-}
+  <style>
+  /* ===== Showcase 基础 + section skeleton ===== */
+  :root{
+    --divider:#e6e6e6;
+    --muted:#666666;
+  }
 
-/* 固定比例：用 aspect-ratio 锁定尺寸 */
-.ratio-16x9{ aspect-ratio: 16 / 9; }
-.ratio-4x3 { aspect-ratio: 4 / 3; }
-.ratio-1x1 { aspect-ratio: 1 / 1; }
+  /* section skeleton (head/body slots for titles and descriptions) */
+  .section{ margin-block: clamp(24px, 4vw, 48px); }
+  .section-head{ margin: 0 0 12px 0; }
+  .section-head .title{ margin: 0 0 4px 0; font-size: clamp(18px, 2.2vw, 22px); font-weight: 600; }
+  .section-head .desc{ margin: 0; color: var(--muted); }
+  .section-body{ display:block; }
 
-/* 网格：桌面布局 */
-.showcase-grid{ display:grid; gap: 24px; }
-.showcase-grid.grid-2{ grid-template-columns: repeat(2, 1fr); }
-.showcase-grid.grid-3{ grid-template-columns: repeat(3, 1fr); }
-.showcase-grid.grid-4{ grid-template-columns: repeat(4, 1fr); }
+  /* ===== Showcase 基础 ===== */
+  .showcase{ margin-top: 32px; display: grid; gap: 24px; }
 
-/* banner 全宽卡片撑满一行 */
-.showcase-banner{ width:100%; }
+  /* 统一卡片风格 */
+  .card{ position: relative; border: 1px solid var(--divider); border-radius: 14px; background: #fff; overflow: clip; }
+  .card-body{ padding: 18px 18px; }
+  .card-body.center{ display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; text-align:center; }
+  .card .title{ font-size: 20px; margin: 0 0 6px; }
+  .card .desc{ color: var(--muted); margin: 0; }
+  .card .kpi{ font-size: 28px; font-weight: 700; letter-spacing: .5px; }
 
-/* hover 小交互（桌面） */
-@media (hover:hover){
-.card:hover{ transform: translateY(-2px); transition: transform .18s ease; }
-}
+  /* 可选：作为封面图时用 .cover 填充内容区 */
+  .card .cover{ position:absolute; inset:0; width:100%; height:100%; object-fit: cover; opacity: .95; }
 
-/* ===== 平板：自动紧凑 ===== */
-@media (min-width: 761px) and (max-width: 1180px){
-.showcase-grid.grid-3{ grid-template-columns: repeat(2, 1fr); }
-.showcase-grid.grid-4{ grid-template-columns: repeat(2, 1fr); }
-}
+  /* 固定比例：用 aspect-ratio 锁定尺寸 */
+  .ratio-16x9{ aspect-ratio: 16 / 9; }
+  .ratio-4x3 { aspect-ratio: 4 / 3; }
+  .ratio-1x1 { aspect-ratio: 1 / 1; }
 
-/* ===== 手机：单列堆叠，留足触控空间 ===== */
-@media (max-width: 760px){
-.showcase{ gap: 16px; }
-.showcase-grid{ gap: 16px; }
-.card-body{ padding: 16px; }
-.card .title{ font-size: 18px; }
-.card .kpi{ font-size: 24px; }
-/* 比例可在手机上稍微变高一点可读：按需打开
-.ratio-16x9{ aspect-ratio: 3 / 2; }
-*/
-}
-</style>
+  /* 网格：桌面布局 */
+  .showcase-grid{ display:grid; gap: 24px; }
+  .showcase-grid.grid-2{ grid-template-columns: repeat(2, 1fr); }
+  .showcase-grid.grid-3{ grid-template-columns: repeat(3, 1fr); }
+  .showcase-grid.grid-4{ grid-template-columns: repeat(4, 1fr); }
+
+  /* banner 全宽卡片撑满一行 */
+  .showcase-banner{ width:100%; }
+
+  /* hover 小交互（桌面） + motion reduce */
+  @media (hover:hover){
+    .card{ transition: transform .18s ease; }
+    .card:hover{ transform: translateY(-2px); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .card{ transition: none; }
+  }
+
+  /* ===== 平板：自动紧凑 ===== */
+  @media (min-width: 761px) and (max-width: 1180px){
+    .showcase-grid.grid-3{ grid-template-columns: repeat(2, 1fr); }
+    .showcase-grid.grid-4{ grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ===== 手机：单列堆叠，留足触控空间 ===== */
+  @media (max-width: 760px){
+    .showcase{ gap: 16px; }
+    .showcase-grid{ gap: 16px; }
+    .card-body{ padding: 16px; }
+    .card .title{ font-size: 18px; }
+    .card .kpi{ font-size: 24px; }
+    /* 可选：手机上提高纵向可读性
+    .ratio-16x9{ aspect-ratio: 3 / 2; }
+    */
+  }
+  </style>
 </head>
 <body>
-<div class="wrap">
-<aside>
-<div class="brand">
-  <a href="index.html">
-    <img src="assets/sensis-logo.png" alt="Sensis logo">
-  </a>
-</div>
-<nav>
-<a href="question.html"><span>Question</span></a>
-<a href="search.html"><span>Search</span></a>
-<a href="learn.html"><span>Learn</span></a>
-<a href="create.html"><span>Create</span></a>
-</nav>
-</aside>
-<main>
-  <div class="langs">
-    <button class="lang is-active" data-lang="en" onclick="switchLang('en')">English</button>
-    <button class="lang" data-lang="cn" onclick="switchLang('cn')">中文</button>
-    <button class="lang" data-lang="jp" onclick="switchLang('jp')">日本語</button>
+  <div class="wrap">
+    <aside>
+      <div class="brand">
+        <a class="logo-link" href="index.html">
+          <img src="assets/sensis-logo.png" alt="Sensis logo">
+        </a>
+      </div>
+      <nav>
+        <a href="question.html"><span>Question</span></a>
+        <a href="search.html"><span>Search</span></a>
+        <a href="learn.html"><span>Learn</span></a>
+        <a href="create.html"><span>Create</span></a>
+      </nav>
+    </aside>
+
+    <main>
+      <!-- language containers -->
+      <div id="lang-en">
+        <!-- hero -->
+        <div class="hero">
+          <img src="assets/tree-1.png" alt="tree">
+          <h1>Learn</h1>
+          <p class="sub">Awareness, Learning, Enlightenment</p>
+        </div>
+
+        <!-- section wrapper with head/body, your showcase goes in body -->
+        <section class="section">
+          <div class="section-head">
+            <h2 class="title">Showcase</h2>
+            <p class="desc">Copy-ready frames for one/two/three columns and media.</p>
+          </div>
+          <div class="section-body">
+            <section class="showcase">
+
+              <!-- Section 1：全宽主视觉（固定比例 16:9） -->
+              <div class="showcase-banner card ratio-16x9">
+                <div class="card-body center">
+                  <h2 class="title">Main Visual / 主视觉</h2>
+                  <p class="desc">放品牌大图、一句话价值主张或短视频封面</p>
+                  <!-- <img src="assets/your-hero.jpg" alt="" class="cover"> -->
+                </div>
+              </div>
+
+              <!-- Section 2：三等分模块（固定比例 4:3） -->
+              <div class="showcase-grid grid-3">
+                <article class="card ratio-4x3">
+                  <div class="card-body">
+                    <h3 class="title">模块一</h3>
+                    <p class="desc">简短说明。可放图片或图标。</p>
+                  </div>
+                </article>
+                <article class="card ratio-4x3">
+                  <div class="card-body">
+                    <h3 class="title">模块二</h3>
+                    <p class="desc">简短说明。可放图片或图标。</p>
+                  </div>
+                </article>
+                <article class="card ratio-4x3">
+                  <div class="card-body">
+                    <h3 class="title">模块三</h3>
+                    <p class="desc">简短说明。可放图片或图标。</p>
+                  </div>
+                </article>
+              </div>
+
+              <!-- Section 3：两等分内容（左文右图 / 左图右文） -->
+              <div class="showcase-grid grid-2">
+                <article class="card ratio-16x9">
+                  <div class="card-body">
+                    <h3 class="title">左侧内容</h3>
+                    <p class="desc">用于功能说明、流程要点或案例摘要。</p>
+                  </div>
+                </article>
+                <article class="card ratio-16x9">
+                  <div class="card-body center">
+                    <h3 class="title">右侧视觉</h3>
+                    <p class="desc">可换为图片/视频封面</p>
+                    <!-- <img src="assets/sample.jpg" alt="" class="cover"> -->
+                  </div>
+                </article>
+              </div>
+
+              <!-- Section 4：四宫格（固定比例 1:1） -->
+              <div class="showcase-grid grid-4">
+                <article class="card ratio-1x1"><div class="card-body center"><span class="kpi">A</span><p class="desc">要点A</p></div></article>
+                <article class="card ratio-1x1"><div class="card-body center"><span class="kpi">B</span><p class="desc">要点B</p></div></article>
+                <article class="card ratio-1x1"><div class="card-body center"><span class="kpi">C</span><p class="desc">要点C</p></div></article>
+                <article class="card ratio-1x1"><div class="card-body center"><span class="kpi">D</span><p class="desc">要点D</p></div></article>
+              </div>
+
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <!-- placeholders for other languages -->
+      <div id="lang-cn" hidden></div>
+      <div id="lang-jp" hidden></div>
+
+    </main>
   </div>
 
-  <div class="hero">
-    <img src="assets/tree-1.png" alt="tree">
-    <h1>Learn</h1>
-    <p class="sub">Awareness, Learning, Enlightenment</p>
-  </div>
-  <section class="showcase">
+  <button class="fab-menu" onclick="toggleMenu()" aria-label="Open menu" aria-pressed="false">
+    <img src="assets/menu-icon.png" alt="Menu">
+  </button>
+  <div class="backdrop" onclick="toggleMenu()" aria-hidden="true"></div>
 
-<!-- Section 1：全宽主视觉（固定比例 16:9） -->
-<div class="showcase-banner card ratio-16x9">
-<div class="card-body center">
-<h2 class="title">Main Visual / 主视觉</h2>
-<p class="desc">放品牌大图、一句话价值主张或短视频封面</p>
-<!-- <img src="assets/your-hero.jpg" alt="" class="cover"> -->
-</div>
-</div>
+  <script>
+  function switchLang(lang){
+    ['en','cn','jp'].forEach(code=>{
+      var el = document.getElementById('lang-'+code);
+      if (el) el.hidden = (code!==lang);
+    });
+    document.querySelectorAll('.langs .lang')
+      .forEach(function(b){ b.classList.toggle('is-active', b.dataset.lang===lang); });
+    document.documentElement.setAttribute('data-lang', lang);
+  }
 
-<!-- Section 2：三等分模块（固定比例 4:3） -->
-<div class="showcase-grid grid-3">
-<article class="card ratio-4x3">
-<div class="card-body">
-<h3 class="title">模块一</h3>
-<p class="desc">简短说明。可放图片或图标。</p>
-</div>
-</article>
-<article class="card ratio-4x3">
-<div class="card-body">
-<h3 class="title">模块二</h3>
-<p class="desc">简短说明。可放图片或图标。</p>
-</div>
-</article>
-<article class="card ratio-4x3">
-<div class="card-body">
-<h3 class="title">模块三</h3>
-<p class="desc">简短说明。可放图片或图标。</p>
-</div>
-</article>
-</div>
+  document.addEventListener('DOMContentLoaded', function(){
+    // set default language safely
+    switchLang('en');
 
-<!-- Section 3：两等分内容（左文右图 / 左图右文） -->
-<div class="showcase-grid grid-2">
-<article class="card ratio-16x9">
-<div class="card-body">
-<h3 class="title">左侧内容</h3>
-<p class="desc">用于功能说明、流程要点或案例摘要。</p>
-</div>
-</article>
-<article class="card ratio-16x9">
-<div class="card-body center">
-<h3 class="title">右侧视觉</h3>
-<p class="desc">可换为图片/视频封面</p>
-<!-- <img src="assets/sample.jpg" alt="" class="cover"> -->
-</div>
-</article>
-</div>
-
-<!-- Section 4：四宫格（固定比例 1:1） -->
-<div class="showcase-grid grid-4">
-<article class="card ratio-1x1"><div class="card-body center"><span class="kpi">A</span><p class="desc">要点A</p></div></article>
-<article class="card ratio-1x1"><div class="card-body center"><span class="kpi">B</span><p class="desc">要点B</p></div></article>
-<article class="card ratio-1x1"><div class="card-body center"><span class="kpi">C</span><p class="desc">要点C</p></div></article>
-<article class="card ratio-1x1"><div class="card-body center"><span class="kpi">D</span><p class="desc">要点D</p></div></article>
-</div>
-
-</section>
-
-   </div>
-  </div>
-</main>
-</div>
-  <button class="fab-menu" onclick="toggleMenu()" aria-label="Open menu">
-<img src="assets/menu-icon.png" alt="Menu">
-</button>
-  <div class="backdrop" onclick="toggleMenu()"></div>
-<script>
-function switchLang(lang){
-document.getElementById('lang-en').style.display = (lang==='en')?'block':'none';
-document.getElementById('lang-cn').style.display = (lang==='cn')?'block':'none';
-document.getElementById('lang-jp').style.display = (lang==='jp')?'block':'none';
-document.querySelectorAll('.langs .lang')
-.forEach(b=>b.classList.toggle('is-active', b.dataset.lang===lang));
-document.documentElement.setAttribute('data-lang', lang);
-}
-document.addEventListener('DOMContentLoaded', () => {
-  const logo = document.querySelector('.logo-link');
-  if (!logo) return;
-  logo.addEventListener('click', () => {
-    if (window.innerWidth <= 960) {
-      document.body.classList.remove('menu-open'); // 先合上抽屉
+    // logo click behavior on small screens
+    var logo = document.querySelector('.logo-link');
+    if (logo){
+      logo.addEventListener('click', function(){
+        if (window.innerWidth <= 960){
+          document.body.classList.remove('menu-open');
+        }
+      });
     }
-    // 不阻止默认跳转行为，直接回首页
   });
-});
-function toggleMenu(){ document.body.classList.toggle('menu-open'); }
-</script>
+
+  function toggleMenu(){
+    var pressed = document.body.classList.toggle('menu-open');
+    var btn = document.querySelector('.fab-menu');
+    if (btn) btn.setAttribute('aria-pressed', pressed ? 'true' : 'false');
+  }
+  </script>
 </body>
 </html>
-  
