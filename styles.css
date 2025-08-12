@@ -197,7 +197,7 @@ img, video, iframe{ max-width:100%; height:auto; }
   .card .title { font-size: 18px; }
 }
 /* 手机：给主内容一个容器宽度 + 居中 */
-@media (max-width: 760px){
+@media (max-width: 720px){
   .container-mobile {
     max-width: 720px;       /* 你喜欢的数，600–720 都行 */
     margin: 0 auto;         /* 居中 */
