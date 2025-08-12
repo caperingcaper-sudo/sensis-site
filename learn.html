@@ -86,14 +86,6 @@
 html, body { overflow-x: hidden; }
 main { overflow-x: clip; }
 }
-/* Grid 子项允许收缩，避免把容器撑宽 */
-.showcase-grid,
-.showcase-grid > * { min-width: 0; }
-/* 卡片内文字如遇长词/英文行也别把格子撑爆 */
-.card { max-width: 100%; }
-.card * { word-break: break-word; overflow-wrap: anywhere; }
-/* 保险：所有媒体不超过容器 */
-img, video, iframe { max-width:100%; height:auto; }
   </style>
 </head>
 <body>
