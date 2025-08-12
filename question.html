@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Sensis • Question</title>
+<title>Sensis • Home</title>
 
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&family=Lora&display=swap" rel="stylesheet">
@@ -21,7 +21,7 @@
 <img src="assets/sensis-logo.png" alt="Sensis logo">
 </div>
 <nav>
-<a href="question.html" class="active"><span>Question</span></a>
+<a href="question.html"><span>Question</span></a>
 <a href="search.html"><span>Search</span></a>
 <a href="learn.html"><span>Learn</span></a>
 <a href="create.html"><span>Create</span></a>
@@ -29,58 +29,62 @@
 </aside>
 <!-- Main -->
 <main>
-  <div class="langs">
-    <button class="lang is-active" data-lang="en" onclick="switchLang('en')">English</button>
-    <button class="lang" data-lang="cn" onclick="switchLang('cn')">中文</button>
-    <button class="lang" data-lang="jp" onclick="switchLang('jp')">日本語</button>
-  </div>
+<div class="langs">
+<button class="lang is-active" data-lang="en" onclick="switchLang('en')">English</button>
+<button class="lang" data-lang="cn" onclick="switchLang('cn')">中文</button>
+<button class="lang" data-lang="jp" onclick="switchLang('jp')">日本語</button>
+</div>
 
-  <div class="hero">
-    <img src="assets/tree-1.png" alt="tree">
-    <h1>Question</h1>
-    <p class="sub">Shape the seed: turn a fuzzy idea into a precise, testable question.</p>
-  </div>
+<div class="hero">
+<img src="assets/tree-1.png" alt="tree">
+<h1>Question</h1>
+<p class="sub">Shape the seed: turn a fuzzy idea into a precise, testable question.</p>
+</div>
 
-   <p class="sub">Start from a well‑shaped question—the seed of your path.</p>
-  </div>
+<p class="sub">Start from a well‑shaped question—the seed of your path.</p>
+</div>
 
-  <div class="content">
-    <!-- EN -->
-    <div id="lang-en">
-      <h3>How we shape a good question</h3>
-      <ul>
-        <li>Define scope and constraints.</li>
-        <li>Clarify unknowns vs. assumptions.</li>
-        <li>Decide evaluation criteria for answers.</li>
-      </ul>
-    </div>
+</div>
 
-    <!-- CN -->
-    <div id="lang-cn" style="display:none;">
-      <h3>如何把问题“塑形”</h3>
-      <ul>
-        <li>明确边界与约束</li>
-        <li>区分未知与假设</li>
-        <li>设定答案的评估标准</li>
-      </ul>
-    </div>
+<div class="content">
+<!-- EN -->
+<div id="lang-en">
+<h3>How we shape a good question</h3>
+<ul>
+<li>Define scope and constraints.</li>
+<li>Clarify unknowns vs. assumptions.</li>
+<li>Decide evaluation criteria for answers.</li>
+</ul>
+</div>
 
-    <!-- JP -->
-    <div id="lang-jp" style="display:none;">
-      <h3>良い問いの整え方</h3>
-      <ul>
-        <li>範囲と制約を定義</li>
-        <li>未知と仮定を切り分け</li>
-        <li>評価基準を決める</li>
-      </ul>
-    </div>
-  </div>
+```
+<!-- CN -->
+<div id="lang-cn" style="display:none;">
+  <h3>如何把问题“塑形”</h3>
+  <ul>
+    <li>明确边界与约束</li>
+    <li>区分未知与假设</li>
+    <li>设定答案的评估标准</li>
+  </ul>
+</div>
+
+<!-- JP -->
+<div id="lang-jp" style="display:none;">
+  <h3>良い問いの整え方</h3>
+  <ul>
+    <li>範囲と制約を定義</li>
+    <li>未知と仮定を切り分け</li>
+    <li>評価基準を決める</li>
+  </ul>
+</div>
+</div>
 </main>
 
 <!-- Mobile floating menu button -->
 <button class="fab-menu" onclick="toggleMenu()" aria-label="Open menu">
 <img src="assets/menu-icon.png" alt="Menu">
 </button>
+<!-- Backdrop -->
 <div class="backdrop" onclick="toggleMenu()"></div>
 
 <script>
