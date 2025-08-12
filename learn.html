@@ -8,6 +8,73 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+/* ===== Showcase 基础 ===== */
+<style>.showcase{
+margin-top: 32px;
+display: grid;
+gap: 24px;
+}
+
+/* 统一卡片风格 */
+.card{
+position: relative;
+border: 1px solid var(--divider);
+border-radius: 14px;
+background: #fff;
+overflow: clip;
+}
+.card-body{ padding: 18px 18px; }
+.card-body.center{ display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; text-align:center; }
+
+.card .title{ font-size: 20px; margin: 0 0 6px; }
+.card .desc{ color: var(--muted); margin: 0; }
+.card .kpi{ font-size: 28px; font-weight: 700; letter-spacing: .5px; }
+
+/* 可选：作为封面图时用 .cover 填充内容区 */
+.card .cover{
+position:absolute; inset:0;
+width:100%; height:100%;
+object-fit: cover; /* 或 contain */
+opacity: .95;
+}
+
+/* 固定比例：用 aspect-ratio 锁定尺寸 */
+.ratio-16x9{ aspect-ratio: 16 / 9; }
+.ratio-4x3 { aspect-ratio: 4 / 3; }
+.ratio-1x1 { aspect-ratio: 1 / 1; }
+
+/* 网格：桌面布局 */
+.showcase-grid{ display:grid; gap: 24px; }
+.showcase-grid.grid-2{ grid-template-columns: repeat(2, 1fr); }
+.showcase-grid.grid-3{ grid-template-columns: repeat(3, 1fr); }
+.showcase-grid.grid-4{ grid-template-columns: repeat(4, 1fr); }
+
+/* banner 全宽卡片撑满一行 */
+.showcase-banner{ width:100%; }
+
+/* hover 小交互（桌面） */
+@media (hover:hover){
+.card:hover{ transform: translateY(-2px); transition: transform .18s ease; }
+}
+
+/* ===== 平板：自动紧凑 ===== */
+@media (min-width: 761px) and (max-width: 1180px){
+.showcase-grid.grid-3{ grid-template-columns: repeat(2, 1fr); }
+.showcase-grid.grid-4{ grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ===== 手机：单列堆叠，留足触控空间 ===== */
+@media (max-width: 760px){
+.showcase{ gap: 16px; }
+.showcase-grid{ gap: 16px; }
+.card-body{ padding: 16px; }
+.card .title{ font-size: 18px; }
+.card .kpi{ font-size: 24px; }
+/* 比例可在手机上稍微变高一点可读：按需打开
+.ratio-16x9{ aspect-ratio: 3 / 2; }
+*/
+}
+</style>
 </head>
 <body>
 <div class="wrap">
@@ -36,277 +103,66 @@
     <h1>Learn</h1>
     <p class="sub">Awareness, Learning, Enlightenment</p>
   </div>
-  <body>
-<header class="site-header">
-<a class="logo-link" href="/" aria-label="Home">Sensis</a>
-<nav class="site-nav">
-<a href="#">Docs</a>
-<a href="#">About</a>
-</nav>
-</header>
+  <section class="showcase">
 
-<main class="container">
-<!-- 1列: full -->
-<section class="section">
-<h2 class="section-title">1列レイアウト（full）</h2>
-<div class="block block--full">
-<h3 class="block-title">見出し</h3>
-<p>本文。段落の幅は読みやすい最大幅に制御。ここに任意のHTMLをそのまま入れる。</p>
+<!-- Section 1：全宽主视觉（固定比例 16:9） -->
+<div class="showcase-banner card ratio-16x9">
+<div class="card-body center">
+<h2 class="title">Main Visual / 主视觉</h2>
+<p class="desc">放品牌大图、一句话价值主张或短视频封面</p>
+<!-- <img src="assets/your-hero.jpg" alt="" class="cover"> -->
 </div>
-</section>
-  <!-- 2列: 文章 + 文章 -->
-<section class="section">
-  <h2 class="section-title">2列レイアウト（grid--2）</h2>
-  <div class="grid grid--2">
-    <div class="block">
-      <h3 class="block-title">左のブロック</h3>
-      <p>テキスト、リスト、カードなど。</p>
-    </div>
-    <div class="block">
-      <h3 class="block-title">右のブロック</h3>
-      <p>テキスト、リスト、カードなど。</p>
-    </div>
-  </div>
-</section>
+</div>
 
-<!-- 3列: カード3枚 -->
-<section class="section">
-  <h2 class="section-title">3列レイアウト（grid--3）</h2>
-  <div class="grid grid--3">
-    <article class="card">
-      <h3 class="card-title">カードA</h3>
-      <p>短い説明。</p>
-    </article>
-    <article class="card">
-      <h3 class="card-title">カードB</h3>
-      <p>短い説明。</p>
-    </article>
-    <article class="card">
-      <h3 class="card-title">カードC</h3>
-      <p>短い説明。</p>
-    </article>
-  </div>
-</section>
+<!-- Section 2：三等分模块（固定比例 4:3） -->
+<div class="showcase-grid grid-3">
+<article class="card ratio-4x3">
+<div class="card-body">
+<h3 class="title">模块一</h3>
+<p class="desc">简短说明。可放图片或图标。</p>
+</div>
+</article>
+<article class="card ratio-4x3">
+<div class="card-body">
+<h3 class="title">模块二</h3>
+<p class="desc">简短说明。可放图片或图标。</p>
+</div>
+</article>
+<article class="card ratio-4x3">
+<div class="card-body">
+<h3 class="title">模块三</h3>
+<p class="desc">简短说明。可放图片或图标。</p>
+</div>
+</article>
+</div>
 
-<!-- 画像表示: 比率固定のギャラリー -->
-<section class="section">
-  <h2 class="section-title">画像表示（gallery）</h2>
-  <div class="gallery">
-    <figure class="media media--16x9">
-      <img src="<https://via.placeholder.com/1280x720>" alt="placeholder">
-      <figcaption>16:9</figcaption>
-    </figure>
-    <figure class="media media--4x3">
-      <img src="<https://via.placeholder.com/1200x900>" alt="placeholder">
-      <figcaption>4:3</figcaption>
-    </figure>
-    <figure class="media media--1x1">
-      <img src="<https://via.placeholder.com/1024>" alt="placeholder">
-      <figcaption>1:1</figcaption>
-    </figure>
-  </div>
+<!-- Section 3：两等分内容（左文右图 / 左图右文） -->
+<div class="showcase-grid grid-2">
+<article class="card ratio-16x9">
+<div class="card-body">
+<h3 class="title">左侧内容</h3>
+<p class="desc">用于功能说明、流程要点或案例摘要。</p>
+</div>
+</article>
+<article class="card ratio-16x9">
+<div class="card-body center">
+<h3 class="title">右侧视觉</h3>
+<p class="desc">可换为图片/视频封面</p>
+<!-- <img src="assets/sample.jpg" alt="" class="cover"> -->
+</div>
+</article>
+</div>
+
+<!-- Section 4：四宫格（固定比例 1:1） -->
+<div class="showcase-grid grid-4">
+<article class="card ratio-1x1"><div class="card-body center"><span class="kpi">A</span><p class="desc">要点A</p></div></article>
+<article class="card ratio-1x1"><div class="card-body center"><span class="kpi">B</span><p class="desc">要点B</p></div></article>
+<article class="card ratio-1x1"><div class="card-body center"><span class="kpi">C</span><p class="desc">要点C</p></div></article>
+<article class="card ratio-1x1"><div class="card-body center"><span class="kpi">D</span><p class="desc">要点D</p></div></article>
+</div>
+
 </section>
 
-<!-- 文章 + 画像（2列） -->
-<section class="section">
-  <h2 class="section-title">文章 + 画像</h2>
-  <div class="grid grid--2 align-center">
-    <div class="block">
-      <h3 class="block-title">テキスト側</h3>
-      <p>説明テキスト。モジュールの順序はモバイルで縦並び、タブレット以上で横並び。</p>
-    </div>
-    <figure class="media media--3x2">
-      <img src="<https://via.placeholder.com/1200x800>" alt="placeholder">
-      <figcaption>3:2</figcaption>
-    </figure>
-  </div>
-</section>
-
-<!-- 全幅ヒーロー -->
-<section class="section section--hero">
-  <div class="hero">
-    <h2 class="hero-title">全幅ヒーロー</h2>
-    <p class="hero-sub">ビジュアル主体の導入セクション</p>
-  </div>
-</section>
-</main>
-
-<footer class="site-footer">
-<small>© 2025 Sensis</small>
-</footer>
-</body>
-</html>
-"""
-
-css_content = """/* Sensis Layout Kit
-
-- minimal, consistent, fluid
-- phone / iPad / desktop に素直に対応
-*/
-
-:root{
---container-w: 1120px;          /* desktop max width */
---pad: 16px;                     /* base spacing */
---pad-lg: 24px;
---radius: 8px;
---line: 1.6;
---bg: #fff;
---ink: #111;
---ink-2: #444;
---edge: #e6e6e6;
---accent: #222;
---bp-phone: 480px;
---bp-tablet: 1024px;             /* iPad基準 */
-}
-
-/* base */
-
-- { box-sizing: border-box; }
-html, body { height: 100%; }
-html { -webkit-text-size-adjust: 100%; }
-body{
-margin:0;
-font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
-color: var(--ink);
-background: var(--bg);
-line-height: var(--line);
-}
-
-/* header / footer */
-.site-header, .site-footer{
-width: 100%; border-bottom: 1px solid var(--edge);
-}
-.site-footer{ border-top: 1px solid var(--edge); border-bottom: 0; }
-.site-header{
-display:flex; align-items:center; justify-content:space-between;
-gap: var(--pad);
-padding: calc(var(--pad) + 4px) var(--pad);
-}
-.logo-link{ font-weight: 700; text-decoration: none; color: var(--ink); letter-spacing: .02em; }
-.site-nav a{ color: var(--ink-2); text-decoration: none; margin-left: var(--pad); }
-.site-nav a:hover{ color: var(--ink); }
-
-/* container */
-.container{
-width: 100%;
-max-width: var(--container-w);
-margin: 0 auto;
-padding: calc(var(--pad-lg) + 4px) var(--pad);
-}
-
-/* sections */
-.section{ margin-block: clamp(24px, 4vw, 48px); }
-.section-title{
-font-size: clamp(18px, 2.2vw, 22px);
-margin: 0 0 var(--pad-lg) 0;
-font-weight: 600;
-letter-spacing: .01em;
-}
-
-/* blocks */
-.block{
-border: 1px solid var(--edge);
-border-radius: var(--radius);
-padding: clamp(16px, 2.2vw, 24px);
-background: #fafafa;
-}
-.block + .block{ margin-top: var(--pad); }
-.block-title{ margin: 0 0 8px 0; font-size: 1.05rem; }
-
-/* grids */
-.grid{
-display: grid;
-gap: clamp(12px, 2vw, 20px);
-}
-.grid--1{ grid-template-columns: 1fr; }
-.grid--2{ grid-template-columns: 1fr; }
-.grid--3{ grid-template-columns: 1fr; }
-
-@media (min-width: 700px){
-.grid--2{ grid-template-columns: 1fr 1fr; }
-.grid--3{ grid-template-columns: 1fr 1fr 1fr; }
-}
-@media (min-width: 1200px){
-.grid--3{ grid-template-columns: repeat(3, 1fr); }
-}
-.align-center{ align-items: center; }
-
-/* full-width block that still respects readable line-length */
-.block--full{
-max-width: 72ch;
-background: #fff;
-}
-
-/* cards */
-.card{
-border: 1px solid var(--edge);
-border-radius: var(--radius);
-padding: clamp(14px, 2vw, 18px);
-background: #fff;
-}
-.card-title{ margin: 0 0 6px 0; font-size: 1rem; }
-
-/* hero */
-.section--hero{ padding: 0; }
-.hero{
-position: relative;
-width: 100%;
-min-height: min(50vh, 520px);
-border: 1px solid var(--edge);
-border-radius: var(--radius);
-display:flex; align-items:center; justify-content:center;
-text-align:center;
-background:
-linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,0)),
-#f8f8f8;
-}
-.hero-title{ margin:0 0 8px 0; font-size: clamp(24px, 5vw, 40px); }
-.hero-sub{ margin:0; color: var(--ink-2); }
-
-/* media (image/video) with fixed aspect ratios */
-.media{
-width: 100%;
-border: 1px solid var(--edge);
-border-radius: var(--radius);
-overflow: hidden;
-background: #f5f5f5;
-}
-.media img, .media video{ width:100%; height:100%; object-fit: cover; display:block; }
-.media figcaption{ padding: 6px 8px; font-size: 12px; color: var(--ink-2); border-top: 1px solid var(--edge); background: #fff; }
-
-/* aspect-ratio helpers */
-.media--16x9{ aspect-ratio: 16 / 9; }
-.media--4x3 { aspect-ratio: 4 / 3; }
-.media--3x2 { aspect-ratio: 3 / 2; }
-.media--1x1 { aspect-ratio: 1 / 1; }
-
-/* gallery grid */
-.gallery{
-display: grid;
-gap: clamp(12px, 2vw, 20px);
-grid-template-columns: 1fr;
-}
-@media (min-width: 700px){
-.gallery{ grid-template-columns: repeat(3, 1fr); }
-}
-
-/* responsive typography and rhythm */
-p{ margin: 0 0 1em 0; color: var(--ink-2); }
-h1,h2,h3,h4{ line-height: 1.25; }
-ul,ol{ margin: .5em 0 1em 1.25em; }
-code,kbd,pre{ font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: .95em; }
-
-/* safe focus and link states */
-a:focus-visible{ outline: 2px solid #999; outline-offset: 2px; }
-"""
-
-with open('/mnt/data/sensis-layout-kit.html', 'w', encoding='utf-8') as f:
-f.write(html_content)
-
-with open('/mnt/data/sensis-layout-kit.css', 'w', encoding='utf-8') as f:
-f.write(css_content)
-
-"/mnt/data files written"
    </div>
   </div>
 </main>
