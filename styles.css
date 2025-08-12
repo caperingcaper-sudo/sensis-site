@@ -159,3 +159,9 @@ border-right:1px solid var(--divider) !important;
 }
 .fab-menu, .backdrop{ display:none !important; }
 }
+/* 桌面端先禁止横向滚动，避免用户看到“要向右拉” /
+@media (min-width:961px){
+html, body { overflow-x: hidden; }
+main { overflow-x: clip; }           / clip 比 hidden 更干净 */
+img, video, iframe { max-width:100%; height:auto; }
+}
