@@ -207,7 +207,7 @@ img, video, iframe{ max-width:100%; height:auto; }
 }
 @media (min-width: 1025px){
   main > .container {
-    max-width: 980px;              /* 你可以在 860–1040 之间微调手感 */
+    max-width: 900px;              /* 你可以在 860–1040 之间微调手感 */
     margin-inline: auto;
     padding-inline: 24px;          /* 两侧留点呼吸 */
   }
