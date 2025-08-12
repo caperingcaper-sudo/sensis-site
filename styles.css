@@ -181,3 +181,27 @@ border-right:1px solid var(--divider) !important;
 .showcase-grid, .showcase-grid > *{ min-width:0; }
 .card *{ word-break:break-word; overflow-wrap:anywhere; }
 img, video, iframe{ max-width:100%; height:auto; }
+/* 手机断点：所有多列网格统一改为单列堆叠 */
+@media (max-width: 760px){
+  .showcase-grid.grid-4 { grid-template-columns: 1fr; }
+  .showcase-grid.grid-3 { grid-template-columns: 1fr; }
+  .showcase-grid.grid-2 { grid-template-columns: 1fr; }
+
+  /* 让内容更“居中”与舒适的内边距 */
+  main { padding-left: 16px; padding-right: 16px; }
+  .section, .showcase, .section-body { margin-left:auto; margin-right:auto; }
+}
+/* 让主视觉卡在手机上稍低一些密度 */
+@media (max-width: 760px){
+  .card-body { padding: 16px; }
+  .card .title { font-size: 18px; }
+}
+/* 手机：给主内容一个容器宽度 + 居中 */
+@media (max-width: 760px){
+  .container-mobile {
+    max-width: 680px;       /* 你喜欢的数，600–720 都行 */
+    margin: 0 auto;         /* 居中 */
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
