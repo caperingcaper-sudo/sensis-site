@@ -81,6 +81,12 @@
     .ratio-16x9{ aspect-ratio: 3 / 2; }
     */
   }
+    @media (max-width: 768px){
+  .showcase-grid { grid-template-columns: 1fr !important; }
+  /* 如果某些卡片不是 grid，而是自由元素，也兜底成单列 */
+  .showcase { display: flex; flex-direction: column; gap: 16px; }
+  .showcase > * { flex: 1 1 100%; }
+}
   </style>
 </head>
 <body>
