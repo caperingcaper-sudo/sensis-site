@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Sensis • Needs Intake (Local)</title>
 
+<!-- 字体 -->
 <link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&family=Playfair+Display&family=Cormorant+Garamond&family=Lora&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
 <script src="https://c.webfontfree.com/c.js?f=MrsEavesLiningOT" type="text/javascript"></script>
 
 <style>
@@ -13,11 +16,18 @@
 --bg:#ffffff; --ink:#1f1f1f; --muted:#6b6b6b;
 --accent:#495f4d; --divider:#8ca185;
 --chip:#ffffff; --chip-on:#faf9f7;
+/* 正文字体变量，默认英文用 Lora；切换语言时用 data-lang 覆盖它 */
+--content-serif: 'Lora', serif;
 }
+/* 按语言切换整页正文字体 */
+html[data-lang="en"]{ --content-serif:'Lora', serif; }
+html[data-lang="cn"]{ --content-serif:"Noto Serif SC", serif; }
+html[data-lang="jp"]{ --content-serif:"Noto Serif JP", serif; }
+
 *{box-sizing:border-box}
 body{
 margin:0; background:var(--bg); color:var(--ink);
-font-family: ui-serif, "Georgia", "Noto Serif CJK SC", serif;
+font-family: var(--content-serif);
 line-height:1.6;
 }
 
@@ -43,32 +53,36 @@ nav a:hover{background:#f8f3e9}
 .dot{display:none}
 
 /* main */
-main{padding:36px min(6vw,72px)}
+main{
+position: relative; /* 让右上角语言按钮相对 main 定位 */
+padding:36px min(6vw,72px);
+}
 .hero{
 display:flex; flex-direction:column; align-items:center;
-margin-bottom:12px; /* 与下方语言切换更贴近 */
+margin-bottom:12px;
 }
 .hero img{
 height:300px; width:auto; max-width:100%;
-display:block; margin-bottom:2px; /* 树与标题更靠近 */
+display:block; margin-bottom:0;
 }
 h1{
-font-family:'Oleo Script Swash Caps', cursive;
-font-weight:280;
-font-size:clamp(36px, 6vw, 56px);
-margin:0;
+font-family: 'Oleo Script Swash Caps', cursive;
+font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+position: relative; z-index: 1;
+margin: clamp(-48px,-6vw,-16px) 0 6px; /* 轻微压到树上 */
+text-shadow: 0 2px 6px rgba(59,58,58,0.12);
+font-weight: 280;
 }
 .sub{
-font-family:'Lora', serif;
-font-size:24px; line-height:1.55;
-color:var(--muted);
-margin:0 0 12px; text-align:center; /* 拉近与说明区距离 */
+font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+font-weight: 400; color:#555;
+margin: 2px 0 6px; text-align:center;
 }
 
-/* language switch */
+/* 语言按钮：固定在主区域右上角 */
 .langs{
-display:flex; justify-content:flex-end; gap:8px;
-margin-bottom:8px;
+position:absolute; top:8px; right:8px; /* 想更高/更右就改这两个数字 */
+display:flex; gap:8px;
 }
 .langs .lang{
 appearance:none; -webkit-appearance:none;
@@ -81,7 +95,7 @@ font:14px/1 inherit; cursor:pointer;
 .langs .lang:is(:hover,:focus-visible){ filter:brightness(.96); outline:none; }
 .langs .lang.is-active{ background:var(--accent); color:#fff; border-color:var(--accent); }
 
-/* scrollable info box：只要左右线条 */
+/* 说明区：仅左右线条、可滚动 */
 .scroll-box{
 max-height:400px; overflow-y:auto;
 padding:18px 24px;
@@ -92,7 +106,7 @@ line-height:1.6; margin-top:6px;
 .scroll-box::-webkit-scrollbar{ width:8px; }
 .scroll-box::-webkit-scrollbar-thumb{ background-color:rgba(0,0,0,0.2); border-radius:4px; }
 
-/* form sections（保留，将来继续用） */
+/* 表单等（保留） */
 section.block{
 background:#fff; border:1px solid var(--divider); border-radius:14px;
 padding:18px; margin-bottom:18px;
@@ -106,7 +120,6 @@ border-radius:10px; background:#fff; font-size:16px; font-family:inherit;
 }
 textarea{min-height:90px; resize:vertical}
 
-/* chips */
 .chips{display:flex; flex-wrap:wrap; gap:8px}
 .chip{
 padding:8px 12px; border-radius:999px; background:var(--chip);
@@ -116,7 +129,6 @@ border:1px solid var(--divider); font-size:14px; cursor:pointer; user-select:non
 .chip.active{background:var(--chip-on); border-color:var(--divider)}
 .chip:focus-visible{outline:2px solid rgba(73,95,77,.35); outline-offset:2px}
 
-/* actions */
 .actions{display:flex; gap:10px; justify-content:flex-end; margin-top:14px; align-items:center}
 .btn{
 border:1px solid var(--divider); background:#fff; border-radius:10px;
@@ -135,9 +147,12 @@ nav a span.label{display:none}
 h1{font-size:44px}
 .sub{font-size:20px}
 .hero img{height:200px}
+.langs{ top:6px; right:6px; } /* 小屏更贴边一点 */
+.scroll-box{ max-height: clamp(280px, 45vh, 420px); }
 }
 </style>
 </head>
+
 <body>
 <div class="wrap">
 <aside>
@@ -153,20 +168,21 @@ h1{font-size:44px}
 </aside>
 
 <main>
-<div class="hero">
-<img src="assets/tree.png" alt="tree" />
-<h1>Let’s sensing…</h1>
-<p class="sub">Turn your sense into noēsis, forming your own knowledge and path to achieving your goals.</p>
-</div>
-
-<!-- 语言切换按钮 -->
+<!-- 右上角语言切换按钮（相对 main 定位） -->
 <div class="langs">
 <button class="lang is-active" data-lang="en" onclick="switchLang('en')">English</button>
 <button class="lang" data-lang="cn" onclick="switchLang('cn')">中文</button>
 <button class="lang" data-lang="jp" onclick="switchLang('jp')">日本語</button>
 </div>
 
-<!-- 滚动说明区（仅左右线条） -->
+<div class="hero">
+<img src="assets/tree.png" alt="tree" />
+<h1>Let’s sensing…</h1>
+<p class="sub">Turn your sense into noēsis, forming your own knowledge and path to achieving your goals.</p>
+</div>
+
+<!-- 说明区（仅左右细线，可滚动） -->
+
 <div class="scroll-box">
 <!-- EN -->
 <div id="lang-en">
@@ -269,19 +285,24 @@ Let Sensis help you perceive yourself and clarify your questions.<br>Let's begin
 </div>
 </div>
 </main>
-</div> <!-- 关闭 .wrap -->
+</div> <!-- /.wrap -->
 
 <script>
-// 语言切换（含按钮高亮）
+// 语言切换：1) 显示对应语言内容 2) 高亮按钮 3) 切换整页字体
 function switchLang(lang){
+// 内容显隐
 document.getElementById('lang-en').style.display = (lang==='en')?'block':'none';
 document.getElementById('lang-cn').style.display = (lang==='cn')?'block':'none';
 document.getElementById('lang-jp').style.display = (lang==='jp')?'block':'none';
+// 按钮高亮
 document.querySelectorAll('.langs .lang')
 .forEach(b=>b.classList.toggle('is-active', b.dataset.lang===lang));
+// 整页字体切换
+document.documentElement.setAttribute('data-lang', lang);
 }
 
-// 以下保留你的交互脚本骨架（chips/collect/restore）
+/* 下面保留你的表单/数据骨架（可以后接上） */
+
 const KEY='sensis.needs.local.v2';
 
 document.addEventListener('click', e=>{
