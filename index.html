@@ -129,6 +129,61 @@
 
     /* FAB hidden on desktop */
     @media (min-width:961px){ .fab-menu{ display:none; } }
+    /* ========== iPad 定向修正（放在<style>最后） ========== */
+
+/* 竖屏：强制用“手机逻辑” */
+@media (min-width:700px) and (max-width:1024px) and (orientation: portrait){
+  .wrap{ grid-template-columns:1fr !important; grid-template-areas:"main" !important; }
+  .wrap::before{ display:none !important; }
+
+  aside{
+    grid-area:unset !important; position:fixed !important;
+    top:0; left:0; bottom:0; width:260px !important; background:#fff;
+    border-right:1px solid var(--divider) !important;
+    box-shadow:0 10px 30px rgba(0,0,0,.08) !important;
+    transform:translateX(-100%) !important; transition:transform .25s ease !important;
+    z-index:1000 !important; height:auto !important; overflow:auto !important;
+  }
+  body.menu-open aside{ transform:translateX(0) !important; }
+
+  .backdrop{ display:none !important; }
+  body.menu-open .backdrop{
+    display:block !important; position:fixed !important; inset:0 !important;
+    background:rgba(0,0,0,.2) !important; z-index:900 !important;
+  }
+  body.menu-open{ overflow:hidden !important; }
+
+  /* 悬浮按钮开启 */
+  .fab-menu{
+    display:inline-flex !important;
+    position:fixed !important;
+    right:18px; bottom:calc(18px + env(safe-area-inset-bottom)) !important;
+    width:64px !important; height:64px !important;
+    align-items:center; justify-content:center;
+    border-radius:50%; border:1px solid var(--divider);
+    background:#fff; color:var(--ink); box-shadow:0 10px 24px rgba(0,0,0,.12);
+    z-index:1200 !important;
+  }
+  .fab-menu img,.fab-menu svg{ width:60% !important; height:60% !important; display:block !important; }
+  body.menu-open .fab-menu{ background:var(--accent) !important; color:#fff !important; border-color:var(--accent) !important; }
+}
+
+/* 横屏：强制用“桌面逻辑”，并把侧栏缩到 220px */
+@media (min-width:700px) and (max-width:1180px) and (orientation: landscape){
+  .wrap{ grid-template-columns:220px 1fr !important; grid-template-areas:"aside main" !important; }
+  .wrap::before{ display:block !important; left:220px !important; }
+
+  aside{
+    position:sticky !important; top:0 !important; align-self:start !important;
+    transform:none !important; box-shadow:none !important;
+    width:auto !important; height:100vh !important; overflow:auto !important;
+    border-right:1px solid var(--divider) !important;
+  }
+
+  /* 横屏禁用悬浮按钮/遮罩 */
+  .fab-menu, .backdrop{ display:none !important; }
+}
+
   </style>
 </head>
 <body>
