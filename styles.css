@@ -1,1 +1,152 @@
+/* ===== 1) Global / 全局 ===== */
+:root{
+--bg:#fff; --ink:#1f1f1f; --muted:#6b6b6b;
+--accent:#495f4d; --divider:#8ca185;
+}
+html[data-lang="en"]{ --content-serif:'Lora', serif; }
+html[data-lang="cn"]{ --content-serif:"Noto Serif SC", serif; }
+html[data-lang="jp"]{ --content-serif:"Noto Serif JP", serif; }
 
+- { box-sizing:border-box }
+body{
+margin:0; color:var(--ink); background:var(--bg);
+font-family:var(--content-serif); line-height:1.6;
+}
+
+/* ===== 2) Desktop layout: sidebar + content / 桌面侧栏常驻 ===== */
+.wrap{
+display:grid;
+grid-template-columns:280px 1fr;
+grid-template-areas:"aside main";
+min-height:100vh;
+}
+aside{ grid-area:aside; }
+main { grid-area:main; position:relative; padding:36px min(6vw,72px); }
+
+/* full-height divider */
+.wrap::before{
+content:""; position:fixed; left:280px; top:0; bottom:0;
+width:1px; background:var(--divider); pointer-events:none;
+}
+
+/* Sidebar */
+aside{
+border-right:1px solid var(--divider);
+padding:28px 22px 18px;
+position:sticky; top:0; align-self:start;
+height:100vh; overflow:auto; background:#fff;
+}
+.brand{ display:flex; align-items:center; gap:12px; margin-bottom:22px; }
+.brand img{ height:120px; width:auto; display:block; }
+nav a{
+display:flex; align-items:center; gap:10px;
+text-decoration:none; color:var(--ink);
+padding:10px 6px; border-radius:8px; font-size:18px;
+}
+nav a:hover{ background:#f5f5f5 }
+nav a.active{ background:#eef2ee; color:#2b3a2f; font-weight:600; }
+
+/* Main */
+main > .langs{
+position:absolute; top:8px; right:8px; display:flex; gap:8px;
+z-index:1500; /* 保证不被侧栏/遮罩覆盖 */
+}
+.langs .lang{
+appearance:none; display:inline-flex; align-items:center; justify-content:center;
+height:34px; padding:0 12px; border:1px solid var(--divider); border-radius:10px;
+background:#fff; color:var(--ink); font:14px/1 inherit; cursor:pointer;
+}
+.langs .lang.is-active{ background:var(--accent); color:#fff; border-color:var(--accent); }
+
+.hero{ display:flex; flex-direction:column; align-items:center; margin-bottom:12px; }
+.hero img{ max-width:420px; width:100%; height:auto; display:block; margin-bottom:0; }
+h1{
+font-family:'Oleo Script Swash Caps', cursive;
+font-size:clamp(1.8rem,4.5vw,2.6rem);
+margin:8px 0 6px; text-shadow:0 2px 6px rgba(59,58,58,.12); font-weight:280;
+}
+.sub{ font-size:clamp(1.06rem,2.2vw,1.3rem); color:#555; margin:2px 0 8px; text-align:center; }
+.content{ margin-top:12px; }
+.content h3{ margin:18px 0 8px; font-size:18px; }
+.content ul{ margin:8px 0 14px 20px; }
+
+/* ===== 3) Mobile: content + FAB; sidebar becomes drawer / 手机抽屉与悬浮按钮 ===== */
+@media (max-width:960px){
+.wrap{
+grid-template-columns:1fr;
+grid-template-areas:"main";
+}
+.wrap::before{ display:none; }
+
+/* Drawer sidebar */
+aside{
+grid-area:unset; position:fixed; top:0; left:0; bottom:0;
+width:260px; background:#fff;
+transform:translateX(-100%); transition:transform .25s ease;
+border-right:1px solid var(--divider);
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+z-index:1000; height:auto; overflow:auto;
+}
+body.menu-open aside{ transform:translateX(0); }
+
+/* Backdrop */
+.backdrop{ display:none; }
+body.menu-open .backdrop{
+display:block; position:fixed; inset:0;
+background:rgba(0,0,0,.2); z-index:900;
+}
+body.menu-open{ overflow:hidden; }
+
+/* Floating menu button (right-bottom) */
+.fab-menu{
+position:fixed;
+right:18px; /* 中间改成：left:50%; transform:translateX(-50%); */
+bottom:calc(18px + env(safe-area-inset-bottom));
+width:64px; height:64px;
+display:inline-flex; align-items:center; justify-content:center;
+border-radius:50%;
+border:1px solid var(--divider);
+background:#fff; color:var(--ink);
+box-shadow:0 10px 24px rgba(0,0,0,.12);
+z-index:1200; cursor:pointer;
+}
+.fab-menu img, .fab-menu svg{ width:60%; height:60%; object-fit:contain; display:block; }
+body.menu-open .fab-menu{ background:var(--accent); color:#fff; border-color:var(--accent); }
+
+/* Readability tweak */
+.content{ font-size:17px; }
+}
+
+/* FAB hidden on desktop */
+@media (min-width:961px){ .fab-menu{ display:none; } }
+
+/* ===== 4) iPad fixes / 平板定向修正 ===== */
+/* Portrait: behave like mobile */
+@media (min-width:700px) and (max-width:1024px) and (orientation: portrait){
+.wrap{ grid-template-columns:1fr !important; grid-template-areas:"main" !important; }
+.wrap::before{ display:none !important; }
+aside{
+grid-area:unset !important; position:fixed !important; top:0; left:0; bottom:0;
+width:260px !important; transform:translateX(-100%) !important;
+transition:transform .25s ease !important; z-index:1000 !important;
+border-right:1px solid var(--divider) !important; box-shadow:0 10px 30px rgba(0,0,0,.08) !important;
+}
+body.menu-open aside{ transform:translateX(0) !important; }
+.backdrop{ display:none !important; }
+body.menu-open .backdrop{ display:block !important; position:fixed !important; inset:0 !important; background:rgba(0,0,0,.2) !important; z-index:900 !important; }
+body.menu-open{ overflow:hidden !important; }
+.fab-menu{ display:inline-flex !important; }
+}
+
+/* Landscape: behave like desktop; shrink sidebar to 220px */
+@media (min-width:700px) and (max-width:1180px) and (orientation: landscape){
+.wrap{ grid-template-columns:220px 1fr !important; grid-template-areas:"aside main" !important; }
+.wrap::before{ display:block !important; left:220px !important; }
+aside{
+position:sticky !important; top:0 !important; align-self:start !important;
+transform:none !important; box-shadow:none !important;
+width:auto !important; height:100vh !important; overflow:auto !important;
+border-right:1px solid var(--divider) !important;
+}
+.fab-menu, .backdrop{ display:none !important; }
+}
