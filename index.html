@@ -91,17 +91,37 @@ main{  grid-area: main; }
 
     /* Mobile: drawer sidebar; remove desktop divider; no special scroll boxes */
     @media (max-width:960px){
-  .wrap{
+  .fab-menu{
+    position: fixed;
+    right: 18px; /* 改成 50% 并用 transform 居中可放中间：见下方注释 */
+    bottom: calc(18px + env(safe-area-inset-bottom));
+    width: 56px; height: 56px;
+    display: inline-flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    border: 1px solid var(--divider);
+    background: #fff; color: var(--ink);
+    box-shadow: 0 10px 24px rgba(0,0,0,.12);
+    z-index: 1200; cursor: pointer;
+  }
+  .fab-menu:active{ transform: translateZ(0) scale(.98); }
+
+  /* 打开抽屉时，按钮高亮 */
+  body.menu-open .fab-menu{
+    background: var(--accent); color:#fff; border-color: var(--accent);
+  }
+
+  /* 若想放“底部中间”，把上面 right:18px 改成下两行，并删掉 :active 的缩放偏移 */
+  /* left: 50%; transform: translateX(-50%); */
+}
+
+/* 电脑端隐藏悬浮按钮 */
+@media (min-width:961px){
+  .fab-menu{ display:none; }
+}
+    .wrap{
     grid-template-columns: 1fr;
     grid-template-areas: "main"; /* 只显示 main，侧栏改为抽屉 */
   }
-
-  .topbar{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:12px 16px; border-bottom:1px solid var(--divider);
-    position: sticky; top:0; background:#fff; z-index:50;
-  }
-  .topbar img{ height:28px; width:auto; cursor:pointer; }
 
   /* 侧栏作为抽屉脱离网格 */
   aside{
@@ -241,8 +261,6 @@ main{  grid-area: main; }
   </svg>
 </button>
 
-  </div>
-
   <script>
     function switchLang(lang){
       document.getElementById('lang-en').style.display = (lang==='en')?'block':'none';
@@ -253,6 +271,7 @@ main{  grid-area: main; }
       document.documentElement.setAttribute('data-lang', lang);
     }
     function toggleMenu(){ document.body.classList.toggle('menu-open'); }
+    
   </script>
 </body>
 </html>
