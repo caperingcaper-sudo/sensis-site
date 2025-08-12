@@ -82,60 +82,64 @@ h1{
 .content ul{ margin: 8px 0 14px 20px; }
 
 /* ===== 手机：主内容 + 悬浮按钮；侧栏改抽屉 ===== */
+/* ===== MOBILE HOTFIX — 贴在<style>最后 ===== */
 @media (max-width:960px){
-  /* 网格只保留主内容列；分割线隐藏 */
-  .wrap{
-    grid-template-columns: 1fr;
-    grid-template-areas: "main";
-  }
-  .wrap::before{ display:none; }
 
-  /* 侧栏作为抽屉（默认收起） */
-  aside{
-    grid-area: unset;          /* 不占网格 */
-    position: fixed; top:0; left:0; bottom:0;
-    width: 260px;
-    transform: translateX(-100%);
-    transition: transform .25s ease;
-    box-shadow: 0 10px 30px rgba(0,0,0,.08);
-    border-right:1px solid var(--divider);
-    z-index: 1000;
-    height:auto; overflow:auto;
-  }
-  body.menu-open aside{ transform: translateX(0); }
+/* 1) 只显示主列；隐藏桌面分割线 */
+.wrap{
+grid-template-columns: 1fr !important;
+grid-template-areas: "main" !important;
+}
+.wrap::before{ display:none !important; }
 
-  /* 遮罩 */
-  .backdrop{ display:none; }
-  body.menu-open .backdrop{
-    display:block; position:fixed; inset:0;
-    background:rgba(0,0,0,.2); z-index:900;
-  }
-  body.menu-open{ overflow:hidden; }
+/* 2) 侧栏作为抽屉（默认收起） */
+aside{
+grid-area: unset !important;         /* 不占网格 */
+position: fixed !important;
+top:0; left:0; bottom:0;
+width:260px !important;
+background:#fff;
+border-right:1px solid var(--divider) !important;
+box-shadow: 0 10px 30px rgba(0,0,0,.08) !important;
+transform: translateX(-100%) !important;
+transition: transform .25s ease !important;
+z-index:1000 !important;
+height:auto !important; overflow:auto !important;
+}
+body.menu-open aside{ transform: translateX(0) !important; }
 
-  /* 悬浮菜单按钮（右下角；想居中改注释两行） */
-  .fab-menu{
-    position: fixed;
-    right: 18px; /* 居中请改成：left:50%; transform:translateX(-50%); */
-    bottom: calc(18px + env(safe-area-inset-bottom));
-    width: 64px; height: 64px;
-    display: inline-flex; align-items:center; justify-content:center;
-    border-radius: 50%;
-    border: 1px solid var(--divider);
-    background:#fff; color:var(--ink);
-    box-shadow: 0 10px 24px rgba(0,0,0,.12);
-    z-index: 1200; cursor: pointer;
-  }
-  .fab-menu img, .fab-menu svg{
-    width: 60%; height: 60%; object-fit: contain; display:block;
-  }
-  body.menu-open .fab-menu{
-    background: var(--accent); color:#fff; border-color: var(--accent);
-  }
+/* 3) 遮罩 */
+.backdrop{ display:none !important; }
+body.menu-open .backdrop{
+display:block !important;
+position:fixed !important; inset:0 !important;
+background:rgba(0,0,0,.2) !important;
+z-index:900 !important;
+}
+body.menu-open{ overflow:hidden !important; }
+
+/* 4) 悬浮菜单按钮（右下角；想中间改注释两行） */
+.fab-menu{
+position: fixed !important;
+right: 18px;                               /* 改中间：left:50%; transform:translateX(-50%); */
+bottom: calc(18px + env(safe-area-inset-bottom)) !important;
+width: 64px !important; height: 64px !important;
+display:inline-flex !important; align-items:center !important; justify-content:center !important;
+border-radius:50% !important;
+border:1px solid var(--divider) !important;
+background:#fff !important; color:var(--ink) !important;
+box-shadow:0 10px 24px rgba(0,0,0,.12) !important;
+z-index:1200 !important; cursor:pointer !important;
+}
+.fab-menu img, .fab-menu svg{
+width: 60% !important; height: 60% !important; object-fit:contain !important; display:block !important;
+}
+body.menu-open .fab-menu{
+background: var(--accent) !important; color:#fff !important; border-color:var(--accent) !important;
 }
 
-/* 悬浮按钮仅手机显示 */
-@media (min-width:961px){
-  .fab-menu{ display:none; }
+/* 5) 清理旧元素（若存在） */
+.topbar, .menu-btn{ display:none !important; }   /* 旧顶栏/按钮隐藏 */
 }
 </style>
 </head>
