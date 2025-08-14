@@ -199,37 +199,6 @@
   </button>
   <div class="backdrop" onclick="toggleMenu()" aria-hidden="true"></div>
 
-  <script>
-  function switchLang(lang){
-    ['en','cn','jp'].forEach(code=>{
-      var el = document.getElementById('lang-'+code);
-      if (el) el.hidden = (code!==lang);
-    });
-    document.querySelectorAll('.langs .lang')
-      .forEach(function(b){ b.classList.toggle('is-active', b.dataset.lang===lang); });
-    document.documentElement.setAttribute('data-lang', lang);
-  }
-
-  document.addEventListener('DOMContentLoaded', function(){
-    // set default language safely
-    switchLang('en');
-
-    // logo click behavior on small screens
-    var logo = document.querySelector('.logo-link');
-    if (logo){
-      logo.addEventListener('click', function(){
-        if (window.innerWidth <= 960){
-          document.body.classList.remove('menu-open');
-        }
-      });
-    }
-  });
-
-  function toggleMenu(){
-    var pressed = document.body.classList.toggle('menu-open');
-    var btn = document.querySelector('.fab-menu');
-    if (btn) btn.setAttribute('aria-pressed', pressed ? 'true' : 'false');
-  }
-  </script>
+  <script src="common.js"></script>
 </body>
 </html>
