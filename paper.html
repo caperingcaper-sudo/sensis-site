@@ -101,10 +101,10 @@
 </div>
 </main>
   </div>
-  <!-- Mobile floating menu button / 手机端悬浮按钮（保留） -->
-  <button class="fab-menu" onclick="toggleMenu()" aria-label="Open menu">
+   <button class="fab-menu" onclick="toggleMenu()" aria-label="Open menu" aria-pressed="false">
     <img src="assets/menu-icon.png" alt="Menu">
   </button>
+  <div class="backdrop" onclick="toggleMenu()" aria-hidden="true"></div>
   <!-- Backdrop / 抽屉遮罩（保留） -->
   <div class="backdrop" onclick="toggleMenu()"></div>
  
