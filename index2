@@ -1,1 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sensis • Basic Information</title>
+<!-- Fonts -→
+<link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&family=Lora&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
+<!-- External CSS -→
+<link rel="stylesheet" href="styles.css?v=1">
+</head>
+<body>
+<div class="wrap">
+<!-- Sidebar -->
+<aside>
+<div class="brand">
+  <a href="index.html">
+    <img src="assets/sensis-logo.png" alt="Sensis logo">
+  </a>
+</div>
+<nav>
+<a href="question.html" class="active"><span>Question</span></a>
+<a href="search.html"><span>Search</span></a>
+<a href="learn.html"><span>Learn</span></a>
+<a href="create.html"><span>Create</span></a>
+</nav>
+</aside>
+<!-- Main -→
+<main>
+  <div class="langs">
+    <button class="lang is-active" data-lang="en" onclick="switchLang('en')">English</button>
+    <button class="lang" data-lang="cn" onclick="switchLang('cn')">中文</button>
+    <button class="lang" data-lang="jp" onclick="switchLang('jp')">日本語</button>
+  </div>
 
+  <div class="hero">
+    <img src="assets/tree.png" alt="tree">
+    <h1>Question</h1>
+    <p class="sub">Shape the seed: turn a fuzzy idea into a precise, testable question.</p>
+  </div>
+<div class="container-mobile">
+  <div class="content">
