@@ -7,138 +7,69 @@
 
 <!-- 字体（与你当前站一致，可按需增减） -->
 <link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&family=Playfair+Display&family=Lora&display=swap" rel="stylesheet">
-
+<link rel="stylesheet" href="styles.css">
 <style>
   :root{
-    --bg:#ffffff;
-    --bg-tint:#f4f8f5;           /* 极浅绿：外围色块 */
-    --ink:#1f1f1f;
-    --muted:#6b6b6b;
-    --accent:#495f4d;           /* 主题墨绿 */
-    --divider:#8ca185;          /* 分隔线绿 */
-    --paper:#ffffff;            /* 纸面白 */
-  }
-  *{box-sizing:border-box}
+  /* 你可以只改这三个数字来整体调比例 */
+  --paper-min: 960px;   /* 最小像素宽（更像 A4）*/
+  --paper-vw : 78vw;    /* 自适应视口比例 */
+  --paper-max: 1200px;  /* 最大像素宽 */
+  --bg-tint:#f4f8f5;    /* 外围极浅绿 */
+  --paper:#fff;
+  --ink:#1f1f1f; --muted:#6b6b6b;
+  --accent:#495f4d; --divider:#8ca185;
+}
 
-  body{
-    margin:0; color:var(--ink);
-    font-family: ui-serif, "Georgia", "Noto Serif CJK SC", serif;
-    line-height:1.6;
-    background: var(--bg-tint);                 /* 桌面：外围浅绿 */
-  }
+/* 主容器不变，保持你的侧栏 */
+body{ background:var(--bg-tint); }
 
-  /* 页面两栏：左侧交互栏保持不变 */
-  .wrap{display:grid; grid-template-columns: 280px 1fr; min-height:100vh}
+/* 白色“纸面”：宽、更高、更靠画面主体 */
+.paper{
+  background:var(--paper);
+  width:clamp(var(--paper-min), var(--paper-vw), var(--paper-max));
+  margin: 8px auto 48px;            /* 居中，窄绿色“边带”自然形成 */
+  border-radius:12px;
+  box-shadow:0 10px 28px rgba(0,0,0,.05);
+  min-height: calc(100vh - 120px);  /* 近乎铺满屏高 */
+  overflow:hidden;
+}
 
-  /* 侧栏（沿用你原样式） */
-  aside{
-    border-right: 1px solid var(--divider);
-    padding: 28px 22px 18px;
-    position: sticky; top: 0; align-self: start;
-    height: 100vh; overflow:auto;
-    font-size: 30px; font-weight: bold; background:#fff;   /* 侧栏保持白底 */
-  }
-  .brand{display:flex; align-items:center; gap:12px; margin-bottom:22px}
-  .brand img{height:120px; width:auto}
-  nav a{
-    display:flex; align-items:center; gap:10px;
-    text-decoration:none; color:var(--ink);
-    padding:10px 6px; border-radius:8px; font-size:18px;
-  }
-  nav a:hover{background:#f8f3e9}
+/* 顶部：粗线 + 小树 + 标题/副标题 + 语言 */
+.paper-head{ position:relative; padding:18px 22px 10px; background:#fff; }
+.paper-head .rule{ height:10px; background:var(--divider); border-radius:0 0 6px 6px; margin:0 -22px 14px; }
+.paper-head .tree{ position:absolute; left:18px; top:-18px; height:58px; width:auto; }
 
-  /* 主区域：居中放一张“纸” */
-  main{
-    padding: 36px min(6vw,72px);
-  }
+h1{ font-family:'Oleo Script Swash Caps',cursive; font-weight:350; font-size:40px; margin:0 0 4px 64px; }
+.sub{ font-family:'Lora',serif; color:var(--muted); margin:0 0 8px 64px; font-size:18px; }
+
+/* 右上语言切换（仅样式，不含脚本） */
+.langs{ position:absolute; right:18px; top:12px; display:flex; gap:8px; }
+.langs .lang{
+  appearance:none; -webkit-appearance:none;
+  display:inline-flex; align-items:center; justify-content:center;
+  height:30px; padding:0 10px; border:1px solid var(--divider);
+  border-radius:999px; background:#fff; color:var(--ink); font:13px/1 inherit; cursor:pointer;
+}
+.langs .lang.is-active{ background:var(--accent); color:#fff; border-color:var(--accent); }
+
+/* 纸面正文（你要粘很多问题的地方） */
+.paper-body{ padding:18px 22px 28px; }
+
+/* 移动端：去掉外围浅绿，只保留白色主页面 */
+@media (max-width:960px){
+  body{ background:#fff; }
   .paper{
-    background: var(--paper);
-    width: 100%;
-    max-width: 794px;         /* 近似 A4 宽度（96dpi ≈ 794px） */
-    margin: 0 auto 48px;      /* 居中 + 与底部保持呼吸感 */
-    border-radius: 12px;
-    box-shadow: 0 10px 28px rgba(0,0,0,.06);
-    overflow: hidden;         /* 让顶部粗线条与圆角协调 */
+    width:100%; max-width:none; margin:0; border-radius:0; box-shadow:none;
+    min-height:auto;
   }
+  .paper-head{ padding:12px 16px 8px; }
+  .paper-head .rule{ height:8px; margin:0 -16px 12px; }
+  .paper-head .tree{ left:12px; top:-14px; height:48px; }
+  h1{ margin:0 0 4px 56px; font-size:32px; }
+  .sub{ margin-left:56px; font-size:16px; }
+  .langs{ right:12px; top:8px; }
+}
 
-  /* 顶部标题区：粗绿色分隔线 + 左上小树 + 标题/副标题 + 语言切换 */
-  .paper-head{
-    position: relative;
-    padding: 18px 22px 10px;
-    background: #fff;
-  }
-  .paper-head .rule{
-    height: 10px; background: var(--divider);
-    border-radius: 0 0 6px 6px;
-    margin: 0 -22px 14px;      /* 让粗线条左右出血到纸边 */
-  }
-  .paper-head .tree{
-    position:absolute; left:18px; top:-18px;   /* 轻轻“探出”纸面 */
-    height:56px; width:auto;
-  }
-  h1{
-    font-family: 'Oleo Script Swash Caps', cursive;
-    font-weight: 350; font-size: 40px; margin: 0 0 4px 64px; /* 给树让出左侧空间 */
-  }
-  .sub{
-    font-family: 'Lora', serif; color: var(--muted);
-    margin: 0 0 8px 64px; font-size: 18px;
-  }
-
-  /* 语言切换：放在标题行右上角 */
-  .langs{
-    position:absolute; right:18px; top:14px;
-    display:flex; gap:8px;
-  }
-  .langs .lang{
-    appearance:none; -webkit-appearance:none;
-    display:inline-flex; align-items:center; justify-content:center;
-    height:30px; padding:0 10px; border:1px solid var(--divider);
-    border-radius:999px; background:#fff; color:var(--ink);
-    font: 13px/1 inherit; cursor:pointer;
-  }
-  .langs .lang:is(:hover,:focus-visible){ filter:brightness(.96); outline:none; }
-  .langs .lang.is-active{ background:var(--accent); color:#fff; border-color:var(--accent); }
-
-  /* 纸面正文（问卷区域） */
-  .paper-body{ padding: 18px 22px 28px; }
-
-  /* 问卷表单基础样式（白色纸面内） */
-  .form-grid{ display:grid; gap:14px; }
-  .q{
-    display:grid; grid-template-columns: 180px 1fr; gap:12px; align-items:start;
-    padding: 8px 0; border-bottom: 1px dashed rgba(0,0,0,.06);
-  }
-  .q .label{ color: var(--muted); padding-top:6px; font-size:14px; }
-  .q input[type="text"], .q input[type="number"], .q select, .q textarea{
-    width:100%; padding:10px 12px; border:1px solid var(--divider);
-    border-radius:10px; background:#fff; font-size:16px; font-family:inherit;
-  }
-  .q textarea{ min-height:90px; resize:vertical; }
-
-  /* 表单底部动作区（保存/下一步） */
-  .actions{ display:flex; gap:10px; justify-content:flex-end; margin-top:16px; }
-  .btn{
-    border:1px solid var(--divider); background:#fff; border-radius:10px;
-    padding:10px 14px; font-size:15px; cursor:pointer;
-  }
-  .btn.primary{ background:var(--accent); color:#fff; border-color:var(--accent) }
-  .btn:focus-visible{ outline:2px solid rgba(73,95,77,.35); outline-offset:2px }
-
-  /* 移动端：去掉外围浅绿，纸面铺满，标题稍紧凑 */
-  @media (max-width: 960px){
-    body{ background:#fff; }
-    .wrap{ grid-template-columns: 88px 1fr; }
-    aside{ position: static; height:auto; }
-    .paper{ max-width: 100%; margin:0 auto 32px; border-radius:0; box-shadow:none; }
-    .paper-head{ padding:12px 16px 8px; }
-    .paper-head .rule{ height:8px; margin:0 -16px 12px; }
-    .paper-head .tree{ left:12px; top:-14px; height:48px; }
-    h1{ margin:0 0 4px 56px; font-size: 32px; }
-    .sub{ margin-left:56px; font-size:16px; }
-    .langs{ right:12px; top:10px; }
-    .q{ grid-template-columns: 1fr; }
-  }
 </style>
 </head>
 
@@ -159,123 +90,64 @@
 
     <!-- 主体：纸面 -->
     <main>
-      <div class="paper">
-        <div class="paper-head">
-          <img class="tree" src="assets/tree-1.png" alt="tree" />
-          <div class="langs">
-            <button class="lang is-active" data-lang="en" onclick="switchLang('en')">English</button>
-            <button class="lang" data-lang="cn" onclick="switchLang('cn')">中文</button>
-            <button class="lang" data-lang="jp" onclick="switchLang('jp')">日本語</button>
-          </div>
-          <div class="rule"></div>
-          <h1>Intake Questionnaire</h1>
-          <p class="sub">Answer briefly. You can skip and return anytime.</p>
-        </div>
-
-        <div class="paper-body">
-          <!-- 这里开始是问卷内容：先放三个示例问题；其余题目明天补 -->
-          <form id="intakeForm" class="form-grid">
-            <div class="q">
-              <div class="label">称呼 / Name</div>
-              <input type="text" id="name" data-bind="basic.name" placeholder="Your preferred name" />
-            </div>
-
-            <div class="q">
-              <div class="label">每周可用时间 (h)</div>
-              <input type="number" id="timePerWeek" data-bind="state.time_per_week" min="0" step="1" inputmode="numeric" placeholder="e.g., 6" />
-            </div>
-
-            <div class="q">
-              <div class="label">目标领域 / Domain</div>
-              <select id="domain" data-bind="sense.target_domain">
-                <option value="">— Select —</option>
-                <option value="Japanese">Japanese</option>
-                <option value="Sociology">Sociology</option>
-                <option value="Media">Media studies</option>
-              </select>
-            </div>
-
-            <!-- 更多题目在此追加即可（复制 .q 模块） -->
-
-            <div class="actions">
-              <button type="button" class="btn" onclick="skipForm()">跳过</button>
-              <button type="button" class="btn" onclick="saveDraft()">保存草稿</button>
-              <button type="button" class="btn primary" onclick="submitForm()">下一步</button>
-            </div>
-          </form>
-        </div>
+     <main>
+  <div class="paper">
+    <div class="paper-head">
+      <img class="tree" src="assets/tree.png" alt="tree">
+      <div class="langs">
+        <button class="lang is-active">English</button>
+        <button class="lang">中文</button>
+        <button class="lang">日本語</button>
       </div>
-    </main>
+      <div class="rule"></div>
+      <h1>Intake Questionnaire</h1>
+      <p class="sub">Answer briefly. You can skip and return later.</p>
+    </div>
+
+    <div class="paper-body" id="formRoot">
+      <!-- 在这里粘你的大量题目；现在先留空 -->
+    </div>
+  </div>
+</main>
   </div>
 
-<script>
-  // 语言切换（先保留按钮高亮；具体内容切换等你给文案再接）
+<button class="fab-menu" onclick="toggleMenu()" aria-label="Open menu" aria-pressed="false">
+    <img src="assets/menu-icon.png" alt="Menu">
+  </button>
+  <div class="backdrop" onclick="toggleMenu()" aria-hidden="true"></div>
+  <script>
   function switchLang(lang){
-    document.querySelectorAll('.langs .lang')
-      .forEach(b=>b.classList.toggle('is-active', b.dataset.lang===lang));
-  }
-
-  // —— 数据钩子：与你原站一致（collect/restore 体系）——
-  const KEY='sensis.intake.v1';
-
-  function getValue(el){
-    if(el.matches('input[type="checkbox"]')) return el.checked ? (el.value || true) : null;
-    if(el.matches('input[type="radio"]'))    return el.checked ? el.value : null;
-    return (el.value ?? '').trim();
-  }
-  function setValue(el, v){
-    if(el.matches('input[type="checkbox"]')){
-      const on = Array.isArray(v) ? v.includes(el.value) : !!v;
-      el.checked = on; return;
-    }
-    if(el.matches('input[type="radio"]')){ el.checked = (el.value===v); return; }
-    el.value = (v ?? '');
-  }
-
-  function collect(){
-    const out = { meta:{ saved_at:new Date().toISOString(), version:'intake.form' } };
-    document.querySelectorAll('[data-bind]').forEach(el=>{
-      const [section, key] = el.dataset.bind.split('.');
-      out[section] ||= {};
-      const v = getValue(el);
-      if(v!=null) out[section][key] = v;
-      else if(out[section][key]===undefined) out[section][key] = '';
+    ['en','cn','jp'].forEach(code=>{
+      var el = document.getElementById('lang-'+code);
+      if (el) el.hidden = (code!==lang);
     });
-    return out;
+    document.querySelectorAll('.langs .lang')
+      .forEach(function(b){ b.classList.toggle('is-active', b.dataset.lang===lang); });
+    document.documentElement.setAttribute('data-lang', lang);
   }
 
-  function restore(){
-    try{
-      const raw = localStorage.getItem(KEY);
-      if(!raw) return;
-      const d = JSON.parse(raw);
-      document.querySelectorAll('[data-bind]').forEach(el=>{
-        const [section, key] = el.dataset.bind.split('.');
-        setValue(el, d?.[section]?.[key]);
+  document.addEventListener('DOMContentLoaded', function(){
+    // set default language safely
+    switchLang('en');
+
+    // logo click behavior on small screens
+    var logo = document.querySelector('.logo-link');
+    if (logo){
+      logo.addEventListener('click', function(){
+        if (window.innerWidth <= 960){
+          document.body.classList.remove('menu-open');
+        }
       });
-    }catch(e){}
-  }
+    }
+  });
 
-  function saveDraft(){
-    const data = collect();
-    try{ localStorage.setItem(KEY, JSON.stringify(data)); alert('草稿已保存 ✓'); }catch(e){ alert('无法保存到本地'); }
+  function toggleMenu(){
+    var pressed = document.body.classList.toggle('menu-open');
+    var btn = document.querySelector('.fab-menu');
+    if (btn) btn.setAttribute('aria-pressed', pressed ? 'true' : 'false');
   }
-
-  // “跳过”：进入受限模式（占位—后续你决定跳去哪个页面/状态）
-  function skipForm(){
-    alert('已进入浏览模式（功能受限）。随时可返回填写。');
-    // TODO: 这里可跳转到只读/预览页： location.href = 'preview.html';
-  }
-
-  // “下一步”：保存并进入你的反馈卡/路由（明天接你的计算）
-  function submitForm(){
-    saveDraft();
-    // TODO: 在此调用你的 computeFeedback(data) → 渲染反馈卡 / 路由到下一页
-    // location.href = 'feedback.html';
-    alert('已保存。下一步：反馈卡/路由（明天接算法）');
-  }
-
-  document.addEventListener('DOMContentLoaded', restore);
-</script>
+  </script>
+</body>
+</html>
 </body>
 </html>
