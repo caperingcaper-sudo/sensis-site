@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Paper Style Page</title>
+<link rel="stylesheet" href="your-main.css"> <!-- 保留你原来的主CSS -->
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #f3f8f3; /* 浅绿色背景 */
+  }
+  .paper-container {
+    max-width: 800px; /* 电脑时的内容宽度 */
+    background: white;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh; /* 页面可滚动 */
+  }
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .header img {
+    height: 50px; /* 小树高度，可改 */
+    width: auto;
+  }
+  .title-block {
+    flex: 1;
+  }
+  .title-block h1 {
+    margin: 0;
+    font-size: 24px; /* 主标题大小，可改 */
+  }
+  .title-block p {
+    margin: 0;
+    font-size: 16px; /* 副标题大小，可改 */
+    color: #666;
+  }
+  .green-line {
+    height: 4px;
+    background-color: #4caf50; /* 粗绿色线 */
+    margin: 10px 0 20px;
+  }
+  @media (max-width: 768px) {
+    body {
+      background-color: white; /* 手机时去掉两边绿色 */
+    }
+    .paper-container {
+      max-width: 100%;
+      padding: 15px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="paper-container">
+  <div class="header">
+    <img src="tree.png" alt="Tree Logo"> <!-- 小树图片路径 -->
+    <div class="title-block">
+      <h1>Paper Title</h1>
+      <p>Subtitle text here</p>
+    </div>
+  </div>
+  <div class="green-line"></div>
+
+  <p>这里是内容区域，你可以一直往下写，页面会自动延伸。</p>
+
+</div>
+
+</body>
+</html>
