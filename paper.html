@@ -1,9 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang="en">
 <head>
-<meta charset="UTF-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Paper Style Page</title>
-<link rel="stylesheet" href="your-main.css"> <!-- 保留你原来的主CSS -->
+   <link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&family=Lora&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=1">
 <style>
   body {
     margin: 0;
@@ -55,20 +58,82 @@
 </style>
 </head>
 <body>
-
+  <div class="wrap">
+    <!-- Sidebar / 左侧交互栏（保留原样式与行为） -->
+    <aside>
+      <div class="brand">
+        <a href="index.html" class="logo-link">
+          <img src="assets/sensis-logo.png" alt="Sensis logo">
+        </a>
+      </div>
+      <nav>
+        <a href="question.html" class="active"><span>Question</span></a>
+        <a href="search.html"><span>Search</span></a>
+        <a href="learn.html"><span>Learn</span></a>
+        <a href="create.html"><span>Create</span></a>
+      </nav>
+    </aside>
+    <div class="langs">
+        <button class="lang is-active" data-lang="en" onclick="switchLang('en')">English</button>
+        <button class="lang" data-lang="cn" onclick="switchLang('cn')">中文</button>
+        <button class="lang" data-lang="jp" onclick="switchLang('jp')">日本語</button>
+      </div>
 <div class="paper-container">
   <div class="header">
-    <img src="tree.png" alt="Tree Logo"> <!-- 小树图片路径 -->
+    <img src="assets/tree-1.png" alt="Tree Logo"> <!-- 小树图片路径 -->
     <div class="title-block">
       <h1>Paper Title</h1>
       <p>Subtitle text here</p>
     </div>
   </div>
   <div class="green-line"></div>
-
+<div class="container-mobile">
+        <div class="content">
+          <!-- EN -->
+          <div id="lang-en"></div>
+          <!-- CN -->
+          <div id="lang-cn" style="display:none;"></div>
+          <!-- JP -->
+          <div id="lang-jp" style="display:none;"></div>
+        </div>
+      </div>
   <p>这里是内容区域，你可以一直往下写，页面会自动延伸。</p>
-
 </div>
+</main>
+  </div>
+  <!-- Mobile floating menu button / 手机端悬浮按钮（保留） -->
+  <button class="fab-menu" onclick="toggleMenu()" aria-label="Open menu">
+    <img src="assets/menu-icon.png" alt="Menu">
+  </button>
+  <!-- Backdrop / 抽屉遮罩（保留） -->
+  <div class="backdrop" onclick="toggleMenu()"></div>
+   <script>
+    // 语言切换（保留原逻辑）
+    function switchLang(lang){
+      document.getElementById('lang-en').style.display = (lang==='en') ? 'block' : 'none';
+      document.getElementById('lang-cn').style.display = (lang==='cn') ? 'block' : 'none';
+      document.getElementById('lang-jp').style.display = (lang==='jp') ? 'block' : 'none';
+      document.querySelectorAll('.langs .lang')
+        .forEach(b => b.classList.toggle('is-active', b.dataset.lang === lang));
+      document.documentElement.setAttribute('data-lang', lang);
+    }
 
+    // 手机抽屉：悬浮按钮开关（保留）
+    function toggleMenu(){ document.body.classList.toggle('menu-open'); }
+
+    // 移动端点击 Logo 先合上抽屉（保留）
+    document.addEventListener('DOMContentLoaded', () => {
+      const logo = document.querySelector('.logo-link');
+      if (!logo) return;
+      logo.addEventListener('click', () => {
+        if (window.innerWidth <= 960) {
+          document.body.classList.remove('menu-open');
+        }
+      });
+    });
+
+    // 初始语言
+    document.addEventListener('DOMContentLoaded', () => switchLang('en'));
+  </script>
 </body>
 </html>
