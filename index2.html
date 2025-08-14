@@ -1,183 +1,134 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Sensis • Intake Form</title>
+<title>Sensis • papertest</title>
 
-<!-- 字体（与你当前站一致，可按需增减） -->
-<link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&family=Playfair+Display&family=Lora&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&family=Lora&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
+
+<!-- External CSS -->
+<link rel="stylesheet" href="styles.css?v=1">
 <style>
-  :root{
-  * —— 只作用于问卷页 —— */
-.page--intake{
-  /* 纸面宽度（像 A4），可按需调这3个值 */
-  --paper-min: 960px;
-  --paper-vw : 78vw;
-  --paper-max: 1200px;
-  /* 调整主标题字号 */
-.page--intake h1 {
-  font-size: 48px; /* 这里改你要的大小 */
+  .page-wrapper {
+  background-color: #eaf6ec; /* 浅绿背景 */
+  display: flex;
+  justify-content: center;
 }
 
-/* 调整副标题字号 */
-.page--intake .sub {
-  font-size: 20px; /* 这里改你要的大小 */
-
-  /* 小树高度（px）——你只改这个就能变大小 */
-  --tree-h: 30px;
-
-  --bg-tint:#f4f8f5;      /* 两侧浅绿边带 */
-  --paper:#fff;
-  --accent:#495f4d;
-  --divider:#8ca185;
-  --ink:#1f1f1f; --muted:#6b6b6b;
-}
-    
-/* 外围页边 */
-.page--intake{ background:var(--bg-tint); }
-.page--intake main{ padding:0; }
-
-/* 白纸主体：纵向无限延伸 */
-.page--intake .paper{
-  width:clamp(var(--paper-min), var(--paper-vw), var(--paper-max));
-  margin:0 auto;
-  background:var(--paper);
-  min-height:100vh;
-  box-shadow:none; border-radius:0;
+.content-area {
+  background-color: white;
+  width: 100%;
+  max-width: 800px; /* 类似 A4 纸宽度 */
+  min-height: 100vh; /* 页面至少占满一屏 */
+  padding: 20px;
 }
 
-/* 顶部 */
-.page--intake .paper-head{ position:relative; padding:18px 22px 10px; }
-
-/* 左上小树：大小由 --tree-h 控制 */
-.page--intake .paper-head .tree{
-  position:absolute; left:18px; top:-22px;
-  height:var(--tree-h); width:auto;
+/* 手机端只显示白色，不要浅绿背景 */
+@media (max-width: 768px) {
+  .page-wrapper {
+    background-color: white;
+  }
 }
-
-/* 右上语言切换：固定位置 */
-.page--intake .langs{
-  position:absolute; right:18px; top:10px;
-  display:flex; gap:8px;
-}
-.page--intake .lang{
-  appearance:none; -webkit-appearance:none;
-  display:inline-flex; align-items:center; justify-content:center;
-  height:30px; padding:0 10px;
-  border:1px solid var(--divider); border-radius:999px;
-  background:#fff; color:var(--ink); font:13px/1 inherit; cursor:pointer;
-}
-.page--intake .lang.is-active{ background:var(--accent); color:#fff; border-color:var(--accent); }
-
-/* 贯穿粗线 */
-.page--intake .paper-head .rule{
-  height:12px; background:var(--divider);
-  margin:0 -22px 12px; /* 两边“出血”一点，像手绘 */
-}
-
-/* 标题行：左 h1 右 sub */
-.page--intake .title-row{
-  display:flex; align-items:baseline; justify-content:space-between; gap:16px;
-}
-.page--intake h1{
-  margin:0; padding-left:calc(var(--tree-h) + 12px); /* 给小树留空间 */
-  font-family:'Oleo Script Swash Caps', cursive; font-weight:350; font-size:42px;
-}
-.page--intake .sub{ color:var(--muted); font-size:18px; white-space:nowrap; }
-
-/* 白纸正文（无限延伸） */
-.page--intake .paper-body{ padding:18px 22px 64px; }
-
-/* 手机端：去掉两侧浅绿，白纸全宽 */
-@media (max-width:960px){
-  .page--intake{ background:#fff; }
-  .page--intake .paper{ width:100%; max-width:none; }
-  .page--intake .paper-head{ padding:12px 16px 8px; }
-  .page--intake .paper-head .rule{ height:8px; margin:0 -16px 10px; }
-  .page--intake .paper-head .tree{ left:12px; top:-16px; }
-  .page--intake h1{ padding-left:calc(var(--tree-h) - 4px); font-size:32px; }
-  .page--intake .sub{ font-size:16px; }
-  .page--intake .langs{ right:12px; top:8px; }
 </style>
 </head>
-
 <body>
-  <body class="page--intake">
-  <div class="wrap">
-    <aside>
-      <div class="brand">
-        <img src="assets/sensis-logo.png" alt="Sensis logo" onerror="this.style.display='none'">
-      </div>
-      <nav>
-        <a href="#"><span class="label">Question</span></a>
-        <a href="#"><span class="label">Search</span></a>
-        <a href="#"><span class="label">Learn</span></a>
-        <a href="#"><span class="label">Create</span></a>
-      </nav>
-    </aside>
-
-    <!-- 主体：纸面 -->
-   <main>
-      <div class="paper">
-        <header class="paper-head">
-          <img class="tree" src="assets/tree.png" alt="tree">
-          <div class="langs">
-            <button class="lang is-active">English</button>
-            <button class="lang">中文</button>
-            <button class="lang">日本語</button>
-          </div>
-          <div class="rule"></div>
-          <div class="title-row">
-            <h1>Intake Questionnaire</h1>
-            <span class="sub">paper / text…</span>
-          </div>
-        </header>
-
-        <section class="paper-body" id="formRoot">
-          <!-- 在这里放你的问卷内容 -->
-        </section>
-      </div>
-    </main>
+<div class="wrap">
+<!-- Sidebar -->
+<aside>
+<div class="brand">
+  <a href="index.html">
+    <img src="assets/sensis-logo.png" alt="Sensis logo">
+  </a>
+</div>
+<nav>
+<a href="question.html" class="active"><span>Question</span></a>
+<a href="search.html"><span>Search</span></a>
+<a href="learn.html"><span>Learn</span></a>
+<a href="create.html"><span>Create</span></a>
+</nav>
+</aside>
+<!-- Main -->
+<main>
+  <div class="langs">
+    <button class="lang is-active" data-lang="en" onclick="switchLang('en')">English</button>
+    <button class="lang" data-lang="cn" onclick="switchLang('cn')">中 文</button>
+    <button class="lang" data-lang="jp" onclick="switchLang('jp')">日本語</button>
   </div>
 
-<button class="fab-menu" onclick="toggleMenu()" aria-label="Open menu" aria-pressed="false">
-    <img src="assets/menu-icon.png" alt="Menu">
-  </button>
-  <div class="backdrop" onclick="toggleMenu()" aria-hidden="true"></div>
-  <script>
-  function switchLang(lang){
-    ['en','cn','jp'].forEach(code=>{
-      var el = document.getElementById('lang-'+code);
-      if (el) el.hidden = (code!==lang);
-    });
-    document.querySelectorAll('.langs .lang')
-      .forEach(function(b){ b.classList.toggle('is-active', b.dataset.lang===lang); });
-    document.documentElement.setAttribute('data-lang', lang);
-  }
+  <div class="hero">
+    <img src="assets/tree.png" alt="tree">
+    <h1>Question</h1>
+    <p class="sub">Shape the seed: turn a fuzzy idea into a precise, testable question.</p>
+  </div>
+<div class="container-mobile">
+  <div class="content">
+    <!-- EN -->
+    <div id="lang-en">
+      <h3>How we shape a good question</h3>
+      <ul>
+        <li>Define scope and constraints.</li>
+        <li>Clarify unknowns vs. assumptions.</li>
+        <li>Decide evaluation criteria for answers.</li>
+      </ul>
+    </div>
 
-  document.addEventListener('DOMContentLoaded', function(){
-    // set default language safely
-    switchLang('en');
+    <!-- CN -->
+    <div id="lang-cn" style="display:none;">
+      <h3>如何把问题“塑形”</h3>
+      <ul>
+        <li>明确边界与约束</li>
+        <li>区分未知与假设</li>
+        <li>设定答案的评估标准</li>
+      </ul>
+    </div>
 
-    // logo click behavior on small screens
-    var logo = document.querySelector('.logo-link');
-    if (logo){
-      logo.addEventListener('click', function(){
-        if (window.innerWidth <= 960){
-          document.body.classList.remove('menu-open');
-        }
-      });
+    <!-- JP -->
+    <div id="lang-jp" style="display:none;">
+      <h3>良い問いの整え方</h3>
+      <ul>
+        <li>範囲と制約を定義</li>
+        <li>未知と仮定を切り分け</li>
+        <li>評価基準を決める</li>
+      </ul>
+    </div>
+  </div>
+    </div>
+</main>
+</div>
+
+<!-- Mobile floating menu button -->
+<button class="fab-menu" onclick="toggleMenu()" aria-label="Open menu">
+<img src="assets/menu-icon.png" alt="Menu">
+</button>
+<!-- Backdrop -->
+<div class="backdrop" onclick="toggleMenu()"></div>
+
+<script>
+function switchLang(lang){
+document.getElementById('lang-en').style.display = (lang==='en') ? 'block' : 'none';
+document.getElementById('lang-cn').style.display = (lang==='cn') ? 'block' : 'none';
+document.getElementById('lang-jp').style.display = (lang==='jp') ? 'block' : 'none';
+document.querySelectorAll('.langs .lang')
+.forEach(b => b.classList.toggle('is-active', b.dataset.lang === lang));
+document.documentElement.setAttribute('data-lang', lang);
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const logo = document.querySelector('.logo-link');
+  if (!logo) return;
+  logo.addEventListener('click', () => {
+    if (window.innerWidth <= 960) {
+      document.body.classList.remove('menu-open'); // 先合上抽屉
     }
+    // 不阻止默认跳转行为，直接回首页
   });
-
-  function toggleMenu(){
-    var pressed = document.body.classList.toggle('menu-open');
-    var btn = document.querySelector('.fab-menu');
-    if (btn) btn.setAttribute('aria-pressed', pressed ? 'true' : 'false');
-  }
+});
+function toggleMenu(){ document.body.classList.toggle('menu-open'); }
+  // 初始语言（避免缓存导致的显示异常）
+document.addEventListener('DOMContentLoaded', () => switchLang('en'));
   </script>
 </body>
 </html>
-
