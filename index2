@@ -161,7 +161,7 @@
     <main>
       <div class="paper">
         <div class="paper-head">
-          <img class="tree" src="assets/tree.png" alt="tree" />
+          <img class="tree" src="assets/tree-1.png" alt="tree" />
           <div class="langs">
             <button class="lang is-active" data-lang="en" onclick="switchLang('en')">English</button>
             <button class="lang" data-lang="cn" onclick="switchLang('cn')">中文</button>
