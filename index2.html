@@ -13,6 +13,15 @@
 <!-- External CSS -->
 <link rel="stylesheet" href="styles.css?v=1">
 <style>
+  .page--intake {
+  --tree-size: 80px;      /* 小树高度 */
+  --title-size: 48px;     /* 主标题字号 */
+  --subtitle-size: 20px;  /* 副标题字号 */
+
+  background-color: #f5f9f5; /* 浅绿背景 */
+  display: flex;
+  justify-content: center;
+}
   .page-wrapper {
   background-color: #eaf6ec; /* 浅绿背景 */
   display: flex;
@@ -58,9 +67,8 @@
     <button class="lang" data-lang="cn" onclick="switchLang('cn')">中 文</button>
     <button class="lang" data-lang="jp" onclick="switchLang('jp')">日本語</button>
   </div>
-
-  <div class="hero">
-    <img src="assets/tree.png" alt="tree">
+<div class="page-wrapper">
+  <div class="content-area">
     <h1>Question</h1>
     <p class="sub">Shape the seed: turn a fuzzy idea into a precise, testable question.</p>
   </div>
