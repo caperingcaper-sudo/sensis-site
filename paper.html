@@ -19,8 +19,8 @@
     :root{
       --paper-max: 920px;              /* 纸面宽度（桌面），A4 观感可在 860–980 之间调 */
       --paper-padding-x: 24px;         /* 纸面左右内边距 */
-      --tree-size: 72px;               /* 左上角小树宽度（等比）*/
-      --h1-size: 42px;                 /* 主标题字号 */
+      --tree-size: 250;               /* 左上角小树宽度（等比）*/
+      --h1-size: 35px;                 /* 主标题字号 */
       --sub-size: 18px;                /* 副标题字号 */
       --rule-height: 4px;              /* 绿色线条粗细 */
       --rule-color: #3f6b49;           /* 绿色线条颜色（取自你的 accent 系）*/
@@ -38,7 +38,7 @@
 
   /* 向上推 */
   position: relative;
-  top: calc(-1 * var(--rule-lift));
+  top: calc(-5 * var(--rule-lift));
 }
 .paper-header .sub{
   grid-column: 2;
@@ -146,8 +146,8 @@
     @media (max-width:960px){
       .page-bg{ background:#fff; }
       :root{
-        --tree-size: 54px;
-        --h1-size: 32px;
+        --tree-size: 75px;
+        --h1-size: 28px;
         --sub-size: 16px;
         --paper-padding-x: 16px;
       }
