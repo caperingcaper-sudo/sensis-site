@@ -24,9 +24,30 @@
       --sub-size: 18px;                /* 副标题字号 */
       --rule-height: 4px;              /* 绿色线条粗细 */
       --rule-color: #3f6b49;           /* 绿色线条颜色（取自你的 accent 系）*/
-      --bg-mist: #f3f8f3;              /* 两侧浅绿色背景（桌面）*/
+      --bg-mist: #f3f8f3;              /* 
+      --rule-lift: 12px;
     }
 
+/* 这是原本的绿线样式，加了 top 位移 */
+.paper-header .rule {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  background: var(--rule-color);
+  height: var(--rule-height);
+  border-radius: 2px;
+
+  /* 向上推 */
+  position: relative;
+  top: calc(-1 * var(--rule-lift));
+}
+.paper-header .sub{
+  grid-column: 2;
+  grid-row: 3;
+  margin: 4px 0 14px;   /* 原来是 6px，可根据观感再调 */
+  color: #555;
+  font-size: var(--sub-size);
+  font-family: var(--content-serif, 'Lora', serif);
+}
     /* 桌面：两侧浅绿，中间白纸 */
     .page-bg{
       background: var(--bg-mist);
@@ -86,6 +107,40 @@
     .paper-body{
       padding: 14px var(--paper-padding-x) 28px;
     }
+    /* 顶部透明线框语言切换 */
+.langs-top{
+  position: sticky;          /* 顶部悬停 */
+  top: 8px;
+  z-index: 2000;
+  max-width: var(--paper-max);
+  margin: 0 auto;
+  padding: 8px var(--paper-padding-x) 0;
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end; /* 右对齐 */
+}
+.langs-top .lang{
+  appearance: none;
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 30px; padding: 0 10px;
+  background: transparent;            /* 透明 */
+  color: var(--ink);
+  border: 1px solid var(--divider);   /* 细线框 */
+  border-radius: 10px;
+  font: 14px/1 inherit;
+  cursor: pointer;
+}
+.langs-top .lang:is(:hover, :focus-visible){
+  outline: none;
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.langs-top .lang.is-active{
+  background: transparent;            /* 仍旧透明 */
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: inset 0 0 0 1px var(--accent);  /* 细内描边，强调状态 */
+}
 
     /* 手机：只有白色纸面，取消两侧浅绿；树/字号稍微收一点 */
     @media (max-width:960px){
@@ -119,6 +174,12 @@
     <!-- 主区域：浅绿背景 + 白色纸面 -->
     <main>
       <div class="page-bg">
+        <!-- 顶部语言切换（透明线框） -->
+<div class="langs langs-top">
+  <button class="lang is-active" data-lang="en" onclick="switchLang('en')">English</button>
+  <button class="lang" data-lang="cn" onclick="switchLang('cn')">中文</button>
+  <button class="lang" data-lang="jp" onclick="switchLang('jp')">日本語</button>
+</div>
         <article class="paper">
           <!-- 顶部页眉：树 + 绿线 + 主/副标题 -->
           <header class="paper-header" aria-label="paper header">
