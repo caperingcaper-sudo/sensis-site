@@ -59,34 +59,6 @@
   </button>
   <!-- Backdrop / 抽屉遮罩（保留） -->
   <div class="backdrop" onclick="toggleMenu()"></div>
-
-  <script>
-    // 语言切换（保留原逻辑）
-    function switchLang(lang){
-      document.getElementById('lang-en').style.display = (lang==='en') ? 'block' : 'none';
-      document.getElementById('lang-cn').style.display = (lang==='cn') ? 'block' : 'none';
-      document.getElementById('lang-jp').style.display = (lang==='jp') ? 'block' : 'none';
-      document.querySelectorAll('.langs .lang')
-        .forEach(b => b.classList.toggle('is-active', b.dataset.lang === lang));
-      document.documentElement.setAttribute('data-lang', lang);
-    }
-
-    // 手机抽屉：悬浮按钮开关（保留）
-    function toggleMenu(){ document.body.classList.toggle('menu-open'); }
-
-    // 移动端点击 Logo 先合上抽屉（保留）
-    document.addEventListener('DOMContentLoaded', () => {
-      const logo = document.querySelector('.logo-link');
-      if (!logo) return;
-      logo.addEventListener('click', () => {
-        if (window.innerWidth <= 960) {
-          document.body.classList.remove('menu-open');
-        }
-      });
-    });
-
-    // 初始语言
-    document.addEventListener('DOMContentLoaded', () => switchLang('en'));
-  </script>
+<script src="common.js"></script>
 </body>
 </html>
