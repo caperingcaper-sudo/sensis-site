@@ -1,69 +1,107 @@
+<!DOCTYPE html>
 <html lang="en" data-lang="en">
 <head>
   <meta charset="utf-8" />
-<title>Paper Style Page</title>
- <link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&family=Lora&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sensis • Paper Layout</title>
+
+  <!-- 字体（保持你的选择） -->
+  <link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&family=Lora&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=2">
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-    background-color: #f3f8f3; /* 浅绿色背景 */
-  }
-  .paper-container {
-    max-width: 800px; /* 电脑时的内容宽度 */
-    background: white;
-    margin: 0 auto;
-    padding: 20px;
-    min-height: 100vh; /* 页面可滚动 */
-  }
-  .header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .header img {
-    height: 250px; /* 小树高度，可改 */
-    width: auto;
-  }
-  .title-block {
-    flex: 1;
-  }
-  .title-block h1 {
-    margin: 0;
-    font-size: 65px; /* 主标题大小，可改 */
-  }
-  .title-block p {
-    margin: 0;
-    font-size: 35px; /* 副标题大小，可改 */
-    color: #666;
-  }
-  .green-line {
-    height: 4px;
-    background-color: #4caf50; /* 粗绿色线 */
-    margin: 10px 0 20px;
-  }
-  @media (max-width: 768px) {
-    body {
-      background-color: white; /* 手机时去掉两边绿色 */
+
+  <!-- 你的全局样式 -->
+  <link rel="stylesheet" href="styles.css?v=2">
+
+  <!-- 本页“纸面”最小样式：不改你现有的规则，只补充 -->
+  <style>
+    /* 可调旋钮：直接改变量即可 */
+    :root{
+      --paper-max: 920px;              /* 纸面宽度（桌面），A4 观感可在 860–980 之间调 */
+      --paper-padding-x: 24px;         /* 纸面左右内边距 */
+      --tree-size: 72px;               /* 左上角小树宽度（等比）*/
+      --h1-size: 42px;                 /* 主标题字号 */
+      --sub-size: 18px;                /* 副标题字号 */
+      --rule-height: 4px;              /* 绿色线条粗细 */
+      --rule-color: #3f6b49;           /* 绿色线条颜色（取自你的 accent 系）*/
+      --bg-mist: #f3f8f3;              /* 两侧浅绿色背景（桌面）*/
     }
-    .paper-container {
-      max-width: 100%;
-      padding: 15px;
+
+    /* 桌面：两侧浅绿，中间白纸 */
+    .page-bg{
+      background: var(--bg-mist);
+      min-height: 100vh;
     }
-  }
-</style>
+    .paper{
+      max-width: var(--paper-max);
+      margin: 0 auto;
+      background: #fff;
+      padding-bottom: 40px;
+      /* 让“纸面”像独立区域一样漂浮一点点，可要可不要 */
+      box-shadow: 0 8px 20px rgba(0,0,0,.03);
+    }
+
+    /* 页眉：树在左，主标题在线条上方右侧，副标题在线条下方右侧 */
+    .paper-header{
+      padding: 8px var(--paper-padding-x) 0;
+      display: grid;
+      grid-template-columns: auto 1fr;                /* 左树 右文字 */
+      grid-template-rows: auto var(--rule-height) auto;/* 上：主标题 ｜ 中：绿线 ｜ 下：副标题 */
+      column-gap: 12px;
+      align-items: end;
+    }
+    .paper-header .tree{
+      width: var(--tree-size);
+      height: auto;
+      grid-column: 1;
+      grid-row: 1 / 3;     /* 跨主标题行 + 绿线行，底边贴线 */
+      align-self: end;
+    }
+    .paper-header .title{
+      grid-column: 2;
+      grid-row: 1;
+      margin: 0;
+      font-size: var(--h1-size);
+      line-height: 1.18;
+      font-family: 'Oleo Script Swash Caps', cursive;
+      font-weight: 300;
+    }
+    .paper-header .rule{
+      grid-column: 1 / -1;
+      grid-row: 2;
+      background: var(--rule-color);
+      height: var(--rule-height);
+      border-radius: 2px;
+    }
+    .paper-header .sub{
+      grid-column: 2;
+      grid-row: 3;
+      margin: 6px 0 14px;
+      color: #555;
+      font-size: var(--sub-size);
+      font-family: var(--content-serif, 'Lora', serif);
+    }
+
+    /* 纸面正文容器（纯白区域，内容会无限向下延伸） */
+    .paper-body{
+      padding: 14px var(--paper-padding-x) 28px;
+    }
+
+    /* 手机：只有白色纸面，取消两侧浅绿；树/字号稍微收一点 */
+    @media (max-width:960px){
+      .page-bg{ background:#fff; }
+      :root{
+        --tree-size: 54px;
+        --h1-size: 32px;
+        --sub-size: 16px;
+        --paper-padding-x: 16px;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="langs">
-        <button class="lang is-active" data-lang="en" onclick="switchLang('en')">English</button>
-        <button class="lang" data-lang="cn" onclick="switchLang('cn')">中文</button>
-        <button class="lang" data-lang="jp" onclick="switchLang('jp')">日本語</button>
-      </div>
-    <!-- Sidebar / 左侧交互栏（保留原样式与行为） -->
+    <!-- 左侧侧栏（保持你的结构与行为） -->
     <aside>
       <div class="brand">
         <a href="index.html" class="logo-link">
@@ -71,43 +109,43 @@
         </a>
       </div>
       <nav>
-        <a href="question.html" class="active"><span>Question</span></a>
+        <a href="question.html"><span>Question</span></a>
         <a href="search.html"><span>Search</span></a>
         <a href="learn.html"><span>Learn</span></a>
         <a href="create.html"><span>Create</span></a>
       </nav>
     </aside>
+
+    <!-- 主区域：浅绿背景 + 白色纸面 -->
     <main>
-<div class="paper-container">
-  <div class="header">
-    <img src="assets/tree-1.png" alt="Tree Logo"> <!-- 小树图片路径 -->
-    <div class="title-block">
-      <h1>Paper Title</h1>
-      <div class="green-line"></div>
-      <p>Subtitle text here</p>
-    </div>
-  </div>
-<div class="container-mobile">
-        <div class="content">
-          <!-- EN -->
-          <div id="lang-en"></div>
-          <!-- CN -->
-          <div id="lang-cn" style="display:none;"></div>
-          <!-- JP -->
-          <div id="lang-jp" style="display:none;"></div>
-        </div>
+      <div class="page-bg">
+        <article class="paper">
+          <!-- 顶部页眉：树 + 绿线 + 主/副标题 -->
+          <header class="paper-header" aria-label="paper header">
+            <img class="tree" src="assets/tree-1.png" alt="tree">
+            <h1 class="title">Paper Title</h1>
+            <div class="rule" aria-hidden="true"></div>
+            <p class="sub">Subtitle text goes here</p>
+          </header>
+
+          <!-- 正文：这里就是你的“Text input / 问卷内容”将来要放的地方 -->
+          <section class="paper-body">
+            <!-- 占位内容，确认版式无误后可删除 -->
+            <p>在这里放正文或表单。白色区域会一直向下延伸，形成“论文纸面”的阅读感。</p>
+            <p>需要调尺寸：直接在本页 <code>&lt;style&gt;</code> 里改变量，比如 <code>--tree-size</code>、<code>--h1-size</code>、<code>--sub-size</code>、<code>--rule-height</code>、<code>--paper-max</code>。</p>
+          </section>
+        </article>
       </div>
-  <p>这里是内容区域，你可以一直往下写，页面会自动延伸。</p>
-</div>
-</main>
+    </main>
   </div>
-   <button class="fab-menu" onclick="toggleMenu()" aria-label="Open menu" aria-pressed="false">
+
+  <!-- 移动端浮动按钮 & 抽屉遮罩（用你的公共脚本控制） -->
+  <button class="fab-menu" onclick="toggleMenu()" aria-label="Open menu" aria-pressed="false">
     <img src="assets/menu-icon.png" alt="Menu">
   </button>
   <div class="backdrop" onclick="toggleMenu()" aria-hidden="true"></div>
-  <!-- Backdrop / 抽屉遮罩（保留） -->
-  <div class="backdrop" onclick="toggleMenu()"></div>
- 
+
+  <!-- 公共脚本（switchLang / 抽屉等） -->
   <script src="common.js"></script>
 </body>
 </html>
