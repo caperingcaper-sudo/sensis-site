@@ -276,3 +276,38 @@ img, video, iframe{ max-width:100%; height:auto; }
   .paperv1-title{ top: 10px; right: 14px; font-size: 28px; }
   .paperv1-sub{ top: 46px; right: 14px; font-size: 16px; }
 }
+/* ===== Paper v1 • subtle paper look ========================== */
+/* 可调参数（可按需覆盖） */
+.paperv1{
+  --paperv1-edge-color: rgba(0,0,0,.06);   /* 外轮廓细线颜色 */
+  --paperv1-shadow-1: 0 6px 22px rgba(0,0,0,.08);
+  --paperv1-shadow-2: 0 2px 6px rgba(0,0,0,.05);
+  --paperv1-inner-vignette: rgba(0,0,0,.045); /* 内侧轻微晕影 */
+  position: relative;
+  border: 1px solid var(--paperv1-edge-color);   /* 细描边 */
+  border-radius: 8px;                             /* 轻圆角，可改 */
+  box-shadow: var(--paperv1-shadow-1), var(--paperv1-shadow-2);
+  overflow: hidden; /* 让内晕影不外溢 */
+}
+
+/* 内侧超淡的“纸张压痕/晕影” */
+.paperv1::before{
+  content:"";
+  position:absolute; inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(120% 80% at 50% -10%, transparent 60%, var(--paperv1-inner-vignette) 100%),
+    radial-gradient(120% 80% at 50% 110%, transparent 60%, var(--paperv1-inner-vignette) 100%);
+  mix-blend-mode: multiply;          /* 让晕影更自然 */
+  opacity:.55;                       /* 强弱可调 */
+}
+
+/* 打印时去掉阴影与圆角（看起来更像 A4） */
+@media print{
+  .paperv1{
+    border: 1px solid #ccc;
+    box-shadow: none;
+    border-radius: 0;
+  }
+  .paperv1::before{ display:none; }
+}
