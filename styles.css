@@ -69,6 +69,9 @@ background:#fff; color:var(--ink); font:14px/1 inherit; cursor:pointer;
 
 .hero{ display:flex; flex-direction:column; align-items:center; margin-bottom:12px; }
 .hero img{ max-width:420px; width:100%; height:auto; display:block; margin-bottom:0; }
+@media (max-width:960px){
+  .hero img{ height:200px; } /* ← 这个让手机变小 */
+}
 h1{
 font-family:'Oleo Script Swash Caps', cursive;
 font-size:clamp(1.8rem,4.5vw,2.6rem);
