@@ -269,12 +269,12 @@ img, video, iframe{ max-width:100%; height:auto; }
 
 /* 手机/窄屏：仅白纸、换手机头图、左右退化为 px，不改变你全站其它样式 */
 @media (max-width: 960px){
-  .paperv1 { margin-top: 50px;width: min(720px, 100%); box-shadow: none; }
+  .paperv1 { margin-top: 70px;width: min(720px, 100%); box-shadow: none; }
   .paperv1-body { padding-inline: var(--paperv1-pad-x-mobile); }
   .paperv1-art.desktop { display: none; }
   .paperv1-art.-mobile { display: block; }
-  .paperv1-title{ top: 70px; right: 14px; font-size: 28px; }
-  .paperv1-sub{ top: 85px; right: 14px; font-size: 16px; }
+  .paperv1-title{ top: 130px; right: 14px; font-size: 28px; }
+  .paperv1-sub{ top: 160px; right: 14px; font-size: 16px; }
 }
 /* ===== Paper v1 • subtle paper look ========================== */
 /* 可调参数（可按需覆盖） */
