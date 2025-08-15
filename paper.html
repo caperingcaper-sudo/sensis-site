@@ -5,91 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sensis • Paper Layout</title>
 
-  <!-- 字体（保持你的选择） -->
+  <!-- 字体 -->
   <link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&family=Lora&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
 
-  <!-- 你的全局样式 -->
+  <!-- 你的全局样式（前面已把 Paper v1 追加进去） -->
   <link rel="stylesheet" href="styles.css?v=2">
-
-  <!-- 本页“纸面”最小样式：不改你现有的规则，只补充 -->
-  <style>
-/* ===== Paper 模块（精简版）==================================== */
-/* 旋钮（只改这里的变量就能调整个版式） */
-:root{
-  --paper-max: 1900px;          /* 纸面宽度（桌面） */
-  --paper-pad-x: 8px;         /* 纸面左右内边距 */
-
-  --tree-size:1200px;           /* 小树宽度（记得有 px） */
-  --h1-size: 25px;             /* 主标题字号 */
-  --sub-size: 18px;            /* 副标题字号 */
-}
-
-/* 桌面：两侧浅绿，中间白纸 */
-.paper{
-  max-width: var(--paper-max);
-  margin: 0 auto;
-  background: #fff;
-  box-shadow: 0 8px 20px rgba(0,0,0,.03);
-}
-
-.paper-header .langs .lang{
-  appearance: none;
-  display: inline-flex; align-items: center; justify-content: center;
-  height: 30px; padding: 0 10px;
-  border: 1px solid var(--divider);
-  border-radius: 10px;
-  background: transparent; color: var(--ink);
-  font: 14px/1 var(--content-serif, serif);
-  cursor: pointer;
-}
-.paper-header .langs .lang.is-active{
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
-/* 主标题：右列，第一行 */
-.paper-header .title{
-  grid-column: 2;
-  grid-row: 1;
-  margin: 0;
-  font-size: var(--h1-size);
-  line-height: 1.15;
-  font-family: 'Oleo Script Swash Caps', cursive;
-  font-weight: 300;
-}
-
-/* 副标题：右列，第三行 */
-.paper-header .sub{
-  grid-column: 2;
-  grid-row: 3;
-  margin: 4px 0 14px;
-  color: #555;
-  font-size: var(--sub-size);
-  font-family: var(--content-serif, serif);
-}
-
-/* 正文（白纸会无限向下延伸） */
-.paper-body{
-  padding: 14px var(--paper-pad-x) 28px;
-}
-
-/* 手机：只显示白纸（无浅绿），字号/树略小 */
-@media (max-width:1000px){
-  .page-bg{ background:#fff; }
-  :root{
-    --paper-pad-x: 2px;
-    --tree-size: 500px;
-    --h1-size: 32px;
-    --sub-size: 16px;
-  }
-}
-  </style>
 </head>
 <body>
   <div class="wrap">
-    <!-- 左侧侧栏（保持你的结构与行为） -->
+    <!-- Sidebar（沿用你的现有结构） -->
     <aside>
       <div class="brand">
         <a href="index.html" class="logo-link">
@@ -104,44 +30,41 @@
       </nav>
     </aside>
 
-    <!-- 主区域：浅绿背景 + 白色纸面 -->
     <main>
-      <!-- 语言切换：透明线框，跟着标题一起滚动 -->
+      <!-- 语言切换（保持你原来的按钮与行为） -->
       <div class="langs">
         <button class="lang is-active" data-lang="en" onclick="switchLang('en')">English</button>
         <button class="lang" data-lang="cn" onclick="switchLang('cn')">中文</button>
         <button class="lang" data-lang="jp" onclick="switchLang('jp')">日本語</button>
       </div>
-<div class="page-bg">
-  <article class="paper">
-    <header class="paper-header" aria-label="paper header">    
 
-      <!-- 左侧树 -->
-      <img class="tree" src="assets/paper-1.png" alt="Tree">
+      <!-- 纸面（全部样式都在 .paperv1 命名空间内，不影响其它页） -->
+      <article class="paperv1">
+        <header class="paperv1-header" aria-label="paper header">
+          <!-- 桌面/横屏用 paper-2；手机用 paper-3 -->
+          <img class="paperv1-art desktop" src="assets/paper-2.png" alt="Header art (desktop)">
+          <img class="paperv1-art -mobile" src="assets/paper-3.png" alt="Header art (mobile)">
 
-      <!-- 右侧主标题 -->
-      <h1 class="title">Paper Title</h1>
+          <!-- 标题与副标题浮在图上，位置通过变量微调 -->
+          <h1 class="paperv1-title">Sensis User Basic Information</h1>
+          <p class="paperv1-sub">Please answer the questions below. Use ○ for single choice and □ for multiple choice.</p>
+        </header>
 
-      <!-- 右侧副标题（绿线下方） -->
-      <p class="sub">Subtitle text here</p>
-    </header>
-
-    <section class="paper-body">
-      <!-- 你要放的内容 / 表单 / 问卷 -->
-      <p>这里是内容区域，白色纸面会无限向下延伸。</p>
-    </section>
-  </article>
-</div>
+        <section class="paperv1-body" id="content">
+          <!-- 你的问卷/内容：左右 20mm（桌面），手机退化为 16px -->
+          <p>Here goes your form / questionnaire…</p>
+        </section>
+      </article>
     </main>
   </div>
 
-  <!-- 移动端浮动按钮 & 抽屉遮罩（用你的公共脚本控制） -->
-  <button class="fab-menu" onclick="toggleMenu()" aria-label="Open menu" aria-pressed="false">
+  <!-- 移动端抽屉按钮与遮罩（照旧） -->
+  <button class="fab-menu" onclick="toggleMenu()" aria-label="Open menu">
     <img src="assets/menu-icon.png" alt="Menu">
   </button>
-  <div class="backdrop" onclick="toggleMenu()" aria-hidden="true"></div>
+  <div class="backdrop" onclick="toggleMenu()"></div>
 
-  <!-- 公共脚本（switchLang / 抽屉等） -->
+  <!-- 公共脚本（语言切换 / 抽屉等仍用你自己的） -->
   <script src="common.js"></script>
 </body>
 </html>
