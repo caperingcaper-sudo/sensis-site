@@ -70,7 +70,7 @@ background:#fff; color:var(--ink); font:14px/1 inherit; cursor:pointer;
 .hero{ display:flex; flex-direction:column; align-items:center; margin-bottom:12px; }
 .hero img{ max-width:420px; width:100%; height:auto; display:block; margin-bottom:0; }
 @media (max-width:960px){
-  .hero img{ width:200px; height:auto;}这个让手机变小 */
+  .hero img{ width:270px; height:auto;}这个让手机变小 */
 }
 h1{
 font-family:'Oleo Script Swash Caps', cursive;
