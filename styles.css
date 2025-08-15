@@ -215,3 +215,64 @@ img, video, iframe{ max-width:100%; height:auto; }
     padding-inline: 24px;          /* 两侧留点呼吸 */
   }
 }
+/* ===== Paper v1 (scoped / 不影响其它页面) ===================== */
+.paperv1 {
+  /* 作用域变量（只影响 .paperv1 内部） */
+  --paperv1-width: 210mm;          /* 桌面 A4 宽度 */
+  --paperv1-pad-x-desktop: 20mm;   /* 正文左右留白 20mm */
+  --paperv1-pad-x-mobile: 16px;    /* 手机退化为 px */
+
+  --paperv1-h1-top: 8px;           /* 主标题相对头图的上偏移 */
+  --paperv1-h1-right: 24px;        /* 主标题右偏移 */
+  --paperv1-sub-top: 42px;         /* 副标题相对头图的上偏移（在线下） */
+  --paperv1-sub-right: 24px;       /* 副标题右偏移 */
+
+  --paperv1-h1-size: 36px;         /* 主标题字号 */
+  --paperv1-sub-size: 18px;        /* 副标题字号 */
+}
+
+/* 纸面容器（无浅绿背景） */
+.paperv1 {
+  width: min(var(--paperv1-width), 92vw);
+  margin: 0 auto;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(0,0,0,.03);
+}
+
+/* 头图 + 浮动标题区 */
+.paperv1-header { position: relative; isolation: isolate; }
+.paperv1-art { width: 100%; height: auto; display: block; user-select: none; -webkit-user-drag: none; }
+.paperv1-art.-mobile { display: none; }   /* 桌面/横屏默认用 desktop 图 */
+
+.paperv1-title,
+.paperv1-sub {
+  position: absolute; margin: 0; text-align: right; pointer-events: none;
+}
+.paperv1-title{
+  top: var(--paperv1-h1-top);
+  right: var(--paperv1-h1-right);
+  font-family: 'Oleo Script Swash Caps', cursive;
+  font-size: var(--paperv1-h1-size);
+  line-height: 1.1; font-weight: 300; color: #1f1f1f;
+  text-shadow: 0 1px 2px rgba(0,0,0,.06);
+}
+.paperv1-sub{
+  top: var(--paperv1-sub-top);
+  right: var(--paperv1-sub-right);
+  font-family: var(--content-serif, 'Lora', serif);
+  font-size: var(--paperv1-sub-size);
+  color:#555;
+}
+
+/* 正文（A4 左右 20mm） */
+.paperv1-body{ padding: 16px var(--paperv1-pad-x-desktop) 36px; }
+
+/* 手机/窄屏：仅白纸、换手机头图、左右退化为 px，不改变你全站其它样式 */
+@media (max-width: 960px){
+  .paperv1 { width: min(720px, 100%); box-shadow: none; }
+  .paperv1-body { padding-inline: var(--paperv1-pad-x-mobile); }
+  .paperv1-art.desktop { display: none; }
+  .paperv1-art.-mobile { display: block; }
+  .paperv1-title{ top: 10px; right: 14px; font-size: 28px; }
+  .paperv1-sub{ top: 46px; right: 14px; font-size: 16px; }
+}
