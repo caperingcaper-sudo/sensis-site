@@ -273,8 +273,8 @@ img, video, iframe{ max-width:100%; height:auto; }
   .paperv1-body { padding-inline: var(--paperv1-pad-x-mobile); }
   .paperv1-art.desktop { display: none; }
   .paperv1-art.-mobile { display: block; }
-  .paperv1-title{ top: 10px; right: 14px; font-size: 28px; }
-  .paperv1-sub{ top: 46px; right: 14px; font-size: 16px; }
+  .paperv1-title{ top: 70px; right: 14px; font-size: 28px; }
+  .paperv1-sub{ top: 85px; right: 14px; font-size: 16px; }
 }
 /* ===== Paper v1 • subtle paper look ========================== */
 /* 可调参数（可按需覆盖） */
