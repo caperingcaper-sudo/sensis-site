@@ -57,16 +57,16 @@
         <!-- 正文：桌面左右 20mm；手机左右 16px -->
       <section class="paperv1-body" id="content">
 <div class="md">
-<div class="md">
   <form id="intake">
-
     <!-- 登录名 / User ID -->
     <div class="field">
       <label><strong>Nick Name / User ID</strong></label><br>
       <input type="text" name="user_id" style="width:100%;padding:8px;border:1px solid #e5e5e5;border-radius:8px;font-family:inherit;">
     </div>
 
-    <!-- Section A -->
+    <!-- =========================
+         Section A: System
+    ========================== -->
     <h2>Section A: System (Institutions and Structures)</h2>
 
     <div class="field">
@@ -102,7 +102,7 @@
       <label><input type="radio" name="major" value="Education"> Education</label>
       <label><input type="radio" name="major" value="Engineering"> Engineering</label>
       <label><input type="radio" name="major" value="History"> History</label>
-      <label><input type="radio" name="major" value="Journalism"> Journalism and Communication</label>
+      <label><input type="radio" name="major" value="Journalism and Communication"> Journalism and Communication</label>
       <label><input type="radio" name="major" value="Law"> Law</label>
       <label><input type="radio" name="major" value="Literature"> Literature</label>
       <label><input type="radio" name="major" value="Literature-language"> Literature-language</label>
@@ -116,25 +116,25 @@
 
     <div class="field">
       <div><strong>Q5. Language qualifications obtained/pending (multiple choice)</strong></div>
-      <label><input type="checkbox" name="langs[]" value="IELTS-5"> IELTS-5</label>
-      <label><input type="checkbox" name="langs[]" value="IELTS-6"> IELTS-6</label>
-      <label><input type="checkbox" name="langs[]" value="IELTS-7"> IELTS-7</label>
-      <label><input type="checkbox" name="langs[]" value="IELTS-8"> IELTS-8</label>
-      <label><input type="checkbox" name="langs[]" value="JLPT-N1"> JLPT-N1</label>
-      <label><input type="checkbox" name="langs[]" value="JLPT-N2"> JLPT-N2</label>
-      <label><input type="checkbox" name="langs[]" value="JLPT-N3"> JLPT-N3</label>
-      <label><input type="checkbox" name="langs[]" value="JLPT-N4"> JLPT-N4</label>
-      <label><input type="checkbox" name="langs[]" value="JLPT-N5"> JLPT-N5</label>
-      <label><input type="checkbox" name="langs[]" value="TOEFL-50"> TOEFL-50</label>
-      <label><input type="checkbox" name="langs[]" value="TOEFL-60"> TOEFL-60</label>
-      <label><input type="checkbox" name="langs[]" value="TOEFL-70"> TOEFL-70</label>
-      <label><input type="checkbox" name="langs[]" value="TOEFL-80"> TOEFL-80</label>
-      <label><input type="checkbox" name="langs[]" value="TOEFL-90"> TOEFL-90</label>
-      <label><input type="checkbox" name="langs[]" value="TOEFL-90+"> TOEFL-90+</label>
-      <label><input type="checkbox" name="langs[]" value="TOEIC-500"> TOEIC-500</label>
-      <label><input type="checkbox" name="langs[]" value="TOEIC-600"> TOEIC-600</label>
-      <label><input type="checkbox" name="langs[]" value="TOEIC-700"> TOEIC-700</label>
-      <label><input type="checkbox" name="langs[]" value="TOEIC-800"> TOEIC-800</label>
+      <label><input type="checkbox" name="lang_certs[]" value="IELTS-5"> IELTS-5</label>
+      <label><input type="checkbox" name="lang_certs[]" value="IELTS-6"> IELTS-6</label>
+      <label><input type="checkbox" name="lang_certs[]" value="IELTS-7"> IELTS-7</label>
+      <label><input type="checkbox" name="lang_certs[]" value="IELTS-8"> IELTS-8</label>
+      <label><input type="checkbox" name="lang_certs[]" value="JLPT-N1"> JLPT-N1</label>
+      <label><input type="checkbox" name="lang_certs[]" value="JLPT-N2"> JLPT-N2</label>
+      <label><input type="checkbox" name="lang_certs[]" value="JLPT-N3"> JLPT-N3</label>
+      <label><input type="checkbox" name="lang_certs[]" value="JLPT-N4"> JLPT-N4</label>
+      <label><input type="checkbox" name="lang_certs[]" value="JLPT-N5"> JLPT-N5</label>
+      <label><input type="checkbox" name="lang_certs[]" value="TOEFL-50"> TOEFL-50</label>
+      <label><input type="checkbox" name="lang_certs[]" value="TOEFL-60"> TOEFL-60</label>
+      <label><input type="checkbox" name="lang_certs[]" value="TOEFL-70"> TOEFL-70</label>
+      <label><input type="checkbox" name="lang_certs[]" value="TOEFL-80"> TOEFL-80</label>
+      <label><input type="checkbox" name="lang_certs[]" value="TOEFL-90"> TOEFL-90</label>
+      <label><input type="checkbox" name="lang_certs[]" value="TOEFL-90+"> TOEFL-90+</label>
+      <label><input type="checkbox" name="lang_certs[]" value="TOEIC-500"> TOEIC-500</label>
+      <label><input type="checkbox" name="lang_certs[]" value="TOEIC-600"> TOEIC-600</label>
+      <label><input type="checkbox" name="lang_certs[]" value="TOEIC-700"> TOEIC-700</label>
+      <label><input type="checkbox" name="lang_certs[]" value="TOEIC-800"> TOEIC-800</label>
     </div>
 
     <div class="field">
@@ -146,7 +146,9 @@
       <label><input type="radio" name="time_status" value="Other"> Other</label>
     </div>
 
-    <!-- Section B -->
+    <!-- =========================
+         Section B: Personal
+    ========================== -->
     <h2>Section B: Personal (Characteristics and Motivations)</h2>
 
     <div class="field">
@@ -177,40 +179,191 @@
       <label><input type="checkbox" name="interests[]" value="Other"> Other</label>
     </div>
 
-    <!-- ⚡ 为了不太长，我就写到这里，你要的话我可以帮你把 Section B 后半 和 Section C 全部展开。 -->
-    
+    <div class="field">
+      <div><strong>Q2. Learning Goals (single choice)</strong></div>
+      <label><input type="radio" name="learning_goal" value="Further studies"> Further studies</label>
+      <label><input type="radio" name="learning_goal" value="Studying abroad"> Studying abroad</label>
+      <label><input type="radio" name="learning_goal" value="Certification exams"> Certification exams</label>
+      <label><input type="radio" name="learning_goal" value="Changing majors"> Changing majors</label>
+      <label><input type="radio" name="learning_goal" value="Postgraduate studies"> Postgraduate studies</label>
+      <label><input type="radio" name="learning_goal" value="Doctoral studies"> Doctoral studies</label>
+      <label><input type="radio" name="learning_goal" value="Self-realization"> Self-realization</label>
+      <label><input type="radio" name="learning_goal" value="Postgraduate preparatory courses"> Postgraduate preparatory courses</label>
+      <label><input type="radio" name="learning_goal" value="Other"> Other</label>
+    </div>
+
+    <div class="field">
+      <div><strong>Q3. Study habits (single choice)</strong></div>
+      <label><input type="radio" name="study_habit" value="Needs companionship"> Needs companionship</label>
+      <label><input type="radio" name="study_habit" value="Works independently"> Works independently</label>
+      <label><input type="radio" name="study_habit" value="Has a regular schedule"> Has a regular schedule</label>
+      <label><input type="radio" name="study_habit" value="Focuses on tasks"> Focuses on tasks</label>
+      <label><input type="radio" name="study_habit" value="Has trouble concentrating"> Has trouble concentrating</label>
+      <label><input type="radio" name="study_habit" value="Gives up easily"> Gives up easily</label>
+      <label><input type="radio" name="study_habit" value="Strong focus"> Strong focus</label>
+      <label><input type="radio" name="study_habit" value="Comfortable with paper and electronic devices"> Comfortable with paper and electronic devices</label>
+      <label><input type="radio" name="study_habit" value="Good at reading"> Good at reading</label>
+      <label><input type="radio" name="study_habit" value="Good at calculating"> Good at calculating</label>
+      <label><input type="radio" name="study_habit" value="Prefers to interact"> Prefers to interact</label>
+      <label><input type="radio" name="study_habit" value="Not good at expressing oneself"> Not good at expressing oneself</label>
+      <label><input type="radio" name="study_habit" value="Other"> Other</label>
+    </div>
+
+    <div class="field">
+      <div><strong>Q4. Task Preferences (single choice)</strong></div>
+      <label><input type="radio" name="task_pref" value="Unclear"> Unclear</label>
+      <label><input type="radio" name="task_pref" value="Prefers long-term projects"> Prefers long-term projects</label>
+      <label><input type="radio" name="task_pref" value="Prefers short-term goals"> Prefers short-term goals</label>
+      <label><input type="radio" name="task_pref" value="Dislikes exams"> Dislikes exams</label>
+      <label><input type="radio" name="task_pref" value="Requires clear instructions"> Requires clear instructions</label>
+      <label><input type="radio" name="task_pref" value="Emphasizes self-determination"> Emphasizes self-determination</label>
+      <label><input type="radio" name="task_pref" value="Results-oriented"> Results-oriented</label>
+      <label><input type="radio" name="task_pref" value="Enjoys process"> Enjoys process</label>
+      <label><input type="radio" name="task_pref" value="Other"> Other</label>
+    </div>
+
+    <div class="field">
+      <div><strong>Q5. Psychological Obstacles (multiple choice)</strong></div>
+      <label><input type="checkbox" name="obstacles[]" value="Procrastination"> Procrastination</label>
+      <label><input type="checkbox" name="obstacles[]" value="Anxiety"> Anxiety</label>
+      <label><input type="checkbox" name="obstacles[]" value="Lack of planning"> Lack of planning</label>
+      <label><input type="checkbox" name="obstacles[]" value="Lack of motivation"> Lack of motivation</label>
+      <label><input type="checkbox" name="obstacles[]" value="Confusion"> Confusion</label>
+      <label><input type="checkbox" name="obstacles[]" value="Severe internal friction"> Severe internal friction</label>
+      <label><input type="checkbox" name="obstacles[]" value="Social anxiety"> Social anxiety</label>
+      <label><input type="checkbox" name="obstacles[]" value="Loneliness"> Loneliness</label>
+      <label><input type="checkbox" name="obstacles[]" value="Poverty"> Poverty</label>
+      <label><input type="checkbox" name="obstacles[]" value="Depression"> Depression</label>
+      <label><input type="checkbox" name="obstacles[]" value="Fragility"> Fragility</label>
+      <label><input type="checkbox" name="obstacles[]" value="Hate making mistakes"> Hate making mistakes</label>
+      <label><input type="checkbox" name="obstacles[]" value="Other"> Other</label>
+    </div>
+
+    <div class="field">
+      <div><strong>Q6. MBTI (single choice)</strong></div>
+      <label><input type="radio" name="mbti" value="INFJ"> INFJ</label>
+      <label><input type="radio" name="mbti" value="ESFJ"> ESFJ</label>
+      <label><input type="radio" name="mbti" value="ESTJ"> ESTJ</label>
+      <label><input type="radio" name="mbti" value="ESFP"> ESFP</label>
+      <label><input type="radio" name="mbti" value="ESTP"> ESTP</label>
+      <label><input type="radio" name="mbti" value="ENTJ"> ENTJ</label>
+      <label><input type="radio" name="mbti" value="ENFJ"> ENFJ</label>
+      <label><input type="radio" name="mbti" value="ENTP"> ENTP</label>
+      <label><input type="radio" name="mbti" value="ENFP"> ENFP</label>
+      <label><input type="radio" name="mbti" value="ISTJ"> ISTJ</label>
+      <label><input type="radio" name="mbti" value="ISFJ"> ISFJ</label>
+      <label><input type="radio" name="mbti" value="ISTP"> ISTP</label>
+      <label><input type="radio" name="mbti" value="ISFP"> ISFP</label>
+      <label><input type="radio" name="mbti" value="INTP"> INTP</label>
+      <label><input type="radio" name="mbti" value="INFP"> INFP</label>
+      <label><input type="radio" name="mbti" value="INTJ"> INTJ</label>
+    </div>
+
+    <!-- =========================
+         Section C: Situation
+    ========================== -->
+    <h2>Section C: Situation (external conditions and environment)</h2>
+
+    <div class="field">
+      <div><strong>Q1. Available study time (single choice)</strong></div>
+      <label><input type="radio" name="avail_time" value="≤1 hour per day"> 1 hour or less per day</label>
+      <label><input type="radio" name="avail_time" value="<2 hours per day"> Less than 2 hours per day</label>
+      <label><input type="radio" name="avail_time" value="≤3 hours per weekend"> 3 hours or less per weekend</label>
+      <label><input type="radio" name="avail_time" value=">3 hours per weekend"> More than 3 hours per weekend</label>
+      <label><input type="radio" name="avail_time" value="<3 hours per week"> Less than 3 hours per week</label>
+      <label><input type="radio" name="avail_time" value=">3 hours per day"> More than 3 hours per day</label>
+    </div>
+
+    <div class="field">
+      <div><strong>Q1b. Weekly pattern (single choice)</strong></div>
+      <label><input type="radio" name="weekly_pattern" value="Mainly on weekdays"> Mainly on weekdays</label>
+      <label><input type="radio" name="weekly_pattern" value="Mainly on weekends"> Mainly on weekends</label>
+      <label><input type="radio" name="weekly_pattern" value="Evenly split"> Evenly split</label>
+      <label><input type="radio" name="weekly_pattern" value="Irregular/uncertain"> Irregular/uncertain</label>
+      <label><input type="radio" name="weekly_pattern" value="Other"> Other</label>
+    </div>
+
+    <div class="field">
+      <div><strong>Q2. Commonly used electronic devices (multiple choice)</strong></div>
+      <label><input type="checkbox" name="devices[]" value="iPad"> iPad</label>
+      <label><input type="checkbox" name="devices[]" value="Desktop/Laptop"> Desktop/Laptop</label>
+      <label><input type="checkbox" name="devices[]" value="Apple Phone"> Apple Phone</label>
+      <label><input type="checkbox" name="devices[]" value="Android Phone"> Android Phone</label>
+    </div>
+
+    <div class="field">
+      <div><strong>Q3. Information access channels (multiple choice)</strong></div>
+      <label><input type="checkbox" name="channels[]" value="Chat-GPT"> Chat-GPT</label>
+      <label><input type="checkbox" name="channels[]" value="Books"> Books</label>
+      <label><input type="checkbox" name="channels[]" value="Lectures"> Lectures</label>
+      <label><input type="checkbox" name="channels[]" value="Online videos"> Online videos</label>
+      <label><input type="checkbox" name="channels[]" value="Other social media platforms"> Other social media platforms</label>
+      <label><input type="checkbox" name="channels[]" value="Other"> Other</label>
+    </div>
+
+    <div class="field">
+      <div><strong>Q4. Environmental or Social Barriers (multiple choice)</strong></div>
+      <label><input type="checkbox" name="barriers[]" value="Economic constraints"> Economic constraints</label>
+      <label><input type="checkbox" name="barriers[]" value="Lack of educational resources"> Lack of educational resources</label>
+      <label><input type="checkbox" name="barriers[]" value="Limited internet access"> Limited internet access</label>
+      <label><input type="checkbox" name="barriers[]" value="Geographical limitations"> Geographical limitations</label>
+      <label><input type="checkbox" name="barriers[]" value="Unstable living environment"> Unstable living environment</label>
+      <label><input type="checkbox" name="barriers[]" value="Social discrimination or bias"> Social discrimination or bias</label>
+      <label><input type="checkbox" name="barriers[]" value="Caregiving responsibilities"> Caregiving responsibilities</label>
+      <label><input type="checkbox" name="barriers[]" value="Work/school schedule conflicts"> Work/school schedule conflicts</label>
+      <label><input type="checkbox" name="barriers[]" value="Legal or administrative hurdles"> Legal or administrative hurdles</label>
+      <label><input type="checkbox" name="barriers[]" value="Safety concerns"> Safety concerns</label>
+      <label><input type="checkbox" name="barriers[]" value="Public infrastructure issues"> Public infrastructure issues</label>
+      <label><input type="checkbox" name="barriers[]" value="Other"> Other</label>
+    </div>
+
+    <div class="field">
+      <div><strong>Q5. Study environment (multiple choice)</strong></div>
+      <label><input type="checkbox" name="env[]" value="Quiet and independent"> Quiet and independent</label>
+      <label><input type="checkbox" name="env[]" value="Relatively noisy"> Relatively noisy</label>
+      <label><input type="checkbox" name="env[]" value="Suitable space"> Suitable space</label>
+      <label><input type="checkbox" name="env[]" value="Narrow space"> Narrow space</label>
+      <label><input type="checkbox" name="env[]" value="Library or other public spaces"> Library or other public spaces</label>
+      <label><input type="checkbox" name="env[]" value="Commuting use"> Commuting use</label>
+    </div>
+
+    <div class="field">
+      <div><strong>Q6. Daily lifestyle (multiple choice)</strong></div>
+      <label><input type="checkbox" name="lifestyle[]" value="Late-night staying"> Late-night staying</label>
+      <label><input type="checkbox" name="lifestyle[]" value="Outdoor sports"> Outdoor sports</label>
+      <label><input type="checkbox" name="lifestyle[]" value="Outdoor activities"> Outdoor activities</label>
+      <label><input type="checkbox" name="lifestyle[]" value="Social activities"> Social activities</label>
+      <label><input type="checkbox" name="lifestyle[]" value="Homebound activities"> Homebound activities</label>
+      <label><input type="checkbox" name="lifestyle[]" value="Artistic activities"> Artistic activities</label>
+      <label><input type="checkbox" name="lifestyle[]" value="No time for entertainment or activities"> No time for entertainment or activities</label>
+    </div>
+
+    <!-- Actions -->
     <div class="actions">
-      <button type="button" class="primary" onclick="exportJSON()">导出为 JSON</button>
-      <button type="reset">重置</button>
+      <button type="button" class="primary" onclick="exportJSON()">Export JSON</button>
+      <button type="reset">Reset</button>
     </div>
   </form>
 
-  <div id="out" class="out" aria-live="polite"></div>
-</div>
-<h2>Section A: System (Institutions and Structures)</h2>
+  <hr>
 
-<form id="intake">
-<div class="field">
-<div><strong>Q1. Your age group </strong></div>
-<label><input type="radio" name="goal" value="entrance"> Under 18</label>
-<label><input type="radio" name="goal" value="research"> 18-24</label>
-<label><input type="radio" name="goal" value="language"> 25-34 </label>
-<label><input type="radio" name="goal" value="other"> 35-44</label>
- <label><input type="radio" name="goal" value="other">45+</label> 
-</div>
-  
-<div class="field">
-<div><strong>Q2. Highest level of education</strong> <span class="hint">多选</span></div>
-<label><input type="checkbox" name="langs[]" value="en"> English</label>
-<label><input type="checkbox" name="langs[]" value="zh"> 中文</label>
-<label><input type="checkbox" name="langs[]" value="jp"> 日本語</label>
-</div>
-<div class="field">
-<div><strong>每周可用时间（h） / Weekly hours</strong></div>
-<label><input type="radio" name="hours" value="<=5"> ≤ 5</label>
-<label><input type="radio" name="hours" value="6-10"> 6–10</label>
-<label><input type="radio" name="hours" value="11-20"> 11–20</label>
-<label><input type="radio" name="hours" value=">20"> ＞20</label>
+  <!-- Purpose & FAQ -->
+  <h3>Purpose of Questions (for internal use)</h3>
+  <p>
+    A (Q1–Q6): System — demographic baseline, credentials, major, time status.<br>
+    B (Q1–Q6): Personal — interests, goals, habits, task preferences, obstacles, MBTI.<br>
+    C (Q1–Q6): Situation — available time, weekly pattern, devices, channels, support, environment, lifestyle.
+  </p>
+
+  <h3>FAQ</h3>
+  <p><strong>Can I skip a question?</strong><br>
+  Yes. Incomplete answers may reduce the accuracy of your results, but the form remains valid.</p>
+
+  <p><strong>Why ask about age/education/major?</strong><br>
+  To understand structural context shaping planning and access.</p>
+
+  <p><strong>How will my data be used?</strong><br>
+  Responses are anonymized and analyzed only for Sensis research and product development.</p>
 </div>
 <div class="field">
 <div><strong>一句话说明你的问题 / Your seed question</strong></div>
