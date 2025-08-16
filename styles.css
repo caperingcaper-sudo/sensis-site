@@ -168,7 +168,6 @@ border-right:1px solid var(--divider) !important;
 }
 .fab-menu, .backdrop{ display:none !important; }
 }
-  .backdrop{ display:none !important; } /* 桌面无抽屉遮罩 */
 }
 
 /* Grid/卡片不产生自身滚动，避免内层条 */
