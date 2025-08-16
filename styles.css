@@ -215,3 +215,20 @@ img, video, iframe{ max-width:100%; height:auto; }
     padding-inline: 24px;          /* 两侧留点呼吸 */
   }
 }
+/* 按钮样式 */
+.survey-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #4CAF50; /* 主色绿色 */
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 18px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.survey-button:hover {
+  background-color: #45a049; /* hover 时更深的绿色 */
+}
+
