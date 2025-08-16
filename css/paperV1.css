@@ -127,7 +127,6 @@
     text-align: center;
     width: calc(100% - 28px);      /* 两侧留点安全边距，避免贴边 */
   }
-}
 
   .paperv1-title{
     top: 110px;    /* 上提/下移就改这个数：越小越靠上 */
