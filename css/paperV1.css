@@ -8,11 +8,11 @@
   /* —— 标题/副标题（桌面默认） —— */
   --paperv1-h1-font: "Times New Roman", Times, serif;
   --paperv1-sub-font: "Times New Roman", Times, serif;
-  --paperv1-h1-size: 26px;
-  --paperv1-sub-size: 18px;
-  --paperv1-h1-right: 35px;        /* 标题右边对齐距离 */
-  --paperv1-sub-right: 35px;       /* 副标题右边对齐距离 */
-  --paperv1-h1-top:  141px;        /* 标题距 header 顶部 */
+  --paperv1-h1-size: 30px;
+  --paperv1-sub-size: 21px;
+  --paperv1-h1-right: 45px;        /* 标题右边对齐距离 */
+  --paperv1-sub-right: 45px;       /* 副标题右边对齐距离 */
+  --paperv1-h1-top:  140px;        /* 标题距 header 顶部 */
   --paperv1-sub-top: 161px;        /* 副标题距 header 顶部 */
 
   /* —— 纸面观感 —— */
