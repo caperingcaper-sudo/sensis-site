@@ -158,7 +158,7 @@ html[data-lang="jp"] .paperv1 .md{ font-family: var(--md-font-ja); }
 .paperv1 .md h1,.paperv1 .md h2,.paperv1 .md h3{ line-height:1.25; margin:1.2em 0 .5em; font-weight:700; }
 .paperv1 .md h1{ font-size:clamp(30px,5vw,40px); }
 .paperv1 .md h2{ font-size:clamp(25px,3.8vw,28px); border-bottom:1px solid var(--md-rule); padding-bottom:.2em; }
-.paperv1 .md h3{ font-size:clamp(12px,2.8vw,22px); }
+.paperv1 .md h3{ font-size:clamp(25px,2.8vw,22px); }
 .paperv1 .md p{ margin:.8em 0; }
 .paperv1 .md ul{ padding-left:1.2em; margin:.6em 0 1em; }
 .paperv1 .md form{ margin-top:1.2em; }
@@ -188,7 +188,7 @@ font-family: ui-monospace, Menlo, Consolas, monospace; font-size:.95em; white-sp
 问卷内容向下
 @media (max-width: 768px) {
   .md {
-    margin-top: 120px; /* 手机时往下挪 */
+    margin-top: 150px; /* 手机时往下挪 */
   }
 }
 /* 多列选项容器（桌面分列，手机自动回 1 列） */
