@@ -1,17 +1,21 @@
 /* ===== Paper v1 (scoped / 不影响其它页面) ===================== */
-.paperv1 {
-  /* 作用域变量（只影响 .paperv1 内部） */
-  --paperv1-width: 280mm;          /* 桌面 A4 宽度 */
-  --paperv1-pad-x-desktop: 20mm;   /* 正文左右留白 20mm */
-  --paperv1-pad-x-mobile: 16px;    /* 手机退化为 px */
+/* ============ 只给 paperv1 作用域定义变量（不会影响其它页面） ============ */
+.paperv1{
+  /* 纸面尺寸 & 内边距 */
+  --paper-max: 840px;          /* A4 观感：可调 800–900 */
+  --paper-pad-x: 20mm;         /* A4 左右 20mm 你的要求 */
 
-  --paperv1-h1-top: 8px;           /* 主标题相对头图的上偏移 */
-  --paperv1-h1-right: 24px;        /* 主标题右偏移 */
-  --paperv1-sub-top: 42px;         /* 副标题相对头图的上偏移（在线下） */
-  --paperv1-sub-right: 24px;       /* 副标题右偏移 */
+  /* 标题字体（你要的 Times New Roman） */
+  --h1-font: "Times New Roman", "Times", serif;
+  --h2-font: "Times New Roman", "Times", serif;
 
-  --paperv1-h1-size: 25px;         /* 主标题字号 */
-  --paperv1-sub-size: 13px;        /* 副标题字号 */
+  /* 标题字号（桌面） */
+  --h1-size: 36px;
+  --h2-size: 18px;
+
+  /* 纸面微阴影细边 */
+  --paper-shadow: 0 6px 24px rgba(0,0,0,.06);
+  --paper-border: 1px solid rgba(0,0,0,.06);
 }
 
 /* 纸面容器（无浅绿背景） */
