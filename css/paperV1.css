@@ -1,7 +1,7 @@
 /* ===== Paper v1 (scoped; 不影响其它页面) ===================== */
 .paperv1{
   /* —— 尺寸与留白（桌面默认） —— */
-  --paperv1-width: 920px;          /* A4 观感（可调 860–980） */
+  --paperv1-width: 980px;          /* A4 观感（可调 860–980） */
   --paperv1-pad-x-desktop: 20mm;   /* 正文左右 20mm（你的要求） */
   --paperv1-pad-x-mobile: 16px;    /* 手机左右内边距 */
 
