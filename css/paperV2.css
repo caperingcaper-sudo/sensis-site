@@ -204,3 +204,8 @@ html[data-lang="jp"] .paperv1 .md{ font-family: var(--md-font-ja); }
   /* 正文左右略收一点，视觉更紧凑 */
   .paperv1-body{ padding-inline: 18mm; }
 }
+
+/* md 用主/副タイトル */
+.md-head{ margin: 8px auto 18px; padding-bottom: 8px; border-bottom:1px solid var(--md-rule); }
+.md-title{ margin:0; font-size:clamp(24px, 4.2vw, 32px); line-height:1.2; }
+.md-sub{ margin:.4em 0 0; color:var(--md-muted); font-size:clamp(14px, 2.4vw, 16px); }
