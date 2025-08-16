@@ -6,6 +6,21 @@ document.querySelectorAll('.langs .lang')
 .forEach(b => b.classList.toggle('is-active', b.dataset.lang === lang));
 document.documentElement.setAttribute('data-lang', lang);
 }
+function switchLang(code){
+  const root = document.documentElement; // <html>
+  const allowed = ['en','cn','jp'];
+  const code2 = allowed.includes(code) ? code : 'en';
+
+  // data-lang（CSS 変数/显示切替）と lang（字体切替）を両方更新
+  root.setAttribute('data-lang', code2);
+  // zh と cn の整合（あなたの CSS は cn を使っている）
+  root.setAttribute('lang', code2 === 'cn' ? 'zh' : (code2 === 'jp' ? 'ja' : 'en'));
+
+  // ボタンの active 表示更新
+  document.querySelectorAll('.langs .lang').forEach(btn=>{
+    btn.classList.toggle('is-active', btn.getAttribute('data-lang') === code2);
+  });
+}
 document.addEventListener('DOMContentLoaded', () => {
   const logo = document.querySelector('.logo-link');
   if (!logo) return;
