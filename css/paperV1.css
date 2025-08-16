@@ -185,12 +185,6 @@ padding:8px 14px; border-radius:10px; cursor:pointer;
 margin-top:1em; background:#fafafa; border:1px solid #eee; border-radius:8px; padding:10px 12px;
 font-family: ui-monospace, Menlo, Consolas, monospace; font-size:.95em; white-space:pre-wrap;
 }
-问卷内容向下
-@media (max-width: 768px) {
-  .md {
-    margin-top: 250px; /* 手机时往下挪 */
-  }
-}
 /* 多列选项容器（桌面分列，手机自动回 1 列） */
 .md .options{
   display: grid;
