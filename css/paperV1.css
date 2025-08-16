@@ -127,17 +127,6 @@
     text-align: center;
     width: calc(100% - 28px);      /* 两侧留点安全边距，避免贴边 */
   }
-  .paper h1 {
-    margin-top: 0.8em; 
-  }
-  /* h2和它下面的md之间加距离 */
-  .paper h2 + .md {
-    margin-top: 1.5em;
-  }
-  /* h1和h2之间的间距可以缩小一点（可选） */
-  .paper h1 + h2 {
-    margin-top: 1em;
-  }
 }
 
   .paperv1-title{
