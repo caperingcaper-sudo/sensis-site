@@ -5,19 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sensis • Paper Layout</title>
 
-  <!-- 字体 -->
+  <!-- 字体（你项目里的全局字体保持不变） -->
   <link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&family=Lora&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
-  
 
-  <!-- 你的全局样式（前面已把 Paper v1 追加进去） -->
+  <!-- 全局样式 + Paper v1 样式 -->
   <link rel="stylesheet" href="styles.css?v=2">
-  <link rel="stylesheet" href="css/paperV1.css?v=2">
+  <link rel="stylesheet" href="css/paperV1.css?v=2"><!-- 注意大小写：paperV1.css -->
 </head>
 <body>
   <div class="wrap">
-    <!-- Sidebar（沿用你的现有结构） -->
+    <!-- Sidebar -->
     <aside>
       <div class="brand">
         <a href="index.html" class="logo-link">
@@ -33,40 +32,41 @@
     </aside>
 
     <main>
-      <!-- 语言切换（保持你原来的按钮与行为） -->
+      <!-- 语言切换：沿用你的逻辑 -->
       <div class="langs">
         <button class="lang is-active" data-lang="en" onclick="switchLang('en')">English</button>
         <button class="lang" data-lang="cn" onclick="switchLang('cn')">中文</button>
         <button class="lang" data-lang="jp" onclick="switchLang('jp')">日本語</button>
       </div>
 
-      <!-- 纸面（全部样式都在 .paperv1 命名空间内，不影响其它页） -->
+      <!-- 纸面 -->
       <article class="paperv1">
         <header class="paperv1-header" aria-label="paper header">
-          <!-- 桌面/横屏用 paper-2；手机用 paper-3 -->
+          <!-- 桌面/横屏用 paper-2；手机用 paper-3（CSS 中 media query 会自动切换显示） -->
           <img class="paperv1-art desktop" src="assets/paper-2.png" alt="Header art (desktop)">
           <img class="paperv1-art -mobile" src="assets/paper-3.png" alt="Header art (mobile)">
 
-          <!-- 标题与副标题浮在图上，位置通过变量微调 -->
+          <!-- 悬浮标题（位置/字号/右距都在 CSS 变量里调） -->
           <h1 class="paperv1-title">Sensis User Basic Information</h1>
-          <p class="paperv1-sub">Please answer the questions below. Use ○ for single choice and □ for multiple choice.</p>
+          <h2 class="paperv1-sub">Please answer the questions below. Use ○ for single choice and □ for multiple choice.</h2>
         </header>
 
+        <!-- 正文：桌面左右 20mm；手机左右 16px -->
         <section class="paperv1-body" id="content">
-          <!-- 你的问卷/内容：左右 20mm（桌面），手机退化为 16px -->
           <p>Here goes your form / questionnaire…</p>
         </section>
       </article>
     </main>
   </div>
 
-  <!-- 移动端抽屉按钮与遮罩（照旧） -->
+  <!-- 移动端抽屉按钮与遮罩（你项目的全局交互） -->
   <button class="fab-menu" onclick="toggleMenu()" aria-label="Open menu">
     <img src="assets/menu-icon.png" alt="Menu">
   </button>
   <div class="backdrop" onclick="toggleMenu()"></div>
 
-  <!-- 公共脚本（语言切换 / 抽屉等仍用你自己的） -->
+  <!-- 公共脚本（switchLang / 抽屉等） -->
   <script src="common.js"></script>
 </body>
 </html>
+
