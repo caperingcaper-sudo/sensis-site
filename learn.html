@@ -4,17 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sensis • learn</title>
-
-  <!-- type (kept as in original) -->
-  <link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&family=Lora&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&family=Lora&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
-
-  <!-- site-wide css -->
-  <link rel="stylesheet" href="style.css">
-
-  <style>
-  /* ===== Showcase 基础 + section skeleton ===== */
+<link rel="stylesheet" href="styles.css">
+<style>
+ /* ===== Showcase 基础 + section skeleton ===== */
   :root{
     --divider:#e6e6e6;
     --muted:#666666;
@@ -88,8 +83,8 @@
   .showcase > * { flex: 1 1 100%; }
 }
   </style>
-</head>
-<body>
+  </head>
+  <body>
   <div class="wrap">
     <aside>
       <div class="brand">
@@ -98,15 +93,14 @@
         </a>
       </div>
       <nav>
-<a href="question.html"><span>Question</span></a>
-<a href="search.html"><span>Search</span></a>
-<a href="learn.html"><span>Learn</span></a>
-<a href="create.html"><span>Create</span></a>
-</nav>
+        <a href="question.html"><span>Question</span></a>
+        <a href="search.html"><span>Search</span></a>
+        <a href="learn.html"><span>Learn</span></a>
+        <a href="create.html"><span>Create</span></a>
+      </nav>
     </aside>
-
-    <main>
- <div class="langs">
+<main>
+<div class="langs">
     <button class="lang is-active" data-lang="en" onclick="switchLang('en')">English</button>
     <button class="lang" data-lang="cn" onclick="switchLang('cn')">中文</button>
     <button class="lang" data-lang="jp" onclick="switchLang('jp')">日本語</button>
@@ -128,8 +122,6 @@
           </div>
           <div class="section-body">
             <section class="showcase">
-
-              <!-- Section 1：全宽主视觉（固定比例 16:9） -->
               <div class="showcase-banner card ratio-16x9">
                 <div class="card-body center">
                   <h2 class="title">Main Visual / 主视觉</h2>
@@ -137,7 +129,6 @@
                   <!-- <img src="assets/your-hero.jpg" alt="" class="cover"> -->
                 </div>
               </div>
-<!-- Section 2：三等分模块（固定比例 4:3） -->
               <div class="showcase-grid grid-3">
                 <article class="card ratio-4x3">
                   <div class="card-body">
@@ -158,7 +149,6 @@
                   </div>
                 </article>
               </div>
-              <!-- Section 3：两等分内容（左文右图 / 左图右文） -->
               <div class="showcase-grid grid-2">
                 <article class="card ratio-16x9">
                   <div class="card-body">
@@ -174,31 +164,26 @@
                   </div>
                 </article>
               </div>
-
-              <!-- Section 4：四宫格（固定比例 1:1） -->
-              <div class="showcase-grid grid-4">
+<div class="showcase-grid grid-4">
                 <article class="card ratio-1x1"><div class="card-body center"><span class="kpi">A</span><p class="desc">要点A</p></div></article>
                 <article class="card ratio-1x1"><div class="card-body center"><span class="kpi">B</span><p class="desc">要点B</p></div></article>
                 <article class="card ratio-1x1"><div class="card-body center"><span class="kpi">C</span><p class="desc">要点C</p></div></article>
                 <article class="card ratio-1x1"><div class="card-body center"><span class="kpi">D</span><p class="desc">要点D</p></div></article>
               </div>
-             
-            </section>
+              </section>
           </div>
         </section>
       </div>
-
-      <!-- placeholders for other languages -->
-      <div id="lang-cn" hidden></div>
+ <div id="lang-cn" hidden></div>
       <div id="lang-jp" hidden></div>
  </div>
     </main>
-
-  <button class="fab-menu" onclick="toggleMenu()" aria-label="Open menu" aria-pressed="false">
+    button class="fab-menu" onclick="toggleMenu()" aria-label="Open menu">
     <img src="assets/menu-icon.png" alt="Menu">
   </button>
-  <div class="backdrop" onclick="toggleMenu()" aria-hidden="true"></div>
+  <div class="backdrop" onclick="toggleMenu()"></div>
 
+  <!-- 公共脚本（语言切换 / 抽屉等仍用你自己的） -->
   <script src="common.js"></script>
 </body>
 </html>
