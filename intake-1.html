@@ -63,7 +63,7 @@
   <span class="i18n" lang="jp">単一選択は○、複数選択は□を使用します。</span>
 </h2>
         </header>
-         <!-- 正文：桌面左右 20mm；手机左右 16px -→
+-- 正文：桌面左右 20mm；手机左右 16px -→
      <section class="paperv1-body" id="content">
 <div class="md">
 <form id="intake">
@@ -101,6 +101,66 @@
   </label>
   <!-- 其余选项照抄这个结构 -->
 </div>
+  <div class="actions">
+      <button type="button" class="primary" onclick="exportJSON()">Export JSON</button>
+      <button type="reset">Reset</button>
+    </div>
+  </form>
+
+  <hr>
+
+  <!-- Purpose & FAQ 先暂留英文；需要我可按同样方式三语化 -->
+  <h3>Purpose of Questions (for internal use)</h3>
+  <p>
+    A (Q1–Q6): System — demographic baseline, credentials, major, time status.<br>
+    B (Q1–Q6): Personal — interests, goals, habits, task preferences, obstacles, MBTI.<br>
+    C (Q1–Q6): Situation — available time, weekly pattern, devices, channels, support, environment, lifestyle.
+  </p>
+
+  <h3>FAQ</h3>
+  <p><strong>Can I skip a question?</strong><br>
+  Yes. Incomplete answers may reduce the accuracy of your results, but the form remains valid.</p>
+
+  <p><strong>Why ask about age/education/major?</strong><br>
+  To understand structural context shaping planning and access.</p>
+
+  <p><strong>How will my data be used?</strong><br>
+  Responses are anonymized and analyzed only for Sensis research and product development.</p>
+</div>
+
+<div class="field">
+</form>
+<div id="out" class="out" aria-live="polite"></div>
+</div>
+</section>
+      </article>
+    </main>
+  </div>
+
+  <!-- 移动端抽屉按钮与遮罩（你项目的全局交互） -->
+  <button class="fab-menu" onclick="toggleMenu()" aria-label="Open menu">
+    <img src="assets/menu-icon.png" alt="Menu">
+  </button>
+  <div class="backdrop" onclick="toggleMenu()"></div>
+   公共js
+    <script src="common.js"></script>
+  <script>
+function formToJSON(form){
+const fd = new FormData(form), out = {};
+for (const [k,v] of fd.entries()){
+if (k.endsWith('[]')) { (out[k.slice(0,-2)] ||= []).push(v); }
+else if (out[k] !== undefined) { out[k] = Array.isArray(out[k]) ? out[k].concat(v) : [out[k], v]; }
+else { out[k] = v; }
+}
+return out;
+}
+function exportJSON(){
+const data = formToJSON(document.getElementById('intake'));
+document.getElementById('out').textContent = JSON.stringify(data, null, 2);
+}
+</script>
+</body>
+</html>
         
 
   
