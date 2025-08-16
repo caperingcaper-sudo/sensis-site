@@ -9,11 +9,11 @@
   --paperv1-h1-font: "Times New Roman", Times, serif;
   --paperv1-sub-font: "Times New Roman", Times, serif;
   --paperv1-h1-size: 25px;
-  --paperv1-sub-size: 13px;
+  --paperv1-sub-size: 16px;
   --paperv1-h1-right: 24px;        /* 标题右边对齐距离 */
   --paperv1-sub-right: 24px;       /* 副标题右边对齐距离 */
-  --paperv1-h1-top:  110px;        /* 标题距 header 顶部 */
-  --paperv1-sub-top: 152px;        /* 副标题距 header 顶部 */
+  --paperv1-h1-top:  152px;        /* 标题距 header 顶部 */
+  --paperv1-sub-top: 156px;        /* 副标题距 header 顶部 */
 
   /* —— 纸面观感 —— */
   --paperv1-edge-color: rgba(0,0,0,.06);   /* 外轮廓细线颜色 */
