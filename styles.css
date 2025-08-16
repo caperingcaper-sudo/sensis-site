@@ -13,6 +13,19 @@ margin:0; color:var(--ink); background:var(--bg);
 font-family:var(--content-serif); line-height:1.6;
 }
 
+/* 三語切替の共通ルール（全ページ共通） */
+
+/* inline 用：span など */
+.i18n[lang] { display: none; }
+html[data-lang="en"] .i18n[lang="en"] { display: inline; }
+html[data-lang="cn"] .i18n[lang="cn"] { display: inline; }
+html[data-lang="jp"] .i18n[lang="jp"] { display: inline; }
+
+/* block 用：section など */
+.i18n-block[lang] { display: none; }
+html[data-lang="en"] .i18n-block[lang="en"] { display: block; }
+html[data-lang="cn"] .i18n-block[lang="cn"] { display: block; }
+html[data-lang="jp"] .i18n-block[lang="jp"] { display: block; }
 /* ===== 2) Desktop layout: sidebar + content / 桌面侧栏常驻 ===== */
 .wrap{
 display:grid;
