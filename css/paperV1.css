@@ -1,84 +1,37 @@
-/* ===== Paper v1 (scoped / 不影响其它页面) ===================== */
-/* ============ 只给 paperv1 作用域定义变量（不会影响其它页面） ============ */
+/* ===== Paper v1 (scoped; 不影响其它页面) ===================== */
 .paperv1{
-  /* 纸面尺寸 & 内边距 */
-  --paper-max: 920px;          /* A4 观感：可调 800–900 */
-  --paper-pad-x: 20mm;         /* A4 左右 20mm 你的要求 */
+  /* —— 尺寸与留白（桌面默认） —— */
+  --paperv1-width: 920px;          /* A4 观感（可调 860–980） */
+  --paperv1-pad-x-desktop: 20mm;   /* 正文左右 20mm（你的要求） */
+  --paperv1-pad-x-mobile: 16px;    /* 手机左右内边距 */
 
-  /* 标题字体（你要的 Times New Roman） */
-  --h1-font: "Times New Roman", "Times", serif;
-  --h2-font: "Times New Roman", "Times", serif;
+  /* —— 标题/副标题（桌面默认） —— */
+  --paperv1-h1-font: "Times New Roman", Times, serif;
+  --paperv1-sub-font: "Times New Roman", Times, serif;
+  --paperv1-h1-size: 36px;
+  --paperv1-sub-size: 18px;
+  --paperv1-h1-right: 24px;        /* 标题右边对齐距离 */
+  --paperv1-sub-right: 24px;       /* 副标题右边对齐距离 */
+  --paperv1-h1-top:  110px;        /* 标题距 header 顶部 */
+  --paperv1-sub-top: 152px;        /* 副标题距 header 顶部 */
 
-  /* 标题字号（桌面） */
-  --h1-size: 36px;
-  --h2-size: 18px;
-
-  /* 纸面微阴影细边 */
-  --paper-shadow: 0 6px 24px rgba(0,0,0,.06);
-  --paper-border: 1px solid rgba(0,0,0,.06);
-}
-
-/* 纸面容器（无浅绿背景） */
-.paperv1 {
-  width: min(var(--paperv1-width), 92vw);
-  margin: 0 auto;
-  background: #fff;
-  box-shadow: 0 8px 20px rgba(0,0,0,.03);
-}
-
-/* 头图 + 浮动标题区 */
-.paperv1-header { position: relative; isolation: isolate; }
-.paperv1-art { width: 100%; height: auto; display: block; user-select: none; -webkit-user-drag: none; }
-.paperv1-art.-mobile { display: none; }   /* 桌面/横屏默认用 desktop 图 */
-
-.paperv1-title,
-.paperv1-sub {
-  position: absolute; margin: 0; text-align: right; pointer-events: none;
-}
-.paperv1-title{
-  margin-top: 25px;
-  right: var(--paperv1-h1-right);
-  font-family: "Times New Roman", serif;
-  font-weight: bold; /* 这行代码用于加粗 */
-  font-size: var(--paperv1-h1-size);
-  line-height: 1.1; font-weight: 300; color: #1f1f1f;
-  text-shadow: 0 1px 2px rgba(0,0,0,.06);
-}
-.paperv1-sub{
-  margin-top: 35px;
-  right: var(--paperv1-sub-right);
-  font-family: var(--content-serif, 'Times New Roman', serif);
-  font-size: var(--paperv1-sub-size);
-  color:#555;
-}
-
-/* 正文（A4 左右 20mm） */
-.paperv1-body{ padding: 16px var(--paperv1-pad-x-desktop) 36px; }
-
-/* 手机/窄屏：仅白纸、换手机头图、左右退化为 px，不改变你全站其它样式 */
-@media (max-width: 960px){
-  .paperv1 { margin-top: 50px;width: min(720px, 100%); box-shadow: none; }
-  .paperv1-body { padding-inline: var(--paperv1-pad-x-mobile); }
-  .paperv1-art.desktop { display: none; }
-  .paperv1-art.-mobile { display: block; }
-  .paperv1-title{ top: 180px; right: 14px; font-size: 28px; }
-  .paperv1-sub{ top: 200px; right: 14px; font-size: 16px; }
-}
-/* ===== Paper v1 • subtle paper look ========================== */
-/* 可调参数（可按需覆盖） */
-.paperv1{
+  /* —— 纸面观感 —— */
   --paperv1-edge-color: rgba(0,0,0,.06);   /* 外轮廓细线颜色 */
   --paperv1-shadow-1: 0 6px 22px rgba(0,0,0,.08);
   --paperv1-shadow-2: 0 2px 6px rgba(0,0,0,.05);
   --paperv1-inner-vignette: rgba(0,0,0,.045); /* 内侧轻微晕影 */
+
   position: relative;
-  border: 1px solid var(--paperv1-edge-color);   /* 细描边 */
-  border-radius: 0px;                             /* 轻圆角，可改 */
+  width: min(var(--paperv1-width), 92vw);
+  margin: 0 auto;
+  background:#fff;
+  border: 1px solid var(--paperv1-edge-color);
+  border-radius: 0;
   box-shadow: var(--paperv1-shadow-1), var(--paperv1-shadow-2);
   overflow: hidden; /* 让内晕影不外溢 */
 }
 
-/* 内侧超淡的“纸张压痕/晕影” */
+/* 内侧极淡晕影，让纸更“立体” */
 .paperv1::before{
   content:"";
   position:absolute; inset:0;
@@ -86,16 +39,74 @@
   background:
     radial-gradient(120% 80% at 50% -10%, transparent 60%, var(--paperv1-inner-vignette) 100%),
     radial-gradient(120% 80% at 50% 110%, transparent 60%, var(--paperv1-inner-vignette) 100%);
-  mix-blend-mode: multiply;          /* 让晕影更自然 */
-  opacity:.55;                       /* 强弱可调 */
+  mix-blend-mode:multiply;
+  opacity:.55;
 }
 
-/* 打印时去掉阴影与圆角（看起来更像 A4） */
+/* 头图 + 浮动标题区 */
+.paperv1-header{ position: relative; isolation: isolate; }
+.paperv1-art{ width:100%; height:auto; display:block; user-select:none; -webkit-user-drag:none; }
+.paperv1-art.desktop{ display:block; }
+.paperv1-art.-mobile{ display:none; }
+
+/* 标题与副标题“浮在图上” */
+.paperv1-title,
+.paperv1-sub{
+  position:absolute;
+  margin:0;
+  right: 0;
+  text-align:right;
+  pointer-events:none;
+  color:#1f1f1f;
+  text-shadow:0 1px 2px rgba(0,0,0,.06);
+}
+.paperv1-title{
+  top: var(--paperv1-h1-top);
+  right: var(--paperv1-h1-right);
+  font-family: var(--paperv1-h1-font);
+  font-weight: 700;                 /* 标题加粗 */
+  font-size: var(--paperv1-h1-size);
+  line-height:1.12;
+}
+.paperv1-sub{
+  top: var(--paperv1-sub-top);
+  right: var(--paperv1-sub-right);
+  font-family: var(--paperv1-sub-font);
+  font-size: var(--paperv1-sub-size);
+  color:#555;
+}
+
+/* 正文（白纸主体区域） */
+.paperv1-body{
+  padding: 16px var(--paperv1-pad-x-desktop) 36px;
+}
+
+/* —— 手机/窄屏：换头图；改变量（不需要你在 HTML 里再写额外 style） —— */
+@media (max-width: 960px){
+  .paperv1{ width: min(720px, 100%); margin-top:50px; box-shadow:none; }
+
+  .paperv1-art.desktop{ display:none; }
+  .paperv1-art.-mobile{ display:block; }
+
+  /* 覆盖变量，用移动端值 */
+  .paperv1{
+    --paperv1-h1-size: 28px;
+    --paperv1-sub-size: 16px;
+    --paperv1-h1-right: 14px;
+    --paperv1-sub-right: 14px;
+    --paperv1-h1-top:  180px;
+    --paperv1-sub-top: 210px;
+  }
+
+  .paperv1-body{ padding-inline: var(--paperv1-pad-x-mobile); }
+}
+
+/* 打印：去掉阴影与圆角，更像 A4 */
 @media print{
   .paperv1{
-    border: 1px solid #ccc;
-    box-shadow: none;
-    border-radius: 0;
+    border:1px solid #ccc;
+    box-shadow:none;
+    border-radius:0;
   }
   .paperv1::before{ display:none; }
 }
