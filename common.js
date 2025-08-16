@@ -1,14 +1,15 @@
 function switchLang(code){
-  const root = document.documentElement; // <html>
+  const root = document.documentElement;
   const allowed = ['en','cn','jp'];
   const code2 = allowed.includes(code) ? code : 'en';
 
-  // data-lang（CSS 変数/显示切替）と lang（字体切替）を両方更新
+  // 可視切替（全ページ）
   root.setAttribute('data-lang', code2);
-  // zh と cn の整合（あなたの CSS は cn を使っている）
+
+  // フォント用の html[lang] も更新（既存のあなたの設定に追随）
   root.setAttribute('lang', code2 === 'cn' ? 'zh' : (code2 === 'jp' ? 'ja' : 'en'));
 
-  // ボタンの active 表示更新
+  // ボタンの active 表示
   document.querySelectorAll('.langs .lang').forEach(btn=>{
     btn.classList.toggle('is-active', btn.getAttribute('data-lang') === code2);
   });
