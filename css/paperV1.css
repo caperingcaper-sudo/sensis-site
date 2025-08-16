@@ -188,6 +188,6 @@ font-family: ui-monospace, Menlo, Consolas, monospace; font-size:.95em; white-sp
 问卷内容向下
 @media (max-width: 768px) {
   .md {
-    margin-top: 40px; /* 手机时往下挪 */
+    margin-top: 80px; /* 手机时往下挪 */
   }
 }
