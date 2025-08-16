@@ -49,322 +49,67 @@
           <img class="paperv1-art -mobile" src="assets/paper-3.png" alt="Header art (mobile)">
 
           <!-- 悬浮标题（位置/字号/右距都在 CSS 变量里调） -->
-          <h1 class="paperv1-title">Sensis User Basic Information</h1>
-          <h2 class="paperv1-sub">Please answer the questions below.
-            <br>Use ○ for single choice and □ for multiple choice.</h2>
+         <h1 class="paperv1-title">
+  <span class="i18n" lang="en">Sensis User Basic Information</span>
+  <span class="i18n" lang="cn">Sensis 用户基础信息</span>
+  <span class="i18n" lang="jp">Sensis 基本情報</span>
+</h1>
+
+<h2 class="paperv1-sub">
+  <span class="i18n" lang="en">Please answer the questions below.</span>
+  <span class="i18n" lang="cn">请回答以下问题。</span>
+  <span class="i18n" lang="jp">以下の質問にお答えください。</span>
+  <br>
+  <span class="i18n" lang="en">Use ○ for single choice and □ for multiple choice.</span>
+  <span class="i18n" lang="cn">单选请填 ○，多选请填 □。</span>
+  <span class="i18n" lang="jp">単一選択は○、複数選択は□を使用します。</span>
+</h2>
+
         </header>
 
         <!-- 正文：桌面左右 20mm；手机左右 16px -->
       <section class="paperv1-body" id="content">
 <div class="md">
-  <!-- 仅作用于 .paperv1 .md 的三语可见性样式；不影响站内其他页面 -->
-  <style>
-    .paperv1 .md .t > span{ display:none; }
-    html[data-lang="en"] .paperv1 .md .t .en{ display:inline; }
-    html[data-lang="cn"] .paperv1 .md .t .cn{ display:inline; }
-    html[data-lang="jp"] .paperv1 .md .t .jp{ display:inline; }
-  </style>
 
   <form id="intake">
     <!-- 登录名 / User ID -->
     <div class="field">
-      <label class="t">
-        <strong>
-          <span class="en">Nick Name / User ID</span>
-          <span class="cn">昵称 / 用户 ID</span>
-          <span class="jp">ニックネーム / ユーザーID</span>
-        </strong>
-      </label><br>
-      <input type="text" name="user_id" style="width:100%;padding:8px;border:1px solid #e5e5e5;border-radius:8px;font-family:inherit;">
-    </div>
+     <div class="field">
+  <label><strong>
+    <span class="i18n" lang="en">Nick Name / User ID</span>
+    <span class="i18n" lang="cn">昵称 / 用户ID</span>
+    <span class="i18n" lang="jp">ニックネーム / ユーザーID</span>
+  </strong></label><br>
+  <input type="text" name="user_id" ...>
+</div>
 
-    <!-- =========================
-         Section A: System
-    ========================== -->
-    <h2 class="t">
-      <span class="en">Section A: System (Institutions and Structures)</span>
-      <span class="cn">A部分：系统（制度与结构）</span>
-      <span class="jp">Aセクション：システム（制度と構造）</span>
-    </h2>
+<h2>
+  <span class="i18n" lang="en">Section A: System (Institutions and Structures)</span>
+  <span class="i18n" lang="cn">A 部分：系统（制度与结构）</span>
+  <span class="i18n" lang="jp">A セクション：制度・構造</span>
+</h2>
 
-    <!-- Q1 -->
-    <div class="field">
-      <div class="t"><strong>
-        <span class="en">Q1. Your age group (single choice)</span>
-        <span class="cn">Q1. 年龄段（单选）</span>
-        <span class="jp">Q1. 年齢層（単一選択）</span>
-      </strong></div>
+<div class="field">
+  <div><strong>
+    <span class="i18n" lang="en">Q1. Your age group (single choice)</span>
+    <span class="i18n" lang="cn">Q1. 年龄段（单选）</span>
+    <span class="i18n" lang="jp">Q1. 年齢層（単一）</span>
+  </strong></div>
 
-      <label class="t"><input type="radio" name="age" value="Under 18">
-        <span class="en">Under 18</span>
-        <span class="cn">未满 18 岁</span>
-        <span class="jp">18歳未満</span>
-      </label>
+  <label><input type="radio" name="age" value="Under 18">
+    <span class="i18n" lang="en">Under 18</span>
+    <span class="i18n" lang="cn">18岁以下</span>
+    <span class="i18n" lang="jp">18歳未満</span>
+  </label>
 
-      <label class="t"><input type="radio" name="age" value="18-24">
-        <span class="en">18–24</span>
-        <span class="cn">18–24 岁</span>
-        <span class="jp">18〜24歳</span>
-      </label>
+  <label><input type="radio" name="age" value="18-24">
+    <span class="i18n" lang="en">18–24</span>
+    <span class="i18n" lang="cn">18–24</span>
+    <span class="i18n" lang="jp">18–24</span>
+  </label>
+  <!-- 其余选项照抄这个结构 -->
+</div>
 
-      <label class="t"><input type="radio" name="age" value="25-34">
-        <span class="en">25–34</span>
-        <span class="cn">25–34 岁</span>
-        <span class="jp">25〜34歳</span>
-      </label>
-
-      <label class="t"><input type="radio" name="age" value="35-44">
-        <span class="en">35–44</span>
-        <span class="cn">35–44 岁</span>
-        <span class="jp">35〜44歳</span>
-      </label>
-
-      <label class="t"><input type="radio" name="age" value="45+">
-        <span class="en">45+</span>
-        <span class="cn">45 岁以上</span>
-        <span class="jp">45歳以上</span>
-      </label>
-    </div>
-
-    <!-- Q2 -->
-    <div class="field">
-      <div class="t"><strong>
-        <span class="en">Q2. Highest level of education (single choice)</span>
-        <span class="cn">Q2. 最高学历（单选）</span>
-        <span class="jp">Q2. 最終学歴（単一選択）</span>
-      </strong></div>
-
-      <label class="t"><input type="radio" name="edu" value="High school or below">
-        <span class="en">High school or below</span>
-        <span class="cn">高中及以下</span>
-        <span class="jp">高校以下</span>
-      </label>
-
-      <label class="t"><input type="radio" name="edu" value="Bachelor/Master">
-        <span class="en">Bachelor's / Master's</span>
-        <span class="cn">学士 / 硕士</span>
-        <span class="jp">学士・修士</span>
-      </label>
-
-      <label class="t"><input type="radio" name="edu" value="Doctorate">
-        <span class="en">Doctorate</span>
-        <span class="cn">博士</span>
-        <span class="jp">博士</span>
-      </label>
-
-      <label class="t"><input type="radio" name="edu" value="Other">
-        <span class="en">Other</span>
-        <span class="cn">其他</span>
-        <span class="jp">その他</span>
-      </label>
-    </div>
-
-    <!-- Q3 -->
-    <div class="field">
-      <div class="t"><strong>
-        <span class="en">Q3. Occupation (single choice)</span>
-        <span class="cn">Q3. 职业（单选）</span>
-        <span class="jp">Q3. 職業（単一選択）</span>
-      </strong></div>
-
-      <label class="t"><input type="radio" name="job" value="Student">
-        <span class="en">Student</span>
-        <span class="cn">学生</span>
-        <span class="jp">学生</span>
-      </label>
-
-      <label class="t"><input type="radio" name="job" value="Employee">
-        <span class="en">Employee</span>
-        <span class="cn">受雇人员</span>
-        <span class="jp">会社員</span>
-      </label>
-
-      <label class="t"><input type="radio" name="job" value="Self-employed">
-        <span class="en">Self-employed</span>
-        <span class="cn">自由职业</span>
-        <span class="jp">自営業</span>
-      </label>
-
-      <label class="t"><input type="radio" name="job" value="Other">
-        <span class="en">Other</span>
-        <span class="cn">其他</span>
-        <span class="jp">その他</span>
-      </label>
-    </div>
-
-    <!-- Q4 -->
-    <div class="field">
-      <div class="t"><strong>
-        <span class="en">Q4. Major (single choice)</span>
-        <span class="cn">Q4. 专业（单选）</span>
-        <span class="jp">Q4. 専攻（単一選択）</span>
-      </strong></div>
-
-      <label class="t"><input type="radio" name="major" value="Agriculture">
-        <span class="en">Agriculture</span>
-        <span class="cn">农学</span>
-        <span class="jp">農学</span>
-      </label>
-
-      <label class="t"><input type="radio" name="major" value="Art">
-        <span class="en">Art</span>
-        <span class="cn">艺术</span>
-        <span class="jp">芸術</span>
-      </label>
-
-      <label class="t"><input type="radio" name="major" value="Economics">
-        <span class="en">Economics</span>
-        <span class="cn">经济学</span>
-        <span class="jp">経済学</span>
-      </label>
-
-      <label class="t"><input type="radio" name="major" value="Education">
-        <span class="en">Education</span>
-        <span class="cn">教育学</span>
-        <span class="jp">教育学</span>
-      </label>
-
-      <label class="t"><input type="radio" name="major" value="Engineering">
-        <span class="en">Engineering</span>
-        <span class="cn">工学</span>
-        <span class="jp">工学</span>
-      </label>
-
-      <label class="t"><input type="radio" name="major" value="History">
-        <span class="en">History</span>
-        <span class="cn">历史学</span>
-        <span class="jp">歴史学</span>
-      </label>
-
-      <label class="t"><input type="radio" name="major" value="Journalism and Communication">
-        <span class="en">Journalism and Communication</span>
-        <span class="cn">新闻与传播</span>
-        <span class="jp">ジャーナリズム・メディア</span>
-      </label>
-
-      <label class="t"><input type="radio" name="major" value="Law">
-        <span class="en">Law</span>
-        <span class="cn">法学</span>
-        <span class="jp">法学</span>
-      </label>
-
-      <label class="t"><input type="radio" name="major" value="Literature">
-        <span class="en">Literature</span>
-        <span class="cn">文学</span>
-        <span class="jp">文学</span>
-      </label>
-
-      <label class="t"><input type="radio" name="major" value="Literature-language">
-        <span class="en">Literature-language</span>
-        <span class="cn">语言文学</span>
-        <span class="jp">言語・文学</span>
-      </label>
-
-      <label class="t"><input type="radio" name="major" value="Management">
-        <span class="en">Management</span>
-        <span class="cn">管理学</span>
-        <span class="jp">経営学</span>
-      </label>
-
-      <label class="t"><input type="radio" name="major" value="Medicine">
-        <span class="en">Medicine</span>
-        <span class="cn">医学</span>
-        <span class="jp">医学</span>
-      </label>
-
-      <label class="t"><input type="radio" name="major" value="Philosophy">
-        <span class="en">Philosophy</span>
-        <span class="cn">哲学</span>
-        <span class="jp">哲学</span>
-      </label>
-
-      <label class="t"><input type="radio" name="major" value="Science">
-        <span class="en">Science</span>
-        <span class="cn">理学</span>
-        <span class="jp">理学</span>
-      </label>
-
-      <label class="t"><input type="radio" name="major" value="Sociology">
-        <span class="en">Sociology</span>
-        <span class="cn">社会学</span>
-        <span class="jp">社会学</span>
-      </label>
-
-      <label class="t"><input type="radio" name="major" value="Other">
-        <span class="en">Other</span>
-        <span class="cn">其他</span>
-        <span class="jp">その他</span>
-      </label>
-    </div>
-
-    <!-- Q5 -->
-    <div class="field">
-      <div class="t"><strong>
-        <span class="en">Q5. Language qualifications obtained/pending (multiple choice)</span>
-        <span class="cn">Q5. 已获/待考语言资格（多选）</span>
-        <span class="jp">Q5. 語学資格（取得済み／予定・複数選択）</span>
-      </strong></div>
-
-      <!-- 证书名本身保持英文代码值，便于统计；展示三语标题即可 -->
-      <label><input type="checkbox" name="lang_certs[]" value="IELTS-5"> IELTS-5</label>
-      <label><input type="checkbox" name="lang_certs[]" value="IELTS-6"> IELTS-6</label>
-      <label><input type="checkbox" name="lang_certs[]" value="IELTS-7"> IELTS-7</label>
-      <label><input type="checkbox" name="lang_certs[]" value="IELTS-8"> IELTS-8</label>
-      <label><input type="checkbox" name="lang_certs[]" value="JLPT-N1"> JLPT-N1</label>
-      <label><input type="checkbox" name="lang_certs[]" value="JLPT-N2"> JLPT-N2</label>
-      <label><input type="checkbox" name="lang_certs[]" value="JLPT-N3"> JLPT-N3</label>
-      <label><input type="checkbox" name="lang_certs[]" value="JLPT-N4"> JLPT-N4</label>
-      <label><input type="checkbox" name="lang_certs[]" value="JLPT-N5"> JLPT-N5</label>
-      <label><input type="checkbox" name="lang_certs[]" value="TOEFL-50"> TOEFL-50</label>
-      <label><input type="checkbox" name="lang_certs[]" value="TOEFL-60"> TOEFL-60</label>
-      <label><input type="checkbox" name="lang_certs[]" value="TOEFL-70"> TOEFL-70</label>
-      <label><input type="checkbox" name="lang_certs[]" value="TOEFL-80"> TOEFL-80</label>
-      <label><input type="checkbox" name="lang_certs[]" value="TOEFL-90"> TOEFL-90</label>
-      <label><input type="checkbox" name="lang_certs[]" value="TOEFL-90+"> TOEFL-90+</label>
-      <label><input type="checkbox" name="lang_certs[]" value="TOEIC-500"> TOEIC-500</label>
-      <label><input type="checkbox" name="lang_certs[]" value="TOEIC-600"> TOEIC-600</label>
-      <label><input type="checkbox" name="lang_certs[]" value="TOEIC-700"> TOEIC-700</label>
-      <label><input type="checkbox" name="lang_certs[]" value="TOEIC-800"> TOEIC-800</label>
-    </div>
-
-    <!-- Q6 -->
-    <div class="field">
-      <div class="t"><strong>
-        <span class="en">Q6. Time status (single choice)</span>
-        <span class="cn">Q6. 时间状态（单选）</span>
-        <span class="jp">Q6. 時間の状況（単一選択）</span>
-      </strong></div>
-
-      <label class="t"><input type="radio" name="time_status" value="Full-time preparation">
-        <span class="en">Full-time preparation</span>
-        <span class="cn">全职备考</span>
-        <span class="jp">フルタイム準備</span>
-      </label>
-
-      <label class="t"><input type="radio" name="time_status" value="Current student">
-        <span class="en">Current student</span>
-        <span class="cn">在校生</span>
-        <span class="jp">在校生</span>
-      </label>
-
-      <label class="t"><input type="radio" name="time_status" value="Part-time preparation">
-        <span class="en">Part-time preparation</span>
-        <span class="cn">兼职/在职备考</span>
-        <span class="jp">パートタイム準備</span>
-      </label>
-
-      <label class="t"><input type="radio" name="time_status" value="Fragmented time">
-        <span class="en">Fragmented time</span>
-        <span class="cn">碎片时间</span>
-        <span class="jp">断続的な時間</span>
-      </label>
-
-      <label class="t"><input type="radio" name="time_status" value="Other">
-        <span class="en">Other</span>
-        <span class="cn">其他</span>
-        <span class="jp">その他</span>
-      </label>
-    </div>
 
     <!-- 保留你的操作按钮（文案也可三语化，先保持英文；需要也可同法包装） -->
     <div class="actions">
