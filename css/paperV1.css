@@ -3,7 +3,7 @@
   /* —— 尺寸与留白（桌面默认） —— */
   --paperv1-width: 980px;          /* A4 观感（可调 860–980） */
   --paperv1-pad-x-desktop: 20mm;   /* 正文左右 20mm（你的要求） */
-  --paperv1-pad-x-mobile: 16px;    /* 手机左右内边距 */
+  --paperv1-pad-x-mobile: 8px;    /* 手机左右内边距 */
 
   /* —— 标题/副标题（桌面默认） —— */
   --paperv1-h1-font: "Times New Roman", Times, serif;
@@ -12,8 +12,8 @@
   --paperv1-sub-size: 18px;
   --paperv1-h1-right: 35px;        /* 标题右边对齐距离 */
   --paperv1-sub-right: 35px;       /* 副标题右边对齐距离 */
-  --paperv1-h1-top:  148px;        /* 标题距 header 顶部 */
-  --paperv1-sub-top: 159px;        /* 副标题距 header 顶部 */
+  --paperv1-h1-top:  145px;        /* 标题距 header 顶部 */
+  --paperv1-sub-top: 161px;        /* 副标题距 header 顶部 */
 
   /* —— 纸面观感 —— */
   --paperv1-edge-color: rgba(0,0,0,.06);   /* 外轮廓细线颜色 */
@@ -133,7 +133,7 @@
     font-size: 28px;
   }
   .paperv1-sub{
-    top: 150px;    /* 同理：副标题的垂直位置 */
+    top: 160px;    /* 同理：副标题的垂直位置 */
     font-size: 16px;
   }
 }
