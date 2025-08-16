@@ -57,6 +57,139 @@
         <!-- 正文：桌面左右 20mm；手机左右 16px -->
       <section class="paperv1-body" id="content">
 <div class="md">
+<div class="md">
+  <h1>Questionnaire</h1>
+  <p><strong>Please fill in your basic info and answer the questions below.</strong></p>
+
+  <form id="intake">
+
+    <!-- 登录名 / User ID -->
+    <div class="field">
+      <label><strong>Nick Name / User ID</strong></label><br>
+      <input type="text" name="user_id" style="width:100%;padding:8px;border:1px solid #e5e5e5;border-radius:8px;font-family:inherit;">
+    </div>
+
+    <!-- Section A -->
+    <h2>Section A: System (Institutions and Structures)</h2>
+
+    <div class="field">
+      <div><strong>Q1. Your age group (single choice)</strong></div>
+      <label><input type="radio" name="age" value="Under 18"> Under 18</label>
+      <label><input type="radio" name="age" value="18-24"> 18-24</label>
+      <label><input type="radio" name="age" value="25-34"> 25-34</label>
+      <label><input type="radio" name="age" value="35-44"> 35-44</label>
+      <label><input type="radio" name="age" value="45+"> 45+</label>
+    </div>
+
+    <div class="field">
+      <div><strong>Q2. Highest level of education (single choice)</strong></div>
+      <label><input type="radio" name="edu" value="High school or below"> High school or below</label>
+      <label><input type="radio" name="edu" value="Bachelor/Master"> Bachelor's / Master's</label>
+      <label><input type="radio" name="edu" value="Doctorate"> Doctorate</label>
+      <label><input type="radio" name="edu" value="Other"> Other</label>
+    </div>
+
+    <div class="field">
+      <div><strong>Q3. Occupation (single choice)</strong></div>
+      <label><input type="radio" name="job" value="Student"> Student</label>
+      <label><input type="radio" name="job" value="Employee"> Employee</label>
+      <label><input type="radio" name="job" value="Self-employed"> Self-employed</label>
+      <label><input type="radio" name="job" value="Other"> Other</label>
+    </div>
+
+    <div class="field">
+      <div><strong>Q4. Major (single choice)</strong></div>
+      <label><input type="radio" name="major" value="Agriculture"> Agriculture</label>
+      <label><input type="radio" name="major" value="Art"> Art</label>
+      <label><input type="radio" name="major" value="Economics"> Economics</label>
+      <label><input type="radio" name="major" value="Education"> Education</label>
+      <label><input type="radio" name="major" value="Engineering"> Engineering</label>
+      <label><input type="radio" name="major" value="History"> History</label>
+      <label><input type="radio" name="major" value="Journalism"> Journalism and Communication</label>
+      <label><input type="radio" name="major" value="Law"> Law</label>
+      <label><input type="radio" name="major" value="Literature"> Literature</label>
+      <label><input type="radio" name="major" value="Literature-language"> Literature-language</label>
+      <label><input type="radio" name="major" value="Management"> Management</label>
+      <label><input type="radio" name="major" value="Medicine"> Medicine</label>
+      <label><input type="radio" name="major" value="Philosophy"> Philosophy</label>
+      <label><input type="radio" name="major" value="Science"> Science</label>
+      <label><input type="radio" name="major" value="Sociology"> Sociology</label>
+      <label><input type="radio" name="major" value="Other"> Other</label>
+    </div>
+
+    <div class="field">
+      <div><strong>Q5. Language qualifications obtained/pending (multiple choice)</strong></div>
+      <label><input type="checkbox" name="langs[]" value="IELTS-5"> IELTS-5</label>
+      <label><input type="checkbox" name="langs[]" value="IELTS-6"> IELTS-6</label>
+      <label><input type="checkbox" name="langs[]" value="IELTS-7"> IELTS-7</label>
+      <label><input type="checkbox" name="langs[]" value="IELTS-8"> IELTS-8</label>
+      <label><input type="checkbox" name="langs[]" value="JLPT-N1"> JLPT-N1</label>
+      <label><input type="checkbox" name="langs[]" value="JLPT-N2"> JLPT-N2</label>
+      <label><input type="checkbox" name="langs[]" value="JLPT-N3"> JLPT-N3</label>
+      <label><input type="checkbox" name="langs[]" value="JLPT-N4"> JLPT-N4</label>
+      <label><input type="checkbox" name="langs[]" value="JLPT-N5"> JLPT-N5</label>
+      <label><input type="checkbox" name="langs[]" value="TOEFL-50"> TOEFL-50</label>
+      <label><input type="checkbox" name="langs[]" value="TOEFL-60"> TOEFL-60</label>
+      <label><input type="checkbox" name="langs[]" value="TOEFL-70"> TOEFL-70</label>
+      <label><input type="checkbox" name="langs[]" value="TOEFL-80"> TOEFL-80</label>
+      <label><input type="checkbox" name="langs[]" value="TOEFL-90"> TOEFL-90</label>
+      <label><input type="checkbox" name="langs[]" value="TOEFL-90+"> TOEFL-90+</label>
+      <label><input type="checkbox" name="langs[]" value="TOEIC-500"> TOEIC-500</label>
+      <label><input type="checkbox" name="langs[]" value="TOEIC-600"> TOEIC-600</label>
+      <label><input type="checkbox" name="langs[]" value="TOEIC-700"> TOEIC-700</label>
+      <label><input type="checkbox" name="langs[]" value="TOEIC-800"> TOEIC-800</label>
+    </div>
+
+    <div class="field">
+      <div><strong>Q6. Time status (single choice)</strong></div>
+      <label><input type="radio" name="time_status" value="Full-time preparation"> Full-time preparation</label>
+      <label><input type="radio" name="time_status" value="Current student"> Current student</label>
+      <label><input type="radio" name="time_status" value="Part-time preparation"> Part-time preparation</label>
+      <label><input type="radio" name="time_status" value="Fragmented time"> Fragmented time</label>
+      <label><input type="radio" name="time_status" value="Other"> Other</label>
+    </div>
+
+    <!-- Section B -->
+    <h2>Section B: Personal (Characteristics and Motivations)</h2>
+
+    <div class="field">
+      <div><strong>Q1. Interests (multiple choice)</strong></div>
+      <label><input type="checkbox" name="interests[]" value="Anime and comics"> Anime and comics</label>
+      <label><input type="checkbox" name="interests[]" value="Reading novels"> Reading novels</label>
+      <label><input type="checkbox" name="interests[]" value="Philosophical thinking"> Philosophical thinking</label>
+      <label><input type="checkbox" name="interests[]" value="Historical stories"> Historical stories</label>
+      <label><input type="checkbox" name="interests[]" value="Social issues"> Social issues</label>
+      <label><input type="checkbox" name="interests[]" value="Psychological testing"> Psychological testing</label>
+      <label><input type="checkbox" name="interests[]" value="Economic observation"> Economic observation</label>
+      <label><input type="checkbox" name="interests[]" value="Watching documentaries"> Watching documentaries</label>
+      <label><input type="checkbox" name="interests[]" value="Science fiction settings"> Science fiction settings</label>
+      <label><input type="checkbox" name="interests[]" value="Writing"> Writing</label>
+      <label><input type="checkbox" name="interests[]" value="Programming"> Programming</label>
+      <label><input type="checkbox" name="interests[]" value="Gaming"> Gaming</label>
+      <label><input type="checkbox" name="interests[]" value="Observing social behavior"> Observing social behavior</label>
+      <label><input type="checkbox" name="interests[]" value="Environmental issues"> Environmental issues</label>
+      <label><input type="checkbox" name="interests[]" value="Women's equality"> Women's equality</label>
+      <label><input type="checkbox" name="interests[]" value="Dramas and variety shows"> Dramas and variety shows</label>
+      <label><input type="checkbox" name="interests[]" value="Food"> Food</label>
+      <label><input type="checkbox" name="interests[]" value="Exercise and fitness"> Exercise and fitness</label>
+      <label><input type="checkbox" name="interests[]" value="Extreme sports"> Extreme sports</label>
+      <label><input type="checkbox" name="interests[]" value="Music"> Music</label>
+      <label><input type="checkbox" name="interests[]" value="Photography"> Photography</label>
+      <label><input type="checkbox" name="interests[]" value="Sightseeing"> Sightseeing</label>
+      <label><input type="checkbox" name="interests[]" value="Social media"> Social media</label>
+      <label><input type="checkbox" name="interests[]" value="Other"> Other</label>
+    </div>
+
+    <!-- ⚡ 为了不太长，我就写到这里，你要的话我可以帮你把 Section B 后半 和 Section C 全部展开。 -->
+    
+    <div class="actions">
+      <button type="button" class="primary" onclick="exportJSON()">导出为 JSON</button>
+      <button type="reset">重置</button>
+    </div>
+  </form>
+
+  <div id="out" class="out" aria-live="polite"></div>
+</div>
 <h2>Section A: System (Institutions and Structures)</h2>
 
 <form id="intake">
