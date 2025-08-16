@@ -215,24 +215,3 @@ font-family: ui-monospace, Menlo, Consolas, monospace; font-size:.95em; white-sp
 @media (max-width: 760px){
   .md .options{ grid-template-columns: 1fr !important; }
 }
-/* === Phone-only: 让标题居中 + 给 header 预留底部空间，避免和表单重叠 === */
-@media (max-width: 960px){
-  /* 纸张整体稍微上提（若你已经有就保留你自己的数值） */
-  .paperv1{ margin-top: 8px; }
-
-  /* 给 header 增加底部内边距 = 为绝对定位的 H1/H2 让位 */
-  .paperv1-header{ padding-bottom: var(--pv1-mobile-header-gap, 120px); }
-
-  /* H1/H2 居中摆放，并上移一点点 */
-  .paperv1-title{
-    left: 0; right: 0; text-align: center;
-    top: var(--pv1-title-top, 78px);   /* 想再往上：把 78px 调小；往下：调大 */
-  }
-  .paperv1-sub{
-    left: 0; right: 0; text-align: center;
-    top: calc(var(--pv1-title-top, 78px) + 44px); /* 与 H1 的间距（44px 可微调） */
-  }
-
-  /* 正文可略微加一点上内边距（可选） */
-  .paperv1-body{ padding-top: 8px; }
-}
