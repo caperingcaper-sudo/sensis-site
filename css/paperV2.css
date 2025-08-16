@@ -25,7 +25,9 @@
   --paperv1-inner-vignette: rgba(0,0,0,.045);
 
   position: relative;
-  width: min(var(--paperv1-width), calc(100vw - 32px)); /* iPad 横屏不溢出 */
+width: 100%;
+max-width: var(--paperv1-width);
+  
   margin: 0 auto;
   background:#fff;
   border: 1px solid var(--paperv1-edge-color);
@@ -179,4 +181,23 @@ html[lang="ja"] .paperv1 .md, html[data-lang="jp"] .paperv1 .md{ font-family: va
 .md .options.cols-2{ grid-template-columns: repeat(2, minmax(0,1fr)); }
 .md .options.cols-3{ grid-template-columns: repeat(3, minmax(0,1fr)); }
 .md .options > label{ display:flex; padding:.2em .1em; border-radius:6px; }
-@media (max-width: 760px){ .md .options{ grid-template-columns: 1fr !important; } }
+  @media (max-width: 760px){ .md .options{ grid-template-columns: 1fr !important; } }
+  
+  /* ===== iPad 横屏（介于手机与桌面之间）的细化 ===== */
+@media (min-width: 960px) and (max-width: 1180px){
+  .paperv1{
+    /* 跟着容器走，不再用视口计算（安全） */
+    width: 100%;
+    max-width: 900px;                 /* 你可以调 860–920 */
+  }
+
+  /* 减少头图区底部留白，让 .md 更靠近副标题 */
+  .paperv1-header{ padding-bottom: 180px; }  /* 原来 240px */
+
+  /* 让标题组更贴近右侧但不过界，字号保持不变 */
+  .paperv1-title{ top: 125px; right: 28px; }
+  .paperv1-sub  { top: 152px; right: 28px; }
+
+  /* 正文左右略收一点，视觉更紧凑 */
+  .paperv1-body{ padding-inline: 18mm; }
+}
