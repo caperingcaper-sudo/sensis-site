@@ -218,7 +218,7 @@ img, video, iframe{ max-width:100%; height:auto; }
 /* ===== Paper v1 (scoped / 不影响其它页面) ===================== */
 .paperv1 {
   /* 作用域变量（只影响 .paperv1 内部） */
-  --paperv1-width: 210mm;          /* 桌面 A4 宽度 */
+  --paperv1-width: 280mm;          /* 桌面 A4 宽度 */
   --paperv1-pad-x-desktop: 20mm;   /* 正文左右留白 20mm */
   --paperv1-pad-x-mobile: 16px;    /* 手机退化为 px */
 
@@ -227,8 +227,8 @@ img, video, iframe{ max-width:100%; height:auto; }
   --paperv1-sub-top: 42px;         /* 副标题相对头图的上偏移（在线下） */
   --paperv1-sub-right: 24px;       /* 副标题右偏移 */
 
-  --paperv1-h1-size: 36px;         /* 主标题字号 */
-  --paperv1-sub-size: 18px;        /* 副标题字号 */
+  --paperv1-h1-size: 25px;         /* 主标题字号 */
+  --paperv1-sub-size: 13px;        /* 副标题字号 */
 }
 
 /* 纸面容器（无浅绿背景） */
@@ -251,7 +251,8 @@ img, video, iframe{ max-width:100%; height:auto; }
 .paperv1-title{
   top: var(--paperv1-h1-top);
   right: var(--paperv1-h1-right);
-  font-family: 'Oleo Script Swash Caps', cursive;
+  font-family: "Times New Roman", serif;
+  font-weight: bold; /* 这行代码用于加粗 */
   font-size: var(--paperv1-h1-size);
   line-height: 1.1; font-weight: 300; color: #1f1f1f;
   text-shadow: 0 1px 2px rgba(0,0,0,.06);
@@ -259,7 +260,7 @@ img, video, iframe{ max-width:100%; height:auto; }
 .paperv1-sub{
   top: var(--paperv1-sub-top);
   right: var(--paperv1-sub-right);
-  font-family: var(--content-serif, 'Lora', serif);
+  font-family: var(--content-serif, 'Times New Roman', serif);
   font-size: var(--paperv1-sub-size);
   color:#555;
 }
@@ -285,7 +286,7 @@ img, video, iframe{ max-width:100%; height:auto; }
   --paperv1-inner-vignette: rgba(0,0,0,.045); /* 内侧轻微晕影 */
   position: relative;
   border: 1px solid var(--paperv1-edge-color);   /* 细描边 */
-  border-radius: 8px;                             /* 轻圆角，可改 */
+  border-radius: 0px;                             /* 轻圆角，可改 */
   box-shadow: var(--paperv1-shadow-1), var(--paperv1-shadow-2);
   overflow: hidden; /* 让内晕影不外溢 */
 }
