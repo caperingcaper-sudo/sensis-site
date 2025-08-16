@@ -1,11 +1,3 @@
-function switchLang(lang){
-document.getElementById('lang-en').style.display = (lang==='en') ? 'block' : 'none';
-document.getElementById('lang-cn').style.display = (lang==='cn') ? 'block' : 'none';
-document.getElementById('lang-jp').style.display = (lang==='jp') ? 'block' : 'none';
-document.querySelectorAll('.langs .lang')
-.forEach(b => b.classList.toggle('is-active', b.dataset.lang === lang));
-document.documentElement.setAttribute('data-lang', lang);
-}
 function switchLang(code){
   const root = document.documentElement; // <html>
   const allowed = ['en','cn','jp'];
