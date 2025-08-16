@@ -110,3 +110,31 @@
   }
   .paperv1::before{ display:none; }
 }
+/* === 手机端专用覆盖：只改手机！ ======================== */
+@media (max-width: 960px){
+
+  /* A) 纸张整体位置往上 */
+  .paperv1{
+    margin-top: 12px;              /* 原来是 50px，调小=更靠上 */
+  }
+
+  /* B) h1/h2 居中 + 上提 */
+  .paperv1-title,
+  .paperv1-sub{
+    left: 50%;
+    right: auto;                   /* 取消靠右，用居中定位 */
+    transform: translateX(-50%);   /* 精准水平居中 */
+    text-align: center;
+    width: calc(100% - 28px);      /* 两侧留点安全边距，避免贴边 */
+  }
+
+  .paperv1-title{
+    top: 110px;    /* 上提/下移就改这个数：越小越靠上 */
+    font-size: 28px;
+  }
+  .paperv1-sub{
+    top: 150px;    /* 同理：副标题的垂直位置 */
+    font-size: 16px;
+  }
+}
+
