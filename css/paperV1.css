@@ -137,4 +137,96 @@
     font-size: 16px;
   }
 }
+/* ===== Markdown-like form scoped to .paperv1 ===================== */
 
+/* 字体族变量（可按需覆写） */
+
+.paperv1{
+
+--md-font-en:"Courier Prime", ui-serif, Georgia, serif;
+
+--md-font-zh:"Noto Serif SC", ui-serif, "PingFang SC","Songti SC", serif;
+
+--md-font-ja:"Noto Serif JP", ui-serif, "Hiragino Mincho ProN","Yu Mincho", serif;
+
+--md-ink:#1f1f1f; --md-muted:#6b6b6b; --md-accent:#495f4d; --md-rule:#dcdcdc;
+
+}
+
+/* 正文容器（只影响纸面里的 .md） */
+
+.paperv1 .md{ max-width: 820px; margin: 0 auto; color: var(--md-ink); line-height: 1.7; }
+
+/* 根据 <html lang> 自动切换中/日文字体 */
+
+html[lang="zh"] .paperv1 .md,
+
+html[data-lang="cn"] .paperv1 .md{ font-family: var(--md-font-zh); }
+
+html[lang="ja"] .paperv1 .md,
+
+html[data-lang="jp"] .paperv1 .md{ font-family: var(--md-font-ja); }
+
+/* 默认英文 */
+
+.paperv1 .md{ font-family: var(--md-font-en); }
+
+.paperv1 .md h1,.paperv1 .md h2,.paperv1 .md h3{ line-height:1.25; margin:1.2em 0 .5em; font-weight:700; }
+
+.paperv1 .md h1{ font-size:clamp(28px,5vw,40px); }
+
+.paperv1 .md h2{ font-size:clamp(22px,3.8vw,28px); border-bottom:1px solid var(--md-rule); padding-bottom:.2em; }
+
+.paperv1 .md h3{ font-size:clamp(18px,2.8vw,22px); }
+
+.paperv1 .md p{ margin:.8em 0; }
+
+.paperv1 .md ul{ padding-left:1.2em; margin:.6em 0 1em; }
+
+.paperv1 .md form{ margin-top:1.2em; }
+
+.paperv1 .md .field{ margin:.6em 0; }
+
+/* 每个选项一行 + 悬停淡底 */
+
+.paperv1 .md label{
+
+display:block; padding:.25em .2em; border-radius:6px; cursor:pointer; transition:background .15s;
+
+}
+
+.paperv1 .md label:is(:hover,:focus-within){ background:#fafafa; }
+
+/* 原生控件可见，主题色 */
+
+.paperv1 .md input[type="radio"],
+
+.paperv1 .md input[type="checkbox"]{
+
+width:18px; height:18px; margin-top:.25em; margin-right:.6em; accent-color:var(--md-accent);
+
+}
+
+.paperv1 .md .hint{ color:var(--md-muted); font-size:.92em; margin:.2em 0 0 1.9em; }
+
+/* 按钮/输出 */
+
+.paperv1 .md .actions{ margin-top:1em; display:flex; gap:10px; }
+
+.paperv1 .md button{
+
+border:1px solid var(--md-rule); background:#fff; color:var(--md-ink);
+
+padding:8px 14px; border-radius:10px; cursor:pointer;
+
+}
+
+.paperv1 .md button.primary{ border-color:var(--md-accent); background:var(--md-accent); color:#fff; }
+
+.paperv1 .md .out{
+
+margin-top:1em; background:#fafafa; border:1px solid #eee; border-radius:8px; padding:10px 12px;
+
+font-family: ui-monospace, Menlo, Consolas, monospace; font-size:.95em; white-space:pre-wrap;
+
+}
