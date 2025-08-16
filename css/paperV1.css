@@ -90,6 +90,9 @@
     margin-top: 12px;                 /* 想再高就改这个数 */
     width: min(720px, 100%);
     box-shadow: none;
+    --pv1-header-space: 240px; }
+  .paperv1-header{ padding-bottom: var(--pv1-header-space); }
+}
   }
   .paperv1-art.desktop { display: none; }
   .paperv1-art.-mobile { display: block; }
