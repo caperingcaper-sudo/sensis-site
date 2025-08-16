@@ -8,8 +8,8 @@
   /* —— 标题/副标题（桌面默认） —— */
   --paperv1-h1-font: "Times New Roman", Times, serif;
   --paperv1-sub-font: "Times New Roman", Times, serif;
-  --paperv1-h1-size: 36px;
-  --paperv1-sub-size: 18px;
+  --paperv1-h1-size: 25px;
+  --paperv1-sub-size: 13px;
   --paperv1-h1-right: 24px;        /* 标题右边对齐距离 */
   --paperv1-sub-right: 24px;       /* 副标题右边对齐距离 */
   --paperv1-h1-top:  110px;        /* 标题距 header 顶部 */
@@ -90,8 +90,8 @@
 
   /* 覆盖变量，用移动端值 */
   .paperv1{
-    --paperv1-h1-size: 28px;
-    --paperv1-sub-size: 16px;
+    --paperv1-h1-size: 16px;
+    --paperv1-sub-size: 13px;
     --paperv1-h1-right: 14px;
     --paperv1-sub-right: 14px;
     --paperv1-h1-top:  180px;
