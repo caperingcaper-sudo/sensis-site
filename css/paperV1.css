@@ -82,20 +82,32 @@
 }
 
 /* —— 手机/窄屏：换头图；改变量（不需要你在 HTML 里再写额外 style） —— */
+/* ===== Phone layout (<=960px) — authoritative ===== */
 @media (max-width: 960px){
-  .paperv1{ width: min(720px, 100%); margin-top:50px; box-shadow:none; }
 
-  .paperv1-art.desktop{ display:none; }
-  .paperv1-art.-mobile{ display:block; }
-
-  /* 覆盖变量，用移动端值 */
+  /* 纸张整体稍上移、手机头图切换 */
   .paperv1{
-    --paperv1-h1-size: 16px;
-    --paperv1-sub-size: 13px;
-    --paperv1-h1-right: 14px;
-    --paperv1-sub-right: 14px;
-    --paperv1-h1-top:  180px;
-    --paperv1-sub-top: 210px;
+    margin-top: 12px;                 /* 想再高就改这个数 */
+    width: min(720px, 100%);
+    box-shadow: none;
+  }
+  .paperv1-art.desktop { display: none; }
+  .paperv1-art.-mobile { display: block; }
+
+  /* 标题与副标题：完全居中，用 top 定垂直位置 */
+  .paperv1-title,
+  .paperv1-sub{
+    position: absolute;
+    left: 50%;
+    right: auto;                       /* 不再靠右 */
+    transform: translateX(-50%);
+    text-align: center;
+    width: calc(100% - 32px);          /* 两侧留 16px 安全边距 */
+    margin: 0;
+    z-index: 1;
+  }
+  .paperv1-title{ top: 140px; font-size: 28px; font-family: "Times New Roman", Times, serif; }
+  .paperv1-sub  { top: 184px; font-size: 16px; }
   }
 
   .paperv1-body{ padding-inline: var(--paperv1-pad-x-mobile); }
