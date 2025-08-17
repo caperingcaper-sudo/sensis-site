@@ -6,7 +6,7 @@
   --paperv1-pad-x-mobile: 16px;       /* 手机左右内边距 */
 
   /* 桌面：标题悬浮所需的底部留白（让正文从副标题下方开始） */
-  --pv1-header-space: 240px;
+  --pv1-header-space: 120px;
 
   /* 桌面：主/副标题位置（右对齐、浮在图上） */
   --paperv1-h1-font: "Times New Roman", Times, serif;
