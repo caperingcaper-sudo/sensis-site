@@ -247,3 +247,25 @@ html[data-lang="jp"] .paperv1 .md{ font-family: var(--md-font-ja); }
   font-family: inherit !important;
   text-shadow: none !important;
 }
+
+.result-card { margin-top: 16px; }
+.result-card .card{
+  border:1px solid var(--md-rule);
+  background:#fff;
+  border-radius:12px;
+  padding:14px 16px;
+  box-shadow:0 6px 18px rgba(0,0,0,.06);
+}
+.result-card h3{ margin:.2em 0 .4em; }
+.result-card p{ margin:.4em 0; }
+.result-card .link{
+  border:1px solid var(--md-accent);
+  background:#fff;
+  color:var(--md-accent);
+  border-radius:10px;
+  padding:6px 10px;
+  cursor:pointer;
+}
+#btn-submit[disabled]{ opacity:.6; cursor:not-allowed; }
+.consent{ display:block; margin:10px 0 0; font-size:.95em; }
+
