@@ -209,3 +209,41 @@ html[data-lang="jp"] .paperv1 .md{ font-family: var(--md-font-ja); }
 .md-head{ margin: 8px auto 18px; padding-bottom: 8px; border-bottom:1px solid var(--md-rule); }
 .md-title{ margin:0; font-size:clamp(24px, 4.2vw, 32px); line-height:1.2; }
 .md-sub{ margin:.4em 0 0; color:var(--md-muted); font-size:clamp(14px, 2.4vw, 16px); }
+
+/* ===== Paper md 标题整合样式（放在 paperV2.css 最后） ===== */
+
+/* md 头部容器（可选） */
+.paperv1 .md .md-head{
+  margin: 8px auto 18px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--md-rule);
+}
+
+/* md 主标题：使用 md 区域字体，不吃全站 h1 的脚本体 */
+.paperv1 .md .md-title{
+  font-family: inherit !important;   /* 继承 .paperv1 .md 的语言字体 */
+  font-weight: 700;
+  text-shadow: none !important;
+  letter-spacing: 0;
+  margin: 0 0 .2em;
+  font-size: clamp(24px, 4.2vw, 32px);
+  line-height: 1.2;
+}
+
+/* md 副标题 */
+.paperv1 .md .md-sub{
+  font-family: inherit !important;
+  text-shadow: none !important;
+  color: var(--md-muted);
+  font-size: clamp(14px, 2.4vw, 16px);
+  margin: .4em 0 0;
+}
+
+/* 兜底：md 区域内的所有 h1~h3 一律回到 md 字体，去掉阴影
+  （避免将来新增的标题被全站样式污染） */
+.paperv1 .md h1,
+.paperv1 .md h2,
+.paperv1 .md h3{
+  font-family: inherit !important;
+  text-shadow: none !important;
+}
