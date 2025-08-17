@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="styles.css?v=2">
   <link rel="stylesheet" href="css/paperV2.css?v=2"><!-- 注意大小写：paperV1.css -->
 </head>
-  <body>
+<body>
   <div class="wrap">
     <!-- Sidebar -->
     <aside>
@@ -40,6 +40,8 @@
         <button class="lang" data-lang="cn" onclick="switchLang('cn')">中文</button>
         <button class="lang" data-lang="jp" onclick="switchLang('jp')">日本語</button>
       </div>
+
+      <!-- 纸面 -->
       <article class="paperv1">
         <header class="paperv1-header" aria-label="paper header">
           <!-- 桌面/横屏用 paper-2；手机用 paper-3（CSS 中 media query 会自动切换显示） -->
@@ -47,7 +49,7 @@
           <img class="paperv1-art -mobile" src="assets/paper-3.png" alt="Header art (mobile)">
 
           <!-- 悬浮标题（位置/字号/右距都在 CSS 变量里调） -->
-          <h1 class="paperv1-title">
+         <h1 class="paperv1-title">
   <span class="i18n" lang="en">Sensis User Basic Information</span>
   <span class="i18n" lang="cn">Sensis 用户基础信息</span>
   <span class="i18n" lang="jp">Sensis 基本情報</span>
@@ -62,12 +64,29 @@
   <span class="i18n" lang="cn">单选请填 ○，多选请填 □。</span>
   <span class="i18n" lang="jp">単一選択は○、複数選択は□を使用します。</span>
 </h2>
+
         </header>
--- 正文：桌面左右 20mm；手机左右 16px -→
-     <section class="paperv1-body" id="content">
+
+        <!-- 正文：桌面左右 20mm；手机左右 16px -->
+      <section class="paperv1-body" id="content">
 <div class="md">
-<form id="intake">
-<div class="field">
+  <!-- md 用の主/副タイトル（言語切替対応） -->
+  <header class="md-head">
+    <h1 class="md-title">
+      <span class="i18n" lang="en">User Intake Form</span>
+      <span class="i18n" lang="cn">用户问卷</span>
+      <span class="i18n" lang="jp">ユーザー初期質問票</span>
+    </h1>
+    <p class="md-sub">
+      <span class="i18n" lang="en">Answer briefly; skip allowed.</span>
+      <span class="i18n" lang="cn">简要作答，可跳过。</span>
+      <span class="i18n" lang="jp">簡潔に回答、スキップ可。</span>
+    </p>
+  </header>
+  <form id="intake">
+    <!-- 登录名 / User ID -->
+    <div class="field">
+     <div class="field">
   <label><strong>
     <span class="i18n" lang="en">Nick Name / User ID</span>
     <span class="i18n" lang="cn">昵称 / 用户ID</span>
@@ -75,6 +94,7 @@
   </strong></label><br>
   <input type="text" name="user_id" ...>
 </div>
+
 <h2>
   <span class="i18n" lang="en">Section A: System (Institutions and Structures)</span>
   <span class="i18n" lang="cn">A 部分：系统（制度与结构）</span>
@@ -101,7 +121,10 @@
   </label>
   <!-- 其余选项照抄这个结构 -->
 </div>
-  <div class="actions">
+
+
+    <!-- 保留你的操作按钮（文案也可三语化，先保持英文；需要也可同法包装） -->
+    <div class="actions">
       <button type="button" class="primary" onclick="exportJSON()">Export JSON</button>
       <button type="reset">Reset</button>
     </div>
@@ -142,8 +165,9 @@
     <img src="assets/menu-icon.png" alt="Menu">
   </button>
   <div class="backdrop" onclick="toggleMenu()"></div>
-   公共js
-    <script src="common.js"></script>
+
+  <!-- 公共脚本（switchLang / 抽屉等） -->
+  <script src="common.js"></script>
   <script>
 function formToJSON(form){
 const fd = new FormData(form), out = {};
@@ -161,6 +185,4 @@ document.getElementById('out').textContent = JSON.stringify(data, null, 2);
 </script>
 </body>
 </html>
-        
 
-  
