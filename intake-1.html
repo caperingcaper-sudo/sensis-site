@@ -768,9 +768,40 @@
   </form>
 
   <!-- 操作按钮（仍在 .md 内） -->
-  <div class="actions">
-    <button type="button" class="primary" onclick="exportJSON()">Export JSON</button>
-    <button type="reset">Reset</button>
+    <div class="actions">
+  <button type="button" class="primary" onclick="exportJSON()">
+    <span class="i18n" lang="en">Export JSON</span>
+    <span class="i18n" lang="cn">导出 JSON</span>
+    <span class="i18n" lang="jp">JSONを書き出す</span>
+  </button>
+
+  <button type="button" id="btn-submit" onclick="submitForm()" disabled>
+    <span class="i18n" lang="en">Submit</span>
+    <span class="i18n" lang="cn">提交</span>
+    <span class="i18n" lang="jp">送信</span>
+  </button>
+
+  <button type="reset">
+    <span class="i18n" lang="en">Reset</span>
+    <span class="i18n" lang="cn">重置</span>
+    <span class="i18n" lang="jp">リセット</span>
+  </button>
+</div>
+
+<!-- 同意说明 -->
+<label class="consent">
+  <input type="checkbox" id="consent">
+  <span class="i18n" lang="en">I agree to data processing for Sensis research and product development.</span>
+  <span class="i18n" lang="cn">我同意将数据用于 Sensis 的研究与产品开发。</span>
+  <span class="i18n" lang="jp">本データの研究・製品開発への利用に同意します。</span>
+</label>
+
+<!-- 反馈卡：提交成功后填充 -->
+<div id="feedback" class="result-card" hidden></div>
+
+<!-- 仍保留：原来的 JSON 输出调试视图 -->
+<div id="out" class="out" aria-live="polite"></div>
+    
   </div>
 
   <hr>
