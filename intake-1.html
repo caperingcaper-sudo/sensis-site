@@ -48,77 +48,256 @@
           <img class="paperv1-art desktop" src="assets/paper-2.png" alt="Header art (desktop)">
           <img class="paperv1-art -mobile" src="assets/paper-3.png" alt="Header art (mobile)">
 
-          <!-- 悬浮标题（位置/字号/右距都在 CSS 变量里调） -->
-         <h1 class="paperv1-title">
-  <span class="i18n" lang="en">Sensis User Basic Information</span>
-  <span class="i18n" lang="cn">Sensis 用户基础信息</span>
-  <span class="i18n" lang="jp">Sensis 基本情報</span>
-</h1>
-
-<h2 class="paperv1-sub">
-  <span class="i18n" lang="en">Please answer the questions below.</span>
-  <span class="i18n" lang="cn">请回答以下问题。</span>
-  <span class="i18n" lang="jp">以下の質問にお答えください。</span>
-  <br>
-  <span class="i18n" lang="en">Use ○ for single choice and □ for multiple choice.</span>
-  <span class="i18n" lang="cn">单选请填 ○，多选请填 □。</span>
-  <span class="i18n" lang="jp">単一選択は○、複数選択は□を使用します。</span>
-</h2>
-
-        </header>
-
         <!-- 正文：桌面左右 20mm；手机左右 16px -->
       <section class="paperv1-body" id="content">
 <div class="md">
-  <!-- md 用の主/副タイトル（言語切替対応） -->
-  <header class="md-head">
-    <h1 class="md-title">
-      <span class="i18n" lang="en">User Intake Form</span>
-      <span class="i18n" lang="cn">用户问卷</span>
-      <span class="i18n" lang="jp">ユーザー初期質問票</span>
-    </h1>
-    <p class="md-sub">
-      <span class="i18n" lang="en">Answer briefly; skip allowed.</span>
-      <span class="i18n" lang="cn">简要作答，可跳过。</span>
-      <span class="i18n" lang="jp">簡潔に回答、スキップ可。</span>
-    </p>
-  </header>
-  <form id="intake">
-    <!-- 登录名 / User ID -->
-    <div class="field">
-     <div class="field">
-  <label><strong>
-    <span class="i18n" lang="en">Nick Name / User ID</span>
-    <span class="i18n" lang="cn">昵称 / 用户ID</span>
-    <span class="i18n" lang="jp">ニックネーム / ユーザーID</span>
-  </strong></label><br>
-  <input type="text" name="user_id" ...>
-</div>
+<!-- === md 开头：主/副标题 === -->
+<header class="md-head">
+  <h1 class="md-title">
+    <span class="i18n" lang="en">Information</span>
+    <span class="i18n" lang="cn">信息</span>
+    <span class="i18n" lang="jp">インフォメーション</span>
+  </h1>
+  <p class="md-sub">
+    <span class="i18n" lang="en">Please answer the questions below. Use ○ for single choice and □ for multiple choice.</span>
+    <span class="i18n" lang="cn">请回答以下问题。单选用 ○，多选用 □。</span>
+    <span class="i18n" lang="jp">以下の質問にお答えください。単一選択は○、複数選択は□です。</span>
+  </p>
+</header>
 
-<h2>
-  <span class="i18n" lang="en">Section A: System (Institutions and Structures)</span>
-  <span class="i18n" lang="cn">A 部分：系统（制度与结构）</span>
-  <span class="i18n" lang="jp">A セクション：制度・構造</span>
-</h2>
+<form id="intake">
+  <!-- Nick Name -->
+  <div class="field">
+    <label><strong>
+      <span class="i18n" lang="en">Nick Name</span>
+      <span class="i18n" lang="cn">昵称</span>
+      <span class="i18n" lang="jp">ニックネーム</span>
+    </strong></label>
+    <input type="text" name="user_nick" placeholder="">
+  </div>
 
-<div class="field">
-  <div><strong>
-    <span class="i18n" lang="en">Q1. Your age group (single choice)</span>
-    <span class="i18n" lang="cn">Q1. 年龄段（单选）</span>
-    <span class="i18n" lang="jp">Q1. 年齢層（単一）</span>
-  </strong></div>
+  <!-- === Section A === -->
+  <h2>
+    <span class="i18n" lang="en">Section A: System (Institutions and Structures)</span>
+    <span class="i18n" lang="cn">A 部分：系统（制度与结构）</span>
+    <span class="i18n" lang="jp">A セクション：制度・構造</span>
+  </h2>
 
-  <label><input type="radio" name="age" value="Under 18">
-    <span class="i18n" lang="en">Under 18</span>
-    <span class="i18n" lang="cn">18岁以下</span>
-    <span class="i18n" lang="jp">18歳未満</span>
-  </label>
+  <!-- Q1 年龄段（单选） -->
+  <div class="field">
+    <div><strong>
+      <span class="i18n" lang="en">Q1. Your age group</span>
+      <span class="i18n" lang="cn">Q1. 年龄段</span>
+      <span class="i18n" lang="jp">Q1. 年齢層</span>
+      <span class="i18n" lang="en"> (○)</span>
+      <span class="i18n" lang="cn">（○ 单选）</span>
+      <span class="i18n" lang="jp">（○ 単一）</span>
+    </strong></div>
 
-  <label><input type="radio" name="age" value="18-24">
-    <span class="i18n" lang="en">18–24</span>
-    <span class="i18n" lang="cn">18–24</span>
-    <span class="i18n" lang="jp">18–24</span>
-  </label>
+    <label><input type="radio" name="age" value="Under 18">
+      <span class="i18n" lang="en">Under 18</span>
+      <span class="i18n" lang="cn">18岁以下</span>
+      <span class="i18n" lang="jp">18歳未満</span>
+    </label>
+    <label><input type="radio" name="age" value="18-24">
+      <span class="i18n" lang="en">18–24</span>
+      <span class="i18n" lang="cn">18–24</span>
+      <span class="i18n" lang="jp">18–24</span>
+    </label>
+    <label><input type="radio" name="age" value="25-34">
+      <span class="i18n" lang="en">25–34</span>
+      <span class="i18n" lang="cn">25–34</span>
+      <span class="i18n" lang="jp">25–34</span>
+    </label>
+    <label><input type="radio" name="age" value="35-44">
+      <span class="i18n" lang="en">35–44</span>
+      <span class="i18n" lang="cn">35–44</span>
+      <span class="i18n" lang="jp">35–44</span>
+    </label>
+    <label><input type="radio" name="age" value="45+">
+      <span class="i18n" lang="en">45+</span>
+      <span class="i18n" lang="cn">45+</span>
+      <span class="i18n" lang="jp">45歳以上</span>
+    </label>
+  </div>
+
+  <!-- Q2 最高学历（单选） -->
+  <div class="field">
+    <div><strong>
+      <span class="i18n" lang="en">Q2. Highest level of education</span>
+      <span class="i18n" lang="cn">Q2. 最高学历</span>
+      <span class="i18n" lang="jp">Q2. 最終学歴</span>
+      <span class="i18n" lang="en"> (○)</span>
+      <span class="i18n" lang="cn">（○ 单选）</span>
+      <span class="i18n" lang="jp">（○ 単一）</span>
+    </strong></div>
+
+    <label><input type="radio" name="edu" value="High School or below">
+      <span class="i18n" lang="en">High school or below</span>
+      <span class="i18n" lang="cn">高中及以下</span>
+      <span class="i18n" lang="jp">高校卒以下</span>
+    </label>
+    <label><input type="radio" name="edu" value="Bachelor">
+      <span class="i18n" lang="en">Bachelor</span>
+      <span class="i18n" lang="cn">本科</span>
+      <span class="i18n" lang="jp">学士</span>
+    </label>
+    <label><input type="radio" name="edu" value="Master">
+      <span class="i18n" lang="en">Master</span>
+      <span class="i18n" lang="cn">硕士</span>
+      <span class="i18n" lang="jp">修士</span>
+    </label>
+    <label><input type="radio" name="edu" value="Doctorate">
+      <span class="i18n" lang="en">Doctorate</span>
+      <span class="i18n" lang="cn">博士</span>
+      <span class="i18n" lang="jp">博士</span>
+    </label>
+    <label><input type="radio" name="edu" value="Other">
+      <span class="i18n" lang="en">Other</span>
+      <span class="i18n" lang="cn">其他</span>
+      <span class="i18n" lang="jp">その他</span>
+    </label>
+  </div>
+
+  <!-- Q3 职业（单选） -->
+  <div class="field">
+    <div><strong>
+      <span class="i18n" lang="en">Q3. Occupation</span>
+      <span class="i18n" lang="cn">Q3. 职业</span>
+      <span class="i18n" lang="jp">Q3. 職業</span>
+      <span class="i18n" lang="en"> (○)</span>
+      <span class="i18n" lang="cn">（○ 单选）</span>
+      <span class="i18n" lang="jp">（○ 単一）</span>
+    </strong></div>
+
+    <label><input type="radio" name="occupation" value="Student">
+      <span class="i18n" lang="en">Student</span>
+      <span class="i18n" lang="cn">学生</span>
+      <span class="i18n" lang="jp">学生</span>
+    </label>
+    <label><input type="radio" name="occupation" value="Employee">
+      <span class="i18n" lang="en">Employee</span>
+      <span class="i18n" lang="cn">受雇者</span>
+      <span class="i18n" lang="jp">会社員</span>
+    </label>
+    <label><input type="radio" name="occupation" value="Self-employed">
+      <span class="i18n" lang="en">Self-employed</span>
+      <span class="i18n" lang="cn">自雇人士</span>
+      <span class="i18n" lang="jp">自営業</span>
+    </label>
+    <label><input type="radio" name="occupation" value="Other">
+      <span class="i18n" lang="en">Other</span>
+      <span class="i18n" lang="cn">其他</span>
+      <span class="i18n" lang="jp">その他</span>
+    </label>
+  </div>
+
+  <!-- Q4 专业（单选） -->
+  <div class="field">
+    <div><strong>
+      <span class="i18n" lang="en">Q4. Major</span>
+      <span class="i18n" lang="cn">Q4. 专业</span>
+      <span class="i18n" lang="jp">Q4. 専攻</span>
+      <span class="i18n" lang="en"> (○)</span>
+      <span class="i18n" lang="cn">（○ 单选）</span>
+      <span class="i18n" lang="jp">（○ 単一）</span>
+    </strong></div>
+
+    <label><input type="radio" name="major" value="Agriculture"><span class="i18n" lang="en">Agriculture</span><span class="i18n" lang="cn">农业</span><span class="i18n" lang="jp">農学</span></label>
+    <label><input type="radio" name="major" value="Art"><span class="i18n" lang="en">Art</span><span class="i18n" lang="cn">艺术</span><span class="i18n" lang="jp">芸術</span></label>
+    <label><input type="radio" name="major" value="Economics"><span class="i18n" lang="en">Economics</span><span class="i18n" lang="cn">经济学</span><span class="i18n" lang="jp">経済学</span></label>
+    <label><input type="radio" name="major" value="Education"><span class="i18n" lang="en">Education</span><span class="i18n" lang="cn">教育学</span><span class="i18n" lang="jp">教育学</span></label>
+    <label><input type="radio" name="major" value="Engineering"><span class="i18n" lang="en">Engineering</span><span class="i18n" lang="cn">工学</span><span class="i18n" lang="jp">工学</span></label>
+    <label><input type="radio" name="major" value="History"><span class="i18n" lang="en">History</span><span class="i18n" lang="cn">历史学</span><span class="i18n" lang="jp">歴史学</span></label>
+    <label><input type="radio" name="major" value="Journalism and Communication"><span class="i18n" lang="en">Journalism & Communication</span><span class="i18n" lang="cn">新闻传播</span><span class="i18n" lang="jp">新聞・メディア</span></label>
+    <label><input type="radio" name="major" value="Law"><span class="i18n" lang="en">Law</span><span class="i18n" lang="cn">法学</span><span class="i18n" lang="jp">法学</span></label>
+    <label><input type="radio" name="major" value="Literature"><span class="i18n" lang="en">Literature</span><span class="i18n" lang="cn">文学</span><span class="i18n" lang="jp">文学</span></label>
+    <label><input type="radio" name="major" value="Literature-language"><span class="i18n" lang="en">Language & Literature</span><span class="i18n" lang="cn">语言文学</span><span class="i18n" lang="jp">言語・文学</span></label>
+    <label><input type="radio" name="major" value="Management"><span class="i18n" lang="en">Management</span><span class="i18n" lang="cn">管理学</span><span class="i18n" lang="jp">経営学</span></label>
+    <label><input type="radio" name="major" value="Medicine"><span class="i18n" lang="en">Medicine</span><span class="i18n" lang="cn">医学</span><span class="i18n" lang="jp">医学</span></label>
+    <label><input type="radio" name="major" value="Philosophy"><span class="i18n" lang="en">Philosophy</span><span class="i18n" lang="cn">哲学</span><span class="i18n" lang="jp">哲学</span></label>
+    <label><input type="radio" name="major" value="Science"><span class="i18n" lang="en">Science</span><span class="i18n" lang="cn">理学</span><span class="i18n" lang="jp">理学</span></label>
+    <label><input type="radio" name="major" value="Sociology"><span class="i18n" lang="en">Sociology</span><span class="i18n" lang="cn">社会学</span><span class="i18n" lang="jp">社会学</span></label>
+    <label><input type="radio" name="major" value="Other"><span class="i18n" lang="en">Other</span><span class="i18n" lang="cn">其他</span><span class="i18n" lang="jp">その他</span></label>
+  </div>
+
+  <!-- Q5 语言资格（多选） -->
+  <div class="field">
+    <div><strong>
+      <span class="i18n" lang="en">Q5. Language qualifications obtained/pending</span>
+      <span class="i18n" lang="cn">Q5. 已获或待考的语言资格</span>
+      <span class="i18n" lang="jp">Q5. 取得済み／予定の語学資格</span>
+      <span class="i18n" lang="en"> (□)</span>
+      <span class="i18n" lang="cn">（□ 多选）</span>
+      <span class="i18n" lang="jp">（□ 複数）</span>
+    </strong></div>
+
+    <!-- IELTS -->
+    <label><input type="checkbox" name="lang_qual[]" value="IELTS-5"><span class="i18n" lang="en">IELTS-5</span><span class="i18n" lang="cn">雅思 5</span><span class="i18n" lang="jp">IELTS 5</span></label>
+    <label><input type="checkbox" name="lang_qual[]" value="IELTS-6"><span class="i18n" lang="en">IELTS-6</span><span class="i18n" lang="cn">雅思 6</span><span class="i18n" lang="jp">IELTS 6</span></label>
+    <label><input type="checkbox" name="lang_qual[]" value="IELTS-7"><span class="i18n" lang="en">IELTS-7</span><span class="i18n" lang="cn">雅思 7</span><span class="i18n" lang="jp">IELTS 7</span></label>
+    <label><input type="checkbox" name="lang_qual[]" value="IELTS-8"><span class="i18n" lang="en">IELTS-8</span><span class="i18n" lang="cn">雅思 8</span><span class="i18n" lang="jp">IELTS 8</span></label>
+
+    <!-- JLPT -->
+    <label><input type="checkbox" name="lang_qual[]" value="JLPT-N1"><span class="i18n" lang="en">JLPT-N1</span><span class="i18n" lang="cn">日语能力 N1</span><span class="i18n" lang="jp">JLPT N1</span></label>
+    <label><input type="checkbox" name="lang_qual[]" value="JLPT-N2"><span class="i18n" lang="en">JLPT-N2</span><span class="i18n" lang="cn">日语能力 N2</span><span class="i18n" lang="jp">JLPT N2</span></label>
+    <label><input type="checkbox" name="lang_qual[]" value="JLPT-N3"><span class="i18n" lang="en">JLPT-N3</span><span class="i18n" lang="cn">日语能力 N3</span><span class="i18n" lang="jp">JLPT N3</span></label>
+    <label><input type="checkbox" name="lang_qual[]" value="JLPT-N4"><span class="i18n" lang="en">JLPT-N4</span><span class="i18n" lang="cn">日语能力 N4</span><span class="i18n" lang="jp">JLPT N4</span></label>
+    <label><input type="checkbox" name="lang_qual[]" value="JLPT-N5"><span class="i18n" lang="en">JLPT-N5</span><span class="i18n" lang="cn">日语能力 N5</span><span class="i18n" lang="jp">JLPT N5</span></label>
+
+    <!-- TOEFL -->
+    <label><input type="checkbox" name="lang_qual[]" value="TOEFL-50"><span class="i18n" lang="en">TOEFL-50</span><span class="i18n" lang="cn">托福 50</span><span class="i18n" lang="jp">TOEFL 50</span></label>
+    <label><input type="checkbox" name="lang_qual[]" value="TOEFL-60"><span class="i18n" lang="en">TOEFL-60</span><span class="i18n" lang="cn">托福 60</span><span class="i18n" lang="jp">TOEFL 60</span></label>
+    <label><input type="checkbox" name="lang_qual[]" value="TOEFL-70"><span class="i18n" lang="en">TOEFL-70</span><span class="i18n" lang="cn">托福 70</span><span class="i18n" lang="jp">TOEFL 70</span></label>
+    <label><input type="checkbox" name="lang_qual[]" value="TOEFL-80"><span class="i18n" lang="en">TOEFL-80</span><span class="i18n" lang="cn">托福 80</span><span class="i18n" lang="jp">TOEFL 80</span></label>
+    <label><input type="checkbox" name="lang_qual[]" value="TOEFL-90"><span class="i18n" lang="en">TOEFL-90</span><span class="i18n" lang="cn">托福 90</span><span class="i18n" lang="jp">TOEFL 90</span></label>
+    <label><input type="checkbox" name="lang_qual[]" value="TOEFL-90+"><span class="i18n" lang="en">TOEFL-90+</span><span class="i18n" lang="cn">托福 90+</span><span class="i18n" lang="jp">TOEFL 90+</span></label>
+
+    <!-- TOEIC -->
+    <label><input type="checkbox" name="lang_qual[]" value="TOEIC-500"><span class="i18n" lang="en">TOEIC-500</span><span class="i18n" lang="cn">托业 500</span><span class="i18n" lang="jp">TOEIC 500</span></label>
+    <label><input type="checkbox" name="lang_qual[]" value="TOEIC-600"><span class="i18n" lang="en">TOEIC-600</span><span class="i18n" lang="cn">托业 600</span><span class="i18n" lang="jp">TOEIC 600</span></label>
+    <label><input type="checkbox" name="lang_qual[]" value="TOEIC-700"><span class="i18n" lang="en">TOEIC-700</span><span class="i18n" lang="cn">托业 700</span><span class="i18n" lang="jp">TOEIC 700</span></label>
+    <label><input type="checkbox" name="lang_qual[]" value="TOEIC-800"><span class="i18n" lang="en">TOEIC-800</span><span class="i18n" lang="cn">托业 800</span><span class="i18n" lang="jp">TOEIC 800</span></label>
+  </div>
+
+  <!-- Q6 时间状态（单选） -->
+  <div class="field">
+    <div><strong>
+      <span class="i18n" lang="en">Q6. Time status</span>
+      <span class="i18n" lang="cn">Q6. 时间状态</span>
+      <span class="i18n" lang="jp">Q6. 時間の状況</span>
+      <span class="i18n" lang="en"> (○)</span>
+      <span class="i18n" lang="cn">（○ 单选）</span>
+      <span class="i18n" lang="jp">（○ 単一）</span>
+    </strong></div>
+
+    <label><input type="radio" name="time_status" value="Full-time preparation">
+      <span class="i18n" lang="en">Full-time preparation</span>
+      <span class="i18n" lang="cn">全职备考/准备</span>
+      <span class="i18n" lang="jp">フルタイムで準備</span>
+    </label>
+    <label><input type="radio" name="time_status" value="Current student">
+      <span class="i18n" lang="en">Current student</span>
+      <span class="i18n" lang="cn">在读学生</span>
+      <span class="i18n" lang="jp">在学中</span>
+    </label>
+    <label><input type="radio" name="time_status" value="Part-time preparation">
+      <span class="i18n" lang="en">Part-time preparation</span>
+      <span class="i18n" lang="cn">业余/兼职准备</span>
+      <span class="i18n" lang="jp">パートタイムで準備</span>
+    </label>
+    <label><input type="radio" name="time_status" value="Fragmented time">
+      <span class="i18n" lang="en">Fragmented time</span>
+      <span class="i18n" lang="cn">碎片化时间</span>
+      <span class="i18n" lang="jp">隙間時間中心</span>
+    </label>
+    <label><input type="radio" name="time_status" value="Other">
+      <span class="i18n" lang="en">Other</span>
+      <span class="i18n" lang="cn">其他</span>
+      <span class="i18n" lang="jp">その他</span>
+    </label>
+  </div>
+</form>
   <!-- 其余选项照抄这个结构 -->
 </div>
 
