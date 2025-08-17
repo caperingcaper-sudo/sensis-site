@@ -764,98 +764,160 @@
   </div>
 </div>
 </form>
-</div>
-
-
-    <!-- 保留你的操作按钮（文案也可三语化，先保持英文；需要也可同法包装） -->
-    <div class="actions">
-      <button type="button" class="primary" onclick="exportJSON()">Export JSON</button>
-      <button type="reset">Reset</button>
-    </div>
+  <!-- 表单结束：A/B/C -->
   </form>
+
+  <!-- 操作按钮（仍在 .md 内） -->
+  <div class="actions">
+    <button type="button" class="primary" onclick="exportJSON()">Export JSON</button>
+    <button type="reset">Reset</button>
+  </div>
 
   <hr>
 
-# <span class="t"><span class="en">Purpose of Questions (for internal use)</span><span class="cn">问题目的（内部使用）</span><span class="jp">設問の目的（内部利用）</span></span>
+  <!-- Purpose of Questions -->
+  <h2>
+    <span class="i18n" lang="en">Purpose of Questions (for internal use)</span>
+    <span class="i18n" lang="cn">问题目的（内部使用）</span>
+    <span class="i18n" lang="jp">設問の目的（内部利用）</span>
+  </h2>
 
-- **<span class="t"><span class="en">A (Q1–Q6): System</span><span class="cn">A (Q1–Q6)：系统</span><span class="jp">A (Q1–Q6)：システム</span></span>**  
-  <span class="t"><span class="en">Demographic baseline, credentials, major, time status.</span><span class="cn">人口基线、学历、专业、时间状态。</span><span class="jp">人口学的基盤、学歴、専攻、時間状況。</span></span>
+  <ul>
+    <li>
+      <strong>
+        <span class="i18n" lang="en">A (Q1–Q6): System</span>
+        <span class="i18n" lang="cn">A (Q1–Q6)：系统</span>
+        <span class="i18n" lang="jp">A (Q1–Q6)：システム</span>
+      </strong><br>
+      <span class="i18n" lang="en">Demographic baseline, credentials, major, time status.</span>
+      <span class="i18n" lang="cn">人口基线、学历、专业、时间状态。</span>
+      <span class="i18n" lang="jp">人口学的基盤、学歴、専攻、時間状況。</span>
+    </li>
+    <li>
+      <strong>
+        <span class="i18n" lang="en">B (Q1–Q6): Personal</span>
+        <span class="i18n" lang="cn">B (Q1–Q6)：个人</span>
+        <span class="i18n" lang="jp">B (Q1–Q6)：パーソナル</span>
+      </strong><br>
+      <span class="i18n" lang="en">Interests, goals, habits, task preferences, obstacles, MBTI.</span>
+      <span class="i18n" lang="cn">兴趣、目标、习惯、任务偏好、障碍、MBTI。</span>
+      <span class="i18n" lang="jp">関心、目標、習慣、課題選好、障害、MBTI。</span>
+    </li>
+    <li>
+      <strong>
+        <span class="i18n" lang="en">C (Q1–Q6): Situation</span>
+        <span class="i18n" lang="cn">C (Q1–Q6)：情境</span>
+        <span class="i18n" lang="jp">C (Q1–Q6)：状況</span>
+      </strong><br>
+      <span class="i18n" lang="en">Available time, weekly pattern, devices, channels, support, environment, lifestyle.</span>
+      <span class="i18n" lang="cn">可支配时间、每周模式、设备、渠道、支持、环境、生活方式。</span>
+      <span class="i18n" lang="jp">利用可能な時間、週間パターン、デバイス、チャネル、支援、環境、ライフスタイル。</span>
+    </li>
+  </ul>
 
-- **<span class="t"><span class="en">B (Q1–Q6): Personal</span><span class="cn">B (Q1–Q6)：个人</span><span class="jp">B (Q1–Q6)：パーソナル</span></span>**  
-  <span class="t"><span class="en">Interests, goals, habits, task preferences, obstacles, MBTI.</span><span class="cn">兴趣、目标、习惯、任务偏好、障碍、MBTI。</span><span class="jp">関心、目標、習慣、課題選好、障害、MBTI。</span></span>
+  <!-- FAQ -->
+  <h2>
+    <span class="i18n" lang="en">FAQ</span>
+    <span class="i18n" lang="cn">常见问题</span>
+    <span class="i18n" lang="jp">よくある質問</span>
+  </h2>
 
-- **<span class="t"><span class="en">C (Q1–Q6): Situation</span><span class="cn">C (Q1–Q6)：情境</span><span class="jp">C (Q1–Q6)：状況</span></span>**  
-  <span class="t"><span class="en">Available time, weekly pattern, devices, channels, support, environment, lifestyle.</span><span class="cn">可支配时间、每周模式、设备、渠道、支持、环境、生活方式。</span><span class="jp">利用可能な時間、週間パターン、デバイス、チャネル、支援、環境、ライフスタイル。</span></span>
+  <h3>
+    <span class="i18n" lang="en">Can I skip a question?</span>
+    <span class="i18n" lang="cn">我可以跳过问题吗？</span>
+    <span class="i18n" lang="jp">質問を飛ばしてもいいですか？</span>
+  </h3>
+  <p>
+    <span class="i18n" lang="en">Yes. Incomplete answers may reduce the accuracy of your results, but the form remains valid.</span>
+    <span class="i18n" lang="cn">可以。不完整的回答可能会降低结果的准确性，但表格依然有效。</span>
+    <span class="i18n" lang="jp">はい。不完全な回答は結果の精度を下げる可能性がありますが、フォームは有効です。</span>
+  </p>
 
+  <h3>
+    <span class="i18n" lang="en">Why ask about age/education/major?</span>
+    <span class="i18n" lang="cn">为什么要问年龄/学历/专业？</span>
+    <span class="i18n" lang="jp">なぜ年齢／学歴／専攻を聞くのですか？</span>
+  </h3>
+  <p>
+    <span class="i18n" lang="en">To understand structural context shaping planning and access.</span>
+    <span class="i18n" lang="cn">用于理解影响规划与机会的结构性背景。</span>
+    <span class="i18n" lang="jp">計画やアクセスを規定する構造的背景を把握するためです。</span>
+  </p>
 
-# <span class="t"><span class="en">FAQ</span><span class="cn">常见问题</span><span class="jp">よくある質問</span></span>
+  <h3>
+    <span class="i18n" lang="en">How will my data be used?</span>
+    <span class="i18n" lang="cn">我的数据将如何使用？</span>
+    <span class="i18n" lang="jp">私のデータはどのように使われますか？</span>
+  </h3>
+  <p>
+    <span class="i18n" lang="en">Responses are anonymized and analyzed only for Sensis research and product development.</span>
+    <span class="i18n" lang="cn">回答将被匿名化，仅用于 Sensis 的研究和产品开发。</span>
+    <span class="i18n" lang="jp">回答は匿名化され、Sensis の研究と製品開発のみに利用されます。</span>
+  </p>
 
-**<span class="t"><span class="en">Can I skip a question?</span><span class="cn">我可以跳过问题吗？</span><span class="jp">質問を飛ばしてもいいですか？</span></span>**  
-<span class="t"><span class="en">Yes. Incomplete answers may reduce the accuracy of your results, but the form remains valid.</span><span class="cn">可以。不完整的回答可能会降低结果的准确性，但表格依然有效。</span><span class="jp">はい。不完全な回答は結果の精度を下げる可能性がありますが、フォームは有効です。</span></span>  
+  <!-- Data Usage FAQ -->
+  <h2>
+    <span class="i18n" lang="en">Data Usage FAQ</span>
+    <span class="i18n" lang="cn">数据使用常见问题</span>
+    <span class="i18n" lang="jp">データ利用に関するFAQ</span>
+  </h2>
 
-**<span class="t"><span class="en">Why ask about age/education/major?</span><span class="cn">为什么要问年龄/学历/专业？</span><span class="jp">なぜ年齢／学歴／専攻を聞くのですか？</span></span>**  
-<span class="t"><span class="en">To understand structural context shaping planning and access.</span><span class="cn">用于理解影响规划与机会的结构性背景。</span><span class="jp">計画やアクセスを規定する構造的背景を把握するためです。</span></span>  
+  <h3>
+    <span class="i18n" lang="en">Q1. Why do we collect this data?</span>
+    <span class="i18n" lang="cn">Q1. 为什么要收集这些数据？</span>
+    <span class="i18n" lang="jp">Q1. なぜこのデータを収集するのですか？</span>
+  </h3>
+  <p>
+    <span class="i18n" lang="en">We collect data to understand users’ backgrounds, study habits, and needs, in order to improve research support and learning guidance.</span>
+    <span class="i18n" lang="cn">我们收集这些数据是为了了解用户的背景、学习习惯和需求，以便改进研究支持与学习指导。</span>
+    <span class="i18n" lang="jp">本データは、利用者の背景・学習習慣・ニーズを把握し、研究支援や学習指導の改善に役立てるために収集されます。</span>
+  </p>
 
-**<span class="t"><span class="en">How will my data be used?</span><span class="cn">我的数据将如何使用？</span><span class="jp">私のデータはどのように使われますか？</span></span>**  
-<span class="t"><span class="en">Responses are anonymized and analyzed only for Sensis research and product development.</span><span class="cn">回答将被匿名化，仅用于 Sensis 的研究和产品开发。</span><span class="jp">回答は匿名化され、Sensis の研究と製品開発のみに利用されます。</span></span>  
+  <h3>
+    <span class="i18n" lang="en">Q2. How will my data be stored?</span>
+    <span class="i18n" lang="cn">Q2. 我的数据会如何存储？</span>
+    <span class="i18n" lang="jp">Q2. データはどのように保存されますか？</span>
+  </h3>
+  <p>
+    <span class="i18n" lang="en">All responses will be stored securely in encrypted databases with restricted access.</span>
+    <span class="i18n" lang="cn">所有问卷答案将安全存储在加密数据库中，并限制访问权限。</span>
+    <span class="i18n" lang="jp">すべての回答は、暗号化されたデータベースに安全に保存され、アクセスは制限されます。</span>
+  </p>
 
-# <span class="t"><span class="en">Data Usage FAQ</span><span class="cn">数据使用常见问题</span><span class="jp">データ利用に関するFAQ</span></span>
+  <h3>
+    <span class="i18n" lang="en">Q3. Will my personal identity be revealed?</span>
+    <span class="i18n" lang="cn">Q3. 我的个人身份会被公开吗？</span>
+    <span class="i18n" lang="jp">Q3. 個人情報は公開されますか？</span>
+  </h3>
+  <p>
+    <span class="i18n" lang="en">No. All data will be anonymized and used only for aggregated analysis.</span>
+    <span class="i18n" lang="cn">不会。所有数据将进行匿名化处理，仅用于总体分析。</span>
+    <span class="i18n" lang="jp">いいえ。すべてのデータは匿名化され、集計分析のみに使用されます。</span>
+  </p>
 
----
+  <h3>
+    <span class="i18n" lang="en">Q4. Can I withdraw my data later?</span>
+    <span class="i18n" lang="cn">Q4. 我以后可以撤回数据吗？</span>
+    <span class="i18n" lang="jp">Q4. 後からデータを撤回できますか？</span>
+  </h3>
+  <p>
+    <span class="i18n" lang="en">Yes. You may contact the research team at any time to request data deletion.</span>
+    <span class="i18n" lang="cn">可以。您可以随时联系研究团队，要求删除您的数据。</span>
+    <span class="i18n" lang="jp">はい。研究チームに連絡することで、いつでもデータ削除を依頼できます。</span>
+  </p>
 
-### <span class="t"><span class="en">Q1. Why do we collect this data?</span><span class="cn">Q1. 为什么要收集这些数据？</span><span class="jp">Q1. なぜこのデータを収集するのですか？</span></span>
+  <h3>
+    <span class="i18n" lang="en">Q5. Who can I contact for questions?</span>
+    <span class="i18n" lang="cn">Q5. 有问题可以联系谁？</span>
+    <span class="i18n" lang="jp">Q5. 質問がある場合は誰に連絡すればよいですか？</span>
+  </h3>
+  <p>
+    <span class="i18n" lang="en">Please contact the project research team via email: sensis-team@example.com</span>
+    <span class="i18n" lang="cn">如有问题，请通过电子邮件联系项目研究团队：sensis-team@example.com</span>
+    <span class="i18n" lang="jp">ご質問は次のメールへ：sensis-team@example.com</span>
+  </p>
 
-<span class="t">
-<span class="en">We collect data to understand users’ backgrounds, study habits, and needs, in order to improve research support and learning guidance.</span>
-<span class="cn">我们收集这些数据是为了了解用户的背景、学习习惯和需求，以便改进研究支持与学习指导。</span>
-<span class="jp">本データは、利用者の背景・学習習慣・ニーズを把握し、研究支援や学習指導の改善に役立てるために収集されます。</span>
-</span>
-
----
-
-### <span class="t"><span class="en">Q2. How will my data be stored?</span><span class="cn">Q2. 我的数据会如何存储？</span><span class="jp">Q2. データはどのように保存されますか？</span></span>
-
-<span class="t">
-<span class="en">All responses will be stored securely in encrypted databases with restricted access.</span>
-<span class="cn">所有问卷答案将安全存储在加密数据库中，并限制访问权限。</span>
-<span class="jp">すべての回答は、暗号化されたデータベースに安全に保存され、アクセスは制限されます。</span>
-</span>
-
----
-
-### <span class="t"><span class="en">Q3. Will my personal identity be revealed?</span><span class="cn">Q3. 我的个人身份会被公开吗？</span><span class="jp">Q3. 個人情報は公開されますか？</span></span>
-
-<span class="t">
-<span class="en">No. All data will be anonymized and used only for aggregated analysis.</span>
-<span class="cn">不会。所有数据将进行匿名化处理，仅用于总体分析。</span>
-<span class="jp">いいえ。すべてのデータは匿名化され、集計分析のみに使用されます。</span>
-</span>
-
----
-
-### <span class="t"><span class="en">Q4. Can I withdraw my data later?</span><span class="cn">Q4. 我以后可以撤回数据吗？</span><span class="jp">Q4. 後からデータを撤回できますか？</span></span>
-
-<span class="t">
-<span class="en">Yes. You may contact the research team at any time to request data deletion.</span>
-<span class="cn">可以。您可以随时联系研究团队，要求删除您的数据。</span>
-<span class="jp">はい。研究チームに連絡することで、いつでもデータ削除を依頼できます。</span>
-</span>
-
----
-
-### <span class="t"><span class="en">Q5. Who can I contact for questions?</span><span class="cn">Q5. 有问题可以联系谁？</span><span class="jp">Q5. 質問がある場合は誰に連絡すればよいですか？</span></span>
-
-<span class="t">
-<span class="en">Please contact the project research team via email: sensis-team@example.com</span>
-<span class="cn">如有问题，请通过电子邮件联系项目研究团队：sensis-team@example.com</span>
-<span class="jp">ご質問がある場合は、次のメールアドレスで研究チームにお問い合わせください：sensis-team@example.com</span>
-</span>
-</div>
-
-<div class="field">
-</form>
-<div id="out" class="out" aria-live="polite"></div>
-</div>
+</div> <!-- .md 结束 -->
 </section>
       </article>
     </main>
