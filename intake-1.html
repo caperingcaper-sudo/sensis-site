@@ -146,12 +146,18 @@
       <span class="i18n" lang="en">High school or below</span>
       <span class="i18n" lang="cn">高中及以下</span>
       <span class="i18n" lang="jp">高校卒以下</span>
+       <label><input type="radio" name="edu" value="Associate">
+      <span class="i18n" lang="en">Associate</span>
+      <span class="i18n" lang="cn">大专/技校</span>
+      <span class="i18n" lang="jp">準学士/専門学校</span>
+    </label>
     </label>
     <label><input type="radio" name="edu" value="Bachelor">
       <span class="i18n" lang="en">Bachelor</span>
       <span class="i18n" lang="cn">本科</span>
       <span class="i18n" lang="jp">学士</span>
     </label>
+   
     <label><input type="radio" name="edu" value="Master">
       <span class="i18n" lang="en">Master</span>
       <span class="i18n" lang="cn">硕士</span>
@@ -161,11 +167,6 @@
       <span class="i18n" lang="en">Doctorate</span>
       <span class="i18n" lang="cn">博士</span>
       <span class="i18n" lang="jp">博士</span>
-    </label>
-    <label><input type="radio" name="edu" value="Other">
-      <span class="i18n" lang="en">Other</span>
-      <span class="i18n" lang="cn">其他</span>
-      <span class="i18n" lang="jp">その他</span>
     </label>
       </div>
   </div>
@@ -193,10 +194,10 @@
       <span class="i18n" lang="cn">自雇人士</span>
       <span class="i18n" lang="jp">自営業</span>
     </label>
-    <label><input type="radio" name="occupation" value="Other">
-      <span class="i18n" lang="en">Other</span>
-      <span class="i18n" lang="cn">其他</span>
-      <span class="i18n" lang="jp">その他</span>
+    <label><input type="radio" name="occupation" value="Gap Year">
+      <span class="i18n" lang="en">Gap Year</span>
+      <span class="i18n" lang="cn">空档期</span>
+      <span class="i18n" lang="jp">ギャップイヤー</span>
     </label>
   </div>
   </div>
@@ -317,11 +318,6 @@
       <span class="i18n" lang="en">Creative writing</span>
       <span class="i18n" lang="cn">创意写作</span>
       <span class="i18n" lang="jp">クリエイティブライティング</span>
-    </label>
-    <label><input type="checkbox" name="interests[]" value="programming">
-      <span class="i18n" lang="en">Programming</span>
-      <span class="i18n" lang="cn">编程</span>
-      <span class="i18n" lang="jp">プログラミング</span>
     </label>
     <label><input type="checkbox" name="interests[]" value="design">
       <span class="i18n" lang="en">Design</span>
@@ -490,12 +486,6 @@
   <span class="i18n" lang="cn">社交媒体</span>
   <span class="i18n" lang="jp">ソーシャルメディア</span>
 </label>
-
-<label><input type="checkbox" name="interests[]" value="other">
-  <span class="i18n" lang="en">Other</span>
-  <span class="i18n" lang="cn">其他</span>
-  <span class="i18n" lang="jp">その他</span>
-</label>
   </div>
 </div>
 <!-- B2 目标（多选；两列） -->
@@ -572,13 +562,6 @@
   <span class="i18n" lang="cn">自我实现</span>
   <span class="i18n" lang="jp">自己実現</span>
 </label>
-
-<label><input type="checkbox" name="goals[]" value="other">
-  <span class="i18n" lang="en">Other</span>
-  <span class="i18n" lang="cn">其他</span>
-  <span class="i18n" lang="jp">その他</span>
-</label>
-
   </div>
 </div>
 
@@ -605,11 +588,16 @@
     <span class="i18n" lang="cn">受截止日期驱动</span>
     <span class="i18n" lang="jp">締切駆動</span>
   </label>
-  <label><input type="radio" name="habit" value="other">
-    <span class="i18n" lang="en">Other</span>
-    <span class="i18n" lang="cn">其他</span>
-    <span class="i18n" lang="jp">その他</span>
-  </label>
+<label><input type="checkbox" name="habit" value="regular-schedule">
+  <span class="i18n" lang="en">Has a regular schedule</span>
+  <span class="i18n" lang="cn">作息规律</span>
+  <span class="i18n" lang="jp">規則正しい</span>
+</label>
+  <label><input type="checkbox" name="habit" value="Deep thinking">
+  <span class="i18n" lang="en">Deep thinking</span>
+  <span class="i18n" lang="cn">深入思考</span>
+  <span class="i18n" lang="jp">深い思考</span>
+</label>
 </div>
 
 <!-- B4 任务偏好（多选；两列） -->
@@ -660,12 +648,6 @@
   <span class="i18n" lang="en">Works independently</span>
   <span class="i18n" lang="cn">独立完成</span>
   <span class="i18n" lang="jp">一人で取り組む</span>
-</label>
-
-<label><input type="checkbox" name="task_prefs[]" value="regular-schedule">
-  <span class="i18n" lang="en">Has a regular schedule</span>
-  <span class="i18n" lang="cn">作息规律</span>
-  <span class="i18n" lang="jp">規則正しい</span>
 </label>
 
 <label><input type="checkbox" name="task_prefs[]" value="task-focused">
@@ -923,7 +905,7 @@
 
     <label><input type="checkbox" name="devices[]" value="pc">
       <span class="i18n" lang="en">PC / laptop</span>
-      <span class="i18n" lang="cn">电脑/笔记本</span>
+      <span class="i18n" lang="cn">电脑/笔记本电脑</span>
       <span class="i18n" lang="jp">PC・ノートPC</span>
     </label>
     <label><input type="checkbox" name="devices[]" value="tablet">
@@ -937,9 +919,9 @@
       <span class="i18n" lang="jp">スマートフォン</span>
     </label>
     <label><input type="checkbox" name="devices[]" value="other">
-      <span class="i18n" lang="en">Other</span>
-      <span class="i18n" lang="cn">其他</span>
-      <span class="i18n" lang="jp">その他</span>
+      <span class="i18n" lang="en">book/notebook</span>
+      <span class="i18n" lang="cn">书/本</span>
+      <span class="i18n" lang="jp">書籍/ノート</span>
     </label>
 </div>
 
