@@ -20,6 +20,11 @@ html[data-lang="cn"] .i18n[lang="cn"]{ display:inline; }
 html[data-lang="jp"] .i18n[lang="jp"]{ display:inline; }
 .i18n.block{ display:block; }
 
+/* block 用：section/article 等整块翻译 */
+.i18n-block[lang]{ display:none; }
+html[data-lang="en"] .i18n-block[lang="en"]{ display:block; }
+html[data-lang="cn"] .i18n-block[lang="cn"]{ display:block; }
+html[data-lang="jp"] .i18n-block[lang="jp"]{ display:block; }
 /* ===== 2) Desktop: sidebar 常驻 ===== */
 .wrap{
   display:grid;
