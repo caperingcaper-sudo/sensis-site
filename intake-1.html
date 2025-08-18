@@ -1245,8 +1245,9 @@
 
 <!-- 公共脚本（switchLang / 抽屉等） -->
 <script src="common.js" defer></script>
+
 <script>
-/** —— 基础工具：保留你的 formToJSON 并加上语言等上下文 —— **/
+/** —— 表单转 JSON（保留你的结构） —— **/
 function formToJSON(form){
   const fd = new FormData(form), out = {};
   for (const [k,v] of fd.entries()){
@@ -1254,11 +1255,23 @@ function formToJSON(form){
     else if (out[k] !== undefined) { out[k] = Array.isArray(out[k]) ? out[k].concat(v) : [out[k], v]; }
     else { out[k] = v; }
   }
-  // 附带上下文：当前语言、UA、来源
+  // 附带上下文
   out.lang = getCurrentLang();
   out.user_agent = navigator.userAgent || '';
   out.referer = location.href;
   return out;
+}
+
+/** —— 关键：保证多选字段永远是数组（没勾选也发 []） —— **/
+function normalizeArrays(data){
+  const must = [
+    'lang_qual','interests','goals','task_prefs','obstacles',
+    'weekly_pattern','devices','channels','supports','env_life'
+  ];
+  for (const k of must) {
+    if (!Array.isArray(data[k])) data[k] = data[k] ? [data[k]] : [];
+  }
+  return data;
 }
 
 function getCurrentLang(){
@@ -1267,95 +1280,75 @@ function getCurrentLang(){
 }
 
 function exportJSON(){
-  const data = formToJSON(document.getElementById('intake'));
+  const data = normalizeArrays(formToJSON(document.getElementById('intake')));
   document.getElementById('out').textContent = JSON.stringify(data, null, 2);
 }
 
-/** —— 配置：填入你部署得到的 Apps Script URL —— **/
+/** —— 你的 Apps Script 部署地址 —— **/
 const SHEETS_API = 'https://script.google.com/macros/s/AKfycbyyQg32tLFPRcbJb1kD_QzntTQTeU4HD-LPxP7gIISf24qzqfRTmHQGCucmZRgph423/exec';
 
 /** —— 提交逻辑 —— **/
 async function submitForm(){
   const consent = document.getElementById('consent');
   const btn = document.getElementById('btn-submit');
-  const feedback = document.getElementById('feedback');
 
   if (!consent.checked) {
     showFeedback('请先勾选同意数据处理。', false);
     return;
   }
 
-  const data = formToJSON(document.getElementById('intake'));
-  // 可选：本地显示一次 JSON（便于调试）
+  // 序列化 + 强制数组，防止缺 key 造成列右移
+  const data = normalizeArrays(formToJSON(document.getElementById('intake')));
   document.getElementById('out').textContent = JSON.stringify(data, null, 2);
 
   btn.disabled = true;
-  btn.textContent = getTextByLang({
-    en: 'Submitting…', cn: '提交中…', jp: '送信中…'
-  });
+  btn.textContent = getTextByLang({ en:'Submitting…', cn:'提交中…', jp:'送信中…' });
 
   try {
-const res = await fetch(SHEETS_API, {
-  method: 'POST',
-  mode: 'cors',
-  headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // 改成 text/plain
-  body: JSON.stringify(data)  // 内容还是 JSON 字符串
-});
-
+    const res = await fetch(SHEETS_API, {
+      method: 'POST',
+      mode: 'cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // 简单请求避免预检
+      body: JSON.stringify(data)
+    });
     const json = await res.json().catch(()=>({}));
     if (!res.ok || json.ok === false) {
       throw new Error(json.error || ('HTTP ' + res.status));
     }
-
     showFeedback(getTextByLang({
-      en: 'Submitted successfully. Thank you.',
-      cn: '提交成功，感谢参与。',
-      jp: '送信完了。ありがとう。'
+      en:'Submitted successfully. Thank you.',
+      cn:'提交成功，感谢参与。',
+      jp:'送信完了。ありがとう。'
     }), true);
-
-    // 可选：提交后重置表单
-    // document.getElementById('intake').reset();
   } catch (err) {
     showFeedback(getTextByLang({
-      en: 'Submission failed. Please try again or contact us.',
-      cn: '提交失败，请重试或联系维护者。',
-      jp: '送信に失敗。再試行するか連絡してくれ。'
+      en:'Submission failed. Please try again or contact us.',
+      cn:'提交失败，请重试或联系维护者。',
+      jp:'送信に失敗。再試行するか連絡してくれ。'
     }) + ' ' + String(err), false);
   } finally {
     btn.disabled = false;
-    btn.textContent = getTextByLang({
-      en: 'Submit', cn: '提交', jp: '送信'
-    });
+    btn.textContent = getTextByLang({ en:'Submit', cn:'提交', jp:'送信' });
   }
 }
 
-/** —— 反馈卡片 —— **/
+/** —— 反馈卡 / 文案助手 / 同意开关 —— **/
 function showFeedback(msg, ok){
   const el = document.getElementById('feedback');
   el.hidden = false;
   el.className = 'result-card ' + (ok ? 'ok' : 'err');
   el.textContent = msg;
 }
-
-/** —— 文案助手 —— **/
 function getTextByLang(map){
   const l = getCurrentLang();
   return map[l] || map.en || '';
 }
-
-/** —— 初始化：同意勾选才能提交 —— **/
 (function initConsent(){
   const consent = document.getElementById('consent');
   const btn = document.getElementById('btn-submit');
   function sync(){ btn.disabled = !consent.checked; }
-  if (consent) {
-    consent.addEventListener('change', sync);
-    sync();
-  }
+  if (consent) { consent.addEventListener('change', sync); sync(); }
 })();
-</script>
-
-}
 </script>
 </body>
 </html>
