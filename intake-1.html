@@ -13,8 +13,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
   <!-- 全局样式 + Paper v1 样式 -->
-  <link rel="stylesheet" href="https://sensising.github.io/sensis-site/styles.css">
-  <link rel="stylesheet" href="https://sensising.github.io/sensis-site/css/paperV2.css?v=2"><!-- 注意大小写：paperV1.css -->
+  <link rel="stylesheet" href="styles.css?v=2">
+<link rel="stylesheet" href="css/paperV2.css?v=2"><!-- 注意大小写：paperV1.css -->
 </head>
 <body>
   <div class="wrap">
@@ -699,116 +699,119 @@
 
 <!-- B5 障碍（多选；两列） -->
 <div class="field">
-   <div><strong>
-  <span class="i18n" lang="en">B5. Main obstacles (personal / psychological)</span>
-  <span class="i18n" lang="cn">B5. 主要障碍（个人/心理）</span>
-  <span class="i18n" lang="jp">B5. 主な障壁（個人・心理）</span>
-</strong></div>
+  <div><strong>
+    <span class="i18n" lang="en">B5. Main obstacles (personal / psychological)</span>
+    <span class="i18n" lang="cn">B5. 主要障碍（个人/心理）</span>
+    <span class="i18n" lang="jp">B5. 主な障壁（個人・心理）</span>
+  </strong></div>
 
-<div class="options cols-2">
+  <div class="options cols-2">
     <label><input type="checkbox" name="obstacles[]" value="time">
       <span class="i18n" lang="en">Lack of time</span>
       <span class="i18n" lang="cn">时间不足</span>
       <span class="i18n" lang="jp">時間が足りない</span>
     </label>
+
     <label><input type="checkbox" name="obstacles[]" value="methods">
       <span class="i18n" lang="en">Lack of methods</span>
       <span class="i18n" lang="cn">方法不足</span>
       <span class="i18n" lang="jp">方法がない</span>
     </label>
+
     <label><input type="checkbox" name="obstacles[]" value="discipline">
       <span class="i18n" lang="en">Low discipline</span>
       <span class="i18n" lang="cn">自律性弱</span>
       <span class="i18n" lang="jp">自己管理が弱い</span>
     </label>
+
     <label><input type="checkbox" name="obstacles[]" value="confidence">
       <span class="i18n" lang="en">Low confidence</span>
       <span class="i18n" lang="cn">自信不足</span>
       <span class="i18n" lang="jp">自信がない</span>
     </label>
+
     <label><input type="checkbox" name="obstacles[]" value="resources">
       <span class="i18n" lang="en">Lack of resources</span>
       <span class="i18n" lang="cn">资源有限</span>
       <span class="i18n" lang="jp">リソース不足</span>
     </label>
+
     <label><input type="checkbox" name="obstacles[]" value="guidance">
       <span class="i18n" lang="en">Lack of guidance</span>
       <span class="i18n" lang="cn">缺少指导</span>
       <span class="i18n" lang="jp">指導がない</span>
-     
-  <label><input type="checkbox" name="obstacles[]" value="procrastination">
-    <span class="i18n" lang="en">Procrastination</span>
-    <span class="i18n" lang="cn">拖延</span>
-    <span class="i18n" lang="jp">先延ばし</span>
-  </label>
+    </label>
 
-  <label><input type="checkbox" name="obstacles[]" value="anxiety">
-    <span class="i18n" lang="en">Anxiety</span>
-    <span class="i18n" lang="cn">焦虑</span>
-    <span class="i18n" lang="jp">不安</span>
-  </label>
+    <label><input type="checkbox" name="obstacles[]" value="procrastination">
+      <span class="i18n" lang="en">Procrastination</span>
+      <span class="i18n" lang="cn">拖延</span>
+      <span class="i18n" lang="jp">先延ばし</span>
+    </label>
 
-  <label><input type="checkbox" name="obstacles[]" value="lack-planning">
-    <span class="i18n" lang="en">Lack of planning</span>
-    <span class="i18n" lang="cn">缺乏规划</span>
-    <span class="i18n" lang="jp">計画性がない</span>
-  </label>
+    <label><input type="checkbox" name="obstacles[]" value="anxiety">
+      <span class="i18n" lang="en">Anxiety</span>
+      <span class="i18n" lang="cn">焦虑</span>
+      <span class="i18n" lang="jp">不安</span>
+    </label>
 
-  <label><input type="checkbox" name="obstacles[]" value="lack-motivation">
-    <span class="i18n" lang="en">Lack of motivation</span>
-    <span class="i18n" lang="cn">缺乏动力</span>
-    <span class="i18n" lang="jp">やる気が出ない</span>
-  </label>
+    <label><input type="checkbox" name="obstacles[]" value="lack-planning">
+      <span class="i18n" lang="en">Lack of planning</span>
+      <span class="i18n" lang="cn">缺乏规划</span>
+      <span class="i18n" lang="jp">計画性がない</span>
+    </label>
 
-  <label><input type="checkbox" name="obstacles[]" value="confusion">
-    <span class="i18n" lang="en">Confusion</span>
-    <span class="i18n" lang="cn">困惑</span>
-    <span class="i18n" lang="jp">混乱</span>
-  </label>
+    <label><input type="checkbox" name="obstacles[]" value="lack-motivation">
+      <span class="i18n" lang="en">Lack of motivation</span>
+      <span class="i18n" lang="cn">缺乏动力</span>
+      <span class="i18n" lang="jp">やる気が出ない</span>
+    </label>
 
-  <label><input type="checkbox" name="obstacles[]" value="internal-friction">
-    <span class="i18n" lang="en">Severe internal friction</span>
-    <span class="i18n" lang="cn">严重内耗</span>
-    <span class="i18n" lang="jp">強い内的摩耗</span>
-  </label>
+    <label><input type="checkbox" name="obstacles[]" value="confusion">
+      <span class="i18n" lang="en">Confusion</span>
+      <span class="i18n" lang="cn">困惑</span>
+      <span class="i18n" lang="jp">混乱</span>
+    </label>
 
-  <label><input type="checkbox" name="obstacles[]" value="social-anxiety">
-    <span class="i18n" lang="en">Social anxiety</span>
-    <span class="i18n" lang="cn">社交焦虑</span>
-    <span class="i18n" lang="jp">対人不安</span>
-  </label>
+    <label><input type="checkbox" name="obstacles[]" value="internal-friction">
+      <span class="i18n" lang="en">Severe internal friction</span>
+      <span class="i18n" lang="cn">严重内耗</span>
+      <span class="i18n" lang="jp">強い内的摩耗</span>
+    </label>
 
-  <label><input type="checkbox" name="obstacles[]" value="loneliness">
-    <span class="i18n" lang="en">Loneliness</span>
-    <span class="i18n" lang="cn">孤独</span>
-    <span class="i18n" lang="jp">孤独感</span>
-  </label>
+    <label><input type="checkbox" name="obstacles[]" value="social-anxiety">
+      <span class="i18n" lang="en">Social anxiety</span>
+      <span class="i18n" lang="cn">社交焦虑</span>
+      <span class="i18n" lang="jp">対人不安</span>
+    </label>
 
-  <label><input type="checkbox" name="obstacles[]" value="poverty">
-    <span class="i18n" lang="en">Poverty / financial stress</span>
-    <span class="i18n" lang="cn">经济压力</span>
-    <span class="i18n" lang="jp">経済的困難</span>
-  </label>
+    <label><input type="checkbox" name="obstacles[]" value="loneliness">
+      <span class="i18n" lang="en">Loneliness</span>
+      <span class="i18n" lang="cn">孤独</span>
+      <span class="i18n" lang="jp">孤独感</span>
+    </label>
 
-  <label><input type="checkbox" name="obstacles[]" value="depression">
-    <span class="i18n" lang="en">Depression</span>
-    <span class="i18n" lang="cn">抑郁</span>
-    <span class="i18n" lang="jp">うつ状態</span>
-  </label>
+    <label><input type="checkbox" name="obstacles[]" value="poverty">
+      <span class="i18n" lang="en">Poverty / financial stress</span>
+      <span class="i18n" lang="cn">经济压力</span>
+      <span class="i18n" lang="jp">経済的困難</span>
+    </label>
 
-  <label><input type="checkbox" name="obstacles[]" value="fragility">
-    <span class="i18n" lang="en">Fragility / emotional sensitivity</span>
-    <span class="i18n" lang="cn">心理脆弱/敏感</span>
-    <span class="i18n" lang="jp">精神的に脆い・敏感</span>
-  </label>
+    <label><input type="checkbox" name="obstacles[]" value="depression">
+      <span class="i18n" lang="en">Depression</span>
+      <span class="i18n" lang="cn">抑郁</span>
+      <span class="i18n" lang="jp">うつ状態</span>
+    </label>
 
-  <label><input type="checkbox" name="obstacles[]" value="fear-mistakes">
-    <span class="i18n" lang="en">Hate making mistakes</span>
-    <span class="i18n" lang="cn">害怕犯错</span>
-    <span class="i18n" lang="jp">失敗を極端に嫌う</span>
-  </label>
-</div>
+    <label><input type="checkbox" name="obstacles[]" value="fragility">
+      <span class="i18n" lang="en">Fragility / emotional sensitivity</span>
+      <span class="i18n" lang="cn">心理脆弱/敏感</span>
+      <span class="i18n" lang="jp">精神的に脆い・敏感</span>
+    </label>
 
+    <label><input type="checkbox" name="obstacles[]" value="fear-mistakes">
+      <span class="i18n" lang="en">Hate making mistakes</span>
+      <span class="i18n" lang="cn">害怕犯错</span>
+      <span class="i18n" lang="jp">失敗を極端に嫌う</span>
     </label>
   </div>
 </div>
@@ -1062,7 +1065,6 @@
     </label>
   </div>
 </div>
-</form>
   <!-- 表单结束：A/B/C -->
   </form>
 
@@ -1100,8 +1102,6 @@
 
 <!-- 仍保留：原来的 JSON 输出调试视图 -->
 <div id="out" class="out" aria-live="polite"></div>
-    
-  </div>
 
   <hr>
 
@@ -1237,7 +1237,7 @@
     <span class="i18n" lang="cn">如有问题，请通过电子邮件联系项目研究团队：sensis-team@example.com</span>
     <span class="i18n" lang="jp">ご質問は次のメールへ：sensis-team@example.com</span>
   </p>
-
+  </div>
 </div> <!-- .md 结束 -->
 </section>
       </article>
