@@ -103,4 +103,3 @@ async function submitForm(){
     btn.disabled = false; btn.textContent = 'Submit';
   }
 }
-</script>
