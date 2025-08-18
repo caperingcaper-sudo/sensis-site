@@ -13,7 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
   <!-- 全局样式 + Paper v1 样式 -->
-  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="stylesheet" href="stylesV2.css?v=2">
 <link rel="stylesheet" href="css/paperV2.css?v=2"><!-- 注意大小写：paperV1.css -->
 </head>
 <body>
@@ -1245,13 +1245,13 @@
   </div>
 
   <!-- 移动端抽屉按钮与遮罩（你项目的全局交互） -->
-  <button class="fab-menu" onclick="toggleMenu()" aria-label="Open menu">
-    <img src="assets/menu-icon.png" alt="Menu">
-  </button>
-  <div class="backdrop" onclick="toggleMenu()"></div>
+<button class="fab-menu" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false">
+  <img src="assets/menu-icon.png" alt="Menu">
+</button>
+<div class="backdrop" onclick="toggleMenu()" hidden></div>
 
 <!-- 公共脚本（switchLang / 抽屉等） -->
-  <script src="common.js"></script>
+  <script src="commonV2.js"></script>
   <script>
 function formToJSON(form){
 const fd = new FormData(form), out = {};
