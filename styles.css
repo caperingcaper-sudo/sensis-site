@@ -254,5 +254,34 @@ img, video, iframe{ max-width:100%; height:auto; }
 .survey-button:hover {
   background-color: #346E36; /* hover 时更深的绿色 */
 }
+/* Mobile 抽屉行为：不改尺寸，只控制显示/隐藏与层级 */
+@media (max-width: 900px) {
+  aside {
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    transform: translateX(-100%);      /* 默认收起 */
+    transition: transform .25s ease;
+    will-change: transform;
+    z-index: 1001;                      /* 在遮罩之上、按钮之下 */
+    /* 背景保持你原样式；不额外指定宽度/颜色 */
+  }
+  body.drawer-open aside {
+    transform: none;                    /* 打开抽屉 */
+  }
+
+  .backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.2);         /* 轻微遮罩 */
+    z-index: 1000;
+  }
+
+  .fab-menu {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 1002;                      /* 按钮最上层，确保可点 */
+  }
+}
 
 
