@@ -67,39 +67,3 @@ function renderFeedbackCard(payload, result){
   box.hidden = false;
 }
 
-/* ====== 提交：POST 到 Apps Script ====== */
-async function submitForm(){
-  const form = document.getElementById('intake');
-  const data = formToJSON(form);
-
-  // 可加：前端轻验证（举例：昵称）
-  if (!data.user_nick || !data.user_nick.trim()){
-    alert('Please enter your Nick Name / 请输入昵称');
-    return;
-  }
-
-  // 页面语言也带上
-  data._lang = document.documentElement.getAttribute('data-lang') || 'en';
-
-  const ENDPOINT_URL = '<<PASTE_YOUR_APPS_SCRIPT_WEBAPP_URL_HERE>>';
-
-  const btn = document.getElementById('btn-submit');
-  btn.disabled = true; btn.textContent = '...';
-
-  try{
-    const resp = await fetch(ENDPOINT_URL, {
-      method: 'POST',
-      headers: { 'Content-Type':'application/json' },
-      body: JSON.stringify(data),
-    });
-    const json = await resp.json(); // {ok:true, id, shareUrl, cadence, focus, nextStep }
-    if (!json.ok) throw new Error(json.error || 'Submit failed');
-
-    renderFeedbackCard(data, json);
-    btn.textContent = 'Submitted';
-  }catch(err){
-    console.error(err);
-    alert('Submit failed. Please try again.');
-    btn.disabled = false; btn.textContent = 'Submit';
-  }
-}
