@@ -41,3 +41,38 @@ document.addEventListener('DOMContentLoaded', () => {
   const backdrop = document.querySelector('.backdrop');
   if (backdrop) backdrop.addEventListener('click', window.toggleMenu);
 });
+
+// commonV2.js
+(function () {
+  const body = document.body;
+  const btn = document.querySelector('.fab-menu');
+  const backdrop = document.querySelector('.backdrop');
+  const aside = document.querySelector('aside');
+
+  function openMenu() {
+    body.classList.add('drawer-open');
+    if (btn) btn.setAttribute('aria-expanded', 'true');
+    if (backdrop) backdrop.hidden = false;   // 显示遮罩
+  }
+
+  function closeMenu() {
+    body.classList.remove('drawer-open');
+    if (btn) btn.setAttribute('aria-expanded', 'false');
+    if (backdrop) backdrop.hidden = true;    // 隐藏遮罩
+  }
+
+  // 提供给 HTML 的 onclick 使用（全局可见）
+  window.toggleMenu = function () {
+    if (body.classList.contains('drawer-open')) closeMenu();
+    else openMenu();
+  };
+
+  // ESC 关闭；侧栏里点到链接也关闭
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  if (aside) aside.addEventListener('click', (e) => {
+    if (e.target.closest('a')) closeMenu();
+  });
+
+  // 初始保证是关闭态
+  closeMenu();
+})();
