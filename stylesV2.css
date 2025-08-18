@@ -1,0 +1,193 @@
+/* ===== 1) Global / 全局 ===== */
+:root{
+  --bg:#fff; --ink:#1f1f1f; --muted:#6b6b6b;
+  --accent:#495f4d; --divider:#8ca185;
+}
+html[data-lang="en"]{ --content-serif:'Lora', serif; }
+html[data-lang="cn"]{ --content-serif:"Noto Serif SC", serif; }
+html[data-lang="jp"]{ --content-serif:"Noto Serif JP", serif; }
+
+*{ box-sizing:border-box; }
+body{
+  margin:0; color:var(--ink); background:var(--bg);
+  font-family:var(--content-serif); line-height:1.6;
+}
+
+/* 纯 CSS 三语显隐（全站统一用 data-lang 控制） */
+.i18n[lang]{ display:none; }
+html[data-lang="en"] .i18n[lang="en"]{ display:inline; }
+html[data-lang="cn"] .i18n[lang="cn"]{ display:inline; }
+html[data-lang="jp"] .i18n[lang="jp"]{ display:inline; }
+.i18n.block{ display:block; }
+
+/* ===== 2) Desktop: sidebar 常驻 ===== */
+.wrap{
+  display:grid;
+  grid-template-columns:280px 1fr;
+  grid-template-areas:"aside main";
+  min-height:100vh;
+}
+aside{ grid-area:aside; }
+main { grid-area:main; position:relative; padding:36px min(6vw,72px); }
+
+/* full-height divider */
+.wrap::before{
+  content:""; position:fixed; left:280px; top:0; bottom:0;
+  width:1px; background:var(--divider); pointer-events:none;
+}
+
+/* Sidebar */
+aside{
+  border-right:1px solid var(--divider);
+  padding:28px 22px 18px;
+  position:sticky; top:0; align-self:start;
+  height:100vh; overflow:auto; background:#fff;
+}
+.brand{ display:flex; align-items:center; gap:12px; margin-bottom:22px; }
+.brand img{ height:120px; width:auto; display:block; }
+nav a{
+  display:flex; align-items:center; gap:10px;
+  text-decoration:none; color:var(--ink);
+  padding:10px 6px; border-radius:8px; font-size:18px;
+}
+nav a:hover{ background:#f5f5f5 }
+nav a.active{ background:#eef2ee; color:#2b3a2f; font-weight:600; }
+.logo-link{ display:inline-block; }
+.logo-link img{ cursor:pointer; transition:opacity .2s ease; }
+.logo-link img:hover{ opacity:.85; }
+
+/* 语言按钮 */
+main > .langs{
+  position:absolute; top:8px; right:8px; display:flex; gap:8px;
+  z-index:1500;
+}
+.langs .lang{
+  appearance:none; display:inline-flex; align-items:center; justify-content:center;
+  height:34px; padding:0 12px; border:1px solid var(--divider); border-radius:10px;
+  background:#fff; color:var(--ink); font:14px/1 inherit; cursor:pointer;
+}
+.langs .lang.is-active{ background:var(--accent); color:#fff; border-color:var(--accent); }
+
+/* Hero 与正文（不改原来的数值） */
+.hero{ display:flex; flex-direction:column; align-items:center; margin-bottom:12px; }
+.hero img{ max-width:350px; width:75%; height:auto; display:block; margin-bottom:0; }
+@media (max-width:960px){ .hero img{ width:250px; height:auto; } }
+
+h1{
+  font-family:'Oleo Script Swash Caps', cursive;
+  font-size:clamp(1.8rem,4.5vw,2.6rem);
+  margin:8px 0 6px; text-shadow:0 2px 6px rgba(59,58,58,.12); font-weight:280;
+}
+.sub{ font-size:clamp(1.06rem,2.2vw,1.3rem); color:#555; margin:2px 0 8px; text-align:center; }
+.content{ margin-top:12px; }
+.content h3{ margin:18px 0 8px; font-size:18px; }
+.content ul{ margin:8px 0 14px 20px; }
+
+/* ===== 3) Mobile 抽屉：统一用 body.drawer-open ===== */
+.backdrop[hidden]{ display:none !important; } /* 用 hidden 切换遮罩 */
+
+@media (max-width:960px){
+  .wrap{ grid-template-columns:1fr; grid-template-areas:"main"; }
+  .wrap::before{ display:none; }
+
+  /* 抽屉态 sidebar */
+  aside{
+    grid-area:unset; position:fixed; top:0; left:0; bottom:0;
+    width:260px; background:#fff;
+    transform:translateX(-100%); transition:transform .25s ease;
+    border-right:1px solid var(--divider);
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    z-index:1000; height:auto; overflow:auto;
+  }
+  body.drawer-open aside{ transform:translateX(0); }
+
+  /* 遮罩 */
+  .backdrop{
+    position:fixed; inset:0; background:rgba(0,0,0,.2); z-index:900;
+  }
+  body.drawer-open{ overflow:hidden; }
+
+  /* 右下角按钮 */
+  .fab-menu{
+    position:fixed;
+    right:18px;
+    bottom:calc(18px + env(safe-area-inset-bottom));
+    width:64px; height:64px;
+    display:inline-flex; align-items:center; justify-content:center;
+    border-radius:50%; border:1px solid var(--divider);
+    background:#fff; color:var(--ink);
+    box-shadow:0 10px 24px rgba(0,0,0,.12);
+    z-index:1200; cursor:pointer;
+  }
+  .fab-menu img, .fab-menu svg{ width:60%; height:60%; object-fit:contain; display:block; }
+  body.drawer-open .fab-menu{ background:var(--accent); color:#fff; border-color:var(--accent); }
+
+  /* 可读性：手机稍大字号 */
+  .content{ font-size:17px; }
+}
+
+/* 桌面隐藏 FAB */
+@media (min-width:961px){ .fab-menu{ display:none; } }
+
+/* ===== 4) iPad 专项 ===== */
+/* 竖屏：按手机逻辑（仍然用 drawer-open） */
+@media (min-width:700px) and (max-width:1024px) and (orientation:portrait){
+  .wrap{ grid-template-columns:1fr !important; grid-template-areas:"main" !important; }
+  .wrap::before{ display:none !important; }
+  aside{
+    position:fixed !important; top:0; left:0; bottom:0;
+    width:260px !important; transform:translateX(-100%) !important;
+    transition:transform .25s ease !important; z-index:1000 !important;
+    border-right:1px solid var(--divider) !important; box-shadow:0 10px 30px rgba(0,0,0,.08) !important;
+  }
+  body.drawer-open aside{ transform:translateX(0) !important; }
+  .backdrop{ z-index:900 !important; }
+  .fab-menu{ display:inline-flex !important; }
+}
+
+/* 横屏：像桌面；侧栏缩到 220px */
+@media (min-width:700px) and (max-width:1180px) and (orientation:landscape){
+  .wrap{ grid-template-columns:220px 1fr !important; grid-template-areas:"aside main" !important; }
+  .wrap::before{ display:block !important; left:220px !important; }
+  aside{
+    position:sticky !important; top:0 !important; align-self:start !important;
+    transform:none !important; box-shadow:none !important;
+    width:auto !important; height:100vh !important; overflow:auto !important;
+    border-right:1px solid var(--divider) !important;
+  }
+  .fab-menu, .backdrop{ display:none !important; }
+}
+
+/* ===== 5) 其余小样式（保持你原值，不动尺寸） */
+.section, .showcase, .showcase-grid, .card{ overflow:visible !important; }
+.showcase-grid, .showcase-grid > *{ min-width:0; }
+.card *{ word-break:break-word; overflow-wrap:anywhere; }
+img, video, iframe{ max-width:100%; height:auto; }
+
+@media (max-width:760px){
+  .showcase-grid.grid-4,
+  .showcase-grid.grid-3,
+  .showcase-grid.grid-2 { grid-template-columns:1fr; }
+  main { padding-left:16px; padding-right:16px; }
+  .section, .showcase, .section-body { margin-left:auto; margin-right:auto; }
+  .card-body { padding:16px; }
+  .card .title { font-size:18px; }
+}
+@media (max-width:680px){
+  .container-mobile{ max-width:680px; margin:0 auto; padding:0 16px; }
+}
+@media (max-width:768px){
+  .showcase{ display:flex; flex-direction:column; gap:1rem; }
+  .showcase > *{ flex:1 1 100%; }
+}
+@media (min-width:1025px){
+  main > .container{ max-width:900px; margin-inline:auto; padding-inline:24px; }
+}
+
+/* 按钮（保持你原配色和尺寸） */
+.survey-button{
+  display:inline-block; padding:12px 24px; background:#305C10; color:#fff;
+  text-decoration:none; border-radius:6px; font-size:18px; font-weight:bold;
+  transition:background-color .3s ease;
+}
+.survey-button:hover{ background:#346E36; }
