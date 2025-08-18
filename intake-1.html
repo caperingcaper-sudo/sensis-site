@@ -1295,12 +1295,12 @@ async function submitForm(){
   });
 
   try {
-    const res = await fetch(SHEETS_API, {
-      method: 'POST',
-      mode: 'cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    });
+const res = await fetch(SHEETS_API, {
+  method: 'POST',
+  mode: 'cors',
+  headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // 改成 text/plain
+  body: JSON.stringify(data)  // 内容还是 JSON 字符串
+});
 
     const json = await res.json().catch(()=>({}));
     if (!res.ok || json.ok === false) {
