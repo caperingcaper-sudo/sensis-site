@@ -16,6 +16,85 @@
     .result-card.err{background:#fff2f2;border:1px solid #ffb3b3}
     .actions{display:flex;gap:.75rem;margin-top:12px}
     .actions .primary{font-weight:600}
+    
+    /* 强制修复表单样式 */
+    .paperv1 .md .options {
+      display: grid !important;
+      gap: 6px 16px !important;
+      align-items: start !important;
+    }
+    .paperv1 .md .options.cols-2 { 
+      grid-template-columns: repeat(2, minmax(0,1fr)) !important; 
+    }
+    .paperv1 .md .options.cols-3 { 
+      grid-template-columns: repeat(3, minmax(0,1fr)) !important; 
+    }
+    .paperv1 .md .options > label { 
+      display: flex !important; 
+      align-items: center !important;
+      padding: .2em .1em !important; 
+      border-radius: 6px !important; 
+      margin: 0 !important;
+    }
+    .paperv1 .md input[type="radio"], 
+    .paperv1 .md input[type="checkbox"] {
+      width: 18px !important; 
+      height: 18px !important; 
+      margin: 0 .6em 0 0 !important; 
+      accent-color: var(--md-accent) !important;
+      flex-shrink: 0 !important;
+    }
+    
+    /* 修复多语言文本显示 */
+    .i18n[lang] { 
+      display: none !important; 
+    }
+    html[data-lang="en"] .i18n[lang="en"] { 
+      display: inline !important; 
+    }
+    html[data-lang="cn"] .i18n[lang="cn"] { 
+      display: inline !important; 
+    }
+    html[data-lang="jp"] .i18n[lang="jp"] { 
+      display: inline !important; 
+    }
+    
+    /* 确保label内的多语言文本不影响布局 */
+    .paperv1 .md .options > label .i18n {
+      display: inline !important;
+    }
+    .paperv1 .md .options > label .i18n[lang]:not([lang="en"]) {
+      display: none !important;
+    }
+    html[data-lang="cn"] .paperv1 .md .options > label .i18n[lang="cn"] {
+      display: inline !important;
+    }
+    html[data-lang="jp"] .paperv1 .md .options > label .i18n[lang="jp"] {
+      display: inline !important;
+    }
+    
+    /* 手机单列显示 */
+    @media (max-width: 760px) { 
+      .paperv1 .md .options { 
+        grid-template-columns: 1fr !important; 
+      } 
+    }
+    
+    /* 修复Section标题样式 */
+    .paperv1 .md h2 {
+      color: #007cba !important;
+      border-bottom: 2px solid #007cba !important;
+      padding-bottom: 0.5rem !important;
+      margin: 2rem 0 1rem 0 !important;
+    }
+    
+    /* 修复字段标题 */
+    .paperv1 .md .field > div strong,
+    .paperv1 .md .field > label strong {
+      display: block !important;
+      margin-bottom: 0.5rem !important;
+      font-weight: 600 !important;
+    }
   </style>
 </head>
 <body>
@@ -533,7 +612,7 @@
   }
 
   /** —— 你的 Apps Script 部署地址 —— **/
-  const SHEETS_API = 'https://script.google.com/macros/s/AKfycbwQGEU9idIg0leG4egGgL6cQCpy9SXBZcTG6C_sfVB9TSpTZqmENApG6830tCs0YHhy/exec';
+  const SHEETS_API = 'https://script.google.com/macros/s/AKfycbxmIG10CQYNsNeHA_3t7J9XsxgSLQfs1dK5fYPIkrTGEEM9Oky9tv0axp2Qh1A3WU1x/exec';
 
   /** —— 提交 —— **/
   async function submitForm(){
@@ -553,17 +632,45 @@
     btn.textContent = getTextByLang({ en:'Submitting…', cn:'提交中…', jp:'送信中…' });
 
     try {
+      // 方案1：使用简单的fetch避免预检请求
       const res = await fetch(SHEETS_API, {
         method: 'POST',
-        mode: 'cors',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'text/plain' },
         body: JSON.stringify(data)
       });
-      const json = await res.json().catch(()=>({}));
-      if (!res.ok || json.ok === false) throw new Error(json.error || ('HTTP ' + res.status));
-      showFeedback(getTextByLang({ en:'Submitted successfully. Thank you.', cn:'提交成功，感谢参与。', jp:'送信完了。ありがとう。' }), true);
+      
+      const responseText = await res.text();
+      console.log('Raw response:', responseText);
+      
+      let json;
+      try {
+        json = JSON.parse(responseText);
+      } catch {
+        // 如果不是JSON，检查是否包含成功标识
+        if (responseText.includes('ok') || res.ok) {
+          json = { ok: true };
+        } else {
+          throw new Error('Invalid response: ' + responseText);
+        }
+      }
+      
+      if (!res.ok || json.ok === false) {
+        throw new Error(json.error || 'HTTP ' + res.status);
+      }
+      
+      showFeedback(getTextByLang({ 
+        en:'Submitted successfully. Thank you.', 
+        cn:'提交成功，感谢参与。', 
+        jp:'送信完了。ありがとう。' 
+      }), true);
+      
     } catch (err) {
-      showFeedback(getTextByLang({ en:'Submission failed. Please try again or contact us.', cn:'提交失败，请重试或联系维护者。', jp:'送信に失敗。再試行するか連絡してくれ。' }) + ' ' + String(err), false);
+      console.error('Submit error:', err);
+      showFeedback(getTextByLang({ 
+        en:'Submission failed. Please try again or contact us.', 
+        cn:'提交失败，请重试或联系维护者。', 
+        jp:'送信に失敗。再試行するか連絡してくれ。' 
+      }) + ' ' + String(err), false);
     } finally {
       btn.disabled = false;
       btn.textContent = getTextByLang({ en:'Submit', cn:'提交', jp:'送信' });
