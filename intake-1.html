@@ -4,22 +4,21 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sensis • Paper Layout</title>
+
+  <!-- 字体（你项目里的全局字体保持不变） -->
   <link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&family=Lora&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
+  <!-- 全局样式 + Paper v1 样式 -->
   <link rel="stylesheet" href="styles.css?v=2">
-  <link rel="stylesheet" href="css/paperV2.css?v=2">
-  <style>
-    .result-card{margin-top:12px;padding:12px;border-radius:8px}
-    .result-card.ok{background:#eefbf1;border:1px solid #9be0af}
-    .result-card.err{background:#fff2f2;border:1px solid #ffb3b3}
-    .actions{display:flex;gap:.75rem;margin-top:12px}
-    .actions .primary{font-weight:600}
-  </style>
+<link rel="stylesheet" href="css/paperV2.css?v=2"><!-- 注意大小写：paperV1.css -->
 </head>
 <body>
   <div class="wrap">
+    <!-- Sidebar -->
     <aside>
       <div class="brand">
         <a href="index.html" class="logo-link">
@@ -35,554 +34,1326 @@
     </aside>
 
     <main>
+      <!-- 语言切换：沿用你的逻辑 -->
       <div class="langs">
         <button class="lang is-active" data-lang="en" onclick="switchLang('en')">English</button>
         <button class="lang" data-lang="cn" onclick="switchLang('cn')">中 文</button>
         <button class="lang" data-lang="jp" onclick="switchLang('jp')">日本語</button>
       </div>
 
+      <!-- 纸面 -->
       <article class="paperv1">
         <header class="paperv1-header" aria-label="paper header">
+          <!-- 桌面/横屏用 paper-2；手机用 paper-3（CSS 中 media query 会自动切换显示） -->
           <img class="paperv1-art desktop" src="assets/paper-2.png" alt="Header art (desktop)">
           <img class="paperv1-art -mobile" src="assets/paper-3.png" alt="Header art (mobile)">
           <h1 class="paperv1-title">
-            <span class="i18n" lang="en">Open The Perception Path</span>
-            <span class="i18n" lang="cn">Open The Perception Path</span>
-            <span class="i18n" lang="jp">Open The Perception Path</span>
-          </h1>
-          <h2 class="paperv1-sub">
-            <span class="i18n" lang="en">Let Sensis help you perceive yourself </span>
-            <span class="i18n" lang="cn">Let Sensis help you perceive yourself</span>
-            <span class="i18n" lang="jp">Let Sensis help you perceive yourself</span>
-            <br>
-            <span class="i18n" lang="en">and achieve your goals faster </span>
-            <span class="i18n" lang="cn">and achieve your goals faster </span>
-            <span class="i18n" lang="jp">and achieve your goals faster </span>
-          </h2>
+  <span class="i18n" lang="en">Open The Perception Path</span>
+              <span class="i18n" lang="cn">Open The Perception Path</span>
+              <span class="i18n" lang="jp">Open The Perception Path</span>
+</h1>
+<h2 class="paperv1-sub">
+  <span class="i18n" lang="en">Let Sensis help you perceive yourself </span>
+  <span class="i18n" lang="cn">Let Sensis help you perceive yourself</span>
+  <span class="i18n" lang="jp">Let Sensis help you perceive yourself</span>
+  <br>
+  <span class="i18n" lang="en">and achieve your goals faster </span>
+   <span class="i18n" lang="cn">and achieve your goals faster </span>
+   <span class="i18n" lang="jp">and achieve your goals faster </span>
+</h2>
         </header>
 
-        <section class="paperv1-body" id="content">
-          <div class="md">
-            <header class="md-head">
-              <h1 class="md-title">
-                <span class="i18n" lang="en">User Basic Information</span>
-                <span class="i18n" lang="cn">用户基础信息</span>
-                <span class="i18n" lang="jp">基本情報</span>
-              </h1>
-              <p class="md-sub">
-                <span class="i18n" lang="en">Please answer the questions below. Use ○ for single choice and □ for multiple choice.</span>
-                <span class="i18n" lang="cn">请回答以下问题。单选用 ○，多选用 □。</span>
-                <span class="i18n" lang="jp">以下の質問にお答えください。単一選択は○、複数選択は□です。</span>
-              </p>
-            </header>
+        <!-- 正文：桌面左右 20mm；手机左右 16px -->
+      <section class="paperv1-body" id="content">
+<div class="md">
+<!-- === md 开头：主/副标题 === -->
+<header class="md-head">
+  <h1 class="md-title">
+    <span class="i18n" lang="en">User Basic Information</span>
+    <span class="i18n" lang="cn">用户基础信息</span>
+    <span class="i18n" lang="jp">基本情報</span>
+  </h1>
+  <p class="md-sub">
+    <span class="i18n" lang="en">Please answer the questions below. Use ○ for single choice and □ for multiple choice.</span>
+    <span class="i18n" lang="cn">请回答以下问题。单选用 ○，多选用 □。</span>
+    <span class="i18n" lang="jp">以下の質問にお答えください。単一選択は○、複数選択は□です。</span>
+  </p>
+</header>
 
-            <form id="intake">
-              <!-- Nick Name -->
-              <div class="field">
-                <label><strong>
-                  <span class="i18n" lang="en">Nick Name</span>
-                  <span class="i18n" lang="cn">昵称</span>
-                  <span class="i18n" lang="jp">ニックネーム</span>
-                </strong></label>
-                <input type="text" name="user_nick" placeholder="">
-              </div>
+<form id="intake">
+  <!-- Nick Name -->
+  <div class="field">
+    <label><strong>
+      <span class="i18n" lang="en">Nick Name</span>
+      <span class="i18n" lang="cn">昵称</span>
+      <span class="i18n" lang="jp">ニックネーム</span>
+    </strong></label>
+    <input type="text" name="user_nick" placeholder="">
+  </div>
 
-              <!-- === Section A === -->
-              <h2>
-                <span class="i18n" lang="en">Section A: System (Institutions and Structures)</span>
-                <span class="i18n" lang="cn">A 部分：系统（制度与结构）</span>
-                <span class="i18n" lang="jp">A セクション：制度・構造</span>
-              </h2>
+  <!-- === Section A === -->
+  <h2>
+    <span class="i18n" lang="en">Section A: System (Institutions and Structures)</span>
+    <span class="i18n" lang="cn">A 部分：系统（制度与结构）</span>
+    <span class="i18n" lang="jp">A セクション：制度・構造</span>
+  </h2>
 
-              <!-- A1 年龄 -->
-              <div class="field">
-                <div><strong>
-                  <span class="i18n" lang="en">A1. Your age group</span>
-                  <span class="i18n" lang="cn">A1. 年龄段</span>
-                  <span class="i18n" lang="jp">A1. 年齢層</span>
-                </strong></div>
-                <div class="options cols-2">
-                  <label><input type="radio" name="age" value="Under 18"><span class="i18n" lang="en">Under 18</span><span class="i18n" lang="cn">18岁以下</span><span class="i18n" lang="jp">18歳未満</span></label>
-                  <label><input type="radio" name="age" value="18-24"><span class="i18n" lang="en">18–24</span><span class="i18n" lang="cn">18–24</span><span class="i18n" lang="jp">18–24</span></label>
-                  <label><input type="radio" name="age" value="25-34"><span class="i18n" lang="en">25–34</span><span class="i18n" lang="cn">25–34</span><span class="i18n" lang="jp">25–34</span></label>
-                  <label><input type="radio" name="age" value="35-44"><span class="i18n" lang="en">35–44</span><span class="i18n" lang="cn">35–44</span><span class="i18n" lang="jp">35–44</span></label>
-                  <label><input type="radio" name="age" value="45+"><span class="i18n" lang="en">45+</span><span class="i18n" lang="cn">45+</span><span class="i18n" lang="jp">45歳以上</span></label>
-                </div>
-              </div>
+  <!-- Q1 年龄段（单选） -->
+  <div class="field">
+    <div><strong>
+      <span class="i18n" lang="en">A1. Your age group</span>
+      <span class="i18n" lang="cn">A1. 年龄段</span>
+      <span class="i18n" lang="jp">A1. 年齢層</span>
+    </strong></div>
+  <div class="options cols-2">
+    <label><input type="radio" name="age" value="Under 18">
+      <span class="i18n" lang="en">Under 18</span>
+      <span class="i18n" lang="cn">18岁以下</span>
+      <span class="i18n" lang="jp">18歳未満</span>
+    </label>
+    <label><input type="radio" name="age" value="18-24">
+      <span class="i18n" lang="en">18–24</span>
+      <span class="i18n" lang="cn">18–24</span>
+      <span class="i18n" lang="jp">18–24</span>
+    </label>
+    <label><input type="radio" name="age" value="25-34">
+      <span class="i18n" lang="en">25–34</span>
+      <span class="i18n" lang="cn">25–34</span>
+      <span class="i18n" lang="jp">25–34</span>
+    </label>
+    <label><input type="radio" name="age" value="35-44">
+      <span class="i18n" lang="en">35–44</span>
+      <span class="i18n" lang="cn">35–44</span>
+      <span class="i18n" lang="jp">35–44</span>
+    </label>
+    <label><input type="radio" name="age" value="45+">
+      <span class="i18n" lang="en">45+</span>
+      <span class="i18n" lang="cn">45+</span>
+      <span class="i18n" lang="jp">45歳以上</span>
+    </label>
+   </div>
+  </div>
 
-              <!-- A2 学历（修正嵌套） -->
-              <div class="field">
-                <div><strong>
-                  <span class="i18n" lang="en">A2. Highest level of education</span>
-                  <span class="i18n" lang="cn">A2. 最高学历</span>
-                  <span class="i18n" lang="jp">A2.最終学歴</span>
-                </strong></div>
-                <div class="options cols-2">
-                  <label><input type="radio" name="edu" value="High School or below"><span class="i18n" lang="en">High school or below</span><span class="i18n" lang="cn">高中及以下</span><span class="i18n" lang="jp">高校卒以下</span></label>
-                  <label><input type="radio" name="edu" value="Associate"><span class="i18n" lang="en">Associate</span><span class="i18n" lang="cn">大专/技校</span><span class="i18n" lang="jp">準学士/専門学校</span></label>
-                  <label><input type="radio" name="edu" value="Bachelor"><span class="i18n" lang="en">Bachelor</span><span class="i18n" lang="cn">本科</span><span class="i18n" lang="jp">学士</span></label>
-                  <label><input type="radio" name="edu" value="Master"><span class="i18n" lang="en">Master</span><span class="i18n" lang="cn">硕士</span><span class="i18n" lang="jp">修士</span></label>
-                  <label><input type="radio" name="edu" value="Doctorate"><span class="i18n" lang="en">Doctorate</span><span class="i18n" lang="cn">博士</span><span class="i18n" lang="jp">博士</span></label>
-                </div>
-              </div>
+  <!-- Q2 最高学历（单选） -->
+  <div class="field">
+    <div><strong>
+      <span class="i18n" lang="en">A2. Highest level of education</span>
+      <span class="i18n" lang="cn">A2. 最高学历</span>
+      <span class="i18n" lang="jp">A2.最終学歴</span>
+    </strong></div>
+  <div class="options cols-2">
+    <label><input type="radio" name="edu" value="High School or below">
+      <span class="i18n" lang="en">High school or below</span>
+      <span class="i18n" lang="cn">高中及以下</span>
+      <span class="i18n" lang="jp">高校卒以下</span>
+    </label>
+    <label><input type="radio" name="edu" value="Bachelor">
+      <span class="i18n" lang="en">Bachelor</span>
+      <span class="i18n" lang="cn">本科</span>
+      <span class="i18n" lang="jp">学士</span>
+    </label>
+    <label><input type="radio" name="edu" value="Master">
+      <span class="i18n" lang="en">Master</span>
+      <span class="i18n" lang="cn">硕士</span>
+      <span class="i18n" lang="jp">修士</span>
+    </label>
+    <label><input type="radio" name="edu" value="Doctorate">
+      <span class="i18n" lang="en">Doctorate</span>
+      <span class="i18n" lang="cn">博士</span>
+      <span class="i18n" lang="jp">博士</span>
+    </label>
+    <label><input type="radio" name="edu" value="Other">
+      <span class="i18n" lang="en">Other</span>
+      <span class="i18n" lang="cn">其他</span>
+      <span class="i18n" lang="jp">その他</span>
+    </label>
+      </div>
+  </div>
 
-              <!-- A3 职业 -->
-              <div class="field">
-                <div><strong>
-                  <span class="i18n" lang="en">A3. Occupation</span>
-                  <span class="i18n" lang="cn">A3. 职业</span>
-                  <span class="i18n" lang="jp">A3. 職業</span>
-                </strong></div>
-                <div class="options cols-2">
-                  <label><input type="radio" name="occupation" value="Student"><span class="i18n" lang="en">Student</span><span class="i18n" lang="cn">学生</span><span class="i18n" lang="jp">学生</span></label>
-                  <label><input type="radio" name="occupation" value="Employee"><span class="i18n" lang="en">Employee</span><span class="i18n" lang="cn">受雇者</span><span class="i18n" lang="jp">会社員</span></label>
-                  <label><input type="radio" name="occupation" value="Self-employed"><span class="i18n" lang="en">Self-employed</span><span class="i18n" lang="cn">自雇人士</span><span class="i18n" lang="jp">自営業</span></label>
-                  <label><input type="radio" name="occupation" value="Gap Year"><span class="i18n" lang="en">Gap Year</span><span class="i18n" lang="cn">空档期</span><span class="i18n" lang="jp">ギャップイヤー</span></label>
-                </div>
-              </div>
+  <!-- Q3 职业（单选） -->
+  <div class="field">
+    <div><strong>
+      <span class="i18n" lang="en">A3. Occupation</span>
+      <span class="i18n" lang="cn">A3. 职业</span>
+      <span class="i18n" lang="jp">A3. 職業</span>
+    </strong></div>
+  <div class="options cols-2">
+    <label><input type="radio" name="occupation" value="Student">
+      <span class="i18n" lang="en">Student</span>
+      <span class="i18n" lang="cn">学生</span>
+      <span class="i18n" lang="jp">学生</span>
+    </label>
+    <label><input type="radio" name="occupation" value="Employee">
+      <span class="i18n" lang="en">Employee</span>
+      <span class="i18n" lang="cn">受雇者</span>
+      <span class="i18n" lang="jp">会社員</span>
+    </label>
+    <label><input type="radio" name="occupation" value="Self-employed">
+      <span class="i18n" lang="en">Self-employed</span>
+      <span class="i18n" lang="cn">自雇人士</span>
+      <span class="i18n" lang="jp">自営業</span>
+    </label>
+    <label><input type="radio" name="occupation" value="Other">
+      <span class="i18n" lang="en">Other</span>
+      <span class="i18n" lang="cn">其他</span>
+      <span class="i18n" lang="jp">その他</span>
+    </label>
+  </div>
+  </div>
 
-              <!-- A4 专业 + Other 输入 -->
-              <div class="field">
-                <div><strong>
-                  <span class="i18n" lang="en">A4. Major</span>
-                  <span class="i18n" lang="cn">A4. 专业</span>
-                  <span class="i18n" lang="jp">A4. 専攻</span>
-                </strong></div>
-                <div class="options cols-3" id="major-group">
-                  <label><input type="radio" name="major" value="Agriculture"><span class="i18n" lang="en">Agriculture</span><span class="i18n" lang="cn">农业</span><span class="i18n" lang="jp">農学</span></label>
-                  <label><input type="radio" name="major" value="Art"><span class="i18n" lang="en">Art</span><span class="i18n" lang="cn">艺术</span><span class="i18n" lang="jp">芸術</span></label>
-                  <label><input type="radio" name="major" value="Economics"><span class="i18n" lang="en">Economics</span><span class="i18n" lang="cn">经济学</span><span class="i18n" lang="jp">経済学</span></label>
-                  <label><input type="radio" name="major" value="Education"><span class="i18n" lang="en">Education</span><span class="i18n" lang="cn">教育学</span><span class="i18n" lang="jp">教育学</span></label>
-                  <label><input type="radio" name="major" value="Engineering"><span class="i18n" lang="en">Engineering</span><span class="i18n" lang="cn">工学</span><span class="i18n" lang="jp">工学</span></label>
-                  <label><input type="radio" name="major" value="History"><span class="i18n" lang="en">History</span><span class="i18n" lang="cn">历史学</span><span class="i18n" lang="jp">歴史学</span></label>
-                  <label><input type="radio" name="major" value="Journalism and Communication"><span class="i18n" lang="en">Journalism & Communication</span><span class="i18n" lang="cn">新闻传播</span><span class="i18n" lang="jp">新聞・メディア</span></label>
-                  <label><input type="radio" name="major" value="Law"><span class="i18n" lang="en">Law</span><span class="i18n" lang="cn">法学</span><span class="i18n" lang="jp">法学</span></label>
-                  <label><input type="radio" name="major" value="Literature"><span class="i18n" lang="en">Literature</span><span class="i18n" lang="cn">文学</span><span class="i18n" lang="jp">文学</span></label>
-                  <label><input type="radio" name="major" value="Literature-language"><span class="i18n" lang="en">Language & Literature</span><span class="i18n" lang="cn">语言文学</span><span class="i18n" lang="jp">言語・文学</span></label>
-                  <label><input type="radio" name="major" value="Management"><span class="i18n" lang="en">Management</span><span class="i18n" lang="cn">管理学</span><span class="i18n" lang="jp">経営学</span></label>
-                  <label><input type="radio" name="major" value="Medicine"><span class="i18n" lang="en">Medicine</span><span class="i18n" lang="cn">医学</span><span class="i18n" lang="jp">医学</span></label>
-                  <label><input type="radio" name="major" value="Philosophy"><span class="i18n" lang="en">Philosophy</span><span class="i18n" lang="cn">哲学</span><span class="i18n" lang="jp">哲学</span></label>
-                  <label><input type="radio" name="major" value="Science"><span class="i18n" lang="en">Science</span><span class="i18n" lang="cn">理学</span><span class="i18n" lang="jp">理学</span></label>
-                  <label><input type="radio" name="major" value="Sociology"><span class="i18n" lang="en">Sociology</span><span class="i18n" lang="cn">社会学</span><span class="i18n" lang="jp">社会学</span></label>
-                  <label><input type="radio" name="major" value="Other" id="major-other-radio"><span class="i18n" lang="en">Other</span><span class="i18n" lang="cn">其他</span><span class="i18n" lang="jp">その他</span></label>
-                </div>
-                <div id="major-other-wrap" style="margin-top:.5rem; display:none;">
-                  <input type="text" name="major_other" id="major-other-input" placeholder="If Other, please specify">
-                </div>
-              </div>
+  <!-- Q4 专业（单选） -->
+  <div class="field">
+    <div><strong>
+      <span class="i18n" lang="en">A4. Major</span>
+      <span class="i18n" lang="cn">A4. 专业</span>
+      <span class="i18n" lang="jp">A4. 専攻</span>
+    </strong></div>
+<div class="options cols-3">
+    <label><input type="radio" name="major" value="Agriculture"><span class="i18n" lang="en">Agriculture</span><span class="i18n" lang="cn">农业</span><span class="i18n" lang="jp">農学</span></label>
+    <label><input type="radio" name="major" value="Art"><span class="i18n" lang="en">Art</span><span class="i18n" lang="cn">艺术</span><span class="i18n" lang="jp">芸術</span></label>
+    <label><input type="radio" name="major" value="Economics"><span class="i18n" lang="en">Economics</span><span class="i18n" lang="cn">经济学</span><span class="i18n" lang="jp">経済学</span></label>
+    <label><input type="radio" name="major" value="Education"><span class="i18n" lang="en">Education</span><span class="i18n" lang="cn">教育学</span><span class="i18n" lang="jp">教育学</span></label>
+    <label><input type="radio" name="major" value="Engineering"><span class="i18n" lang="en">Engineering</span><span class="i18n" lang="cn">工学</span><span class="i18n" lang="jp">工学</span></label>
+    <label><input type="radio" name="major" value="History"><span class="i18n" lang="en">History</span><span class="i18n" lang="cn">历史学</span><span class="i18n" lang="jp">歴史学</span></label>
+    <label><input type="radio" name="major" value="Journalism and Communication"><span class="i18n" lang="en">Journalism & Communication</span><span class="i18n" lang="cn">新闻传播</span><span class="i18n" lang="jp">新聞・メディア</span></label>
+    <label><input type="radio" name="major" value="Law"><span class="i18n" lang="en">Law</span><span class="i18n" lang="cn">法学</span><span class="i18n" lang="jp">法学</span></label>
+    <label><input type="radio" name="major" value="Literature"><span class="i18n" lang="en">Literature</span><span class="i18n" lang="cn">文学</span><span class="i18n" lang="jp">文学</span></label>
+    <label><input type="radio" name="major" value="Literature-language"><span class="i18n" lang="en">Language & Literature</span><span class="i18n" lang="cn">语言文学</span><span class="i18n" lang="jp">言語・文学</span></label>
+    <label><input type="radio" name="major" value="Management"><span class="i18n" lang="en">Management</span><span class="i18n" lang="cn">管理学</span><span class="i18n" lang="jp">経営学</span></label>
+    <label><input type="radio" name="major" value="Medicine"><span class="i18n" lang="en">Medicine</span><span class="i18n" lang="cn">医学</span><span class="i18n" lang="jp">医学</span></label>
+    <label><input type="radio" name="major" value="Philosophy"><span class="i18n" lang="en">Philosophy</span><span class="i18n" lang="cn">哲学</span><span class="i18n" lang="jp">哲学</span></label>
+    <label><input type="radio" name="major" value="Science"><span class="i18n" lang="en">Science</span><span class="i18n" lang="cn">理学</span><span class="i18n" lang="jp">理学</span></label>
+    <label><input type="radio" name="major" value="Sociology"><span class="i18n" lang="en">Sociology</span><span class="i18n" lang="cn">社会学</span><span class="i18n" lang="jp">社会学</span></label>
+    <label><input type="radio" name="major" value="Other"><span class="i18n" lang="en">Other</span><span class="i18n" lang="cn">其他</span><span class="i18n" lang="jp">その他</span></label>
+  </div>
+</div>
+  <!-- Q5 语言资格（多选） -->
+  <div class="field">
+    <div><strong>
+      <span class="i18n" lang="en">A5. Language qualifications obtained/pending</span>
+      <span class="i18n" lang="cn">A5. 已获或待考的语言资格</span>
+      <span class="i18n" lang="jp">A5. 取得済み／予定の語学資格</span>
+    </strong></div>
+<div class="options cols-3">
+    <!-- IELTS -->
+    <label><input type="checkbox" name="lang_qual[]" value="IELTS-5"><span class="i18n" lang="en">IELTS-5</span><span class="i18n" lang="cn">雅思 5</span><span class="i18n" lang="jp">IELTS 5</span></label>
+    <label><input type="checkbox" name="lang_qual[]" value="IELTS-6"><span class="i18n" lang="en">IELTS-6</span><span class="i18n" lang="cn">雅思 6</span><span class="i18n" lang="jp">IELTS 6</span></label>
+    <label><input type="checkbox" name="lang_qual[]" value="IELTS-7"><span class="i18n" lang="en">IELTS-7</span><span class="i18n" lang="cn">雅思 7</span><span class="i18n" lang="jp">IELTS 7</span></label>
+    <label><input type="checkbox" name="lang_qual[]" value="IELTS-8"><span class="i18n" lang="en">IELTS-8</span><span class="i18n" lang="cn">雅思 8</span><span class="i18n" lang="jp">IELTS 8</span></label>
 
-              <!-- A5 语言资格（多选） -->
-              <div class="field">
-                <div><strong>
-                  <span class="i18n" lang="en">A5. Language qualifications obtained/pending</span>
-                  <span class="i18n" lang="cn">A5. 已获或待考的语言资格</span>
-                  <span class="i18n" lang="jp">A5. 取得済み／予定の語学資格</span>
-                </strong></div>
-                <div class="options cols-3">
-                  <label><input type="checkbox" name="lang_qual[]" value="IELTS-5">IELTS-5</label>
-                  <label><input type="checkbox" name="lang_qual[]" value="IELTS-6">IELTS-6</label>
-                  <label><input type="checkbox" name="lang_qual[]" value="IELTS-7">IELTS-7</label>
-                  <label><input type="checkbox" name="lang_qual[]" value="IELTS-8">IELTS-8</label>
-                  <label><input type="checkbox" name="lang_qual[]" value="JLPT-N1">JLPT-N1</label>
-                  <label><input type="checkbox" name="lang_qual[]" value="JLPT-N2">JLPT-N2</label>
-                  <label><input type="checkbox" name="lang_qual[]" value="JLPT-N3">JLPT-N3</label>
-                  <label><input type="checkbox" name="lang_qual[]" value="JLPT-N4">JLPT-N4</label>
-                  <label><input type="checkbox" name="lang_qual[]" value="JLPT-N5">JLPT-N5</label>
-                  <label><input type="checkbox" name="lang_qual[]" value="TOEFL-50">TOEFL-50</label>
-                  <label><input type="checkbox" name="lang_qual[]" value="TOEFL-60">TOEFL-60</label>
-                  <label><input type="checkbox" name="lang_qual[]" value="TOEFL-70">TOEFL-70</label>
-                  <label><input type="checkbox" name="lang_qual[]" value="TOEFL-80">TOEFL-80</label>
-                  <label><input type="checkbox" name="lang_qual[]" value="TOEFL-90">TOEFL-90</label>
-                  <label><input type="checkbox" name="lang_qual[]" value="TOEFL-90+">TOEFL-90+</label>
-                  <label><input type="checkbox" name="lang_qual[]" value="TOEIC-500">TOEIC-500</label>
-                  <label><input type="checkbox" name="lang_qual[]" value="TOEIC-600">TOEIC-600</label>
-                  <label><input type="checkbox" name="lang_qual[]" value="TOEIC-700">TOEIC-700</label>
-                  <label><input type="checkbox" name="lang_qual[]" value="TOEIC-800">TOEIC-800</label>
-                </div>
-              </div>
+    <!-- JLPT -->
+    <label><input type="checkbox" name="lang_qual[]" value="JLPT-N1"><span class="i18n" lang="en">JLPT-N1</span><span class="i18n" lang="cn">日语能力 N1</span><span class="i18n" lang="jp">JLPT N1</span></label>
+    <label><input type="checkbox" name="lang_qual[]" value="JLPT-N2"><span class="i18n" lang="en">JLPT-N2</span><span class="i18n" lang="cn">日语能力 N2</span><span class="i18n" lang="jp">JLPT N2</span></label>
+    <label><input type="checkbox" name="lang_qual[]" value="JLPT-N3"><span class="i18n" lang="en">JLPT-N3</span><span class="i18n" lang="cn">日语能力 N3</span><span class="i18n" lang="jp">JLPT N3</span></label>
+    <label><input type="checkbox" name="lang_qual[]" value="JLPT-N4"><span class="i18n" lang="en">JLPT-N4</span><span class="i18n" lang="cn">日语能力 N4</span><span class="i18n" lang="jp">JLPT N4</span></label>
+    <label><input type="checkbox" name="lang_qual[]" value="JLPT-N5"><span class="i18n" lang="en">JLPT-N5</span><span class="i18n" lang="cn">日语能力 N5</span><span class="i18n" lang="jp">JLPT N5</span></label>
 
-              <!-- A6 时间状态 -->
-              <div class="field">
-                <div><strong>
-                  <span class="i18n" lang="en">A6. Time status</span>
-                  <span class="i18n" lang="cn">A6. 时间状态</span>
-                  <span class="i18n" lang="jp">A6. 時間の状況</span>
-                </strong></div>
-                <label><input type="radio" name="time_status" value="Full-time preparation">Full-time preparation</label>
-                <label><input type="radio" name="time_status" value="Current student">Current student</label>
-                <label><input type="radio" name="time_status" value="Part-time preparation">Part-time preparation</label>
-                <label><input type="radio" name="time_status" value="Fragmented time">Fragmented time</label>
-              </div>
+    <!-- TOEFL -->
+    <label><input type="checkbox" name="lang_qual[]" value="TOEFL-50"><span class="i18n" lang="en">TOEFL-50</span><span class="i18n" lang="cn">托福 50</span><span class="i18n" lang="jp">TOEFL 50</span></label>
+    <label><input type="checkbox" name="lang_qual[]" value="TOEFL-60"><span class="i18n" lang="en">TOEFL-60</span><span class="i18n" lang="cn">托福 60</span><span class="i18n" lang="jp">TOEFL 60</span></label>
+    <label><input type="checkbox" name="lang_qual[]" value="TOEFL-70"><span class="i18n" lang="en">TOEFL-70</span><span class="i18n" lang="cn">托福 70</span><span class="i18n" lang="jp">TOEFL 70</span></label>
+    <label><input type="checkbox" name="lang_qual[]" value="TOEFL-80"><span class="i18n" lang="en">TOEFL-80</span><span class="i18n" lang="cn">托福 80</span><span class="i18n" lang="jp">TOEFL 80</span></label>
+    <label><input type="checkbox" name="lang_qual[]" value="TOEFL-90"><span class="i18n" lang="en">TOEFL-90</span><span class="i18n" lang="cn">托福 90</span><span class="i18n" lang="jp">TOEFL 90</span></label>
+    <label><input type="checkbox" name="lang_qual[]" value="TOEFL-90+"><span class="i18n" lang="en">TOEFL-90+</span><span class="i18n" lang="cn">托福 90+</span><span class="i18n" lang="jp">TOEFL 90+</span></label>
 
-              <!-- ===== Section B ===== -->
-              <h2>
-                <span class="i18n" lang="en">Section B: Personal</span>
-                <span class="i18n" lang="cn">B 部分：个人</span>
-                <span class="i18n" lang="jp">B セクション：個人</span>
-              </h2>
+    <!-- TOEIC -->
+    <label><input type="checkbox" name="lang_qual[]" value="TOEIC-500"><span class="i18n" lang="en">TOEIC-500</span><span class="i18n" lang="cn">托业 500</span><span class="i18n" lang="jp">TOEIC 500</span></label>
+    <label><input type="checkbox" name="lang_qual[]" value="TOEIC-600"><span class="i18n" lang="en">TOEIC-600</span><span class="i18n" lang="cn">托业 600</span><span class="i18n" lang="jp">TOEIC 600</span></label>
+    <label><input type="checkbox" name="lang_qual[]" value="TOEIC-700"><span class="i18n" lang="en">TOEIC-700</span><span class="i18n" lang="cn">托业 700</span><span class="i18n" lang="jp">TOEIC 700</span></label>
+    <label><input type="checkbox" name="lang_qual[]" value="TOEIC-800"><span class="i18n" lang="en">TOEIC-800</span><span class="i18n" lang="cn">托业 800</span><span class="i18n" lang="jp">TOEIC 800</span></label>
+  </div>
+</div>
 
-              <!-- B1 兴趣（多选） -->
-              <div class="field">
-                <div><strong><span class="i18n" lang="en">B1. Your interests</span></strong></div>
-                <div class="options cols-3">
-                  <label><input type="checkbox" name="interests[]" value="academic-research">Academic research</label>
-                  <label><input type="checkbox" name="interests[]" value="creative-writing">Creative writing</label>
-                  <label><input type="checkbox" name="interests[]" value="design">Design</label>
-                  <label><input type="checkbox" name="interests[]" value="languages">Languages</label>
-                  <label><input type="checkbox" name="interests[]" value="business">Business</label>
-                  <label><input type="checkbox" name="interests[]" value="humanities">Humanities</label>
-                  <label><input type="checkbox" name="interests[]" value="social-science">Social science</label>
-                  <label><input type="checkbox" name="interests[]" value="arts-culture">Arts & culture</label>
-                  <label><input type="checkbox" name="interests[]" value="anime-comics">Anime and comics</label>
-                  <label><input type="checkbox" name="interests[]" value="reading-novels">Reading novels</label>
-                  <label><input type="checkbox" name="interests[]" value="philosophy">Philosophical thinking</label>
-                  <label><input type="checkbox" name="interests[]" value="history">Historical stories</label>
-                  <label><input type="checkbox" name="interests[]" value="social-issues">Social issues</label>
-                  <label><input type="checkbox" name="interests[]" value="psychology">Psychological testing</label>
-                  <label><input type="checkbox" name="interests[]" value="economics">Economic observation</label>
-                  <label><input type="checkbox" name="interests[]" value="documentaries">Watching documentaries</label>
-                  <label><input type="checkbox" name="interests[]" value="sci-fi">Science fiction settings</label>
-                  <label><input type="checkbox" name="interests[]" value="writing">Writing</label>
-                  <label><input type="checkbox" name="interests[]" value="programming">Programming</label>
-                  <label><input type="checkbox" name="interests[]" value="gaming">Gaming</label>
-                  <label><input type="checkbox" name="interests[]" value="social-behavior">Observing social behavior</label>
-                  <label><input type="checkbox" name="interests[]" value="environment">Environmental issues</label>
-                  <label><input type="checkbox" name="interests[]" value="womens-equality">Women's equality</label>
-                  <label><input type="checkbox" name="interests[]" value="dramas-variety">Dramas and variety shows</label>
-                  <label><input type="checkbox" name="interests[]" value="food">Food</label>
-                  <label><input type="checkbox" name="interests[]" value="fitness">Exercise and fitness</label>
-                  <label><input type="checkbox" name="interests[]" value="extreme-sports">Extreme sports</label>
-                  <label><input type="checkbox" name="interests[]" value="music">Music and musical instruments</label>
-                  <label><input type="checkbox" name="interests[]" value="photography">Photography</label>
-                  <label><input type="checkbox" name="interests[]" value="sightseeing">Sightseeing</label>
-                  <label><input type="checkbox" name="interests[]" value="social-media">Social media</label>
-                </div>
-              </div>
+  <!-- Q6 时间状态（单选） -->
+  <div class="field">
+    <div><strong>
+      <span class="i18n" lang="en">A6. Time status</span>
+      <span class="i18n" lang="cn">A6. 时间状态</span>
+      <span class="i18n" lang="jp">A6. 時間の状況</span>
+    </strong></div>
+    <label><input type="radio" name="time_status" value="Full-time preparation">
+      <span class="i18n" lang="en">Full-time preparation</span>
+      <span class="i18n" lang="cn">全职备考/准备</span>
+      <span class="i18n" lang="jp">フルタイムで準備</span>
+    </label>
+    <label><input type="radio" name="time_status" value="Current student">
+      <span class="i18n" lang="en">Current student</span>
+      <span class="i18n" lang="cn">在读学生</span>
+      <span class="i18n" lang="jp">在学中</span>
+    </label>
+    <label><input type="radio" name="time_status" value="Part-time preparation">
+      <span class="i18n" lang="en">Part-time preparation</span>
+      <span class="i18n" lang="cn">业余/兼职准备</span>
+      <span class="i18n" lang="jp">パートタイムで準備</span>
+    </label>
+    <label><input type="radio" name="time_status" value="Fragmented time">
+      <span class="i18n" lang="en">Fragmented time</span>
+      <span class="i18n" lang="cn">碎片化时间</span>
+      <span class="i18n" lang="jp">隙間時間中心</span>
+    </label>
+  </div>
+  <!-- ===== Section B ===== -->
+<h2>
+  <span class="i18n" lang="en">Section B: Personal</span>
+  <span class="i18n" lang="cn">B 部分：个人</span>
+  <span class="i18n" lang="jp">B セクション：個人</span>
+</h2>
 
-              <!-- B2 目标（多选） -->
-              <div class="field">
-                <div><strong><span class="i18n" lang="en">B2. Your current goals</span></strong></div>
-                <div class="options cols-2">
-                  <label><input type="checkbox" name="goals[]" value="further-studies">Further studies</label>
-                  <label><input type="checkbox" name="goals[]" value="admission">Graduate/college admission (domestic)</label>
-                  <label><input type="checkbox" name="goals[]" value="study-abroad">Studying abroad</label>
-                  <label><input type="checkbox" name="goals[]" value="certification">Certification / language exams</label>
-                  <label><input type="checkbox" name="goals[]" value="change-major">Changing majors</label>
-                  <label><input type="checkbox" name="goals[]" value="postgraduate">Postgraduate studies / preparatory courses</label>
-                  <label><input type="checkbox" name="goals[]" value="doctoral">Doctoral studies</label>
-                  <label><input type="checkbox" name="goals[]" value="research-output">Research output (paper, proposal)</label>
-                  <label><input type="checkbox" name="goals[]" value="skills-building">Skill building</label>
-                  <label><input type="checkbox" name="goals[]" value="portfolio">Portfolio</label>
-                  <label><input type="checkbox" name="goals[]" value="self-realization">Self-realization</label>
-                </div>
-              </div>
+<!-- B1 兴趣（多选；三列） -->
+<div class="field">
+  <div><strong>
+    <span class="i18n" lang="en">B1. Your interests </span>
+    <span class="i18n" lang="cn">B1. 你的兴趣 </span>
+    <span class="i18n" lang="jp">B1. 興味関心 </span>
+  </strong></div>
 
-              <!-- B3 学习/工作习惯（单选） -->
-              <div class="field">
-                <div><strong><span class="i18n" lang="en">B3. Study/work habit</span></strong></div>
-                <label><input type="radio" name="habit" value="short-sprints">Short sprints, frequent breaks</label>
-                <label><input type="radio" name="habit" value="long-focus">Long focus blocks</label>
-                <label><input type="radio" name="habit" value="deadline-driven">Deadline-driven</label>
-                <label><input type="radio" name="habit" value="regular-schedule">Has a regular schedule</label>
-                <label><input type="radio" name="habit" value="Deep thinking">Deep thinking</label>
-              </div>
+  <div class="options cols-3">
+    <label><input type="checkbox" name="interests[]" value="academic-research">
+      <span class="i18n" lang="en">Academic research</span>
+      <span class="i18n" lang="cn">学术研究</span>
+      <span class="i18n" lang="jp">学術研究</span>
+    </label>
+    <label><input type="checkbox" name="interests[]" value="creative-writing">
+      <span class="i18n" lang="en">Creative writing</span>
+      <span class="i18n" lang="cn">创意写作</span>
+      <span class="i18n" lang="jp">クリエイティブライティング</span>
+    </label>
+    <label><input type="checkbox" name="interests[]" value="programming">
+      <span class="i18n" lang="en">Programming</span>
+      <span class="i18n" lang="cn">编程</span>
+      <span class="i18n" lang="jp">プログラミング</span>
+    </label>
+    <label><input type="checkbox" name="interests[]" value="design">
+      <span class="i18n" lang="en">Design</span>
+      <span class="i18n" lang="cn">设计</span>
+      <span class="i18n" lang="jp">デザイン</span>
+    </label>
+    <label><input type="checkbox" name="interests[]" value="languages">
+      <span class="i18n" lang="en">Languages</span>
+      <span class="i18n" lang="cn">外语</span>
+      <span class="i18n" lang="jp">語学</span>
+    </label>
+    <label><input type="checkbox" name="interests[]" value="business">
+      <span class="i18n" lang="en">Business</span>
+      <span class="i18n" lang="cn">商业</span>
+      <span class="i18n" lang="jp">ビジネス</span>
+    </label>
+    <label><input type="checkbox" name="interests[]" value="humanities">
+      <span class="i18n" lang="en">Humanities</span>
+      <span class="i18n" lang="cn">人文</span>
+      <span class="i18n" lang="jp">人文</span>
+    </label>
+    <label><input type="checkbox" name="interests[]" value="social-science">
+      <span class="i18n" lang="en">Social science</span>
+      <span class="i18n" lang="cn">社会科学</span>
+      <span class="i18n" lang="jp">社会科学</span>
+    </label>
+    <label><input type="checkbox" name="interests[]" value="arts-culture">
+      <span class="i18n" lang="en">Arts & culture</span>
+      <span class="i18n" lang="cn">艺术与文化</span>
+      <span class="i18n" lang="jp">アート・文化</span>
+    </label>
+     <label><input type="checkbox" name="interests[]" value="anime-comics">
+  <span class="i18n" lang="en">Anime and comics</span>
+  <span class="i18n" lang="cn">动漫与漫画</span>
+  <span class="i18n" lang="jp">アニメ・漫画</span>
+</label>
 
-              <!-- B4 任务偏好（多选） -->
-              <div class="field">
-                <div><strong><span class="i18n" lang="en">B4. Task preferences</span></strong></div>
-                <div class="options cols-2">
-                  <label><input type="checkbox" name="task_prefs[]" value="reading">Reading & note-taking</label>
-                  <label><input type="checkbox" name="task_prefs[]" value="searching">Searching & evaluating sources</label>
-                  <label><input type="checkbox" name="task_prefs[]" value="writing">Writing & editing</label>
-                  <label><input type="checkbox" name="task_prefs[]" value="practice">Practice / problem-solving</label>
-                  <label><input type="checkbox" name="task_prefs[]" value="discussion">Discussion / presentation</label>
-                  <label><input type="checkbox" name="task_prefs[]" value="making">Making / experiments</label>
-                  <label><input type="checkbox" name="task_prefs[]" value="companionship">Needs companionship</label>
-                  <label><input type="checkbox" name="task_prefs[]" value="independent">Works independently</label>
-                  <label><input type="checkbox" name="task_prefs[]" value="task-focused">Task-focused</label>
-                  <label><input type="checkbox" name="task_prefs[]" value="trouble-concentrating">Has trouble concentrating</label>
-                  <label><input type="checkbox" name="task_prefs[]" value="gives-up-easily">Gives up easily</label>
-                  <label><input type="checkbox" name="task_prefs[]" value="strong-focus">Strong focus</label>
-                </div>
-              </div>
+<label><input type="checkbox" name="interests[]" value="reading-novels">
+  <span class="i18n" lang="en">Reading novels</span>
+  <span class="i18n" lang="cn">阅读小说</span>
+  <span class="i18n" lang="jp">小説を読む</span>
+</label>
 
-              <!-- B5 障碍（多选） -->
-              <div class="field">
-                <div><strong><span class="i18n" lang="en">B5. Main obstacles (personal / psychological)</span></strong></div>
-                <div class="options cols-2">
-                  <label><input type="checkbox" name="obstacles[]" value="time">Lack of time</label>
-                  <label><input type="checkbox" name="obstacles[]" value="methods">Lack of methods</label>
-                  <label><input type="checkbox" name="obstacles[]" value="discipline">Low discipline</label>
-                  <label><input type="checkbox" name="obstacles[]" value="confidence">Low confidence</label>
-                  <label><input type="checkbox" name="obstacles[]" value="resources">Lack of resources</label>
-                  <label><input type="checkbox" name="obstacles[]" value="guidance">Lack of guidance</label>
-                  <label><input type="checkbox" name="obstacles[]" value="procrastination">Procrastination</label>
-                  <label><input type="checkbox" name="obstacles[]" value="anxiety">Anxiety</label>
-                  <label><input type="checkbox" name="obstacles[]" value="lack-planning">Lack of planning</label>
-                  <label><input type="checkbox" name="obstacles[]" value="lack-motivation">Lack of motivation</label>
-                  <label><input type="checkbox" name="obstacles[]" value="confusion">Confusion</label>
-                  <label><input type="checkbox" name="obstacles[]" value="internal-friction">Severe internal friction</label>
-                  <label><input type="checkbox" name="obstacles[]" value="social-anxiety">Social anxiety</label>
-                  <label><input type="checkbox" name="obstacles[]" value="loneliness">Loneliness</label>
-                  <label><input type="checkbox" name="obstacles[]" value="poverty">Poverty / financial stress</label>
-                  <label><input type="checkbox" name="obstacles[]" value="depression">Depression</label>
-                  <label><input type="checkbox" name="obstacles[]" value="fragility">Fragility / emotional sensitivity</label>
-                  <label><input type="checkbox" name="obstacles[]" value="fear-mistakes">Hate making mistakes</label>
-                </div>
-              </div>
+<label><input type="checkbox" name="interests[]" value="philosophy">
+  <span class="i18n" lang="en">Philosophical thinking</span>
+  <span class="i18n" lang="cn">哲学思考</span>
+  <span class="i18n" lang="jp">哲学的思考</span>
+</label>
 
-              <!-- B6 MBTI（单选） -->
-              <div class="field">
-                <div><strong><span class="i18n" lang="en">B6. MBTI</span></strong></div>
-                <div class="options cols-3">
-                  <label><input type="radio" name="mbti" value="INTJ">INTJ</label>
-                  <label><input type="radio" name="mbti" value="INTP">INTP</label>
-                  <label><input type="radio" name="mbti" value="ENTJ">ENTJ</label>
-                  <label><input type="radio" name="mbti" value="ENTP">ENTP</label>
-                  <label><input type="radio" name="mbti" value="INFJ">INFJ</label>
-                  <label><input type="radio" name="mbti" value="INFP">INFP</label>
-                  <label><input type="radio" name="mbti" value="ENFJ">ENFJ</label>
-                  <label><input type="radio" name="mbti" value="ENFP">ENFP</label>
-                  <label><input type="radio" name="mbti" value="ISTJ">ISTJ</label>
-                  <label><input type="radio" name="mbti" value="ISFJ">ISFJ</label>
-                  <label><input type="radio" name="mbti" value="ESTJ">ESTJ</label>
-                  <label><input type="radio" name="mbti" value="ESFJ">ESFJ</label>
-                  <label><input type="radio" name="mbti" value="ISTP">ISTP</label>
-                  <label><input type="radio" name="mbti" value="ISFP">ISFP</label>
-                  <label><input type="radio" name="mbti" value="ESTP">ESTP</label>
-                  <label><input type="radio" name="mbti" value="ESFP">ESFP</label>
-                </div>
-              </div>
+<label><input type="checkbox" name="interests[]" value="history">
+  <span class="i18n" lang="en">Historical stories</span>
+  <span class="i18n" lang="cn">历史故事</span>
+  <span class="i18n" lang="jp">歴史物語</span>
+</label>
 
-              <!-- ===== Section C ===== -->
-              <h2>
-                <span class="i18n" lang="en">Section C: Situation</span>
-                <span class="i18n" lang="cn">C 部分：情境</span>
-                <span class="i18n" lang="jp">C セクション：状況</span>
-              </h2>
+<label><input type="checkbox" name="interests[]" value="social-issues">
+  <span class="i18n" lang="en">Social issues</span>
+  <span class="i18n" lang="cn">社会问题</span>
+  <span class="i18n" lang="jp">社会問題</span>
+</label>
 
-              <!-- C1 每日可用时间（单选） -->
-              <div class="field">
-                <div><strong><span class="i18n" lang="en">C1. Daily available time</span></strong></div>
-                <label><input type="radio" name="daily_time" value="<30m">&lt; 30 min</label>
-                <label><input type="radio" name="daily_time" value="30-60m">30–60 min</label>
-                <label><input type="radio" name="daily_time" value="1-2h">1–2 hours</label>
-                <label><input type="radio" name="daily_time" value="2-4h">2–4 hours</label>
-                <label><input type="radio" name="daily_time" value=">4h">&gt; 4 hours</label>
-              </div>
+<label><input type="checkbox" name="interests[]" value="psychology">
+  <span class="i18n" lang="en">Psychological testing</span>
+  <span class="i18n" lang="cn">心理测试</span>
+  <span class="i18n" lang="jp">心理テスト</span>
+</label>
 
-              <!-- C2 每周节奏（多选） -->
-              <div class="field">
-                <div><strong><span class="i18n" lang="en">C2. Weekly pattern</span></strong></div>
-                <label><input type="checkbox" name="weekly_pattern[]" value="weekday-nights">Weekday nights</label>
-                <label><input type="checkbox" name="weekly_pattern[]" value="early-morning">Early morning</label>
-                <label><input type="checkbox" name="weekly_pattern[]" value="weekends">Weekends</label>
-                <label><input type="checkbox" name="weekly_pattern[]" value="distributed">Distributed small blocks</label>
-              </div>
+<label><input type="checkbox" name="interests[]" value="economics">
+  <span class="i18n" lang="en">Economic observation</span>
+  <span class="i18n" lang="cn">经济观察</span>
+  <span class="i18n" lang="jp">経済観察</span>
+</label>
 
-              <!-- C3 设备（多选） -->
-              <div class="field">
-                <div><strong><span class="i18n" lang="en">C3. Devices you mainly use</span></strong></div>
-                <label><input type="checkbox" name="devices[]" value="pc">PC / laptop</label>
-                <label><input type="checkbox" name="devices[]" value="tablet">Tablet</label>
-                <label><input type="checkbox" name="devices[]" value="phone">Phone</label>
-                <label><input type="checkbox" name="devices[]" value="book/notebook">book/notebook</label>
-              </div>
+<label><input type="checkbox" name="interests[]" value="documentaries">
+  <span class="i18n" lang="en">Watching documentaries</span>
+  <span class="i18n" lang="cn">观看纪录片</span>
+  <span class="i18n" lang="jp">ドキュメンタリーを見る</span>
+</label>
 
-              <!-- C4 渠道（多选） -->
-              <div class="field">
-                <div><strong><span class="i18n" lang="en">C4. Channels you prefer to receive help</span></strong></div>
-                <div class="options cols-2">
-                  <label><input type="checkbox" name="channels[]" value="chat">Chat / text</label>
-                  <label><input type="checkbox" name="channels[]" value="email">Email</label>
-                  <label><input type="checkbox" name="channels[]" value="video">Video calls</label>
-                  <label><input type="checkbox" name="channels[]" value="templates">Templates / examples</label>
-                  <label><input type="checkbox" name="channels[]" value="guides">Guides / step-by-step</label>
-                  <label><input type="checkbox" name="channels[]" value="community">Community / peer support</label>
-                </div>
-              </div>
+<label><input type="checkbox" name="interests[]" value="sci-fi">
+  <span class="i18n" lang="en">Science fiction settings</span>
+  <span class="i18n" lang="cn">科幻设定</span>
+  <span class="i18n" lang="jp">SF設定</span>
+</label>
 
-              <!-- C5 支持（多选） -->
-              <div class="field">
-                <div><strong><span class="i18n" lang="en">C5. Support you have</span></strong></div>
-                <div class="options cols-2">
-                  <label><input type="checkbox" name="supports[]" value="mentor">Mentor / teacher</label>
-                  <label><input type="checkbox" name="supports[]" value="friends">Friends / peers</label>
-                  <label><input type="checkbox" name="supports[]" value="family">Family</label>
-                  <label><input type="checkbox" name="supports[]" value="institution">Institution resources</label>
-                </div>
-              </div>
+<label><input type="checkbox" name="interests[]" value="writing">
+  <span class="i18n" lang="en">Writing</span>
+  <span class="i18n" lang="cn">写作</span>
+  <span class="i18n" lang="jp">執筆</span>
+</label>
 
-              <!-- C6 环境/生活方式（多选） -->
-              <div class="field">
-                <div><strong><span class="i18n" lang="en">C6. Environment / lifestyle</span></strong></div>
-                <div class="options cols-2">
-                  <label><input type="checkbox" name="env_life[]" value="quiet-space">Quiet study space</label>
-                  <label><input type="checkbox" name="env_life[]" value="noisy">Noisy environment</label>
-                  <label><input type="checkbox" name="env_life[]" value="commute">Commuting a lot</label>
-                  <label><input type="checkbox" name="env_life[]" value="health-limits">Health limits</label>
-                  <label><input type="checkbox" name="env_life[]" value="care-responsibility">Care responsibilities</label>
-                  <label><input type="checkbox" name="env_life[]" value="late-night">Stays up late often</label>
-                </div>
-              </div>
-            </form>
+<label><input type="checkbox" name="interests[]" value="programming">
+  <span class="i18n" lang="en">Programming</span>
+  <span class="i18n" lang="cn">编程</span>
+  <span class="i18n" lang="jp">プログラミング</span>
+</label>
 
-            <div class="actions">
-              <button type="button" class="primary" onclick="exportJSON()">
-                <span class="i18n" lang="en">Export JSON</span>
-                <span class="i18n" lang="cn">导出 JSON</span>
-                <span class="i18n" lang="jp">JSONを書き出す</span>
-              </button>
-              <button type="button" id="btn-submit" onclick="submitForm()" disabled>
-                <span class="i18n" lang="en">Submit</span>
-                <span class="i18n" lang="cn">提交</span>
-                <span class="i18n" lang="jp">送信</span>
-              </button>
-              <button type="reset">
-                <span class="i18n" lang="en">Reset</span>
-                <span class="i18n" lang="cn">重置</span>
-                <span class="i18n" lang="jp">リセット</span>
-              </button>
-            </div>
+<label><input type="checkbox" name="interests[]" value="gaming">
+  <span class="i18n" lang="en">Gaming</span>
+  <span class="i18n" lang="cn">游戏</span>
+  <span class="i18n" lang="jp">ゲーム</span>
+</label>
 
-            <label class="consent">
-              <input type="checkbox" id="consent">
-              <span class="i18n" lang="en">I agree to data processing for Sensis research and product development.</span>
-              <span class="i18n" lang="cn">我同意将数据用于 Sensis 的研究与产品开发。</span>
-              <span class="i18n" lang="jp">本データの研究・製品開発への利用に同意します。</span>
-            </label>
+<label><input type="checkbox" name="interests[]" value="social-behavior">
+  <span class="i18n" lang="en">Observing social behavior</span>
+  <span class="i18n" lang="cn">观察社会行为</span>
+  <span class="i18n" lang="jp">社会行動の観察</span>
+</label>
 
-            <div id="feedback" class="result-card" hidden></div>
-            <div id="out" class="out" aria-live="polite"></div>
+<label><input type="checkbox" name="interests[]" value="environment">
+  <span class="i18n" lang="en">Environmental issues</span>
+  <span class="i18n" lang="cn">环境问题</span>
+  <span class="i18n" lang="jp">環境問題</span>
+</label>
 
-            <hr>
+<label><input type="checkbox" name="interests[]" value="womens-equality">
+  <span class="i18n" lang="en">Women's equality</span>
+  <span class="i18n" lang="cn">女性平等</span>
+  <span class="i18n" lang="jp">女性の平等</span>
+</label>
 
-            <!-- 下方介绍/FAQ 略，保留你原文或随意 -->
-          </div>
-        </section>
+<label><input type="checkbox" name="interests[]" value="dramas-variety">
+  <span class="i18n" lang="en">Dramas and variety shows</span>
+  <span class="i18n" lang="cn">电视剧与综艺</span>
+  <span class="i18n" lang="jp">ドラマ・バラエティ番組</span>
+</label>
+
+<label><input type="checkbox" name="interests[]" value="food">
+  <span class="i18n" lang="en">Food</span>
+  <span class="i18n" lang="cn">美食</span>
+  <span class="i18n" lang="jp">食べ物</span>
+</label>
+
+<label><input type="checkbox" name="interests[]" value="fitness">
+  <span class="i18n" lang="en">Exercise and fitness</span>
+  <span class="i18n" lang="cn">运动健身</span>
+  <span class="i18n" lang="jp">運動・フィットネス</span>
+</label>
+
+<label><input type="checkbox" name="interests[]" value="extreme-sports">
+  <span class="i18n" lang="en">Extreme sports</span>
+  <span class="i18n" lang="cn">极限运动</span>
+  <span class="i18n" lang="jp">エクストリームスポーツ</span>
+</label>
+
+<label><input type="checkbox" name="interests[]" value="music">
+  <span class="i18n" lang="en">Music and musical instruments</span>
+  <span class="i18n" lang="cn">音乐与乐器</span>
+  <span class="i18n" lang="jp">音楽・楽器</span>
+</label>
+
+<label><input type="checkbox" name="interests[]" value="photography">
+  <span class="i18n" lang="en">Photography</span>
+  <span class="i18n" lang="cn">摄影</span>
+  <span class="i18n" lang="jp">写真撮影</span>
+</label>
+
+<label><input type="checkbox" name="interests[]" value="sightseeing">
+  <span class="i18n" lang="en">Sightseeing</span>
+  <span class="i18n" lang="cn">观光</span>
+  <span class="i18n" lang="jp">観光</span>
+</label>
+
+<label><input type="checkbox" name="interests[]" value="social-media">
+  <span class="i18n" lang="en">Social media</span>
+  <span class="i18n" lang="cn">社交媒体</span>
+  <span class="i18n" lang="jp">ソーシャルメディア</span>
+</label>
+
+<label><input type="checkbox" name="interests[]" value="other">
+  <span class="i18n" lang="en">Other</span>
+  <span class="i18n" lang="cn">其他</span>
+  <span class="i18n" lang="jp">その他</span>
+</label>
+  </div>
+</div>
+<!-- B2 目标（多选；两列） -->
+<div class="field">
+  <div><strong>
+    <span class="i18n" lang="en">B2. Your current goals (multiple)</span>
+    <span class="i18n" lang="cn">B2. 你当前的目标（可多选）</span>
+    <span class="i18n" lang="jp">B2. 現在の目標（複数可）</span>
+  </strong></div>
+
+  <div class="options cols-2">
+   <label><input type="checkbox" name="goals[]" value="further-studies">
+  <span class="i18n" lang="en">Further studies</span>
+  <span class="i18n" lang="cn">继续深造</span>
+  <span class="i18n" lang="jp">さらなる学習</span>
+</label>
+
+<label><input type="checkbox" name="goals[]" value="admission">
+  <span class="i18n" lang="en">Graduate/college admission (domestic)</span>
+  <span class="i18n" lang="cn">升学/申请录取（国内）</span>
+  <span class="i18n" lang="jp">進学・出願合格（国内）</span>
+</label>
+
+<label><input type="checkbox" name="goals[]" value="study-abroad">
+  <span class="i18n" lang="en">Studying abroad</span>
+  <span class="i18n" lang="cn">留学</span>
+  <span class="i18n" lang="jp">留学</span>
+</label>
+
+<label><input type="checkbox" name="goals[]" value="certification">
+  <span class="i18n" lang="en">Certification / language exams</span>
+  <span class="i18n" lang="cn">资格证/语言考试</span>
+  <span class="i18n" lang="jp">資格・語学試験</span>
+</label>
+
+<label><input type="checkbox" name="goals[]" value="change-major">
+  <span class="i18n" lang="en">Changing majors</span>
+  <span class="i18n" lang="cn">转专业</span>
+  <span class="i18n" lang="jp">専攻変更</span>
+</label>
+
+<label><input type="checkbox" name="goals[]" value="postgraduate">
+  <span class="i18n" lang="en">Postgraduate studies / preparatory courses</span>
+  <span class="i18n" lang="cn">研究生学习/预科课程</span>
+  <span class="i18n" lang="jp">大学院進学・予備課程</span>
+</label>
+
+<label><input type="checkbox" name="goals[]" value="doctoral">
+  <span class="i18n" lang="en">Doctoral studies</span>
+  <span class="i18n" lang="cn">博士学习</span>
+  <span class="i18n" lang="jp">博士課程</span>
+</label>
+
+<label><input type="checkbox" name="goals[]" value="research-output">
+  <span class="i18n" lang="en">Research output (paper, proposal)</span>
+  <span class="i18n" lang="cn">研究产出（论文/计划书）</span>
+  <span class="i18n" lang="jp">研究成果（論文・計画書）</span>
+</label>
+
+<label><input type="checkbox" name="goals[]" value="skills-building">
+  <span class="i18n" lang="en">Skill building</span>
+  <span class="i18n" lang="cn">能力提升</span>
+  <span class="i18n" lang="jp">スキル習得</span>
+</label>
+
+<label><input type="checkbox" name="goals[]" value="portfolio">
+  <span class="i18n" lang="en">Portfolio</span>
+  <span class="i18n" lang="cn">作品集</span>
+  <span class="i18n" lang="jp">ポートフォリオ</span>
+</label>
+
+<label><input type="checkbox" name="goals[]" value="self-realization">
+  <span class="i18n" lang="en">Self-realization</span>
+  <span class="i18n" lang="cn">自我实现</span>
+  <span class="i18n" lang="jp">自己実現</span>
+</label>
+
+<label><input type="checkbox" name="goals[]" value="other">
+  <span class="i18n" lang="en">Other</span>
+  <span class="i18n" lang="cn">其他</span>
+  <span class="i18n" lang="jp">その他</span>
+</label>
+
+  </div>
+</div>
+
+<!-- B3 学习/工作习惯（单选） -->
+<div class="field">
+  <div><strong>
+    <span class="i18n" lang="en">B3. Study/work habit </span>
+    <span class="i18n" lang="cn">B3. 学习/工作习惯</span>
+    <span class="i18n" lang="jp">B3. 学習/仕事の習慣</span>
+  </strong></div>
+
+  <label><input type="radio" name="habit" value="short-sprints">
+    <span class="i18n" lang="en">Short sprints, frequent breaks</span>
+    <span class="i18n" lang="cn">短时冲刺 + 频繁休息</span>
+    <span class="i18n" lang="jp">短時間スプリント＋こまめな休憩</span>
+  </label>
+  <label><input type="radio" name="habit" value="long-focus">
+    <span class="i18n" lang="en">Long focus blocks</span>
+    <span class="i18n" lang="cn">长时专注</span>
+    <span class="i18n" lang="jp">長時間の集中</span>
+  </label>
+  <label><input type="radio" name="habit" value="deadline-driven">
+    <span class="i18n" lang="en">Deadline-driven</span>
+    <span class="i18n" lang="cn">受截止日期驱动</span>
+    <span class="i18n" lang="jp">締切駆動</span>
+  </label>
+  <label><input type="radio" name="habit" value="other">
+    <span class="i18n" lang="en">Other</span>
+    <span class="i18n" lang="cn">其他</span>
+    <span class="i18n" lang="jp">その他</span>
+  </label>
+</div>
+
+<!-- B4 任务偏好（多选；两列） -->
+<div class="field">
+  <div><strong>
+    <span class="i18n" lang="en">B4. Task preferences </span>
+    <span class="i18n" lang="cn">B4. 任务偏好 </span>
+    <span class="i18n" lang="jp">B4. タスク嗜好 </span>
+  </strong></div>
+
+  <div class="options cols-2">
+    <label><input type="checkbox" name="task_prefs[]" value="reading">
+      <span class="i18n" lang="en">Reading & note-taking</span>
+      <span class="i18n" lang="cn">阅读与笔记</span>
+      <span class="i18n" lang="jp">読書・ノート取り</span>
+    </label>
+    <label><input type="checkbox" name="task_prefs[]" value="searching">
+      <span class="i18n" lang="en">Searching & evaluating sources</span>
+      <span class="i18n" lang="cn">检索与评估资料</span>
+      <span class="i18n" lang="jp">検索・情報評価</span>
+    </label>
+    <label><input type="checkbox" name="task_prefs[]" value="writing">
+      <span class="i18n" lang="en">Writing & editing</span>
+      <span class="i18n" lang="cn">写作与编辑</span>
+      <span class="i18n" lang="jp">執筆・編集</span>
+    </label>
+    <label><input type="checkbox" name="task_prefs[]" value="practice">
+      <span class="i18n" lang="en">Practice / problem-solving</span>
+      <span class="i18n" lang="cn">练习/解题</span>
+      <span class="i18n" lang="jp">演習・問題解決</span>
+    </label>
+    <label><input type="checkbox" name="task_prefs[]" value="discussion">
+      <span class="i18n" lang="en">Discussion / presentation</span>
+      <span class="i18n" lang="cn">讨论/展示</span>
+      <span class="i18n" lang="jp">議論・発表</span>
+    </label>
+    <label><input type="checkbox" name="task_prefs[]" value="making">
+      <span class="i18n" lang="en">Making / experiments</span>
+      <span class="i18n" lang="cn">动手/实验</span>
+      <span class="i18n" lang="jp">制作・実験</span>
+    </label>
+    <label><input type="checkbox" name="traits[]" value="companionship">
+  <span class="i18n" lang="en">Needs companionship</span>
+  <span class="i18n" lang="cn">需要陪伴</span>
+  <span class="i18n" lang="jp">仲間が必要</span>
+</label>
+    <label><input type="checkbox" name="traits[]" value="independent">
+  <span class="i18n" lang="en">Works independently</span>
+  <span class="i18n" lang="cn">独立完成</span>
+  <span class="i18n" lang="jp">一人で取り組む</span>
+</label>
+
+<label><input type="checkbox" name="traits[]" value="regular-schedule">
+  <span class="i18n" lang="en">Has a regular schedule</span>
+  <span class="i18n" lang="cn">作息规律</span>
+  <span class="i18n" lang="jp">規則正しい</span>
+</label>
+
+<label><input type="checkbox" name="traits[]" value="task-focused">
+  <span class="i18n" lang="en">Task-focused</span>
+  <span class="i18n" lang="cn">任务导向</span>
+  <span class="i18n" lang="jp">タスク集中型</span>
+</label>
+
+<label><input type="checkbox" name="traits[]" value="trouble-concentrating">
+  <span class="i18n" lang="en">Has trouble concentrating</span>
+  <span class="i18n" lang="cn">注意力难集中</span>
+  <span class="i18n" lang="jp">集中が難しい</span>
+</label>
+
+<label><input type="checkbox" name="traits[]" value="gives-up-easily">
+  <span class="i18n" lang="en">Gives up easily</span>
+  <span class="i18n" lang="cn">容易放弃</span>
+  <span class="i18n" lang="jp">諦めやすい</span>
+</label>
+
+<label><input type="checkbox" name="traits[]" value="strong-focus">
+  <span class="i18n" lang="en">Strong focus</span>
+  <span class="i18n" lang="cn">专注力强</span>
+  <span class="i18n" lang="jp">集中力が強い</span>
+</label>
+  </div>
+</div>
+
+<!-- B5 障碍（多选；两列） -->
+<div class="field">
+  <div><strong>
+    <span class="i18n" lang="en">B5. Main obstacles (personal / psychological)</span>
+    <span class="i18n" lang="cn">B5. 主要障碍（个人/心理）</span>
+    <span class="i18n" lang="jp">B5. 主な障壁（個人・心理）</span>
+  </strong></div>
+
+  <div class="options cols-2">
+    <label><input type="checkbox" name="obstacles[]" value="time">
+      <span class="i18n" lang="en">Lack of time</span>
+      <span class="i18n" lang="cn">时间不足</span>
+      <span class="i18n" lang="jp">時間が足りない</span>
+    </label>
+
+    <label><input type="checkbox" name="obstacles[]" value="methods">
+      <span class="i18n" lang="en">Lack of methods</span>
+      <span class="i18n" lang="cn">方法不足</span>
+      <span class="i18n" lang="jp">方法がない</span>
+    </label>
+
+    <label><input type="checkbox" name="obstacles[]" value="discipline">
+      <span class="i18n" lang="en">Low discipline</span>
+      <span class="i18n" lang="cn">自律性弱</span>
+      <span class="i18n" lang="jp">自己管理が弱い</span>
+    </label>
+
+    <label><input type="checkbox" name="obstacles[]" value="confidence">
+      <span class="i18n" lang="en">Low confidence</span>
+      <span class="i18n" lang="cn">自信不足</span>
+      <span class="i18n" lang="jp">自信がない</span>
+    </label>
+
+    <label><input type="checkbox" name="obstacles[]" value="resources">
+      <span class="i18n" lang="en">Lack of resources</span>
+      <span class="i18n" lang="cn">资源有限</span>
+      <span class="i18n" lang="jp">リソース不足</span>
+    </label>
+
+    <label><input type="checkbox" name="obstacles[]" value="guidance">
+      <span class="i18n" lang="en">Lack of guidance</span>
+      <span class="i18n" lang="cn">缺少指导</span>
+      <span class="i18n" lang="jp">指導がない</span>
+    </label>
+
+    <label><input type="checkbox" name="obstacles[]" value="procrastination">
+      <span class="i18n" lang="en">Procrastination</span>
+      <span class="i18n" lang="cn">拖延</span>
+      <span class="i18n" lang="jp">先延ばし</span>
+    </label>
+
+    <label><input type="checkbox" name="obstacles[]" value="anxiety">
+      <span class="i18n" lang="en">Anxiety</span>
+      <span class="i18n" lang="cn">焦虑</span>
+      <span class="i18n" lang="jp">不安</span>
+    </label>
+
+    <label><input type="checkbox" name="obstacles[]" value="lack-planning">
+      <span class="i18n" lang="en">Lack of planning</span>
+      <span class="i18n" lang="cn">缺乏规划</span>
+      <span class="i18n" lang="jp">計画性がない</span>
+    </label>
+
+    <label><input type="checkbox" name="obstacles[]" value="lack-motivation">
+      <span class="i18n" lang="en">Lack of motivation</span>
+      <span class="i18n" lang="cn">缺乏动力</span>
+      <span class="i18n" lang="jp">やる気が出ない</span>
+    </label>
+
+    <label><input type="checkbox" name="obstacles[]" value="confusion">
+      <span class="i18n" lang="en">Confusion</span>
+      <span class="i18n" lang="cn">困惑</span>
+      <span class="i18n" lang="jp">混乱</span>
+    </label>
+
+    <label><input type="checkbox" name="obstacles[]" value="internal-friction">
+      <span class="i18n" lang="en">Severe internal friction</span>
+      <span class="i18n" lang="cn">严重内耗</span>
+      <span class="i18n" lang="jp">強い内的摩耗</span>
+    </label>
+
+    <label><input type="checkbox" name="obstacles[]" value="social-anxiety">
+      <span class="i18n" lang="en">Social anxiety</span>
+      <span class="i18n" lang="cn">社交焦虑</span>
+      <span class="i18n" lang="jp">対人不安</span>
+    </label>
+
+    <label><input type="checkbox" name="obstacles[]" value="loneliness">
+      <span class="i18n" lang="en">Loneliness</span>
+      <span class="i18n" lang="cn">孤独</span>
+      <span class="i18n" lang="jp">孤独感</span>
+    </label>
+
+    <label><input type="checkbox" name="obstacles[]" value="poverty">
+      <span class="i18n" lang="en">Poverty / financial stress</span>
+      <span class="i18n" lang="cn">经济压力</span>
+      <span class="i18n" lang="jp">経済的困難</span>
+    </label>
+
+    <label><input type="checkbox" name="obstacles[]" value="depression">
+      <span class="i18n" lang="en">Depression</span>
+      <span class="i18n" lang="cn">抑郁</span>
+      <span class="i18n" lang="jp">うつ状態</span>
+    </label>
+
+    <label><input type="checkbox" name="obstacles[]" value="fragility">
+      <span class="i18n" lang="en">Fragility / emotional sensitivity</span>
+      <span class="i18n" lang="cn">心理脆弱/敏感</span>
+      <span class="i18n" lang="jp">精神的に脆い・敏感</span>
+    </label>
+
+    <label><input type="checkbox" name="obstacles[]" value="fear-mistakes">
+      <span class="i18n" lang="en">Hate making mistakes</span>
+      <span class="i18n" lang="cn">害怕犯错</span>
+      <span class="i18n" lang="jp">失敗を極端に嫌う</span>
+    </label>
+  </div>
+</div>
+
+<!-- B6 MBTI（单选；为了简洁给常见 8 选项） -->
+<div class="field">
+  <div><strong>
+    <span class="i18n" lang="en">B6. MBTI </span>
+    <span class="i18n" lang="cn">B6. MBTI </span>
+    <span class="i18n" lang="jp">B6. MBTI </span>
+
+  </strong></div>
+
+  <div class="options cols-3">
+    <label><input type="radio" name="mbti" value="INTJ">INTJ</label>
+    <label><input type="radio" name="mbti" value="INTP">INTP</label>
+    <label><input type="radio" name="mbti" value="ENTJ">ENTJ</label>
+    <label><input type="radio" name="mbti" value="ENTP">ENTP</label>
+    <label><input type="radio" name="mbti" value="INFJ">INFJ</label>
+    <label><input type="radio" name="mbti" value="INFP">INFP</label>
+    <label><input type="radio" name="mbti" value="ENFJ">ENFJ</label>
+    <label><input type="radio" name="mbti" value="ENFP">ENFP</label>
+    <label><input type="radio" name="mbti" value="ISTJ">ISTJ</label>
+    <label><input type="radio" name="mbti" value="ISFJ">ISFJ</label>
+    <label><input type="radio" name="mbti" value="ESTJ">ESTJ</label>
+    <label><input type="radio" name="mbti" value="ESFJ">ESFJ</label>
+    <label><input type="radio" name="mbti" value="ISTP">ISTP</label>
+    <label><input type="radio" name="mbti" value="ISFP">ISFP</label>
+    <label><input type="radio" name="mbti" value="ESTP">ESTP</label>
+    <label><input type="radio" name="mbti" value="ESFP">ESFP</label>
+  </div>
+</div>
+<!-- ===== Section C ===== -->
+<h2>
+  <span class="i18n" lang="en">Section C: Situation</span>
+  <span class="i18n" lang="cn">C 部分：情境</span>
+  <span class="i18n" lang="jp">C セクション：状況</span>
+</h2>
+
+<!-- C1 可用时间（单选） -->
+<div class="field">
+  <div><strong>
+    <span class="i18n" lang="en">C1. Daily available time </span>
+    <span class="i18n" lang="cn">C1. 每日可用时间 </span>
+    <span class="i18n" lang="jp">C1. 1日に確保できる時間 </span>
+  </strong></div>
+
+  <label><input type="radio" name="daily_time" value="<30m">
+    <span class="i18n" lang="en">&lt; 30 min</span>
+    <span class="i18n" lang="cn">少于 30 分钟</span>
+    <span class="i18n" lang="jp">30分未満</span>
+  </label>
+  <label><input type="radio" name="daily_time" value="30-60m">
+    <span class="i18n" lang="en">30–60 min</span>
+    <span class="i18n" lang="cn">30–60 分钟</span>
+    <span class="i18n" lang="jp">30–60分</span>
+  </label>
+  <label><input type="radio" name="daily_time" value="1-2h">
+    <span class="i18n" lang="en">1–2 hours</span>
+    <span class="i18n" lang="cn">1–2 小时</span>
+    <span class="i18n" lang="jp">1–2時間</span>
+  </label>
+  <label><input type="radio" name="daily_time" value="2-4h">
+    <span class="i18n" lang="en">2–4 hours</span>
+    <span class="i18n" lang="cn">2–4 小时</span>
+    <span class="i18n" lang="jp">2–4時間</span>
+  </label>
+  <label><input type="radio" name="daily_time" value=">4h">
+    <span class="i18n" lang="en">&gt; 4 hours</span>
+    <span class="i18n" lang="cn">4 小时以上</span>
+    <span class="i18n" lang="jp">4時間超</span>
+  </label>
+</div>
+
+<!-- C2 每周节奏（多选；两列） -->
+<div class="field">
+  <div><strong>
+    <span class="i18n" lang="en">C2. Weekly pattern </span>
+    <span class="i18n" lang="cn">C2. 每周节奏  </span>
+    <span class="i18n" lang="jp">C2. 週間パターン  </span>
+  </strong></div>
+
+    <label><input type="checkbox" name="weekly_pattern[]" value="weekday-nights">
+      <span class="i18n" lang="en">Weekday nights</span>
+      <span class="i18n" lang="cn">工作日晚上</span>
+      <span class="i18n" lang="jp">平日夜</span>
+    </label>
+    <label><input type="checkbox" name="weekly_pattern[]" value="early-morning">
+      <span class="i18n" lang="en">Early morning</span>
+      <span class="i18n" lang="cn">清晨</span>
+      <span class="i18n" lang="jp">早朝</span>
+    </label>
+    <label><input type="checkbox" name="weekly_pattern[]" value="weekends">
+      <span class="i18n" lang="en">Weekends</span>
+      <span class="i18n" lang="cn">周末</span>
+      <span class="i18n" lang="jp">週末</span>
+    </label>
+    <label><input type="checkbox" name="weekly_pattern[]" value="distributed">
+      <span class="i18n" lang="en">Distributed small blocks</span>
+      <span class="i18n" lang="cn">分散小块</span>
+      <span class="i18n" lang="jp">小分割で分散</span>
+    </label>
+</div>
+
+<!-- C3 设备（多选；两列） -->
+<div class="field">
+  <div><strong>
+    <span class="i18n" lang="en">C3. Devices you mainly use </span>
+    <span class="i18n" lang="cn">C3. 主要使用的设备</span>
+    <span class="i18n" lang="jp">C3. 主に使うデバイス </span>
+  </strong></div>
+
+    <label><input type="checkbox" name="devices[]" value="pc">
+      <span class="i18n" lang="en">PC / laptop</span>
+      <span class="i18n" lang="cn">电脑/笔记本</span>
+      <span class="i18n" lang="jp">PC・ノートPC</span>
+    </label>
+    <label><input type="checkbox" name="devices[]" value="tablet">
+      <span class="i18n" lang="en">Tablet</span>
+      <span class="i18n" lang="cn">平板</span>
+      <span class="i18n" lang="jp">タブレット</span>
+    </label>
+    <label><input type="checkbox" name="devices[]" value="phone">
+      <span class="i18n" lang="en">Phone</span>
+      <span class="i18n" lang="cn">手机</span>
+      <span class="i18n" lang="jp">スマートフォン</span>
+    </label>
+    <label><input type="checkbox" name="devices[]" value="other">
+      <span class="i18n" lang="en">Other</span>
+      <span class="i18n" lang="cn">其他</span>
+      <span class="i18n" lang="jp">その他</span>
+    </label>
+</div>
+
+<!-- C4 渠道（多选；三列） -->
+<div class="field">
+  <div><strong>
+    <span class="i18n" lang="en">C4. Channels you prefer to receive help </span>
+    <span class="i18n" lang="cn">C4. 你偏好通过哪些渠道获得帮助 </span>
+    <span class="i18n" lang="jp">C4. 支援を受けたいチャネル </span>
+  </strong></div>
+
+  <div class="options cols-2">
+    <label><input type="checkbox" name="channels[]" value="chat">
+      <span class="i18n" lang="en">Chat / text</span>
+      <span class="i18n" lang="cn">聊天/文字</span>
+      <span class="i18n" lang="jp">チャット/テキスト</span>
+    </label>
+    <label><input type="checkbox" name="channels[]" value="email">
+      <span class="i18n" lang="en">Email</span>
+      <span class="i18n" lang="cn">电子邮件</span>
+      <span class="i18n" lang="jp">メール</span>
+    </label>
+    <label><input type="checkbox" name="channels[]" value="video">
+      <span class="i18n" lang="en">Video calls</span>
+      <span class="i18n" lang="cn">视频通话</span>
+      <span class="i18n" lang="jp">ビデオ通話</span>
+    </label>
+    <label><input type="checkbox" name="channels[]" value="templates">
+      <span class="i18n" lang="en">Templates / examples</span>
+      <span class="i18n" lang="cn">模板/样例</span>
+      <span class="i18n" lang="jp">テンプレート/例</span>
+    </label>
+    <label><input type="checkbox" name="channels[]" value="guides">
+      <span class="i18n" lang="en">Guides / step-by-step</span>
+      <span class="i18n" lang="cn">指南/步骤讲解</span>
+      <span class="i18n" lang="jp">ガイド/手順説明</span>
+    </label>
+    <label><input type="checkbox" name="channels[]" value="community">
+      <span class="i18n" lang="en">Community / peer support</span>
+      <span class="i18n" lang="cn">社群/同伴互助</span>
+      <span class="i18n" lang="jp">コミュニティ/相互支援</span>
+    </label>
+  </div>
+</div>
+
+<!-- C5 支持（多选；两列） -->
+<div class="field">
+  <div><strong>
+    <span class="i18n" lang="en">C5. Support you have </span>
+    <span class="i18n" lang="cn">C5. 你已有的支持 </span>
+    <span class="i18n" lang="jp">C5. 既にある支援 </span>
+  </strong></div>
+
+  <div class="options cols-2">
+    <label><input type="checkbox" name="supports[]" value="mentor">
+      <span class="i18n" lang="en">Mentor / teacher</span>
+      <span class="i18n" lang="cn">导师/老师</span>
+      <span class="i18n" lang="jp">メンター/先生</span>
+    </label>
+    <label><input type="checkbox" name="supports[]" value="friends">
+      <span class="i18n" lang="en">Friends / peers</span>
+      <span class="i18n" lang="cn">朋友/同伴</span>
+      <span class="i18n" lang="jp">友人/仲間</span>
+    </label>
+    <label><input type="checkbox" name="supports[]" value="family">
+      <span class="i18n" lang="en">Family</span>
+      <span class="i18n" lang="cn">家人</span>
+      <span class="i18n" lang="jp">家族</span>
+    </label>
+    <label><input type="checkbox" name="supports[]" value="institution">
+      <span class="i18n" lang="en">Institution resources</span>
+      <span class="i18n" lang="cn">学校/机构资源</span>
+      <span class="i18n" lang="jp">学校/機関リソース</span>
+    </label>
+  </div>
+</div>
+
+<!-- C6 环境/生活方式（多选；两列） -->
+<div class="field">
+  <div><strong>
+    <span class="i18n" lang="en">C6. Environment / lifestyle </span>
+    <span class="i18n" lang="cn">C6. 环境/生活方式 </span>
+    <span class="i18n" lang="jp">C6. 環境/ライフスタイル </span>
+  </strong></div>
+
+  <div class="options cols-2">
+    <label><input type="checkbox" name="env_life[]" value="quiet-space">
+      <span class="i18n" lang="en">Quiet study space</span>
+      <span class="i18n" lang="cn">安静的学习环境</span>
+      <span class="i18n" lang="jp">静かな学習環境</span>
+    </label>
+    <label><input type="checkbox" name="env_life[]" value="noisy">
+      <span class="i18n" lang="en">Noisy environment</span>
+      <span class="i18n" lang="cn">环境嘈杂</span>
+      <span class="i18n" lang="jp">騒がしい環境</span>
+    </label>
+    <label><input type="checkbox" name="env_life[]" value="commute">
+      <span class="i18n" lang="en">Commuting a lot</span>
+      <span class="i18n" lang="cn">通勤/通学时间长</span>
+      <span class="i18n" lang="jp">通勤・通学が長い</span>
+    </label>
+    <label><input type="checkbox" name="env_life[]" value="health-limits">
+      <span class="i18n" lang="en">Health limits</span>
+      <span class="i18n" lang="cn">健康限制</span>
+      <span class="i18n" lang="jp">健康上の制約</span>
+    </label>
+    <label><input type="checkbox" name="env_life[]" value="care-responsibility">
+      <span class="i18n" lang="en">Care responsibilities</span>
+      <span class="i18n" lang="cn">照护责任</span>
+      <span class="i18n" lang="jp">ケアの責任</span>
+    </label>
+    <label><input type="checkbox" name="env_life[]" value="late-night">
+      <span class="i18n" lang="en">Stays up late often</span>
+      <span class="i18n" lang="cn">经常熬夜</span>
+      <span class="i18n" lang="jp">夜更かしが多い</span>
+    </label>
+  </div>
+</div>
+  <!-- 表单结束：A/B/C -->
+  </form>
+
+  <!-- 操作按钮（仍在 .md 内） -->
+    <div class="actions">
+  <button type="button" class="primary" onclick="exportJSON()">
+    <span class="i18n" lang="en">Export JSON</span>
+    <span class="i18n" lang="cn">导出 JSON</span>
+    <span class="i18n" lang="jp">JSONを書き出す</span>
+  </button>
+
+  <button type="button" id="btn-submit" onclick="submitForm()" disabled>
+    <span class="i18n" lang="en">Submit</span>
+    <span class="i18n" lang="cn">提交</span>
+    <span class="i18n" lang="jp">送信</span>
+  </button>
+
+  <button type="reset">
+    <span class="i18n" lang="en">Reset</span>
+    <span class="i18n" lang="cn">重置</span>
+    <span class="i18n" lang="jp">リセット</span>
+  </button>
+</div>
+
+<!-- 同意说明 -->
+<label class="consent">
+  <input type="checkbox" id="consent">
+  <span class="i18n" lang="en">I agree to data processing for Sensis research and product development.</span>
+  <span class="i18n" lang="cn">我同意将数据用于 Sensis 的研究与产品开发。</span>
+  <span class="i18n" lang="jp">本データの研究・製品開発への利用に同意します。</span>
+</label>
+
+<!-- 反馈卡：提交成功后填充 -->
+<div id="feedback" class="result-card" hidden></div>
+
+<!-- 仍保留：原来的 JSON 输出调试视图 -->
+<div id="out" class="out" aria-live="polite"></div>
+
+  <hr>
+
+  <!-- Purpose of Questions -->
+  <h2>
+    <span class="i18n" lang="en">Purpose of Questions (for internal use)</span>
+    <span class="i18n" lang="cn">问题目的（内部使用）</span>
+    <span class="i18n" lang="jp">設問の目的（内部利用）</span>
+  </h2>
+
+  <ul>
+    <li>
+      <strong>
+        <span class="i18n" lang="en">A (A1–A6): System</span>
+        <span class="i18n" lang="cn">A (A1–A6)：系统</span>
+        <span class="i18n" lang="jp">A (A1–A6)：システム</span>
+      </strong><br>
+      <span class="i18n" lang="en">Demographic baseline, credentials, major, time status.</span>
+      <span class="i18n" lang="cn">人口基线、学历、专业、时间状态。</span>
+      <span class="i18n" lang="jp">人口学的基盤、学歴、専攻、時間状況。</span>
+    </li>
+    <li>
+      <strong>
+        <span class="i18n" lang="en">B (B1–B6): Personal</span>
+        <span class="i18n" lang="cn">B (B1–B6)：个人</span>
+        <span class="i18n" lang="jp">B (B1–B6)：パーソナル</span>
+      </strong><br>
+      <span class="i18n" lang="en">Interests, goals, habits, task preferences, obstacles, MBTI.</span>
+      <span class="i18n" lang="cn">兴趣、目标、习惯、任务偏好、障碍、MBTI。</span>
+      <span class="i18n" lang="jp">関心、目標、習慣、課題選好、障害、MBTI。</span>
+    </li>
+    <li>
+      <strong>
+        <span class="i18n" lang="en">C (C1–C6): Situation</span>
+        <span class="i18n" lang="cn">C (C1–C6)：情境</span>
+        <span class="i18n" lang="jp">C (C1–C6)：状況</span>
+      </strong><br>
+      <span class="i18n" lang="en">Available time, weekly pattern, devices, channels, support, environment, lifestyle.</span>
+      <span class="i18n" lang="cn">可支配时间、每周模式、设备、渠道、支持、环境、生活方式。</span>
+      <span class="i18n" lang="jp">利用可能な時間、週間パターン、デバイス、チャネル、支援、環境、ライフスタイル。</span>
+    </li>
+  </ul>
+
+  <!-- FAQ -->
+  <h2>
+    <span class="i18n" lang="en">FAQ</span>
+    <span class="i18n" lang="cn">常见问题</span>
+    <span class="i18n" lang="jp">よくある質問</span>
+  </h2>
+ <h3>
+    <span class="i18n" lang="en">Why do we collect this data?</span>
+    <span class="i18n" lang="cn">为什么要收集这些数据？</span>
+    <span class="i18n" lang="jp">なぜこのデータを収集するのですか？</span>
+  </h3>
+         <p>
+    <span class="i18n" lang="en">We collect data to understand users’ backgrounds, study habits, and needs, in order to improve research support and learning guidance.</span>
+    <span class="i18n" lang="cn">我们收集这些数据是为了了解用户的背景、学习习惯和需求，以便改进研究支持与学习指导。</span>
+    <span class="i18n" lang="jp">本データは、利用者の背景・学習習慣・ニーズを把握し、研究支援や学習指導の改善に役立てるために収集されます。</span>
+  </p>
+
+  <h3>
+    <span class="i18n" lang="en">Can I skip a question?</span>
+    <span class="i18n" lang="cn">我可以跳过问题吗？</span>
+    <span class="i18n" lang="jp">質問を飛ばしてもいいですか？</span>
+  </h3>
+  <p>
+    <span class="i18n" lang="en">Yes. Incomplete answers may reduce the accuracy of your results, but the form remains valid.</span>
+    <span class="i18n" lang="cn">可以。不完整的回答可能会降低结果的准确性，但表格依然有效。</span>
+    <span class="i18n" lang="jp">はい。不完全な回答は結果の精度を下げる可能性がありますが、フォームは有効です。</span>
+  </p>
+
+  <h3>
+    <span class="i18n" lang="en">Why ask about age/education/major?</span>
+    <span class="i18n" lang="cn">为什么要问年龄/学历/专业？</span>
+    <span class="i18n" lang="jp">なぜ年齢／学歴／専攻を聞くのですか？</span>
+  </h3>
+  <p>
+    <span class="i18n" lang="en">To understand structural context shaping planning and access.</span>
+    <span class="i18n" lang="cn">用于理解影响规划与机会的结构性背景。</span>
+    <span class="i18n" lang="jp">計画やアクセスを規定する構造的背景を把握するためです。</span>
+  </p>
+
+  <h3>
+    <span class="i18n" lang="en">How will my data be used?</span>
+    <span class="i18n" lang="cn">我的数据将如何使用？</span>
+    <span class="i18n" lang="jp">私のデータはどのように使われますか？</span>
+  </h3>
+  <p>
+    <span class="i18n" lang="en">Responses will be anonymized and used only for Sensis research and user's personal goal path setting.</span>
+    <span class="i18n" lang="cn">回答将被匿名化，仅用于 Sensis 的研究和用户的个人目标路径设定。</span>
+    <span class="i18n" lang="jp">回答は匿名化され、Sensis の調査とユーザーの個人的な目標パスの設定にのみ使用されます。</span>
+  </p>
+  <h3>
+    <span class="i18n" lang="en">How will my data be stored?</span>
+    <span class="i18n" lang="cn">我的数据会如何存储？</span>
+    <span class="i18n" lang="jp">データはどのように保存されますか？</span>
+  </h3>
+  <p>
+    <span class="i18n" lang="en">All responses will be stored securely in encrypted databases with restricted access.</span>
+    <span class="i18n" lang="cn">所有问卷答案将安全存储在加密数据库中，并限制访问权限。</span>
+    <span class="i18n" lang="jp">すべての回答は、暗号化されたデータベースに安全に保存され、アクセスは制限されます。</span>
+  </p>
+
+  <h3>
+    <span class="i18n" lang="en">Will my personal identity be revealed?</span>
+    <span class="i18n" lang="cn">我的个人身份会被公开吗？</span>
+    <span class="i18n" lang="jp">個人情報は公開されますか？</span>
+  </h3>
+  <p>
+    <span class="i18n" lang="en">No. All data will be anonymized and used only for aggregated analysis.</span>
+    <span class="i18n" lang="cn">不会。所有数据将进行匿名化处理，仅用于总体分析。</span>
+    <span class="i18n" lang="jp">いいえ。すべてのデータは匿名化され、集計分析のみに使用されます。</span>
+  </p>
+
+  <h3>
+    <span class="i18n" lang="en">Can I withdraw my data later?</span>
+    <span class="i18n" lang="cn">我以后可以撤回数据吗？</span>
+    <span class="i18n" lang="jp">後からデータを撤回できますか？</span>
+  </h3>
+  <p>
+    <span class="i18n" lang="en">Yes. You may contact the research team at any time to request data deletion.</span>
+    <span class="i18n" lang="cn">可以。您可以随时联系研究团队，要求删除您的数据。</span>
+    <span class="i18n" lang="jp">はい。研究チームに連絡することで、いつでもデータ削除を依頼できます。</span>
+  </p>
+
+  <h3>
+    <span class="i18n" lang="en">Who can I contact for questions?</span>
+    <span class="i18n" lang="cn">有问题可以联系谁？</span>
+    <span class="i18n" lang="jp">質問がある場合は誰に連絡すればよいですか？</span>
+  </h3>
+  <p>
+    <span class="i18n" lang="en">Please contact the project research team via email: sensis-team@example.com</span>
+    <span class="i18n" lang="cn">如有问题，请通过电子邮件联系项目研究团队：sensis-team@example.com</span>
+    <span class="i18n" lang="jp">ご質問は次のメールへ：sensis-team@example.com</span>
+  </p>
+  </div>
+</div> <!-- .md 结束 -->
+</section>
       </article>
     </main>
   </div>
 
-  <button class="fab-menu" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false">
-    <img src="assets/menu-icon.png" alt="Menu">
-  </button>
-  <div class="backdrop" onclick="toggleMenu()" hidden></div>
+  <!-- 移动端抽屉按钮与遮罩（你项目的全局交互） -->
+<button class="fab-menu" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false">
+  <img src="assets/menu-icon.png" alt="Menu">
+</button>
+<div class="backdrop" onclick="toggleMenu()" hidden></div>
 
-  <script src="common.js" defer></script>
-
+<!-- 公共脚本（switchLang / 抽屉等） -->
+<script src="common.js" defer></script>
   <script>
-  /** —— 表单 → JSON —— **/
-  function formToJSON(form){
-    const fd = new FormData(form), out = {};
-    for (const [k,v] of fd.entries()){
-      if (k.endsWith('[]')) {
-        (out[k.slice(0,-2)] ||= []).push(v);
-      } else if (out[k] !== undefined) {
-        out[k] = Array.isArray(out[k]) ? out[k].concat(v) : [out[k], v];
-      } else {
-        out[k] = v;
-      }
-    }
-    out.lang = getCurrentLang();
-    out.user_agent = navigator.userAgent || '';
-    out.referer = location.href;
-    return out;
+<script>
+/** —— 基础工具：保留你的 formToJSON 并加上语言等上下文 —— **/
+function formToJSON(form){
+const fd = new FormData(form), out = {};
+  for (const [k,v] of fd.entries()){
+    if (k.endsWith('[]')) { (out[k.slice(0,-2)] ||= []).push(v); }
+    else if (out[k] !== undefined) { out[k] = Array.isArray(out[k]) ? out[k].concat(v) : [out[k], v]; }
+    else { out[k] = v; }
   }
-
-  /** —— 保证所有多选字段都有数组（没勾选也发 []） —— **/
-  function normalizeArrays(data){
-    const must = [
-      'lang_qual','interests','goals','task_prefs','obstacles',
-      'weekly_pattern','devices','channels','supports','env_life'
-    ];
-    for (const k of must) if (!Array.isArray(data[k])) data[k] = data[k] ? [data[k]] : [];
-    return data;
-  }
-
-  function getCurrentLang(){
-    const active = document.querySelector('.langs .lang.is-active');
-    return active ? active.dataset.lang : (document.documentElement.dataset.lang || 'en');
-  }
-
+  // 附带上下文：当前语言、UA、来源
+  out.lang = getCurrentLang();
+  out.user_agent = navigator.userAgent || '';
+  out.referer = location.href;
+  return out;
+  
+function getCurrentLang(){
+  const active = document.querySelector('.langs .lang.is-active');
+  return active ? active.dataset.lang : (document.documentElement.dataset.lang || 'en');
   function exportJSON(){
-    const data = normalizeArrays(formToJSON(document.getElementById('intake')));
-    document.getElementById('out').textContent = JSON.stringify(data, null, 2);
+  const data = formToJSON(document.getElementById('intake'));
+  document.getElementById('out').textContent = JSON.stringify(data, null, 2);
+}
+
+/** —— 配置：填入你部署得到的 Apps Script URL —— **/
+const SHEETS_API = '<<PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE>>';
+
+/** —— 提交逻辑 —— **/
+async function submitForm(){
+  const consent = document.getElementById('consent');
+  const btn = document.getElementById('btn-submit');
+  const feedback = document.getElementById('feedback');
+
+  if (!consent.checked) {
+    showFeedback('请先勾选同意数据处理。', false);
+    return;
   }
 
-  /** —— 你的 Apps Script 部署地址 —— **/
-  const SHEETS_API = 'https://script.google.com/macros/s/AKfycbxmIG10CQYNsNeHA_3t7J9XsxgSLQfs1dK5fYPIkrTGEEM9Oky9tv0axp2Qh1A3WU1x/exec';
+  const data = formToJSON(document.getElementById('intake'));
+  // 可选：本地显示一次 JSON（便于调试）
+  document.getElementById('out').textContent = JSON.stringify(data, null, 2);
 
-  /** —— 提交 —— **/
-  async function submitForm(){
-    const consent = document.getElementById('consent');
-    const btn = document.getElementById('btn-submit');
-    if (!consent.checked) { showFeedback('请先勾选同意数据处理。', false); return; }
+  btn.disabled = true;
+  btn.textContent = getTextByLang({
+    en: 'Submitting…', cn: '提交中…', jp: '送信中…'
+  });
 
-    const formEl = document.getElementById('intake');
-    const data = normalizeArrays(formToJSON(formEl));
-
-    // 与后端一致：非 Other 清空 major_other，避免列偏移
-    if (data.major !== 'Other') data.major_other = '';
-
-    document.getElementById('out').textContent = JSON.stringify(data, null, 2);
-
-    btn.disabled = true;
-    btn.textContent = getTextByLang({ en:'Submitting…', cn:'提交中…', jp:'送信中…' });
-
-    try {
-      const res = await fetch(SHEETS_API, {
-        method: 'POST',
-        mode: 'cors',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // 避免预检
-        body: JSON.stringify(data)
-      });
-      const json = await res.json().catch(()=>({}));
-      if (!res.ok || json.ok === false) throw new Error(json.error || ('HTTP ' + res.status));
-      showFeedback(getTextByLang({ en:'Submitted successfully. Thank you.', cn:'提交成功，感谢参与。', jp:'送信完了。ありがとう。' }), true);
-    } catch (err) {
-      showFeedback(getTextByLang({ en:'Submission failed. Please try again or contact us.', cn:'提交失败，请重试或联系维护者。', jp:'送信に失敗。再試行するか連絡してくれ。' }) + ' ' + String(err), false);
-    } finally {
-      btn.disabled = false;
-      btn.textContent = getTextByLang({ en:'Submit', cn:'提交', jp:'送信' });
-    }
-  }
-
-  /** —— A4: Other 输入框联动 —— **/
-  (function majorOtherToggle(){
-    const group = document.getElementById('major-group');
-    const wrap  = document.getElementById('major-other-wrap');
-    const ipt   = document.getElementById('major-other-input');
-    if (!group || !wrap || !ipt) return;
-    group.addEventListener('change', () => {
-      const v = (group.querySelector('input[name="major"]:checked')||{}).value || '';
-      const isOther = v === 'Other';
-      wrap.style.display = isOther ? 'block' : 'none';
-      if (!isOther) ipt.value = '';
+  try {
+    const res = await fetch(SHEETS_API, {
+      method: 'POST',
+      mode: 'cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
     });
-  })();
 
-  /** —— 反馈卡 / 同意开关 —— **/
-  function showFeedback(msg, ok){
-    const el = document.getElementById('feedback');
-    el.hidden = false;
-    el.className = 'result-card ' + (ok ? 'ok' : 'err');
-    el.textContent = msg;
-  }
-  function getTextByLang(map){
-    const l = getCurrentLang();
-    return map[l] || map.en || '';
-  }
-  (function initConsent(){
-    const consent = document.getElementById('consent');
-    const btn = document.getElementById('btn-submit');
-    function sync(){ btn.disabled = !consent.checked; }
-    if (consent) { consent.addEventListener('change', sync); sync(); }
-  })();
+    const json = await res.json().catch(()=>({}));
+    if (!res.ok || json.ok === false) {
+      throw new Error(json.error || ('HTTP ' + res.status));
+    }
 
-  // 你已有的全局函数（来自 common.js）
-  function switchLang(l){ if (window.switchLangInner) switchLangInner(l); }
-  function toggleMenu(){ if (window.toggleMenuInner) toggleMenuInner(); }
-  </script>
+    showFeedback(getTextByLang({
+      en: 'Submitted successfully. Thank you.',
+      cn: '提交成功，感谢参与。',
+      jp: '送信完了。ありがとう。'
+    }), true);
+
+    // 可选：提交后重置表单
+    // document.getElementById('intake').reset();
+  } catch (err) {
+    showFeedback(getTextByLang({
+      en: 'Submission failed. Please try again or contact us.',
+      cn: '提交失败，请重试或联系维护者。',
+      jp: '送信に失敗。再試行するか連絡してくれ。'
+    }) + ' ' + String(err), false);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = getTextByLang({
+      en: 'Submit', cn: '提交', jp: '送信'
+    });
+  }
+}
+
+/** —— 反馈卡片 —— **/
+function showFeedback(msg, ok){
+  const el = document.getElementById('feedback');
+  el.hidden = false;
+  el.className = 'result-card ' + (ok ? 'ok' : 'err');
+  el.textContent = msg;
+}
+
+/** —— 文案助手 —— **/
+function getTextByLang(map){
+  const l = getCurrentLang();
+  return map[l] || map.en || '';
+}
+
+/** —— 初始化：同意勾选才能提交 —— **/
+(function initConsent(){
+  const consent = document.getElementById('consent');
+  const btn = document.getElementById('btn-submit');
+  function sync(){ btn.disabled = !consent.checked; }
+  if (consent) {
+    consent.addEventListener('change', sync);
+    sync();
+  }
+})();
+</script>
+
+}
+</script>
 </body>
 </html>
