@@ -434,7 +434,7 @@
                   <span class="i18n" lang="cn">备注</span>
                   <span class="i18n" lang="jp">備考</span>
                 </strong></label>
-                <textarea name="notes" rows="3" placeholder="Any additional information..."></textarea>
+                <textarea name="notes" rows="3" placeholder="Any additional information... / 任何补充信息... / 追加情報..."></textarea>
               </div>
 
               <!-- 隐藏字段：语言（由JS自动填充） -->
@@ -605,14 +605,6 @@
     if (consent) { consent.addEventListener('change', sync); sync(); }
   })();
 
- // 你已有的全局函数（来自 common.js）
-    
-    // 更新隐藏的lang字段
-    const langField = document.getElementById('lang-hidden');
-    if (langField) {
-      langField.value = l;
-    }
-  }
   /** —— 监听语言切换，自动更新隐藏字段 —— **/
 function initLangFieldSync() {
   const langField = document.getElementById('lang-hidden');
