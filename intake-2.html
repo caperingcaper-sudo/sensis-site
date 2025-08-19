@@ -115,9 +115,9 @@
 
     <main>
       <div class="langs">
-        <button class="lang is-active" data-lang="en" onclick="switchLang('en')">English</button>
-        <button class="lang" data-lang="cn" onclick="switchLang('cn')">中 文</button>
-        <button class="lang" data-lang="jp" onclick="switchLang('jp')">日本語</button>
+        <button class="lang is-active" data-lang="en">English</button>
+        <button class="lang" data-lang="cn">中 文</button>
+        <button class="lang" data-lang="jp">日本語</button>
       </div>
 
       <article class="paperv1">
@@ -302,57 +302,133 @@
 
               <!-- B1 兴趣（多选） -->
               <div class="field">
-                <div><strong><span class="i18n" lang="en">B1. Your interests</span></strong></div>
+                <div><strong>
+                  <span class="i18n" lang="en">B1. Your interests</span>
+                  <span class="i18n" lang="cn">B1. 你的兴趣</span>
+                  <span class="i18n" lang="jp">B1. あなたの興味</span>
+                </strong></div>
                 <div class="options cols-3">
-                  <label><input type="checkbox" name="interests[]" value="academic-research">Academic research</label>
-                  <label><input type="checkbox" name="interests[]" value="creative-writing">Creative writing</label>
-                  <label><input type="checkbox" name="interests[]" value="design">Design</label>
-                  <label><input type="checkbox" name="interests[]" value="languages">Languages</label>
-                  <label><input type="checkbox" name="interests[]" value="business">Business</label>
-                  <label><input type="checkbox" name="interests[]" value="humanities">Humanities</label>
-                  <label><input type="checkbox" name="interests[]" value="social-science">Social science</label>
-                  <label><input type="checkbox" name="interests[]" value="arts-culture">Arts & culture</label>
-                  <label><input type="checkbox" name="interests[]" value="anime-comics">Anime and comics</label>
-                  <label><input type="checkbox" name="interests[]" value="reading-novels">Reading novels</label>
-                  <label><input type="checkbox" name="interests[]" value="philosophy">Philosophical thinking</label>
-                  <label><input type="checkbox" name="interests[]" value="history">Historical stories</label>
-                  <label><input type="checkbox" name="interests[]" value="social-issues">Social issues</label>
-                  <label><input type="checkbox" name="interests[]" value="psychology">Psychological testing</label>
-                  <label><input type="checkbox" name="interests[]" value="economics">Economic observation</label>
-                  <label><input type="checkbox" name="interests[]" value="documentaries">Watching documentaries</label>
-                  <label><input type="checkbox" name="interests[]" value="sci-fi">Science fiction settings</label>
-                  <label><input type="checkbox" name="interests[]" value="writing">Writing</label>
-                  <label><input type="checkbox" name="interests[]" value="programming">Programming</label>
-                  <label><input type="checkbox" name="interests[]" value="gaming">Gaming</label>
-                  <label><input type="checkbox" name="interests[]" value="social-behavior">Observing social behavior</label>
-                  <label><input type="checkbox" name="interests[]" value="environment">Environmental issues</label>
-                  <label><input type="checkbox" name="interests[]" value="womens-equality">Women's equality</label>
-                  <label><input type="checkbox" name="interests[]" value="dramas-variety">Dramas and variety shows</label>
-                  <label><input type="checkbox" name="interests[]" value="food">Food</label>
-                  <label><input type="checkbox" name="interests[]" value="fitness">Exercise and fitness</label>
-                  <label><input type="checkbox" name="interests[]" value="extreme-sports">Extreme sports</label>
-                  <label><input type="checkbox" name="interests[]" value="music">Music and musical instruments</label>
-                  <label><input type="checkbox" name="interests[]" value="photography">Photography</label>
-                  <label><input type="checkbox" name="interests[]" value="sightseeing">Sightseeing</label>
-                  <label><input type="checkbox" name="interests[]" value="social-media">Social media</label>
+                  <label><input type="checkbox" name="interests[]" value="academic-research"><span class="i18n" lang="en">Academic research</span><span class="i18n" lang="cn">学术研究</span><span class="i18n" lang="jp">学術研究</span></label>
+                  <label><input type="checkbox" name="interests[]" value="creative-writing"><span class="i18n" lang="en">Creative writing</span><span class="i18n" lang="cn">创意写作</span><span class="i18n" lang="jp">創作活動</span></label>
+                  <label><input type="checkbox" name="interests[]" value="design"><span class="i18n" lang="en">Design</span><span class="i18n" lang="cn">设计</span><span class="i18n" lang="jp">デザイン</span></label>
+                  <label><input type="checkbox" name="interests[]" value="languages"><span class="i18n" lang="en">Languages</span><span class="i18n" lang="cn">语言</span><span class="i18n" lang="jp">言語</span></label>
+                  <label><input type="checkbox" name="interests[]" value="business"><span class="i18n" lang="en">Business</span><span class="i18n" lang="cn">商业</span><span class="i18n" lang="jp">ビジネス</span></label>
+                  <label><input type="checkbox" name="interests[]" value="humanities"><span class="i18n" lang="en">Humanities</span><span class="i18n" lang="cn">人文学科</span><span class="i18n" lang="jp">人文学</span></label>
+                  <label><input type="checkbox" name="interests[]" value="social-science"><span class="i18n" lang="en">Social science</span><span class="i18n" lang="cn">社会科学</span><span class="i18n" lang="jp">社会科学</span></label>
+                  <label><input type="checkbox" name="interests[]" value="arts-culture"><span class="i18n" lang="en">Arts & culture</span><span class="i18n" lang="cn">艺术文化</span><span class="i18n" lang="jp">芸術・文化</span></label>
+                  <label><input type="checkbox" name="interests[]" value="anime-comics"><span class="i18n" lang="en">Anime and comics</span><span class="i18n" lang="cn">动漫</span><span class="i18n" lang="jp">アニメ・漫画</span></label>
+                  <label><input type="checkbox" name="interests[]" value="reading-novels"><span class="i18n" lang="en">Reading novels</span><span class="i18n" lang="cn">小说阅读</span><span class="i18n" lang="jp">小説読書</span></label>
+                  <label><input type="checkbox" name="interests[]" value="philosophy"><span class="i18n" lang="en">Philosophical thinking</span><span class="i18n" lang="cn">哲学思考</span><span class="i18n" lang="jp">哲学的思考</span></label>
+                  <label><input type="checkbox" name="interests[]" value="history"><span class="i18n" lang="en">Historical stories</span><span class="i18n" lang="cn">历史故事</span><span class="i18n" lang="jp">歴史物語</span></label>
+                  <label><input type="checkbox" name="interests[]" value="social-issues"><span class="i18n" lang="en">Social issues</span><span class="i18n" lang="cn">社会问题</span><span class="i18n" lang="jp">社会問題</span></label>
+                  <label><input type="checkbox" name="interests[]" value="psychology"><span class="i18n" lang="en">Psychological testing</span><span class="i18n" lang="cn">心理测试</span><span class="i18n" lang="jp">心理テスト</span></label>
+                  <label><input type="checkbox" name="interests[]" value="economics"><span class="i18n" lang="en">Economic observation</span><span class="i18n" lang="cn">经济观察</span><span class="i18n" lang="jp">経済観察</span></label>
+                  <label><input type="checkbox" name="interests[]" value="documentaries"><span class="i18n" lang="en">Watching documentaries</span><span class="i18n" lang="cn">看纪录片</span><span class="i18n" lang="jp">ドキュメンタリー鑑賞</span></label>
+                  <label><input type="checkbox" name="interests[]" value="sci-fi"><span class="i18n" lang="en">Science fiction settings</span><span class="i18n" lang="cn">科幻设定</span><span class="i18n" lang="jp">SF設定</span></label>
+                  <label><input type="checkbox" name="interests[]" value="writing"><span class="i18n" lang="en">Writing</span><span class="i18n" lang="cn">写作</span><span class="i18n" lang="jp">執筆</span></label>
+                  <label><input type="checkbox" name="interests[]" value="programming"><span class="i18n" lang="en">Programming</span><span class="i18n" lang="cn">编程</span><span class="i18n" lang="jp">プログラミング</span></label>
+                  <label><input type="checkbox" name="interests[]" value="gaming"><span class="i18n" lang="en">Gaming</span><span class="i18n" lang="cn">游戏</span><span class="i18n" lang="jp">ゲーム</span></label>
+                  <label><input type="checkbox" name="interests[]" value="social-behavior"><span class="i18n" lang="en">Observing social behavior</span><span class="i18n" lang="cn">观察社会行为</span><span class="i18n" lang="jp">社会行動観察</span></label>
+                  <label><input type="checkbox" name="interests[]" value="environment"><span class="i18n" lang="en">Environmental issues</span><span class="i18n" lang="cn">环境问题</span><span class="i18n" lang="jp">環境問題</span></label>
+                  <label><input type="checkbox" name="interests[]" value="womens-equality"><span class="i18n" lang="en">Women's equality</span><span class="i18n" lang="cn">女性平等</span><span class="i18n" lang="jp">女性平等</span></label>
+                  <label><input type="checkbox" name="interests[]" value="dramas-variety"><span class="i18n" lang="en">Dramas and variety shows</span><span class="i18n" lang="cn">电视剧综艺</span><span class="i18n" lang="jp">ドラマ・バラエティ</span></label>
+                  <label><input type="checkbox" name="interests[]" value="food"><span class="i18n" lang="en">Food</span><span class="i18n" lang="cn">美食</span><span class="i18n" lang="jp">グルメ</span></label>
+                  <label><input type="checkbox" name="interests[]" value="fitness"><span class="i18n" lang="en">Exercise and fitness</span><span class="i18n" lang="cn">运动健身</span><span class="i18n" lang="jp">運動・フィットネス</span></label>
+                  <label><input type="checkbox" name="interests[]" value="extreme-sports"><span class="i18n" lang="en">Extreme sports</span><span class="i18n" lang="cn">极限运动</span><span class="i18n" lang="jp">エクストリームスポーツ</span></label>
+                  <label><input type="checkbox" name="interests[]" value="music"><span class="i18n" lang="en">Music and musical instruments</span><span class="i18n" lang="cn">音乐乐器</span><span class="i18n" lang="jp">音楽・楽器</span></label>
+                  <label><input type="checkbox" name="interests[]" value="photography"><span class="i18n" lang="en">Photography</span><span class="i18n" lang="cn">摄影</span><span class="i18n" lang="jp">写真</span></label>
+                  <label><input type="checkbox" name="interests[]" value="sightseeing"><span class="i18n" lang="en">Sightseeing</span><span class="i18n" lang="cn">观光</span><span class="i18n" lang="jp">観光</span></label>
+                  <label><input type="checkbox" name="interests[]" value="social-media"><span class="i18n" lang="en">Social media</span><span class="i18n" lang="cn">社交媒体</span><span class="i18n" lang="jp">ソーシャルメディア</span></label>
                 </div>
               </div>
 
               <!-- B2 目标（多选） -->
               <div class="field">
-                <div><strong><span class="i18n" lang="en">B2. Your current goals</span></strong></div>
+                <div><strong>
+                  <span class="i18n" lang="en">B2. Your current goals</span>
+                  <span class="i18n" lang="cn">B2. 你的当前目标</span>
+                  <span class="i18n" lang="jp">B2. 現在の目標</span>
+                </strong></div>
                 <div class="options cols-2">
-                  <label><input type="checkbox" name="goals[]" value="further-studies">Further studies</label>
-                  <label><input type="checkbox" name="goals[]" value="admission">Graduate/college admission (domestic)</label>
-                  <label><input type="checkbox" name="goals[]" value="study-abroad">Studying abroad</label>
-                  <label><input type="checkbox" name="goals[]" value="certification">Certification / language exams</label>
-                  <label><input type="checkbox" name="goals[]" value="change-major">Changing majors</label>
-                  <label><input type="checkbox" name="goals[]" value="postgraduate">Postgraduate studies / preparatory courses</label>
-                  <label><input type="checkbox" name="goals[]" value="doctoral">Doctoral studies</label>
-                  <label><input type="checkbox" name="goals[]" value="research-output">Research output (paper, proposal)</label>
-                  <label><input type="checkbox" name="goals[]" value="skills-building">Skill building</label>
-                  <label><input type="checkbox" name="goals[]" value="portfolio">Portfolio</label>
-                  <label><input type="checkbox" name="goals[]" value="self-realization">Self-realization</label>
+                  <label><input type="checkbox" name="goals[]" value="further-studies"><span class="i18n" lang="en">Further studies</span><span class="i18n" lang="cn">深造学习</span><span class="i18n" lang="jp">さらなる学習</span></label>
+                  <label><input type="checkbox" name="goals[]" value="admission"><span class="i18n" lang="en">Graduate/college admission (domestic)</span><span class="i18n" lang="cn">研究生/大学入学（国内）</span><span class="i18n" lang="jp">大学院・大学入学（国内）</span></label>
+                  <label><input type="checkbox" name="goals[]" value="study-abroad"><span class="i18n" lang="en">Studying abroad</span><span class="i18n" lang="cn">出国留学</span><span class="i18n" lang="jp">海外留学</span></label>
+                  <label><input type="checkbox" name="goals[]" value="certification"><span class="i18n" lang="en">Certification / language exams</span><span class="i18n" lang="cn">资格证书/语言考试</span><span class="i18n" lang="jp">資格・語学試験</span></label>
+                  <label><input type="checkbox" name="goals[]" value="change-major"><span class="i18n" lang="en">Changing majors</span><span class="i18n" lang="cn">转专业</span><span class="i18n" lang="jp">専攻変更</span></label>
+                  <label><input type="checkbox" name="goals[]" value="postgraduate"><span class="i18n" lang="en">Postgraduate studies / preparatory courses</span><span class="i18n" lang="cn">研究生学习/预科课程</span><span class="i18n" lang="jp">大学院・予備課程</span></label>
+                  <label><input type="checkbox" name="goals[]" value="doctoral"><span class="i18n" lang="en">Doctoral studies</span><span class="i18n" lang="cn">博士学习</span><span class="i18n" lang="jp">博士課程</span></label>
+                  <label><input type="checkbox" name="goals[]" value="research-output"><span class="i18n" lang="en">Research output (paper, proposal)</span><span class="i18n" lang="cn">研究成果（论文、提案）</span><span class="i18n" lang="jp">研究成果（論文・提案）</span></label>
+                  <label><input type="checkbox" name="goals[]" value="skills-building"><span class="i18n" lang="en">Skill building</span><span class="i18n" lang="cn">技能建设</span><span class="i18n" lang="jp">スキル構築</span></label>
+                  <label><input type="checkbox" name="goals[]" value="portfolio"><span class="i18n" lang="en">Portfolio</span><span class="i18n" lang="cn">作品集</span><span class="i18n" lang="jp">ポートフォリオ</span></label>
+                  <label><input type="checkbox" name="goals[]" value="self-realization"><span class="i18n" lang="en">Self-realization</span><span class="i18n" lang="cn">自我实现</span><span class="i18n" lang="jp">自己実現</span></label>
+                </div>
+              </div>
+
+              <!-- B3 学习/工作习惯（单选） -->
+              <div class="field">
+                <div><strong>
+                  <span class="i18n" lang="en">B3. Study/work habit</span>
+                  <span class="i18n" lang="cn">B3. 学习/工作习惯</span>
+                  <span class="i18n" lang="jp">B3. 学習・仕事の習慣</span>
+                </strong></div>
+                <label><input type="radio" name="habit" value="short-sprints"><span class="i18n" lang="en">Short sprints, frequent breaks</span><span class="i18n" lang="cn">短时冲刺，频繁休息</span><span class="i18n" lang="jp">短時間集中・頻繁休憩</span></label>
+                <label><input type="radio" name="habit" value="long-focus"><span class="i18n" lang="en">Long focus blocks</span><span class="i18n" lang="cn">长时间专注</span><span class="i18n" lang="jp">長時間集中</span></label>
+                <label><input type="radio" name="habit" value="deadline-driven"><span class="i18n" lang="en">Deadline-driven</span><span class="i18n" lang="cn">截止日期驱动</span><span class="i18n" lang="jp">締切駆動型</span></label>
+                <label><input type="radio" name="habit" value="regular-schedule"><span class="i18n" lang="en">Has a regular schedule</span><span class="i18n" lang="cn">有规律的时间表</span><span class="i18n" lang="jp">規則的なスケジュール</span></label>
+                <label><input type="radio" name="habit" value="Deep thinking"><span class="i18n" lang="en">Deep thinking</span><span class="i18n" lang="cn">深度思考</span><span class="i18n" lang="jp">深い思考</span></label>
+              </div>
+
+              <!-- B4 任务偏好（多选） -->
+              <div class="field">
+                <div><strong>
+                  <span class="i18n" lang="en">B4. Task preferences</span>
+                  <span class="i18n" lang="cn">B4. 任务偏好</span>
+                  <span class="i18n" lang="jp">B4. タスクの好み</span>
+                </strong></div>
+                <div class="options cols-2">
+                  <label><input type="checkbox" name="task_prefs[]" value="reading"><span class="i18n" lang="en">Reading & note-taking</span><span class="i18n" lang="cn">阅读记笔记</span><span class="i18n" lang="jp">読書・ノート取り</span></label>
+                  <label><input type="checkbox" name="task_prefs[]" value="searching"><span class="i18n" lang="en">Searching & evaluating sources</span><span class="i18n" lang="cn">搜索评估资源</span><span class="i18n" lang="jp">情報検索・評価</span></label>
+                  <label><input type="checkbox" name="task_prefs[]" value="writing"><span class="i18n" lang="en">Writing & editing</span><span class="i18n" lang="cn">写作编辑</span><span class="i18n" lang="jp">執筆・編集</span></label>
+                  <label><input type="checkbox" name="task_prefs[]" value="practice"><span class="i18n" lang="en">Practice / problem-solving</span><span class="i18n" lang="cn">练习解题</span><span class="i18n" lang="jp">練習・問題解決</span></label>
+                  <label><input type="checkbox" name="task_prefs[]" value="discussion"><span class="i18n" lang="en">Discussion / presentation</span><span class="i18n" lang="cn">讨论演示</span><span class="i18n" lang="jp">議論・発表</span></label>
+                  <label><input type="checkbox" name="task_prefs[]" value="making"><span class="i18n" lang="en">Making / experiments</span><span class="i18n" lang="cn">制作实验</span><span class="i18n" lang="jp">制作・実験</span></label>
+                  <label><input type="checkbox" name="task_prefs[]" value="companionship"><span class="i18n" lang="en">Needs companionship</span><span class="i18n" lang="cn">需要陪伴</span><span class="i18n" lang="jp">同伴が必要</span></label>
+                  <label><input type="checkbox" name="task_prefs[]" value="independent"><span class="i18n" lang="en">Works independently</span><span class="i18n" lang="cn">独立工作</span><span class="i18n" lang="jp">独立作業</span></label>
+                  <label><input type="checkbox" name="task_prefs[]" value="task-focused"><span class="i18n" lang="en">Task-focused</span><span class="i18n" lang="cn">任务专注</span><span class="i18n" lang="jp">タスク集中</span></label>
+                  <label><input type="checkbox" name="task_prefs[]" value="trouble-concentrating"><span class="i18n" lang="en">Has trouble concentrating</span><span class="i18n" lang="cn">注意力困难</span><span class="i18n" lang="jp">集中困難</span></label>
+                  <label><input type="checkbox" name="task_prefs[]" value="gives-up-easily"><span class="i18n" lang="en">Gives up easily</span><span class="i18n" lang="cn">容易放弃</span><span class="i18n" lang="jp">諦めやすい</span></label>
+                  <label><input type="checkbox" name="task_prefs[]" value="strong-focus"><span class="i18n" lang="en">Strong focus</span><span class="i18n" lang="cn">专注力强</span><span class="i18n" lang="jp">集中力が強い</span></label>
+                </div>
+              </div>
+
+              <!-- B5 障碍（多选） -->
+              <div class="field">
+                <div><strong>
+                  <span class="i18n" lang="en">B5. Main obstacles (personal / psychological)</span>
+                  <span class="i18n" lang="cn">B5. 主要障碍（个人/心理）</span>
+                  <span class="i18n" lang="jp">B5. 主な障害（個人・心理）</span>
+                </strong></div>
+                <div class="options cols-2">
+                  <label><input type="checkbox" name="obstacles[]" value="time"><span class="i18n" lang="en">Lack of time</span><span class="i18n" lang="cn">时间不足</span><span class="i18n" lang="jp">時間不足</span></label>
+                  <label><input type="checkbox" name="obstacles[]" value="methods"><span class="i18n" lang="en">Lack of methods</span><span class="i18n" lang="cn">方法不足</span><span class="i18n" lang="jp">方法不足</span></label>
+                  <label><input type="checkbox" name="obstacles[]" value="discipline"><span class="i18n" lang="en">Low discipline</span><span class="i18n" lang="cn">自律性低</span><span class="i18n" lang="jp">自制力不足</span></label>
+                  <label><input type="checkbox" name="obstacles[]" value="confidence"><span class="i18n" lang="en">Low confidence</span><span class="i18n" lang="cn">自信心不足</span><span class="i18n" lang="jp">自信不足</span></label>
+                  <label><input type="checkbox" name="obstacles[]" value="resources"><span class="i18n" lang="en">Lack of resources</span><span class="i18n" lang="cn">资源不足</span><span class="i18n" lang="jp">リソース不足</span></label>
+                  <label><input type="checkbox" name="obstacles[]" value="guidance"><span class="i18n" lang="en">Lack of guidance</span><span class="i18n" lang="cn">指导不足</span><span class="i18n" lang="jp">指導不足</span></label>
+                  <label><input type="checkbox" name="obstacles[]" value="procrastination"><span class="i18n" lang="en">Procrastination</span><span class="i18n" lang="cn">拖延症</span><span class="i18n" lang="jp">先延ばし</span></label>
+                  <label><input type="checkbox" name="obstacles[]" value="anxiety"><span class="i18n" lang="en">Anxiety</span><span class="i18n" lang="cn">焦虑</span><span class="i18n" lang="jp">不安</span></label>
+                  <label><input type="checkbox" name="obstacles[]" value="lack-planning"><span class="i18n" lang="en">Lack of planning</span><span class="i18n" lang="cn">缺乏规划</span><span class="i18n" lang="jp">計画不足</span></label>
+                  <label><input type="checkbox" name="obstacles[]" value="lack-motivation"><span class="i18n" lang="en">Lack of motivation</span><span class="i18n" lang="cn">缺乏动力</span><span class="i18n" lang="jp">動機不足</span></label>
+                  <label><input type="checkbox" name="obstacles[]" value="confusion"><span class="i18n" lang="en">Confusion</span><span class="i18n" lang="cn">困惑</span><span class="i18n" lang="jp">混乱</span></label>
+                  <label><input type="checkbox" name="obstacles[]" value="internal-friction"><span class="i18n" lang="en">Severe internal friction</span><span class="i18n" lang="cn">严重内耗</span><span class="i18n" lang="jp">深刻な内的摩擦</span></label>
+                  <label><input type="checkbox" name="obstacles[]" value="social-anxiety"><span class="i18n" lang="en">Social anxiety</span><span class="i18n" lang="cn">社交焦虑</span><span class="i18n" lang="jp">社交不安</span></label>
+                  <label><input type="checkbox" name="obstacles[]" value="loneliness"><span class="i18n" lang="en">Loneliness</span><span class="i18n" lang="cn">孤独感</span><span class="i18n" lang="jp">孤独感</span></label>
+                  <label><input type="checkbox" name="obstacles[]" value="poverty"><span class="i18n" lang="en">Poverty / financial stress</span><span class="i18n" lang="cn">贫困/经济压力</span><span class="i18n" lang="jp">貧困・経済的ストレス</span></label>
+                  <label><input type="checkbox" name="obstacles[]" value="depression"><span class="i18n" lang="en">Depression</span><span class="i18n" lang="cn">抑郁</span><span class="i18n" lang="jp">うつ</span></label>
+                  <label><input type="checkbox" name="obstacles[]" value="fragility"><span class="i18n" lang="en">Fragility / emotional sensitivity</span><span class="i18n" lang="cn">脆弱/情感敏感</span><span class="i18n" lang="jp">脆弱性・感情的敏感さ</span></label>
+                  <label><input type="checkbox" name="obstacles[]" value="fear-mistakes"><span class="i18n" lang="en">Hate making mistakes</span><span class="i18n" lang="cn">害怕犯错</span><span class="i18n" lang="jp">ミスを恐れる</span></label>
+                </div>
+              </div></label>
                 </div>
               </div>
 
@@ -554,10 +630,10 @@
     </main>
   </div>
 
-  <button class="fab-menu" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false">
+  <button class="fab-menu" aria-label="Open menu" aria-expanded="false">
     <img src="assets/menu-icon.png" alt="Menu">
   </button>
-  <div class="backdrop" onclick="toggleMenu()" hidden></div>
+  <div class="backdrop" hidden></div>
 
   <script src="common.js" defer></script>
 
@@ -728,7 +804,60 @@
   }
 
   // DOM加载完成后初始化
-  document.addEventListener('DOMContentLoaded', initLangFieldSync);
+  document.addEventListener('DOMContentLoaded', function() {
+    initLangFieldSync();
+    
+    // 语言切换事件监听
+    document.querySelectorAll('.lang').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const lang = this.dataset.lang;
+        
+        // 更新data-lang属性
+        document.documentElement.setAttribute('data-lang', lang);
+        
+        // 更新按钮状态
+        document.querySelectorAll('.lang').forEach(b => {
+          b.classList.remove('is-active');
+        });
+        this.classList.add('is-active');
+        
+        // 更新隐藏字段
+        const langField = document.getElementById('lang-hidden');
+        if (langField) {
+          langField.value = lang;
+        }
+      });
+    });
+    
+    // 菜单切换事件监听
+    const fabMenu = document.querySelector('.fab-menu');
+    const backdrop = document.querySelector('.backdrop');
+    
+    function toggleMenu() {
+      const body = document.body;
+      if (body.classList.contains('drawer-open')) {
+        body.classList.remove('drawer-open');
+        if (fabMenu) fabMenu.setAttribute('aria-expanded', 'false');
+        if (backdrop) backdrop.hidden = true;
+      } else {
+        body.classList.add('drawer-open');
+        if (fabMenu) fabMenu.setAttribute('aria-expanded', 'true');
+        if (backdrop) backdrop.hidden = false;
+      }
+    }
+    
+    if (fabMenu) fabMenu.addEventListener('click', toggleMenu);
+    if (backdrop) backdrop.addEventListener('click', toggleMenu);
+    
+    // ESC关闭菜单
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.body.classList.remove('drawer-open');
+        if (fabMenu) fabMenu.setAttribute('aria-expanded', 'false');
+        if (backdrop) backdrop.hidden = true;
+      }
+    });
+  });
   </script>
 </body>
 </html>
