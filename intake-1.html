@@ -425,6 +425,20 @@
                   <label><input type="checkbox" name="env_life[]" value="late-night">Stays up late often</label>
                 </div>
               </div>
+               <!-- ===== 新增：补充缺少的字段 ===== -->
+              
+              <!-- 备注字段 -->
+              <div class="field">
+                <label><strong>
+                  <span class="i18n" lang="en">Additional Notes</span>
+                  <span class="i18n" lang="cn">备注</span>
+                  <span class="i18n" lang="jp">備考</span>
+                </strong></label>
+                <textarea name="notes" rows="3" placeholder="Any additional information..."></textarea>
+              </div>
+
+              <!-- 隐藏字段：语言（由JS自动填充） -->
+              <input type="hidden" name="lang" id="lang-hidden">
             </form>
 
             <div class="actions">
