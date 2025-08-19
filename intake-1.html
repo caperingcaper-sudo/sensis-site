@@ -556,12 +556,12 @@
     btn.textContent = getTextByLang({ en:'Submitting…', cn:'提交中…', jp:'送信中…' });
 
     try {
-      const res = await fetch(SHEETS_API, {
-        method: 'POST',
-        mode: 'cors',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // 避免预检
-        body: JSON.stringify(data)
-      });
+     const res = await fetch(SHEETS_API, {
+  method: 'POST',
+  mode: 'cors',
+  headers: { 'Content-Type': 'application/json' }, // 改成这个
+  body: JSON.stringify(data)
+});
       const json = await res.json().catch(()=>({}));
       if (!res.ok || json.ok === false) throw new Error(json.error || ('HTTP ' + res.status));
       showFeedback(getTextByLang({ en:'Submitted successfully. Thank you.', cn:'提交成功，感谢参与。', jp:'送信完了。ありがとう。' }), true);
