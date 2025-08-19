@@ -487,33 +487,33 @@
 
   <script>
   /** —— 表单 → JSON —— **/
-  function formToJSON(form){
-    // 提交前先更新隐藏的lang字段
-    const langField = document.getElementById('lang-hidden');
-    if (langField) {
-      langField.value = getCurrentLang();
-    }
-    
-    const fd = new FormData(form), out = {};
-    for (const [k,v] of fd.entries()){
-      if (k.endsWith('[]')) {
-        (out[k.slice(0,-2)] ||= []).push(v);
-      } else if (out[k] !== undefined) {
-        out[k] = Array.isArray(out[k]) ? out[k].concat(v) : [out[k], v];
-      } else {
-        out[k] = v;
-      }
-    }
-    
-    // 确保lang字段存在（双重保险）
-    if (!out.lang) {
-      out.lang = getCurrentLang();
-    }
-    
-    out.user_agent = navigator.userAgent || '';
-    out.referer = location.href;
-    return out;
+ function formToJSON(form){
+  // 提交前先更新隐藏的lang字段
+  const langField = document.getElementById('lang-hidden');
+  if (langField) {
+    langField.value = getCurrentLang();
   }
+  
+  const fd = new FormData(form), out = {};
+  for (const [k,v] of fd.entries()){
+    if (k.endsWith('[]')) {
+      (out[k.slice(0,-2)] ||= []).push(v);
+    } else if (out[k] !== undefined) {
+      out[k] = Array.isArray(out[k]) ? out[k].concat(v) : [out[k], v];
+    } else {
+      out[k] = v;
+    }
+  }
+  
+  // 确保lang字段存在（双重保险）
+  if (!out.lang) {
+    out.lang = getCurrentLang();
+  }
+  
+  out.user_agent = navigator.userAgent || '';
+  out.referer = location.href;
+  return out;
+}
 
   /** —— 保证所有多选字段都有数组（没勾选也发 []） —— **/
   function normalizeArrays(data){
@@ -616,6 +616,26 @@
     }
   }
   function toggleMenu(){ if (window.toggleMenuInner) toggleMenuInner(); }
+  /** —— 监听语言切换，自动更新隐藏字段 —— **/
+function initLangFieldSync() {
+  const langField = document.getElementById('lang-hidden');
+  if (!langField) return;
+  
+  // 初始化
+  langField.value = getCurrentLang();
+  
+  // 监听语言按钮点击
+  document.querySelectorAll('.lang').forEach(btn => {
+    btn.addEventListener('click', () => {
+      setTimeout(() => {
+        langField.value = getCurrentLang();
+      }, 10);
+    });
+  });
+}
+
+// DOM加载完成后初始化
+document.addEventListener('DOMContentLoaded', initLangFieldSync);
   </script>
 </body>
 </html>
