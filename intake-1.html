@@ -606,8 +606,6 @@
   })();
 
  // 你已有的全局函数（来自 common.js）
-  function switchLang(l){ 
-    if (window.switchLangInner) switchLangInner(l); 
     
     // 更新隐藏的lang字段
     const langField = document.getElementById('lang-hidden');
@@ -615,7 +613,6 @@
       langField.value = l;
     }
   }
-  function toggleMenu(){ if (window.toggleMenuInner) toggleMenuInner(); }
   /** —— 监听语言切换，自动更新隐藏字段 —— **/
 function initLangFieldSync() {
   const langField = document.getElementById('lang-hidden');
