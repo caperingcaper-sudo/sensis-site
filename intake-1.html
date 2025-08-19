@@ -64,7 +64,7 @@
         </header>
 
         <!-- 正文：桌面左右 20mm；手机左右 16px -->
-      <section class="paperv1-body" id="content">
+       <section class="paperv1-body" id="content">
 <div class="md">
 <!-- === md 开头：主/副标题 === -->
 <header class="md-head">
@@ -146,12 +146,18 @@
       <span class="i18n" lang="en">High school or below</span>
       <span class="i18n" lang="cn">高中及以下</span>
       <span class="i18n" lang="jp">高校卒以下</span>
+         </label>
+       <label><input type="radio" name="edu" value="Associate">
+      <span class="i18n" lang="en">Associate</span>
+      <span class="i18n" lang="cn">大专/技校</span>
+      <span class="i18n" lang="jp">準学士/専門学校</span>
     </label>
     <label><input type="radio" name="edu" value="Bachelor">
       <span class="i18n" lang="en">Bachelor</span>
       <span class="i18n" lang="cn">本科</span>
       <span class="i18n" lang="jp">学士</span>
     </label>
+
     <label><input type="radio" name="edu" value="Master">
       <span class="i18n" lang="en">Master</span>
       <span class="i18n" lang="cn">硕士</span>
@@ -161,11 +167,6 @@
       <span class="i18n" lang="en">Doctorate</span>
       <span class="i18n" lang="cn">博士</span>
       <span class="i18n" lang="jp">博士</span>
-    </label>
-    <label><input type="radio" name="edu" value="Other">
-      <span class="i18n" lang="en">Other</span>
-      <span class="i18n" lang="cn">其他</span>
-      <span class="i18n" lang="jp">その他</span>
     </label>
       </div>
   </div>
@@ -193,10 +194,10 @@
       <span class="i18n" lang="cn">自雇人士</span>
       <span class="i18n" lang="jp">自営業</span>
     </label>
-    <label><input type="radio" name="occupation" value="Other">
-      <span class="i18n" lang="en">Other</span>
-      <span class="i18n" lang="cn">其他</span>
-      <span class="i18n" lang="jp">その他</span>
+    <label><input type="radio" name="occupation" value="Gap Year">
+      <span class="i18n" lang="en">Gap Year</span>
+      <span class="i18n" lang="cn">空档期</span>
+      <span class="i18n" lang="jp">ギャップイヤー</span>
     </label>
   </div>
   </div>
@@ -317,11 +318,6 @@
       <span class="i18n" lang="en">Creative writing</span>
       <span class="i18n" lang="cn">创意写作</span>
       <span class="i18n" lang="jp">クリエイティブライティング</span>
-    </label>
-    <label><input type="checkbox" name="interests[]" value="programming">
-      <span class="i18n" lang="en">Programming</span>
-      <span class="i18n" lang="cn">编程</span>
-      <span class="i18n" lang="jp">プログラミング</span>
     </label>
     <label><input type="checkbox" name="interests[]" value="design">
       <span class="i18n" lang="en">Design</span>
@@ -490,20 +486,14 @@
   <span class="i18n" lang="cn">社交媒体</span>
   <span class="i18n" lang="jp">ソーシャルメディア</span>
 </label>
-
-<label><input type="checkbox" name="interests[]" value="other">
-  <span class="i18n" lang="en">Other</span>
-  <span class="i18n" lang="cn">其他</span>
-  <span class="i18n" lang="jp">その他</span>
-</label>
   </div>
 </div>
 <!-- B2 目标（多选；两列） -->
 <div class="field">
   <div><strong>
-    <span class="i18n" lang="en">B2. Your current goals (multiple)</span>
-    <span class="i18n" lang="cn">B2. 你当前的目标（可多选）</span>
-    <span class="i18n" lang="jp">B2. 現在の目標（複数可）</span>
+    <span class="i18n" lang="en">B2. Your current goals </span>
+    <span class="i18n" lang="cn">B2. 你当前的目标 </span>
+    <span class="i18n" lang="jp">B2. 現在の目標 </span>
   </strong></div>
 
   <div class="options cols-2">
@@ -572,13 +562,6 @@
   <span class="i18n" lang="cn">自我实现</span>
   <span class="i18n" lang="jp">自己実現</span>
 </label>
-
-<label><input type="checkbox" name="goals[]" value="other">
-  <span class="i18n" lang="en">Other</span>
-  <span class="i18n" lang="cn">其他</span>
-  <span class="i18n" lang="jp">その他</span>
-</label>
-
   </div>
 </div>
 
@@ -589,7 +572,6 @@
     <span class="i18n" lang="cn">B3. 学习/工作习惯</span>
     <span class="i18n" lang="jp">B3. 学習/仕事の習慣</span>
   </strong></div>
-
   <label><input type="radio" name="habit" value="short-sprints">
     <span class="i18n" lang="en">Short sprints, frequent breaks</span>
     <span class="i18n" lang="cn">短时冲刺 + 频繁休息</span>
@@ -605,11 +587,17 @@
     <span class="i18n" lang="cn">受截止日期驱动</span>
     <span class="i18n" lang="jp">締切駆動</span>
   </label>
-  <label><input type="radio" name="habit" value="other">
-    <span class="i18n" lang="en">Other</span>
-    <span class="i18n" lang="cn">其他</span>
-    <span class="i18n" lang="jp">その他</span>
-  </label>
+  
+<label><input type="radio" name="habit" value="regular-schedule">
+  <span class="i18n" lang="en">Has a regular schedule</span>
+  <span class="i18n" lang="cn">作息规律</span>
+  <span class="i18n" lang="jp">規則正しい</span>
+</label>
+<label><input type="radio" name="habit" value="Deep thinking">
+  <span class="i18n" lang="en">Deep thinking</span>
+  <span class="i18n" lang="cn">深入思考</span>
+  <span class="i18n" lang="jp">深い思考</span>
+</label>
 </div>
 
 <!-- B4 任务偏好（多选；两列） -->
@@ -651,42 +639,36 @@
       <span class="i18n" lang="cn">动手/实验</span>
       <span class="i18n" lang="jp">制作・実験</span>
     </label>
-    <label><input type="checkbox" name="traits[]" value="companionship">
+    <label><input type="checkbox" name="task_prefs[]" value="companionship">
   <span class="i18n" lang="en">Needs companionship</span>
   <span class="i18n" lang="cn">需要陪伴</span>
   <span class="i18n" lang="jp">仲間が必要</span>
 </label>
-    <label><input type="checkbox" name="traits[]" value="independent">
+    <label><input type="checkbox" name="task_prefs[]" value="independent">
   <span class="i18n" lang="en">Works independently</span>
   <span class="i18n" lang="cn">独立完成</span>
   <span class="i18n" lang="jp">一人で取り組む</span>
 </label>
 
-<label><input type="checkbox" name="traits[]" value="regular-schedule">
-  <span class="i18n" lang="en">Has a regular schedule</span>
-  <span class="i18n" lang="cn">作息规律</span>
-  <span class="i18n" lang="jp">規則正しい</span>
-</label>
-
-<label><input type="checkbox" name="traits[]" value="task-focused">
+<label><input type="checkbox" name="task_prefs[]" value="task-focused">
   <span class="i18n" lang="en">Task-focused</span>
   <span class="i18n" lang="cn">任务导向</span>
   <span class="i18n" lang="jp">タスク集中型</span>
 </label>
 
-<label><input type="checkbox" name="traits[]" value="trouble-concentrating">
+<label><input type="checkbox" name="task_prefs[]" value="trouble-concentrating">
   <span class="i18n" lang="en">Has trouble concentrating</span>
   <span class="i18n" lang="cn">注意力难集中</span>
   <span class="i18n" lang="jp">集中が難しい</span>
 </label>
 
-<label><input type="checkbox" name="traits[]" value="gives-up-easily">
+<label><input type="checkbox" name="task_prefs[]" value="gives-up-easily">
   <span class="i18n" lang="en">Gives up easily</span>
   <span class="i18n" lang="cn">容易放弃</span>
   <span class="i18n" lang="jp">諦めやすい</span>
 </label>
 
-<label><input type="checkbox" name="traits[]" value="strong-focus">
+<label><input type="checkbox" name="task_prefs[]" value="strong-focus">
   <span class="i18n" lang="en">Strong focus</span>
   <span class="i18n" lang="cn">专注力强</span>
   <span class="i18n" lang="jp">集中力が強い</span>
@@ -923,7 +905,7 @@
 
     <label><input type="checkbox" name="devices[]" value="pc">
       <span class="i18n" lang="en">PC / laptop</span>
-      <span class="i18n" lang="cn">电脑/笔记本</span>
+      <span class="i18n" lang="cn">电脑/笔记本电脑</span>
       <span class="i18n" lang="jp">PC・ノートPC</span>
     </label>
     <label><input type="checkbox" name="devices[]" value="tablet">
@@ -936,10 +918,10 @@
       <span class="i18n" lang="cn">手机</span>
       <span class="i18n" lang="jp">スマートフォン</span>
     </label>
-    <label><input type="checkbox" name="devices[]" value="other">
-      <span class="i18n" lang="en">Other</span>
-      <span class="i18n" lang="cn">其他</span>
-      <span class="i18n" lang="jp">その他</span>
+    <label><input type="checkbox" name="devices[]" value="book/notebook">
+      <span class="i18n" lang="en">book/notebook</span>
+      <span class="i18n" lang="cn">书/本</span>
+      <span class="i18n" lang="jp">書籍/ノート</span>
     </label>
 </div>
 
@@ -1089,7 +1071,6 @@
   <span class="i18n" lang="cn">我同意将数据用于 Sensis 的研究与产品开发。</span>
   <span class="i18n" lang="jp">本データの研究・製品開発への利用に同意します。</span>
 </label>
-
 <!-- 反馈卡：提交成功后填充 -->
 <div id="feedback" class="result-card" hidden></div>
 
