@@ -488,6 +488,12 @@
   <script>
   /** —— 表单 → JSON —— **/
   function formToJSON(form){
+    // 提交前先更新隐藏的lang字段
+    const langField = document.getElementById('lang-hidden');
+    if (langField) {
+      langField.value = getCurrentLang();
+    }
+    
     const fd = new FormData(form), out = {};
     for (const [k,v] of fd.entries()){
       if (k.endsWith('[]')) {
@@ -498,7 +504,12 @@
         out[k] = v;
       }
     }
-    out.lang = getCurrentLang();
+    
+    // 确保lang字段存在（双重保险）
+    if (!out.lang) {
+      out.lang = getCurrentLang();
+    }
+    
     out.user_agent = navigator.userAgent || '';
     out.referer = location.href;
     return out;
@@ -594,8 +605,16 @@
     if (consent) { consent.addEventListener('change', sync); sync(); }
   })();
 
-  // 你已有的全局函数（来自 common.js）
-  function switchLang(l){ if (window.switchLangInner) switchLangInner(l); }
+ // 你已有的全局函数（来自 common.js）
+  function switchLang(l){ 
+    if (window.switchLangInner) switchLangInner(l); 
+    
+    // 更新隐藏的lang字段
+    const langField = document.getElementById('lang-hidden');
+    if (langField) {
+      langField.value = l;
+    }
+  }
   function toggleMenu(){ if (window.toggleMenuInner) toggleMenuInner(); }
   </script>
 </body>
