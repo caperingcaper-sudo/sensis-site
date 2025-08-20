@@ -10,6 +10,28 @@
   const $  = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
   const on = (el, ev, fn, opt) => el && el.addEventListener(ev, fn, opt);
+// common.js 内
+(function () {
+  const state = { open:false };
+  function setMenu(open){
+    state.open = !!open;
+    document.body.classList.toggle('drawer-open', state.open);
+    const btn = document.querySelector('.fab-menu');
+    const bd  = document.querySelector('.backdrop');
+    if (btn) btn.setAttribute('aria-expanded', state.open ? 'true' : 'false');
+    if (bd)  bd.hidden = !state.open;
+  }
+  function toggleMenu(force){
+    if (typeof force === 'boolean') setMenu(force);
+    else setMenu(!document.body.classList.contains('drawer-open'));
+  }
+  window.toggleMenu = toggleMenu;
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const bd = document.querySelector('.backdrop');
+    if (bd) bd.addEventListener('click', () => toggleMenu(false));
+  });
+})();
 
   /* ---------- 语言 ---------- */
   function applyLang(lang) {
