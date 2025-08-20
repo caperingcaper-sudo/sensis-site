@@ -183,7 +183,35 @@
   </button>
   <div class="backdrop" onclick="toggleMenu()"></div>
 
-  <!-- 公共脚本（语言切换 / 抽屉等仍用你自己的） -->
-  <script src="common.js"></script>
+   <!-- Mobile FAB + Backdrop -->
+<button class="fab-menu" onclick="toggleMenu()" aria-expanded="false">
+  <img src="assets/menu-icon.png" alt="Menu">
+</button>
+<div class="backdrop" onclick="toggleMenu()" hidden></div>
+
+  <script src="common.js" defer></script>
+ <script>
+  // 若 common.js 没加载到，保证抽屉 + 语言切换最小可用
+  window.toggleMenu = window.toggleMenu || function (force) {
+    var open = (typeof force === 'boolean') ? force
+              : !document.body.classList.contains('drawer-open');
+    document.body.classList.toggle('drawer-open', open);
+    var btn = document.querySelector('.fab-menu');
+    var bd  = document.querySelector('.backdrop');
+    if (btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (bd)  bd.hidden = !open;
+  };
+  window.switchLang = window.switchLang || function (lang) {
+    if (!lang) return;
+    document.documentElement.setAttribute('data-lang', lang);
+    document.querySelectorAll('.langs .lang').forEach(function (b) {
+      var active = b.dataset.lang === lang;
+      b.classList.toggle('is-active', active);
+      if (active) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current');
+    });
+    try { localStorage.setItem('sensis.lang', lang); } catch (_) {}
+  };
+</script>
+  
 </body>
 </html>
