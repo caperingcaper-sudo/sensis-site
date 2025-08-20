@@ -10,8 +10,6 @@
   const $  = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
   const on = (el, ev, fn, opt) => el && el.addEventListener(ev, fn, opt);
-// common.js 内
-(function () {
   const state = { open:false };
   function setMenu(open){
     state.open = !!open;
