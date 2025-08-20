@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sensis • test</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&family=Lora&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="wrap">
+    <!-- Sidebar -->
+    <aside>
+      <div class="brand">
+        <a href="index.html" class="logo-link">
+          <img src="assets/sensis-logo.png" alt="Sensis logo">
+        </a>
+      </div>
+      <nav>
+        <a href="question.html"><span>Question</span></a>
+        <a href="search.html"><span>Search</span></a>
+        <a href="learn.html"><span>Learn</span></a>
+        <a href="create.html"><span>Create</span></a>
+      </nav>
+    </aside>
+
+    <!-- Main -->
+    <main>
+      <!-- language buttons -->
+      <div class="langs">
+        <button class="lang is-active" data-lang="en" onclick="switchLang('en')">English</button>
+        <button class="lang" data-lang="cn" onclick="switchLang('cn')">中 文</button>
+        <button class="lang" data-lang="jp" onclick="switchLang('jp')">日本語</button>
+      </div>
+
+      <div class="hero">
+        <img src="assets/matsu-1.png" alt="seed">
+        <h1>Question</h1>
+        <p class="sub">Shape the seed: turn a fuzzy idea into a precise, testable question.</p>
+      </div>
+
+      <div class="container-mobile">
+        <div class="content">
+          <!-- EN -->
+          <section class="i18n-block" lang="en">
+            <h3>How we shape a good question</h3>
+            <ul>
+              <li>Define scope and constraints.</li>
+              <li>Clarify unknowns vs. assumptions.</li>
+              <li>Decide evaluation criteria for answers.</li>
+            </ul>
+          </section>
+
+          <!-- CN -->
+          <section class="i18n-block" lang="cn">
+            <h3>如何把问题“塑形”</h3>
+            <ul>
+              <li>明确边界与约束</li>
+              <li>区分未知与假设</li>
+              <li>设定答案的评估标准</li>
+            </ul>
+          </section>
+
+          <!-- JP -->
+          <section class="i18n-block" lang="jp">
+            <h3>良い問いの整え方</h3>
+            <ul>
+              <li>範囲と制約を定義</li>
+              <li>未知と仮定を切り分け</li>
+              <li>評価基準を決める</li>
+            </ul>
+          </section>
+        </div><!-- /.content -->
+      </div><!-- /.container-mobile -->
+    </main>
+  </div><!-- /.wrap -->
+
+<!-- FAB + Backdrop 要有 -->
+<button class="fab-menu" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false">
+  <img src="assets/menu-icon.png" alt="Menu">
+</button>
+<div class="backdrop" onclick="toggleMenu()" hidden></div>
+
+<!-- 带版本号避免缓存 -->
+
+<script>
+/* ===== Drawer & Lang: emergency fallback + force-bind ===== */
+(function(){
+  // 1) Fallback: toggleMenu
+  if (typeof window.toggleMenu !== 'function') {
+    window.toggleMenu = function(force){
+      var open = (typeof force === 'boolean')
+        ? force
+        : !document.body.classList.contains('drawer-open');
+      document.body.classList.toggle('drawer-open', open);
+      var btn = document.querySelector('.fab-menu');
+      var bd  = document.querySelector('.backdrop');
+      if (btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (bd)  bd.hidden = !open;
+    };
+  }
+
+  // 2) Fallback: switchLang（不覆盖已存在的）
+  if (typeof window.switchLang !== 'function') {
+    window.switchLang = function(lang){
+      if (!lang) return;
+      document.documentElement.setAttribute('data-lang', lang);
+      document.querySelectorAll('.langs .lang').forEach(function(b){
+        var active = (b.dataset.lang === lang);
+        b.classList.toggle('is-active', active);
+        if (active) b.setAttribute('aria-current','true');
+        else b.removeAttribute('aria-current');
+      });
+      try { localStorage.setItem('sensis.lang', lang); } catch(_){}
+    };
+  }
+
+  // 3) 强制绑定点击（即使 HTML 没写 onclick 也能用）
+  function bindOnce(){
+    var btn = document.querySelector('.fab-menu');
+    var bd  = document.querySelector('.backdrop');
+    if (btn && !btn._sensisBound){
+      btn.addEventListener('click', function(){ window.toggleMenu(); });
+      btn._sensisBound = true;
+    }
+    if (bd && !bd._sensisBound){
+      bd.addEventListener('click', function(){ window.toggleMenu(false); });
+      bd._sensisBound = true;
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindOnce);
+  } else {
+    bindOnce();
+  }
+})();
+</script>
+
+</body>
+</html>
