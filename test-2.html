@@ -80,67 +80,59 @@
       </div><!-- /.container-mobile -->
     </main>
   </div><!-- /.wrap -->
-
-<!-- FAB + Backdrop 要有 -->
-<button class="fab-menu" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false">
+<!-- Mobile FAB + Backdrop（必须在脚本前） -->
+<button class="fab-menu" aria-label="Open menu" aria-expanded="false">
   <img src="assets/menu-icon.png" alt="Menu">
 </button>
-<div class="backdrop" onclick="toggleMenu()" hidden></div>
+<div class="backdrop" hidden></div>
 
-<!-- 带版本号避免缓存 -->
-
+<!-- 抽屉 + 语言：纯内联，不依赖任何外部脚本 -->
 <script>
-/* ===== Drawer & Lang: emergency fallback + force-bind ===== */
-(function(){
-  // 1) Fallback: toggleMenu
-  if (typeof window.toggleMenu !== 'function') {
-    window.toggleMenu = function(force){
-      var open = (typeof force === 'boolean')
-        ? force
-        : !document.body.classList.contains('drawer-open');
-      document.body.classList.toggle('drawer-open', open);
-      var btn = document.querySelector('.fab-menu');
-      var bd  = document.querySelector('.backdrop');
-      if (btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      if (bd)  bd.hidden = !open;
-    };
-  }
-
-  // 2) Fallback: switchLang（不覆盖已存在的）
-  if (typeof window.switchLang !== 'function') {
-    window.switchLang = function(lang){
-      if (!lang) return;
-      document.documentElement.setAttribute('data-lang', lang);
-      document.querySelectorAll('.langs .lang').forEach(function(b){
-        var active = (b.dataset.lang === lang);
-        b.classList.toggle('is-active', active);
-        if (active) b.setAttribute('aria-current','true');
-        else b.removeAttribute('aria-current');
-      });
-      try { localStorage.setItem('sensis.lang', lang); } catch(_){}
-    };
-  }
-
-  // 3) 强制绑定点击（即使 HTML 没写 onclick 也能用）
-  function bindOnce(){
+(function () {
+  /* ===== 1) 抽屉 ===== */
+  function setMenu(open) {
+    open = !!open;
+    document.body.classList.toggle('drawer-open', open);
     var btn = document.querySelector('.fab-menu');
     var bd  = document.querySelector('.backdrop');
-    if (btn && !btn._sensisBound){
-      btn.addEventListener('click', function(){ window.toggleMenu(); });
-      btn._sensisBound = true;
-    }
-    if (bd && !bd._sensisBound){
-      bd.addEventListener('click', function(){ window.toggleMenu(false); });
-      bd._sensisBound = true;
-    }
+    if (btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (bd)  bd.hidden = !open;
   }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', bindOnce);
-  } else {
-    bindOnce();
+  function toggleMenu(force) {
+    var open = (typeof force === 'boolean')
+      ? force
+      : !document.body.classList.contains('drawer-open');
+    setMenu(open);
   }
+  // 一定暴露，全站统一调用
+  window.toggleMenu = toggleMenu;
+
+  /* ===== 2) 语言（保持你现有 data-lang/i18n 机制） ===== */
+  function switchLang(lang) {
+    if (!lang) return;
+    document.documentElement.setAttribute('data-lang', lang);
+    var btns = document.querySelectorAll('.langs .lang');
+    btns.forEach(function(b){
+      var active = b.dataset.lang === lang;
+      b.classList.toggle('is-active', active);
+      if (active) b.setAttribute('aria-current','true'); else b.removeAttribute('aria-current');
+    });
+    try { localStorage.setItem('sensis.lang', lang); } catch(_) {}
+  }
+  window.switchLang = switchLang;
+
+  /* ===== 3) 绑定（DOMContentLoaded 之后绝对生效） ===== */
+  document.addEventListener('DOMContentLoaded', function(){
+    var btn = document.querySelector('.fab-menu');
+    var bd  = document.querySelector('.backdrop');
+    if (btn) btn.addEventListener('click', function(){ toggleMenu(); });
+    if (bd)  bd.addEventListener('click', function(){ toggleMenu(false); });
+
+    // 恢复语言
+    var saved = null; try { saved = localStorage.getItem('sensis.lang'); } catch(_) {}
+    if (saved) switchLang(saved);
+  });
 })();
 </script>
-
 </body>
 </html>
