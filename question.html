@@ -89,5 +89,58 @@
 
 <!-- 带版本号避免缓存 -->
 <script src="common.js?v=7" defer></script>
+<script>
+/* ===== Drawer & Lang: emergency fallback + force-bind ===== */
+(function(){
+  // 1) Fallback: toggleMenu
+  if (typeof window.toggleMenu !== 'function') {
+    window.toggleMenu = function(force){
+      var open = (typeof force === 'boolean')
+        ? force
+        : !document.body.classList.contains('drawer-open');
+      document.body.classList.toggle('drawer-open', open);
+      var btn = document.querySelector('.fab-menu');
+      var bd  = document.querySelector('.backdrop');
+      if (btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (bd)  bd.hidden = !open;
+    };
+  }
+
+  // 2) Fallback: switchLang（不覆盖已存在的）
+  if (typeof window.switchLang !== 'function') {
+    window.switchLang = function(lang){
+      if (!lang) return;
+      document.documentElement.setAttribute('data-lang', lang);
+      document.querySelectorAll('.langs .lang').forEach(function(b){
+        var active = (b.dataset.lang === lang);
+        b.classList.toggle('is-active', active);
+        if (active) b.setAttribute('aria-current','true');
+        else b.removeAttribute('aria-current');
+      });
+      try { localStorage.setItem('sensis.lang', lang); } catch(_){}
+    };
+  }
+
+  // 3) 强制绑定点击（即使 HTML 没写 onclick 也能用）
+  function bindOnce(){
+    var btn = document.querySelector('.fab-menu');
+    var bd  = document.querySelector('.backdrop');
+    if (btn && !btn._sensisBound){
+      btn.addEventListener('click', function(){ window.toggleMenu(); });
+      btn._sensisBound = true;
+    }
+    if (bd && !bd._sensisBound){
+      bd.addEventListener('click', function(){ window.toggleMenu(false); });
+      bd._sensisBound = true;
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindOnce);
+  } else {
+    bindOnce();
+  }
+})();
+</script>
+
 </body>
 </html>
