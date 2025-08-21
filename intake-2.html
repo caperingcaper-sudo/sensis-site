@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sensis • Intake</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&family=Lora&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=2">
+<link rel="stylesheet" href="css/paperV2.css?v=2">
+</head>
+
+<body>
+  <div class="wrap">
+    <aside>
+      <div class="brand">
+        <a href="index.html" class="logo-link">
+          <img src="assets/sensis-logo.png" alt="Sensis logo">
+        </a>
+      </div>
+      <nav>
+        <a href="question.html"><span>Question</span></a>
+        <a href="search.html"><span>Search</span></a>
+        <a href="learn.html"><span>Learn</span></a>
+        <a href="create.html"><span>Create</span></a>
+      </nav>
+    </aside>
+    <main>
+        <div class="langs">
+        <button class="lang is-active" data-lang="en" onclick="switchLang('en')">English</button>
+        <button class="lang" data-lang="cn" onclick="switchLang('cn')">中 文</button>
+        <button class="lang" data-lang="jp" onclick="switchLang('jp')">日本語</button>
+      </div>
+       <article class="paperv1">
+        <header class="paperv1-header" aria-label="paper header">
+          <img class="paperv1-art desktop" src="assets/paper-2.png" alt="Header art (desktop)">
+          <img class="paperv1-art -mobile" src="assets/paper-3.png" alt="Header art (mobile)">
+          <h1 class="paperv1-title">
+            <span class="i18n" lang="en">Open The Perception Path</span>
+              <span class="i18n" lang="cn">Open The Perception Path</span>
+              <span class="i18n" lang="jp">Open The Perception Path</span>
+          </h1>
+          <h2 class="paperv1-sub">
+            <span class="i18n" lang="en">Let Sensis help you perceive yourself </span>
+            <span class="i18n" lang="cn">Let Sensis help you perceive yourself</span>
+            <span class="i18n" lang="jp">Let Sensis help you perceive yourself</span>
+            <br>
+            <span class="i18n" lang="en">and achieve your goals faster </span>
+            <span class="i18n" lang="cn">and achieve your goals faster </span>
+            <span class="i18n" lang="jp">and achieve your goals faster </span>
+          </h2>
+        </header>
+        <section class="paperv1-body" id="content">
+        <div class="md">
+            <header class="md head">
+                <h1 class="md-title">
+                    <span class="i18n" lang="en">User Basic Information</span>
+                    <span class="i18n" lang="en">用户基础信息</span>
+                    <span class="i18n" lang="en">基本情報</span>
+                </h1>
+                <p class="md-sub">
+                    <span class="i18n" lang="en">Please answer the questions below. Use ○ for single choice and □ for multiple choice.</span>
+                    <span class="i18n" lang="cn">请回答以下问题。单选用 ○，多选用 □。</span>
+                    <span class="i18n" lang="jp">以下の質問にお答えください。単一選択は○、複数選択は□です。</span>
+                </p>
+            </header>
+            <form id="intake">
+                <div class="field">
+                    <label><strong>
+                        <span class="i18n" lang="en">Nick Name</span>
+                        <span class="i18n" lang="cn">昵称</span>
+                        <span class="i18n" lang="jp">ニックネーム</span>
+                    </strong></label>
+                    <input type="text" name="user_nick" placeholder="">
+                </div>
+                <h2>
+                    <span class="i18n" lang="en">Section A: System (Institutions and Structures)</span>
+                    <span class="i18n" lang="cn">A 部分：系统（制度与结构）</span>
+                    <span class="i18n" lang="jp">A セクション：制度・構造</span>
+                </h2>
+                <div class="field">
+                    <div><strong>
+                        <span class="i18n" lang="en">A1. Your age group</span>
+                        <span class="i18n" lang="cn">A1. 年龄段</span>
+                        <span class="i18n" lang="jp">A1. 年齢層</span>
+                    </strong></div>
+
+                        <label><input type="radio" name="age" value="Under 18">
+                            <span class="i18n" lang="en">Under 18</span>
+                            <span class="i18n" lang="cn">18岁以下</span>
+                            <span class="i18n" lang="jp">18歳未満</span>
+                        </label>
+                        <label><input type="radio" name="age" value="18-24">
+                            <span class="i18n" lang="en">18–24</span>
+                            <span class="i18n" lang="cn">18–24</span>
+                            <span class="i18n" lang="jp">18–24</span>
+                        </label>
+                        <label><input type="radio" name="age" value="25-34">
+                            <span class="i18n" lang="en">25–34</span>
+                            <span class="i18n" lang="cn">25–34</span>
+                            <span class="i18n" lang="jp">25–34</span>
+                        </label>
+                        <label><input type="radio" name="age" value="35-44">
+                            <span class="i18n" lang="en">35–44</span>
+                            <span class="i18n" lang="cn">35–44</span>
+                            <span class="i18n" lang="jp">35–44</span>
+                        </label>
+                        <label><input type="radio" name="age" value="45+">
+                            <span class="i18n" lang="en">45+</span>
+                            <span class="i18n" lang="cn">45+</span>
+                            <span class="i18n" lang="jp">45歳以上</span>
+                        </label>
+                </div>
+                <div class="field">
+    <div><strong>
+      <span class="i18n" lang="en">A2. Highest level of education</span>
+      <span class="i18n" lang="cn">A2. 最高学历</span>
+      <span class="i18n" lang="jp">A2.最終学歴</span>
+    </strong></div>
+  <div class="options cols-2">
+    <label><input type="radio" name="edu" value="High School or below">
+      <span class="i18n" lang="en">High school or below</span>
+      <span class="i18n" lang="cn">高中及以下</span>
+      <span class="i18n" lang="jp">高校卒以下</span>
+         </label>
+       <label><input type="radio" name="edu" value="Associate">
+      <span class="i18n" lang="en">Associate</span>
+      <span class="i18n" lang="cn">大专/技校</span>
+      <span class="i18n" lang="jp">準学士/専門学校</span>
+    </label>
+    <label><input type="radio" name="edu" value="Bachelor">
+      <span class="i18n" lang="en">Bachelor</span>
+      <span class="i18n" lang="cn">本科</span>
+      <span class="i18n" lang="jp">学士</span>
+    </label>
+
+    <label><input type="radio" name="edu" value="Master">
+      <span class="i18n" lang="en">Master</span>
+      <span class="i18n" lang="cn">硕士</span>
+      <span class="i18n" lang="jp">修士</span>
+    </label>
+    <label><input type="radio" name="edu" value="Doctorate">
+      <span class="i18n" lang="en">Doctorate</span>
+      <span class="i18n" lang="cn">博士</span>
+      <span class="i18n" lang="jp">博士</span>
+    </label>
+      </div>
+  </div>
+  <div class="field">
+    <div><strong>
+      <span class="i18n" lang="en">A3. Occupation</span>
+      <span class="i18n" lang="cn">A3. 职业</span>
+      <span class="i18n" lang="jp">A3. 職業</span>
+    </strong></div>
+  <div class="options cols-2">
+    <label><input type="radio" name="occupation" value="Student">
+      <span class="i18n" lang="en">Student</span>
+      <span class="i18n" lang="cn">学生</span>
+      <span class="i18n" lang="jp">学生</span>
+    </label>
+    <label><input type="radio" name="occupation" value="Employee">
+      <span class="i18n" lang="en">Employee</span>
+      <span class="i18n" lang="cn">受雇者</span>
+      <span class="i18n" lang="jp">会社員</span>
+    </label>
+    <label><input type="radio" name="occupation" value="Self-employed">
+      <span class="i18n" lang="en">Self-employed</span>
+      <span class="i18n" lang="cn">自雇人士</span>
+      <span class="i18n" lang="jp">自営業</span>
+    </label>
+    <label><input type="radio" name="occupation" value="Gap Year">
+      <span class="i18n" lang="en">Gap Year</span>
+      <span class="i18n" lang="cn">空档期</span>
+      <span class="i18n" lang="jp">ギャップイヤー</span>
+    </label>
+  </div>
+  </div>
+  <div class="field">
+    <div><strong>
+      <span class="i18n" lang="en">A4. Time status</span>
+      <span class="i18n" lang="cn">A4. 时间状态</span>
+      <span class="i18n" lang="jp">A4. 時間の状況</span>
+    </strong></div>
+    <label><input type="radio" name="time_status" value="Full-time preparation">
+      <span class="i18n" lang="en">Full-time preparation</span>
+      <span class="i18n" lang="cn">全职备考/准备</span>
+      <span class="i18n" lang="jp">フルタイムで準備</span>
+    </label>
+    <label><input type="radio" name="time_status" value="Current student">
+      <span class="i18n" lang="en">Current student</span>
+      <span class="i18n" lang="cn">在读学生</span>
+      <span class="i18n" lang="jp">在学中</span>
+    </label>
+    <label><input type="radio" name="time_status" value="Part-time preparation">
+      <span class="i18n" lang="en">Part-time preparation</span>
+      <span class="i18n" lang="cn">业余/兼职准备</span>
+      <span class="i18n" lang="jp">パートタイムで準備</span>
+    </label>
+    <label><input type="radio" name="time_status" value="Fragmented time">
+      <span class="i18n" lang="en">Fragmented time</span>
+      <span class="i18n" lang="cn">碎片化时间</span>
+      <span class="i18n" lang="jp">隙間時間中心</span>
+    </label>
+  </div>
+  <h2>
+  <span class="i18n" lang="en">Section B: Personal</span>
+  <span class="i18n" lang="cn">B 部分：个人</span>
+  <span class="i18n" lang="jp">B セクション：個人</span>
+</h2>
+<div class="field">
+  <div><strong>
+    <span class="i18n" lang="en">B1. Your current goals </span>
+    <span class="i18n" lang="cn">B1. 你当前的目标 </span>
+    <span class="i18n" lang="jp">B1. 現在の目標 </span>
+  </strong></div>
+
+   <label><input type="checkbox" name="goals[]" value="notsure">
+  <span class="i18n" lang="en">Not sure at all</span>
+  <span class="i18n" lang="cn">完全不清楚</span>
+  <span class="i18n" lang="jp">全く分からない</span>
+</label>
+
+<label><input type="checkbox" name="goals[]" value="change-major">
+  <span class="i18n" lang="en">Changing majors</span>
+  <span class="i18n" lang="cn">转专业</span>
+  <span class="i18n" lang="jp">専攻変更</span>
+</label>
+
+<label><input type="checkbox" name="goals[]" value="study-abroad">
+  <span class="i18n" lang="en">Studying abroad</span>
+  <span class="i18n" lang="cn">留学</span>
+  <span class="i18n" lang="jp">留学</span>
+</label>
+
+<label><input type="checkbox" name="goals[]" value="solve-problems">
+  <span class="i18n" lang="en">Solve specific problems</span>
+  <span class="i18n" lang="cn">解决具体问题</span>
+  <span class="i18n" lang="jp">特定の問題を解決する</span>
+</label>
+
+
+<label><input type="checkbox" name="goals[]" value="self-realization">
+  <span class="i18n" lang="en">Self-realization</span>
+  <span class="i18n" lang="cn">自我实现</span>
+  <span class="i18n" lang="jp">自己実現</span>
+</label>
+</div>
+
+<div class="field">
+  <div><strong>
+    <span class="i18n" lang="en">B2. Study/work habit </span>
+    <span class="i18n" lang="cn">B2. 学习/工作习惯</span>
+    <span class="i18n" lang="jp">B2. 学習/仕事の習慣</span>
+  </strong></div>
+  <label><input type="radio" name="habit" value="short-sprints">
+    <span class="i18n" lang="en">Short sprints, frequent breaks</span>
+    <span class="i18n" lang="cn">短时冲刺 + 频繁休息</span>
+    <span class="i18n" lang="jp">短時間スプリント＋こまめな休憩</span>
+  </label>
+  <label><input type="radio" name="habit" value="long-focus">
+    <span class="i18n" lang="en">Long focus blocks</span>
+    <span class="i18n" lang="cn">长时专注</span>
+    <span class="i18n" lang="jp">長時間の集中</span>
+  </label>
+  <label><input type="radio" name="habit" value="deadline-driven">
+    <span class="i18n" lang="en">Deadline-driven</span>
+    <span class="i18n" lang="cn">受截止日期驱动</span>
+    <span class="i18n" lang="jp">締切駆動</span>
+  </label>  
+<label><input type="radio" name="habit" value="regular-schedule">
+  <span class="i18n" lang="en">Has a regular schedule</span>
+  <span class="i18n" lang="cn">作息规律</span>
+  <span class="i18n" lang="jp">規則正しい</span>
+</label>
+<label><input type="radio" name="habit" value="Flexible">
+  <span class="i18n" lang="en">Flexible and random</span>
+  <span class="i18n" lang="cn">灵活随机</span>
+  <span class="i18n" lang="jp">柔軟かつランダム</span>
+</label>
+</div>
+<div class="field">
+  <div><strong>
+    <span class="i18n" lang="en">B3. MBTI </span>
+    <span class="i18n" lang="cn">B3. MBTI </span>
+    <span class="i18n" lang="jp">B3. MBTI </span>
+
+  </strong></div>
+
+  <div class="options cols-3">
+    <label><input type="radio" name="mbti" value="INTJ">INTJ</label>
+    <label><input type="radio" name="mbti" value="INTP">INTP</label>
+    <label><input type="radio" name="mbti" value="ENTJ">ENTJ</label>
+    <label><input type="radio" name="mbti" value="ENTP">ENTP</label>
+    <label><input type="radio" name="mbti" value="INFJ">INFJ</label>
+    <label><input type="radio" name="mbti" value="INFP">INFP</label>
+    <label><input type="radio" name="mbti" value="ENFJ">ENFJ</label>
+    <label><input type="radio" name="mbti" value="ENFP">ENFP</label>
+    <label><input type="radio" name="mbti" value="ISTJ">ISTJ</label>
+    <label><input type="radio" name="mbti" value="ISFJ">ISFJ</label>
+    <label><input type="radio" name="mbti" value="ESTJ">ESTJ</label>
+    <label><input type="radio" name="mbti" value="ESFJ">ESFJ</label>
+    <label><input type="radio" name="mbti" value="ISTP">ISTP</label>
+    <label><input type="radio" name="mbti" value="ISFP">ISFP</label>
+    <label><input type="radio" name="mbti" value="ESTP">ESTP</label>
+    <label><input type="radio" name="mbti" value="ESFP">ESFP</label>
+  </div>
+</div>
+<h2>
+  <span class="i18n" lang="en">Section C: Situation</span>
+  <span class="i18n" lang="cn">C 部分：情境</span>
+  <span class="i18n" lang="jp">C セクション：状況</span>
+</h2>
+<div class="field">
+  <div><strong>
+    <span class="i18n" lang="en">C1. Daily available time </span>
+    <span class="i18n" lang="cn">C1. 每日可用时间 </span>
+    <span class="i18n" lang="jp">C1. 1日に確保できる時間 </span>
+  </strong></div>
+
+  <label><input type="radio" name="daily_time" value="<30m">
+    <span class="i18n" lang="en">&lt; 30 min</span>
+    <span class="i18n" lang="cn">少于 30 分钟</span>
+    <span class="i18n" lang="jp">30分未満</span>
+  </label>
+  <label><input type="radio" name="daily_time" value="30-60m">
+    <span class="i18n" lang="en">30–60 min</span>
+    <span class="i18n" lang="cn">30–60 分钟</span>
+    <span class="i18n" lang="jp">30–60分</span>
+  </label>
+  <label><input type="radio" name="daily_time" value="1-2h">
+    <span class="i18n" lang="en">1–2 hours</span>
+    <span class="i18n" lang="cn">1–2 小时</span>
+    <span class="i18n" lang="jp">1–2時間</span>
+  </label>
+  <label><input type="radio" name="daily_time" value="2-4h">
+    <span class="i18n" lang="en">2–4 hours</span>
+    <span class="i18n" lang="cn">2–4 小时</span>
+    <span class="i18n" lang="jp">2–4時間</span>
+  </label>
+  <label><input type="radio" name="daily_time" value=">4h">
+    <span class="i18n" lang="en">&gt; 4 hours</span>
+    <span class="i18n" lang="cn">4 小时以上</span>
+    <span class="i18n" lang="jp">4時間超</span>
+  </label>
+</div>
+            </form>
+            
+    <div class="actions">
+  <button type="button" class="primary" onclick="exportJSON()">
+    <span class="i18n" lang="en">Export JSON</span>
+    <span class="i18n" lang="cn">导出 JSON</span>
+    <span class="i18n" lang="jp">JSONを書き出す</span>
+  </button>
+
+  <button type="button" id="btn-submit" onclick="submitForm()" disabled>
+    <span class="i18n" lang="en">Submit</span>
+    <span class="i18n" lang="cn">提交</span>
+    <span class="i18n" lang="jp">送信</span>
+  </button>
+
+  <button type="reset">
+    <span class="i18n" lang="en">Reset</span>
+    <span class="i18n" lang="cn">重置</span>
+    <span class="i18n" lang="jp">リセット</span>
+  </button>
+</div>
+
+<label class="consent">
+  <input type="checkbox" id="consent">
+  <span class="i18n" lang="en">I agree to data processing for Sensis research and product development.</span>
+  <span class="i18n" lang="cn">我同意将数据用于 Sensis 的研究与产品开发。</span>
+  <span class="i18n" lang="jp">本データの研究・製品開発への利用に同意します。</span>
+</label>
+
+<div id="feedback" class="result-card" hidden></div>
+
+<div id="out" class="out" aria-live="polite"></div>
+<hr>
+
+  <h2>
+    <span class="i18n" lang="en">Let’s start by making our goals clearer</span>
+    <span class="i18n" lang="cn">让我们开始让自己的目标更明确吧</span>
+    <span class="i18n" lang="jp">まずは目標を明確にしましょう</span>
+  </h2>
+
+        </div>
+        </section>
+    </article>
+    </main>
+  </div>
+  <!-- FAB + Backdrop 要有 -->
+<button class="fab-menu" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false">
+  <img src="assets/menu-icon.png" alt="Menu">
+</button>
+<div class="backdrop" onclick="toggleMenu()" hidden></div>
+
+<!-- 带版本号避免缓存 -->
+<script src="common.js?v=7" defer></script>
+<script>
+/* ===== Drawer & Lang: emergency fallback + force-bind ===== */
+(function(){
+  // 1) Fallback: toggleMenu
+  if (typeof window.toggleMenu !== 'function') {
+    window.toggleMenu = function(force){
+      var open = (typeof force === 'boolean')
+        ? force
+        : !document.body.classList.contains('drawer-open');
+      document.body.classList.toggle('drawer-open', open);
+      var btn = document.querySelector('.fab-menu');
+      var bd  = document.querySelector('.backdrop');
+      if (btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (bd)  bd.hidden = !open;
+    };
+  }
+
+  // 2) Fallback: switchLang（不覆盖已存在的）
+  if (typeof window.switchLang !== 'function') {
+    window.switchLang = function(lang){
+      if (!lang) return;
+      document.documentElement.setAttribute('data-lang', lang);
+      document.querySelectorAll('.langs .lang').forEach(function(b){
+        var active = (b.dataset.lang === lang);
+        b.classList.toggle('is-active', active);
+        if (active) b.setAttribute('aria-current','true');
+        else b.removeAttribute('aria-current');
+      });
+      try { localStorage.setItem('sensis.lang', lang); } catch(_){}
+    };
+  }
+
+  // 3) 强制绑定点击（即使 HTML 没写 onclick 也能用）
+  function bindOnce(){
+    var btn = document.querySelector('.fab-menu');
+    var bd  = document.querySelector('.backdrop');
+    if (btn && !btn._sensisBound){
+      btn.addEventListener('click', function(){ window.toggleMenu(); });
+      btn._sensisBound = true;
+    }
+    if (bd && !bd._sensisBound){
+      bd.addEventListener('click', function(){ window.toggleMenu(false); });
+      bd._sensisBound = true;
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindOnce);
+  } else {
+    bindOnce();
+  }
+})();
+  /** —— 基础工具：保留你的 formToJSON 并加上语言等上下文 —— **/
+function formToJSON(form){
+const fd = new FormData(form), out = {};
+  for (const [k,v] of fd.entries()){
+    if (k.endsWith('[]')) { (out[k.slice(0,-2)] ||= []).push(v); }
+    else if (out[k] !== undefined) { out[k] = Array.isArray(out[k]) ? out[k].concat(v) : [out[k], v]; }
+    else { out[k] = v; }
+  }
+  // 附带上下文：当前语言、UA、来源
+  out.lang = getCurrentLang();
+  out.user_agent = navigator.userAgent || '';
+  out.referer = location.href;
+  return out;
+  }
+
+  
+function getCurrentLang(){
+  const active = document.querySelector('.langs .lang.is-active');
+  return active ? active.dataset.lang : (document.documentElement.dataset.lang || 'en');
+  function exportJSON(){
+  const data = formToJSON(document.getElementById('intake'));
+  document.getElementById('out').textContent = JSON.stringify(data, null, 2);
+}}
+
+
+/** —— 配置：填入你部署得到的 Apps Script URL —— **/
+const SHEETS_API = 'https://script.google.com/macros/s/AKfycbwQGEU9idIg0leG4egGgL6cQCpy9SXBZcTG6C_sfVB9TSpTZqmENApG6830tCs0YHhy/exec';
+
+/** —— 提交逻辑 —— **/
+async function submitForm(){
+  const consent = document.getElementById('consent');
+  const btn = document.getElementById('btn-submit');
+  const feedback = document.getElementById('feedback');
+
+  if (!consent.checked) {
+    showFeedback('请先勾选同意数据处理。', false);
+    return;
+  }
+
+  const data = formToJSON(document.getElementById('intake'));
+  // 可选：本地显示一次 JSON（便于调试）
+  document.getElementById('out').textContent = JSON.stringify(data, null, 2);
+
+  btn.disabled = true;
+  btn.textContent = getTextByLang({
+    en: 'Submitting…', cn: '提交中…', jp: '送信中…'
+  });
+
+  try {
+    const res = await fetch(SHEETS_API, {
+      method: 'POST',
+      mode: 'cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+
+    const json = await res.json().catch(()=>({}));
+    if (!res.ok || json.ok === false) {
+      throw new Error(json.error || ('HTTP ' + res.status));
+    }
+
+    showFeedback(getTextByLang({
+      en: 'Submitted successfully. Thank you.',
+      cn: '提交成功，感谢参与。',
+      jp: '送信完了。ありがとう。'
+    }), true);
+
+    // 可选：提交后重置表单
+    // document.getElementById('intake').reset();
+  } catch (err) {
+    showFeedback(getTextByLang({
+      en: 'Submission failed. Please try again or contact us.',
+      cn: '提交失败，请重试或联系维护者。',
+      jp: '送信に失敗。再試行するか連絡してくれ。'
+    }) + ' ' + String(err), false);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = getTextByLang({
+      en: 'Submit', cn: '提交', jp: '送信'
+    });
+  }
+}
+
+/** —— 反馈卡片 —— **/
+function showFeedback(msg, ok){
+  const el = document.getElementById('feedback');
+  el.hidden = false;
+  el.className = 'result-card ' + (ok ? 'ok' : 'err');
+  el.textContent = msg;
+}
+
+/** —— 文案助手 —— **/
+function getTextByLang(map){
+  const l = getCurrentLang();
+  return map[l] || map.en || '';
+}
+
+/** —— 初始化：同意勾选才能提交 —— **/
+(function initConsent(){
+  const consent = document.getElementById('consent');
+  const btn = document.getElementById('btn-submit');
+  function sync(){ btn.disabled = !consent.checked; }
+  if (consent) {
+    consent.addEventListener('change', sync);
+    sync();
+  }
+})();
+</script>
+</body>
+</html>
